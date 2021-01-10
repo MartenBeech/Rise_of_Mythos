@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class Hand : MonoBehaviour
 {
-    public const int HANDSIZE = 10;
-    public static GameObject[] Hands = new GameObject[HANDSIZE];
-    public static Card[] Cards = new Card[HANDSIZE];
-    private static bool[] occupied = new bool[HANDSIZE];
-
-    public bool[] Occupied { get => occupied; set => occupied = value; }
+    public const int SIZE = 10;
+    public static GameObject[] Hands = new GameObject[SIZE];
+    public static Card[] Cards = new Card[SIZE];
+    public static bool[] occupied = new bool[SIZE];
+    public static int selected = SIZE;
 
     private void Start()
     {
-        for (int i = 0; i < HANDSIZE; i++)
+        for (int i = 0; i < SIZE; i++)
         {
             Hands[i] = GameObject.Find("Hand (" + i + ")");
         }
@@ -23,19 +22,19 @@ public class Hand : MonoBehaviour
     public void AddCard(Card card)
     {
         int handSpace = GetHandSpace();
-        if (handSpace < HANDSIZE)
+        if (handSpace < SIZE)
         {
             Cards[handSpace] = card;
-            Occupied[handSpace] = true;
+            occupied[handSpace] = true;
             card.DisplayCard(Hands[handSpace], card);
         }
     }
 
     public void RemoveCard(int i)
     {
-        if (Occupied[i])
+        if (occupied[i])
         {
-            Occupied[i] = false;
+            occupied[i] = false;
             Cards[i].DisplayNull(Hands[i]);
             Cards[i] = null;
         }
@@ -43,16 +42,39 @@ public class Hand : MonoBehaviour
 
     private int GetHandSpace()
     {
-        for (int i = 0; i < HANDSIZE; i++)
+        for (int i = 0; i < SIZE; i++)
         {
-            if (!Occupied[i])
+            if (!occupied[i])
                 return i;
         }
-        return HANDSIZE;
+        return SIZE;
+    }
+
+    private void SelectCard(int i)
+    {
+        selected = i;
+        Hands[i].GetComponentInChildren<Outline>().enabled = true;
+    }
+
+    private void DeselectCard(int i)
+    {
+        if (i < SIZE)
+        {
+            Hands[i].GetComponentInChildren<Outline>().enabled = false;
+            selected = SIZE;
+        }
     }
 
     public void HandClicked(int i)
     {
-
+        if (selected == i)
+        {
+            DeselectCard(i);
+        }
+        else
+        {
+            DeselectCard(selected);
+            SelectCard(i);
+        }
     }
 }
