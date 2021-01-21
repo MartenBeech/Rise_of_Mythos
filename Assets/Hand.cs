@@ -24,9 +24,10 @@ public class Hand : MonoBehaviour
         int handSpace = GetHandSpace();
         if (handSpace < SIZE)
         {
+            AnimaCard animaCard = new AnimaCard();
+            animaCard.MoveDeckHand(card, handSpace);
             Cards[handSpace] = card;
             occupied[handSpace] = true;
-            card.DisplayCard(Hands[handSpace], card);
         }
     }
 
@@ -54,27 +55,41 @@ public class Hand : MonoBehaviour
     {
         selected = i;
         Hands[i].GetComponentInChildren<Outline>().enabled = true;
+        Bf bf = new Bf();
+        if (Cards[i].cd == 0)
+        {
+            bf.MarkPlayable();
+        }
+        else
+        {
+            bf.UnmarkPlayable();
+        }
     }
 
-    private void DeselectCard(int i)
+    public void DeselectCard()
     {
-        if (i < SIZE)
+        if (selected < SIZE)
         {
-            Hands[i].GetComponentInChildren<Outline>().enabled = false;
+            Hands[selected].GetComponentInChildren<Outline>().enabled = false;
             selected = SIZE;
+            Bf bf = new Bf();
+            bf.UnmarkPlayable();
         }
     }
 
     public void HandClicked(int i)
     {
-        if (selected == i)
+        if (occupied[i])
         {
-            DeselectCard(i);
-        }
-        else
-        {
-            DeselectCard(selected);
-            SelectCard(i);
+            if (selected == i)
+            {
+                DeselectCard();
+            }
+            else
+            {
+                DeselectCard();
+                SelectCard(i);
+            }
         }
     }
 }

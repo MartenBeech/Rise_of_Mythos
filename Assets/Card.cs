@@ -5,13 +5,26 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    private int attack = 5, attackStart = 5;
-    private int health = 10, healthStart = 10;
-    private int cost = 3, costStart = 3;
-    private int speed = 2, speedStart = 2;
-    private int range = 2, rangeStart = 2;
+    public enum Title
+    {
+        Paladin
+    }
 
-    private Sprite sprite = Resources.Load<Sprite>("Units/Paladin");
+    public enum Alignment
+    {
+        Ally, Enemy
+    }
+    public Alignment alignment;
+
+    public int attack,  attackDefault;
+    public int health,  healthDefault;
+    public int cd,      cdDefault;
+    public int speed,   speedDefault;
+    public int range,   rangeDefault;
+
+    public int tile;
+
+    public Sprite sprite = Resources.Load<Sprite>("Cards/Paladin");
 
     public void DisplayCard(GameObject gameObject, Card card)
     {

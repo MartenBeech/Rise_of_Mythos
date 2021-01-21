@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Deck : MonoBehaviour
 {
-    public GameObject Decks;
+    public static GameObject Decks;
     public List<Card> deck = new List<Card>();
 
     private void Start()
@@ -25,16 +25,17 @@ public class Deck : MonoBehaviour
         }
     }
 
-    public void AddCard(Card card)
+    public void AddCard(Card.Title title)
     {
-        deck.Add(card);
+        CardStat cardStat = new CardStat();
+        deck.Add(cardStat.SetStats(title));
         DisplayDeck();
     }
 
     public void AddCard()
     {
-        Card card = new Card();
-        deck.Add(card);
+        CardStat cardStat = new CardStat();
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
         DisplayDeck();
     }
 
