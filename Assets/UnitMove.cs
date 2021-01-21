@@ -15,6 +15,10 @@ public class UnitMove : MonoBehaviour
             for (int i = 0; i < card.speed; i++)
             {
                 tileCheck += 3;
+                if (tileCheck >= Bf.SIZE)
+                {
+                    break;
+                }
 
                 if (!Bf.occupied[tileCheck])
                 {
@@ -31,10 +35,33 @@ public class UnitMove : MonoBehaviour
         }
         else
         {
+            for (int i = 0; i < card.speed; i++)
+            {
+                tileCheck -= 3;
+                if (tileCheck < 0)
+                {
+                    break;
+                }
 
+                if (!Bf.occupied[tileCheck])
+                {
+                    tileNew -= 3;
+                }
+                else
+                {
+                    if (Bf.Cards[tileCheck].alignment != card.alignment)
+                    {
+                        break;
+                    }
+                }
+            }
         }
 
-        AnimaCard animaCard = new AnimaCard();
-        animaCard.MoveBfBf(card, card.tile, tileNew);
+
+        if (tileNew != card.tile)
+        {
+            AnimaCard animaCard = new AnimaCard();
+            animaCard.MoveBfBf(card, card.tile, tileNew);
+        }
     }
 }

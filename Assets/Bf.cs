@@ -20,19 +20,25 @@ public class Bf : MonoBehaviour
         }
     }
 
-    public void AddCard(Card card, int from, int to, Card.Alignment alignment)
+    public void AddCardFromHand(Card card, int from, int to)
     {
-        Bf.occupied[to] = true;
-        card.alignment = alignment;
-        card.tile = to;
-
         AnimaCard animaCard = new AnimaCard();
         animaCard.MoveHandBf(card, from, to);
     }
 
+    public void RemoveCard(int i)
+    {
+        if (occupied[i])
+        {
+            occupied[i] = false;
+            Cards[i].DisplayNull(Bfs[i]);
+            Cards[i] = null;
+        }
+    }
+
     public void MarkPlayable()
     {
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 30; i++)
         {
             if (!occupied[i])
             {
@@ -43,7 +49,7 @@ public class Bf : MonoBehaviour
 
     public void UnmarkPlayable()
     {
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 30; i++)
         {
             Bfs[i].GetComponentInChildren<Outline>().enabled = false;
         }
@@ -54,7 +60,7 @@ public class Bf : MonoBehaviour
         selected = i;
         if (Bfs[i].GetComponentInChildren<Outline>().enabled == true)
         {
-            AddCard(Hand.Cards[Hand.selected], Hand.selected, selected, Card.Alignment.Ally);
+            AddCardFromHand(Hand.Cards[Hand.selected], Hand.selected, selected);
 
             Hand hand = new Hand();
             hand.RemoveCard(Hand.selected);

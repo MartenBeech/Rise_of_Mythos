@@ -7,7 +7,7 @@ public class Card : MonoBehaviour
 {
     public enum Title
     {
-        Paladin
+        Paladin, Captain
     }
 
     public enum Alignment

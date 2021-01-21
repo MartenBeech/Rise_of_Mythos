@@ -6,11 +6,18 @@ using UnityEngine.UI;
 public class Deck : MonoBehaviour
 {
     public static GameObject Decks;
-    public List<Card> deck = new List<Card>();
+    public static List<Card> deck = new List<Card>();
 
     private void Start()
     {
         Decks = GameObject.Find("Deck");
+
+        CardStat cardStat = new CardStat();
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        deck.Add(cardStat.SetStats(Card.Title.Captain));
+        deck.Add(cardStat.SetStats(Card.Title.Captain));
+
         DisplayDeck();
     }
     public void DrawCard()
@@ -20,22 +27,16 @@ public class Deck : MonoBehaviour
             Rng rng = new Rng();
             int rnd = rng.Range(0, deck.Count);
             Hand hand = new Hand();
-            hand.AddCard(deck[rnd]);
-            RemoveCard(rnd);
+            hand.AddCardFromDeck(deck[rnd], rnd);
         }
     }
 
     public void AddCard(Card.Title title)
     {
         CardStat cardStat = new CardStat();
-        deck.Add(cardStat.SetStats(title));
-        DisplayDeck();
-    }
-
-    public void AddCard()
-    {
-        CardStat cardStat = new CardStat();
-        deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        Card card = cardStat.SetStats(title);
+        card.alignment = Card.Alignment.Ally;
+        deck.Add(card);
         DisplayDeck();
     }
 

@@ -19,13 +19,13 @@ public class Hand : MonoBehaviour
         }
     }
 
-    public void AddCard(Card card)
+    public void AddCardFromDeck(Card card, int i)
     {
         int handSpace = GetHandSpace();
         if (handSpace < SIZE)
         {
             AnimaCard animaCard = new AnimaCard();
-            animaCard.MoveDeckHand(card, handSpace);
+            animaCard.MoveDeckHand(card, i, handSpace);
             Cards[handSpace] = card;
             occupied[handSpace] = true;
         }

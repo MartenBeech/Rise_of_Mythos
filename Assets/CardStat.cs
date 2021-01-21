@@ -17,6 +17,16 @@ public class CardStat : MonoBehaviour
                 card.cd =       0;
                 card.speed =    2;
                 card.range =    2;
+                card.alignment = Card.Alignment.Ally;
+                break;
+
+            case Card.Title.Captain:
+                card.attack = 5;
+                card.health = 10;
+                card.cd = 0;
+                card.speed = 2;
+                card.range = 2;
+                card.alignment = Card.Alignment.Enemy;
                 break;
         }
 

@@ -11,7 +11,20 @@ public class UnitAction : MonoBehaviour
 
         if (alignment == Card.Alignment.Ally)
         {
-            for (int i = Bf.SIZE - 1; i > Bf.SIZE; i--)
+            for (int i = Bf.SIZE - 1; i >= 0; i--)
+            {
+                if (Bf.occupied[i])
+                {
+                    if (Bf.Cards[i].alignment == alignment)
+                    {
+                        units.Add(i);
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < Bf.SIZE; i++)
             {
                 if (Bf.occupied[i])
                 {
@@ -25,7 +38,8 @@ public class UnitAction : MonoBehaviour
 
         for (int i = 0; i < units.Count; i++)
         {
-
+            UnitMove unitMove = new UnitMove();
+            unitMove.Move(Bf.Cards[units[i]]);
         }
     }
 }

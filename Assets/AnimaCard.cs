@@ -47,37 +47,48 @@ public class AnimaCard : MonoBehaviour
         }
     }
 
-    public void MoveDeckHand(Card _card, int _to, float _counter = 1f)
+    public void MoveDeckHand(Card _card, int _from, int _to, float _counter = 1f)
     {
         MoveCard(_card, Deck.Decks, Hand.Hands[_to], Hand.Cards[_to], _counter);
+        Hand.occupied[_to] = true;
+        Hand.Cards[_to] = _card;
+        Deck deck = new Deck();
+        deck.RemoveCard(_from);
     }
 
     public void MoveHandBf(Card _card, int _from, int _to, float _counter = 1f)
     {
         MoveCard(_card, Hand.Hands[_from], Bf.Bfs[_to], Bf.Cards[_to], _counter);
+        Bf.occupied[_to] = true;
+        Bf.Cards[_to] = _card;
+        Hand hand = new Hand();
+        hand.RemoveCard(_from);
+        _card.tile = _to;
     }
 
     public void MoveBfBf(Card _card, int _from, int _to, float _counter = 1f)
     {
         MoveCard(_card, Bf.Bfs[_from], Bf.Bfs[_to], Bf.Cards[_to], _counter);
+        Bf.occupied[_to] = true;
+        Bf.Cards[_to] = _card;
+        Bf bf = new Bf();
+        bf.RemoveCard(_from);
+        _card.tile = _to;
     }
 
     public void MoveCard(Card _card, GameObject _from, GameObject _to, Card _cardTo, float _counter = 1f)
-    {
-        MoveSetup(_card, _counter);
-        startSet = _from;
-        endSet = _to;
-        PlaceSet = _cardTo;
-
-        prefab = Instantiate(prefab, startSet.transform.position, new Quaternion(0, 0, 0, 0), parent.transform);
-    }
-
-    private void MoveSetup(Card _card, float _counter)
     {
         prefab = Resources.Load<GameObject>("Assets/Card");
         parent = GameObject.Find("Animation");
         counterSet = _counter;
         cardSet = _card;
+        startSet = _from;
+        endSet = _to;
+        PlaceSet = _cardTo;
+
+        prefab.GetComponentInChildren<Image>().sprite = _card.sprite;
+
+        prefab = Instantiate(prefab, startSet.transform.position, new Quaternion(0, 0, 0, 0), parent.transform);
     }
 }
 
