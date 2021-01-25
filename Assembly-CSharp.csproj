@@ -59,15 +59,17 @@
     <Compile Include="Assets\AnimaText.cs" />
     <Compile Include="Assets\Hand.cs" />
     <Compile Include="Assets\Rng.cs" />
+    <Compile Include="Assets\UnitAction.cs" />
     <Compile Include="Assets\Card.cs" />
     <Compile Include="Assets\Deck.cs" />
-    <Compile Include="Assets\Bf.cs" />
-    <Compile Include="Assets\AnimaCard.cs" />
-    <Compile Include="Assets\CardStat.cs" />
-    <Compile Include="Assets\Turn.cs" />
     <Compile Include="Assets\UnitMove.cs" />
+    <Compile Include="Assets\Bf.cs" />
     <Compile Include="Assets\UnitAttack.cs" />
-    <Compile Include="Assets\UnitAction.cs" />
+    <Compile Include="Assets\Turn.cs" />
+    <Compile Include="Assets\CardStat.cs" />
+    <Compile Include="Assets\AnimaCard.cs" />
+    <Compile Include="Assets\Hue.cs" />
+    <Compile Include="Assets\UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

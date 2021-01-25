@@ -8,7 +8,9 @@ public class AnimaText : MonoBehaviour
     public GameObject prefab;
     private GameObject startPos;
     public static GameObject parent;
-    private float counter = 1f;
+
+    private float counter = UI.TIMER;
+    
 
     private void Awake()
     {
@@ -19,7 +21,7 @@ public class AnimaText : MonoBehaviour
     {
         if (counter > 0)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.05f);
+            transform.position = new Vector3(transform.position.x, transform.position.y + (0.003f / UI.TIMER));
             counter -= Time.deltaTime;
 
             if (counter <= 0)
@@ -29,11 +31,11 @@ public class AnimaText : MonoBehaviour
         }
     }
 
-    public void ShowText(int to, string text, Color textColor)
+    public void ShowText(GameObject to, string text, Color textColor)
     {
         prefab = Resources.Load<GameObject>("Assets/FloatingText");
         parent = GameObject.Find("Animation");
-        startPos = Bf.Bfs[to];
+        startPos = to;
         prefab.GetComponentInChildren<Text>().color = textColor;
         prefab.GetComponentInChildren<Text>().text = text;
 

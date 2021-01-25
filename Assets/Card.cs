@@ -16,6 +16,12 @@ public class Card : MonoBehaviour
     }
     public Alignment alignment;
 
+    public enum DamageType
+    {
+        Physical, Magical, True
+    }
+    public DamageType damageType;
+
     public int attack,  attackDefault;
     public int health,  healthDefault;
     public int cd,      cdDefault;
@@ -23,6 +29,7 @@ public class Card : MonoBehaviour
     public int range,   rangeDefault;
 
     public int tile;
+    public bool readyToAttack = false;
 
     public Sprite sprite = Resources.Load<Sprite>("Cards/Paladin");
 

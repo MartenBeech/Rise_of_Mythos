@@ -9,23 +9,18 @@ public class AnimaCard : MonoBehaviour
     public static GameObject endSet;
     public static GameObject prefab;
     public static GameObject parent;
-    public static Card PlaceSet;
     public static Card cardSet;
     private GameObject startPos;
     private GameObject endPos;
-    private Card placePos;
     private Card card;
 
-    private static float counterSet;
-    private float counter;
+    private float counter = UI.TIMER;
 
     private void Awake()
     {
         startPos = startSet;
         endPos = endSet;
-        placePos = PlaceSet;
         card = cardSet;
-        counter = counterSet;
     }
     void Update()
     {
@@ -35,7 +30,7 @@ public class AnimaCard : MonoBehaviour
             float dist = Mathf.Sqrt(
                 Mathf.Pow(endPos.transform.position.x - startPos.transform.position.x, 2) +
                 Mathf.Pow(endPos.transform.position.y - startPos.transform.position.y, 2));
-            this.transform.Translate(dir.normalized * dist * Time.deltaTime / counterSet);
+            this.transform.Translate(dir.normalized * dist * Time.deltaTime / UI.TIMER);
 
             counter -= Time.deltaTime;
 
@@ -47,44 +42,44 @@ public class AnimaCard : MonoBehaviour
         }
     }
 
-    public void MoveDeckHand(Card _card, int _from, int _to, float _counter = 1f)
+    public void MoveDeckHand(Card _card, int _from, int _to)
     {
-        MoveCard(_card, Deck.Decks, Hand.Hands[_to], Hand.Cards[_to], _counter);
+        MoveCard(_card, Deck.Decks, Hand.Hands[_to], Hand.Cards[_to]);
         Hand.occupied[_to] = true;
         Hand.Cards[_to] = _card;
         Deck deck = new Deck();
         deck.RemoveCard(_from);
     }
 
-    public void MoveHandBf(Card _card, int _from, int _to, float _counter = 1f)
+    public void MoveHandBf(Card _card, int _from, int _to)
     {
-        MoveCard(_card, Hand.Hands[_from], Bf.Bfs[_to], Bf.Cards[_to], _counter);
+        MoveCard(_card, Hand.Hands[_from], Bf.Bfs[_to], Bf.Cards[_to]);
         Bf.occupied[_to] = true;
         Bf.Cards[_to] = _card;
         Hand hand = new Hand();
         hand.RemoveCard(_from);
         _card.tile = _to;
+        _card.readyToAttack = false;
     }
 
-    public void MoveBfBf(Card _card, int _from, int _to, float _counter = 1f)
+    public void MoveBfBf(Card _card, int _from, int _to)
     {
-        MoveCard(_card, Bf.Bfs[_from], Bf.Bfs[_to], Bf.Cards[_to], _counter);
+        MoveCard(_card, Bf.Bfs[_from], Bf.Bfs[_to], Bf.Cards[_to]);
         Bf.occupied[_to] = true;
         Bf.Cards[_to] = _card;
         Bf bf = new Bf();
         bf.RemoveCard(_from);
         _card.tile = _to;
+        _card.readyToAttack = true;
     }
 
-    public void MoveCard(Card _card, GameObject _from, GameObject _to, Card _cardTo, float _counter = 1f)
+    public void MoveCard(Card _card, GameObject _from, GameObject _to, Card _cardTo)
     {
         prefab = Resources.Load<GameObject>("Assets/Card");
         parent = GameObject.Find("Animation");
-        counterSet = _counter;
         cardSet = _card;
         startSet = _from;
         endSet = _to;
-        PlaceSet = _cardTo;
 
         prefab.GetComponentInChildren<Image>().sprite = _card.sprite;
 

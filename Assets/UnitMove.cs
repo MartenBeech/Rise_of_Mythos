@@ -57,11 +57,14 @@ public class UnitMove : MonoBehaviour
             }
         }
 
-
+        AnimaCard animaCard = new AnimaCard();
         if (tileNew != card.tile)
         {
-            AnimaCard animaCard = new AnimaCard();
             animaCard.MoveBfBf(card, card.tile, tileNew);
+        }
+        else
+        {
+            UnitAction.counter -= UI.TIMER;
         }
     }
 }
