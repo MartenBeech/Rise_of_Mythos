@@ -30,8 +30,9 @@ public class Card : MonoBehaviour
 
     public int tile;
     public bool readyToAttack = false;
+    public Sprite sprite;
 
-    public Sprite sprite = Resources.Load<Sprite>("Cards/Paladin");
+    public Special special = new Special();
 
     public void DisplayCard(GameObject gameObject, Card card)
     {

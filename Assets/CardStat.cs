@@ -12,12 +12,15 @@ public class CardStat : MonoBehaviour
         switch(title)
         {
             case Card.Title.Paladin:
-                card.attack =   5;
-                card.health =   10;
-                card.cd =       0;
-                card.speed =    2;
-                card.range =    2;
+                card.attack = 5;
+                card.health = 10;
+                card.cd = 0;
+                card.speed = 2;
+                card.range = 2;
+                card.damageType = Card.DamageType.Physical;
+
                 card.alignment = Card.Alignment.Ally;
+                card.special.vigilance = true;
                 break;
 
             case Card.Title.Captain:
@@ -26,7 +29,10 @@ public class CardStat : MonoBehaviour
                 card.cd = 0;
                 card.speed = 2;
                 card.range = 2;
+                card.damageType = Card.DamageType.Physical;
+
                 card.alignment = Card.Alignment.Enemy;
+                card.special.vigilance = true;
                 break;
         }
 

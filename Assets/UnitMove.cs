@@ -10,53 +10,59 @@ public class UnitMove : MonoBehaviour
         int tileNew = card.tile;
         int tileCheck = card.tile;
 
-        if (card.alignment == Card.Alignment.Ally)
-        {
-            for (int i = 0; i < card.speed; i++)
-            {
-                tileCheck += 3;
-                if (tileCheck >= Bf.SIZE)
-                {
-                    break;
-                }
+        Special special = new Special();
+        if (!special.CheckVililanceMove(card)) { }
 
-                if (!Bf.occupied[tileCheck])
-                {
-                    tileNew += 3;
-                }
-                else
-                {
-                    if (Bf.Cards[tileCheck].alignment != card.alignment)
-                    {
-                        break;
-                    }
-                }
-            }
-        }
         else
         {
-            for (int i = 0; i < card.speed; i++)
+            if (card.alignment == Card.Alignment.Ally)
             {
-                tileCheck -= 3;
-                if (tileCheck < 0)
+                for (int i = 0; i < card.speed; i++)
                 {
-                    break;
-                }
-
-                if (!Bf.occupied[tileCheck])
-                {
-                    tileNew -= 3;
-                }
-                else
-                {
-                    if (Bf.Cards[tileCheck].alignment != card.alignment)
+                    tileCheck += 3;
+                    if (tileCheck >= Bf.SIZE)
                     {
                         break;
+                    }
+
+                    if (!Bf.occupied[tileCheck])
+                    {
+                        tileNew += 3;
+                    }
+                    else
+                    {
+                        if (Bf.Cards[tileCheck].alignment != card.alignment)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < card.speed; i++)
+                {
+                    tileCheck -= 3;
+                    if (tileCheck < 0)
+                    {
+                        break;
+                    }
+
+                    if (!Bf.occupied[tileCheck])
+                    {
+                        tileNew -= 3;
+                    }
+                    else
+                    {
+                        if (Bf.Cards[tileCheck].alignment != card.alignment)
+                        {
+                            break;
+                        }
                     }
                 }
             }
         }
-
+        
         AnimaCard animaCard = new AnimaCard();
         if (tileNew != card.tile)
         {

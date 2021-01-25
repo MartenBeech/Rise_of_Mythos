@@ -15,8 +15,19 @@ public class Deck : MonoBehaviour
         CardStat cardStat = new CardStat();
         deck.Add(cardStat.SetStats(Card.Title.Paladin));
         deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
         deck.Add(cardStat.SetStats(Card.Title.Captain));
         deck.Add(cardStat.SetStats(Card.Title.Captain));
+        deck.Add(cardStat.SetStats(Card.Title.Captain));
+        deck.Add(cardStat.SetStats(Card.Title.Captain));
+        deck.Add(cardStat.SetStats(Card.Title.Captain));
+
+        for (int i = 0; i < Hand.SIZE; i++)
+        {
+            DrawCard();
+        }
 
         DisplayDeck();
     }
