@@ -27,7 +27,7 @@ public class UnitMove : MonoBehaviour
 
                     if (!Bf.occupied[tileCheck])
                     {
-                        tileNew += 3;
+                        tileNew = tileCheck;
                     }
                     else
                     {
@@ -50,7 +50,7 @@ public class UnitMove : MonoBehaviour
 
                     if (!Bf.occupied[tileCheck])
                     {
-                        tileNew -= 3;
+                        tileNew = tileCheck;
                     }
                     else
                     {

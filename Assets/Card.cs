@@ -22,16 +22,23 @@ public class Card : MonoBehaviour
     }
     public DamageType damageType;
 
-    public int attack,  attackDefault;
-    public int health,  healthDefault;
-    public int cd,      cdDefault;
-    public int speed,   speedDefault;
-    public int range,   rangeDefault;
+    public enum Race
+    {
+        Human, Undead, Elf, Halfblood
+    }
+    public Race race;
 
+    public int attack,      attackDefault;
+    public int health,      healthDefault;
+    public int healthMax,   healthMaxDefault;
+    public int cd,          cdDefault;
+
+    public int speed;
+    public int range;
     public int tile;
+
     public bool readyToAttack = false;
     public Sprite sprite;
-
     public Special special = new Special();
 
     public void DisplayCard(GameObject gameObject, Card card)

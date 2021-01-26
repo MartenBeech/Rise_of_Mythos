@@ -13,26 +13,27 @@ public class CardStat : MonoBehaviour
         {
             case Card.Title.Paladin:
                 card.attack = 5;
-                card.health = 10;
+                card.health = 50;
                 card.cd = 0;
                 card.speed = 2;
                 card.range = 2;
+                card.race = Card.Race.Human;
                 card.damageType = Card.DamageType.Physical;
 
                 card.alignment = Card.Alignment.Ally;
-                card.special.vigilance = true;
+                card.special.kingsCommand = true;
                 break;
 
             case Card.Title.Captain:
                 card.attack = 5;
-                card.health = 10;
+                card.health = 50;
                 card.cd = 0;
                 card.speed = 2;
                 card.range = 2;
+                card.race = Card.Race.Human;
                 card.damageType = Card.DamageType.Physical;
 
                 card.alignment = Card.Alignment.Enemy;
-                card.special.vigilance = true;
                 break;
         }
 
@@ -44,10 +45,8 @@ public class CardStat : MonoBehaviour
     private void SetDefaults(Card card, Card.Title title)
     {
         card.attackDefault = card.attack;
-        card.healthDefault = card.health;
+        card.healthMaxDefault = card.healthMax = card.healthDefault = card.health;
         card.cdDefault = card.cd;
-        card.speedDefault = card.speed;
-        card.rangeDefault = card.range;
 
         card.tile = Bf.SIZE;
 

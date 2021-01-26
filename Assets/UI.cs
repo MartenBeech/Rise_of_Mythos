@@ -37,4 +37,12 @@ public class UI : MonoBehaviour
                 break;
         }
     }
+
+    public void ClearBfColors()
+    {
+        for (int i = 0; i < Bf.SIZE; i++)
+        {
+            Bf.Bfs[i].GetComponentInChildren<Image>().color = Hue.white;
+        }
+    }
 }

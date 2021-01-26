@@ -8,8 +8,18 @@ public class UnitAttack : MonoBehaviour
     public void Attack(Card card)
     {
         int tileCheck = card.tile;
+        bool externalDamageDealt = false;
 
         Special special = new Special();
+        if (special.CheckCure(card))
+        {
+            externalDamageDealt = true;
+        }
+        if (special.CheckSummonUnitEndTurn(card))
+        {
+            externalDamageDealt = true;
+        }
+
         if (!special.CheckVililanceAttack(card)) { }
 
         else
@@ -33,7 +43,8 @@ public class UnitAttack : MonoBehaviour
                         }
                     }
                 }
-                UnitAction.counter -= UI.TIMER;
+                if (!externalDamageDealt)
+                    UnitAction.counter -= UI.TIMER;
             }
             else
             {
@@ -54,18 +65,68 @@ public class UnitAttack : MonoBehaviour
                         }
                     }
                 }
-                UnitAction.counter -= UI.TIMER;
+                if (!externalDamageDealt)
+                    UnitAction.counter -= UI.TIMER;
             }
         }
     }
 
     public void DealDamage(Card dealer, Card target, int damage, Card.DamageType damageType = Card.DamageType.Physical)
     {
-        Special special = new Special();
-        damage = special.CheckArmor(dealer, target, damage);
-        damage = special.CheckResistance(dealer, target, damage);
+        if (damage > 0)
+        {
+            Special special = new Special();
+            damage = special.CheckArmor(dealer, target, damage);
+            damage = special.CheckResistance(dealer, target, damage);
 
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], damage.ToString(), Hue.red);
+
+            special.CheckHeroic(dealer);
+
+            target.health -= damage;
+            if (target.health <= 0)
+            {
+                Bf bf = new Bf();
+                bf.RemoveCard(target.tile);
+            }
+            else
+            {
+                target.DisplayCard(Bf.Bfs[target.tile], target);
+            }
+            target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
+
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
+        }
+    }
+
+    public void Heal(Card dealer, Card target, int amount)
+    {
         AnimaText animaText = new AnimaText();
-        animaText.ShowText(Bf.Bfs[target.tile], damage.ToString(), Hue.red);
+        animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.green);
+
+        target.health += amount;
+        if (target.health > target.healthMax)
+        {
+            target.health = target.healthMax;
+        }
+        target.DisplayCard(Bf.Bfs[target.tile], target);
+        target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
+    }
+
+    public void IncreaseHealth(Card dealer, Card target, int amount)
+    {
+        AnimaText animaText = new AnimaText();
+        animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.green);
+
+        target.health += amount;
+        target.healthMax += amount;
+
+        target.DisplayCard(Bf.Bfs[target.tile], target);
+        target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
     }
 }

@@ -5,22 +5,26 @@ using UnityEngine.UI;
 
 public class AnimaCard : MonoBehaviour
 {
-    public static GameObject startSet;
-    public static GameObject endSet;
     public static GameObject prefab;
     public static GameObject parent;
+
+    public static GameObject startSet;
+    public static GameObject endSet;
     public static Card cardSet;
+    public static bool newlySummoned = false;
     private GameObject startPos;
     private GameObject endPos;
     private Card card;
+    private bool _newlySummoned;
 
-    private float counter = UI.TIMER;
+    private float counter = UI.TIMER * 0.95f;
 
     private void Awake()
     {
         startPos = startSet;
         endPos = endSet;
         card = cardSet;
+        _newlySummoned = newlySummoned;
     }
     void Update()
     {
@@ -37,6 +41,11 @@ public class AnimaCard : MonoBehaviour
             if (counter <= 0)
             {
                 card.DisplayCard(endPos, card);
+                if (_newlySummoned)
+                {
+                    SpecialTrigger specialTrigger = new SpecialTrigger();
+                    specialTrigger.Battlecry(card);
+                }
                 Destroy(gameObject);
             }
         }
@@ -44,6 +53,7 @@ public class AnimaCard : MonoBehaviour
 
     public void MoveDeckHand(Card _card, int _from, int _to)
     {
+        newlySummoned = false;
         MoveCard(_card, Deck.Decks, Hand.Hands[_to], Hand.Cards[_to]);
         Hand.occupied[_to] = true;
         Hand.Cards[_to] = _card;
@@ -53,6 +63,7 @@ public class AnimaCard : MonoBehaviour
 
     public void MoveHandBf(Card _card, int _from, int _to)
     {
+        newlySummoned = true;
         MoveCard(_card, Hand.Hands[_from], Bf.Bfs[_to], Bf.Cards[_to]);
         Bf.occupied[_to] = true;
         Bf.Cards[_to] = _card;
@@ -62,13 +73,17 @@ public class AnimaCard : MonoBehaviour
         _card.readyToAttack = false;
     }
 
-    public void MoveBfBf(Card _card, int _from, int _to)
+    public void MoveBfBf(Card _card, int _from, int _to, bool summoned = false)
     {
+        newlySummoned = summoned;
         MoveCard(_card, Bf.Bfs[_from], Bf.Bfs[_to], Bf.Cards[_to]);
         Bf.occupied[_to] = true;
         Bf.Cards[_to] = _card;
-        Bf bf = new Bf();
-        bf.RemoveCard(_from);
+        if (!summoned)
+        {
+            Bf bf = new Bf();
+            bf.RemoveCard(_from);
+        }
         _card.tile = _to;
         _card.readyToAttack = true;
     }
@@ -82,6 +97,7 @@ public class AnimaCard : MonoBehaviour
         endSet = _to;
 
         prefab.GetComponentInChildren<Image>().sprite = _card.sprite;
+        _card.DisplayCard(prefab, _card);
 
         prefab = Instantiate(prefab, startSet.transform.position, new Quaternion(0, 0, 0, 0), parent.transform);
     }

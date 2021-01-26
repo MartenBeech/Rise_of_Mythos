@@ -9,7 +9,7 @@ public class AnimaText : MonoBehaviour
     private GameObject startPos;
     public static GameObject parent;
 
-    private float counter = UI.TIMER;
+    private float counter = UI.TIMER * 0.95f;
     
 
     private void Awake()
@@ -26,6 +26,8 @@ public class AnimaText : MonoBehaviour
 
             if (counter <= 0)
             {
+                UI ui = new UI();
+                ui.ClearBfColors();
                 Destroy(gameObject);
             }
         }
