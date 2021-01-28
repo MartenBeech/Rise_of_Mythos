@@ -11,7 +11,7 @@ public class UnitMove : MonoBehaviour
         int tileCheck = card.tile;
 
         Special special = new Special();
-        if (!special.CheckVililanceMove(card)) { }
+        if (special.CheckVililanceMove(card)) { }
 
         else
         {
@@ -66,6 +66,7 @@ public class UnitMove : MonoBehaviour
         AnimaCard animaCard = new AnimaCard();
         if (tileNew != card.tile)
         {
+            special.CheckChargeMove(card, card.tile, tileNew);
             animaCard.MoveBfBf(card, card.tile, tileNew);
         }
         else

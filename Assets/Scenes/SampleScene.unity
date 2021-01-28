@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 55463223}
   - component: {fileID: 55463222}
   - component: {fileID: 55463225}
+  - component: {fileID: 55463226}
   m_Layer: 5
   m_Name: Hand (4)
   m_TagString: Untagged
@@ -272,6 +273,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &55463226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55463220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardHand
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &55622082
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +331,7 @@ GameObject:
   - component: {fileID: 55622085}
   - component: {fileID: 55622084}
   - component: {fileID: 55622087}
+  - component: {fileID: 55622088}
   m_Layer: 5
   m_Name: Hand (7)
   m_TagString: Untagged
@@ -421,6 +468,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &55622088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55622082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardHand
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 7
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &60528369
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +811,7 @@ GameObject:
   - component: {fileID: 123274825}
   - component: {fileID: 123274824}
   - component: {fileID: 123274827}
+  - component: {fileID: 123274828}
   m_Layer: 5
   m_Name: Bf (24)
   m_TagString: Untagged
@@ -855,6 +948,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &123274828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123274822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 24
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &132467372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1275,7 @@ GameObject:
   - component: {fileID: 232328979}
   - component: {fileID: 232328978}
   - component: {fileID: 232328981}
+  - component: {fileID: 232328982}
   m_Layer: 5
   m_Name: Bf (23)
   m_TagString: Untagged
@@ -1273,6 +1412,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &232328982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232328976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 23
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &252772961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,6 +1513,7 @@ GameObject:
   - component: {fileID: 257176839}
   - component: {fileID: 257176838}
   - component: {fileID: 257176841}
+  - component: {fileID: 257176842}
   m_Layer: 5
   m_Name: Bf (6)
   m_TagString: Untagged
@@ -1465,6 +1650,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &257176842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257176836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 6
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &283508007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1803,7 @@ GameObject:
   - component: {fileID: 295953010}
   - component: {fileID: 295953009}
   - component: {fileID: 295953012}
+  - component: {fileID: 295953013}
   m_Layer: 5
   m_Name: Bf (2)
   m_TagString: Untagged
@@ -1709,6 +1940,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &295953013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295953007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &332923587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +2245,7 @@ GameObject:
   - component: {fileID: 356535030}
   - component: {fileID: 356535029}
   - component: {fileID: 356535032}
+  - component: {fileID: 356535033}
   m_Layer: 5
   m_Name: Bf (28)
   m_TagString: Untagged
@@ -2105,6 +2382,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &356535033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356535027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 28
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &392906685
 GameObject:
   m_ObjectHideFlags: 0
@@ -2498,6 +2820,7 @@ GameObject:
   - component: {fileID: 484408327}
   - component: {fileID: 484408326}
   - component: {fileID: 484408329}
+  - component: {fileID: 484408330}
   m_Layer: 5
   m_Name: Bf (27)
   m_TagString: Untagged
@@ -2634,6 +2957,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &484408330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484408324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 27
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &497027174
 GameObject:
   m_ObjectHideFlags: 0
@@ -2920,6 +3288,7 @@ GameObject:
   - component: {fileID: 570768089}
   - component: {fileID: 570768088}
   - component: {fileID: 570768091}
+  - component: {fileID: 570768092}
   m_Layer: 5
   m_Name: Bf (16)
   m_TagString: Untagged
@@ -3056,6 +3425,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &570768092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570768086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 16
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &589783604
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,6 +3578,7 @@ GameObject:
   - component: {fileID: 603333138}
   - component: {fileID: 603333137}
   - component: {fileID: 603333140}
+  - component: {fileID: 603333141}
   m_Layer: 5
   m_Name: Bf (0)
   m_TagString: Untagged
@@ -3300,6 +3715,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &603333141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603333135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &636357844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,6 +3773,7 @@ GameObject:
   - component: {fileID: 636357847}
   - component: {fileID: 636357846}
   - component: {fileID: 636357849}
+  - component: {fileID: 636357850}
   m_Layer: 5
   m_Name: Bf (8)
   m_TagString: Untagged
@@ -3449,6 +3910,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &636357850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636357844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 8
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &653906466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,6 +3968,7 @@ GameObject:
   - component: {fileID: 653906469}
   - component: {fileID: 653906468}
   - component: {fileID: 653906471}
+  - component: {fileID: 653906472}
   m_Layer: 5
   m_Name: Bf (15)
   m_TagString: Untagged
@@ -3598,6 +4105,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &653906472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653906466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 15
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &711244081
 GameObject:
   m_ObjectHideFlags: 0
@@ -3611,6 +4163,7 @@ GameObject:
   - component: {fileID: 711244084}
   - component: {fileID: 711244083}
   - component: {fileID: 711244086}
+  - component: {fileID: 711244087}
   m_Layer: 5
   m_Name: Hand (9)
   m_TagString: Untagged
@@ -3747,6 +4300,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &711244087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711244081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardHand
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 9
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &762419190
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,6 +4453,7 @@ GameObject:
   - component: {fileID: 774387575}
   - component: {fileID: 774387574}
   - component: {fileID: 774387577}
+  - component: {fileID: 774387578}
   m_Layer: 5
   m_Name: Bf (19)
   m_TagString: Untagged
@@ -3991,6 +4590,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &774387578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774387572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 19
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &778603198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4099,6 +4743,7 @@ GameObject:
   - component: {fileID: 786601965}
   - component: {fileID: 786601964}
   - component: {fileID: 786601967}
+  - component: {fileID: 786601968}
   m_Layer: 5
   m_Name: Hand (0)
   m_TagString: Untagged
@@ -4235,6 +4880,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &786601968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786601962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardHand
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &820115053
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,9 +5018,8 @@ RectTransform:
   m_Children:
   - {fileID: 1298728356}
   - {fileID: 336403697}
-  - {fileID: 1633888774}
-  - {fileID: 252772962}
   - {fileID: 2100638730}
+  - {fileID: 252772962}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4371,7 +5060,7 @@ RectTransform:
   m_Children:
   - {fileID: 1566572879}
   m_Father: {fileID: 2100638730}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4675,6 +5364,7 @@ GameObject:
   - component: {fileID: 879540771}
   - component: {fileID: 879540770}
   - component: {fileID: 879540773}
+  - component: {fileID: 879540774}
   m_Layer: 5
   m_Name: Bf (17)
   m_TagString: Untagged
@@ -4811,6 +5501,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &879540774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879540768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 17
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &881543317
 GameObject:
   m_ObjectHideFlags: 0
@@ -5014,6 +5749,7 @@ GameObject:
   - component: {fileID: 919177135}
   - component: {fileID: 919177134}
   - component: {fileID: 919177137}
+  - component: {fileID: 919177138}
   m_Layer: 5
   m_Name: Bf (22)
   m_TagString: Untagged
@@ -5150,6 +5886,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &919177138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919177132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 22
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &930866487
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,6 +6134,7 @@ GameObject:
   - component: {fileID: 955901719}
   - component: {fileID: 955901718}
   - component: {fileID: 955901721}
+  - component: {fileID: 955901722}
   m_Layer: 5
   m_Name: Bf (20)
   m_TagString: Untagged
@@ -5489,6 +6271,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &955901722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955901716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 20
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &988359161
 GameObject:
   m_ObjectHideFlags: 0
@@ -5502,6 +6329,7 @@ GameObject:
   - component: {fileID: 988359164}
   - component: {fileID: 988359163}
   - component: {fileID: 988359166}
+  - component: {fileID: 988359167}
   m_Layer: 5
   m_Name: Bf (1)
   m_TagString: Untagged
@@ -5638,6 +6466,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &988359167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988359161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &998760617
 GameObject:
   m_ObjectHideFlags: 0
@@ -5746,6 +6619,7 @@ GameObject:
   - component: {fileID: 1011164238}
   - component: {fileID: 1011164237}
   - component: {fileID: 1011164240}
+  - component: {fileID: 1011164241}
   m_Layer: 5
   m_Name: Hand (1)
   m_TagString: Untagged
@@ -5882,6 +6756,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1011164241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011164235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardHand
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1014407074
 GameObject:
   m_ObjectHideFlags: 0
@@ -5895,6 +6814,7 @@ GameObject:
   - component: {fileID: 1014407077}
   - component: {fileID: 1014407076}
   - component: {fileID: 1014407079}
+  - component: {fileID: 1014407080}
   m_Layer: 5
   m_Name: Bf (9)
   m_TagString: Untagged
@@ -6031,6 +6951,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1014407080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014407074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 9
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1015316333
 GameObject:
   m_ObjectHideFlags: 0
@@ -6158,7 +7123,7 @@ RectTransform:
   m_Children:
   - {fileID: 339353501}
   m_Father: {fileID: 2100638730}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6272,6 +7237,7 @@ GameObject:
   - component: {fileID: 1071799386}
   - component: {fileID: 1071799385}
   - component: {fileID: 1071799388}
+  - component: {fileID: 1071799389}
   m_Layer: 5
   m_Name: Bf (13)
   m_TagString: Untagged
@@ -6408,6 +7374,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1071799389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071799383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 13
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1089803002
 GameObject:
   m_ObjectHideFlags: 0
@@ -6421,6 +7432,7 @@ GameObject:
   - component: {fileID: 1089803005}
   - component: {fileID: 1089803004}
   - component: {fileID: 1089803007}
+  - component: {fileID: 1089803008}
   m_Layer: 5
   m_Name: Bf (14)
   m_TagString: Untagged
@@ -6557,6 +7569,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1089803008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089803002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 14
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1101919033
 GameObject:
   m_ObjectHideFlags: 0
@@ -6665,6 +7722,7 @@ GameObject:
   - component: {fileID: 1207303464}
   - component: {fileID: 1207303463}
   - component: {fileID: 1207303466}
+  - component: {fileID: 1207303467}
   m_Layer: 5
   m_Name: Bf (26)
   m_TagString: Untagged
@@ -6801,6 +7859,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1207303467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207303461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 26
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1234529314
 GameObject:
   m_ObjectHideFlags: 0
@@ -6928,7 +8031,7 @@ RectTransform:
   m_Children:
   - {fileID: 132467373}
   m_Father: {fileID: 2100638730}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7095,6 +8198,7 @@ GameObject:
   - component: {fileID: 1309396629}
   - component: {fileID: 1309396628}
   - component: {fileID: 1309396631}
+  - component: {fileID: 1309396632}
   m_Layer: 5
   m_Name: Bf (4)
   m_TagString: Untagged
@@ -7231,6 +8335,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1309396632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309396626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1346641750
 GameObject:
   m_ObjectHideFlags: 0
@@ -7244,6 +8393,7 @@ GameObject:
   - component: {fileID: 1346641753}
   - component: {fileID: 1346641752}
   - component: {fileID: 1346641755}
+  - component: {fileID: 1346641756}
   m_Layer: 5
   m_Name: Hand (3)
   m_TagString: Untagged
@@ -7380,6 +8530,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1346641756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346641750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardHand
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1355171762
 GameObject:
   m_ObjectHideFlags: 0
@@ -7393,6 +8588,7 @@ GameObject:
   - component: {fileID: 1355171765}
   - component: {fileID: 1355171764}
   - component: {fileID: 1355171767}
+  - component: {fileID: 1355171768}
   m_Layer: 5
   m_Name: Bf (18)
   m_TagString: Untagged
@@ -7529,6 +8725,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1355171768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355171762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 18
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1358114137
 GameObject:
   m_ObjectHideFlags: 0
@@ -7542,6 +8783,7 @@ GameObject:
   - component: {fileID: 1358114140}
   - component: {fileID: 1358114139}
   - component: {fileID: 1358114142}
+  - component: {fileID: 1358114143}
   m_Layer: 5
   m_Name: Bf (3)
   m_TagString: Untagged
@@ -7678,6 +8920,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1358114143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358114137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1363489321
 GameObject:
   m_ObjectHideFlags: 0
@@ -7691,6 +8978,7 @@ GameObject:
   - component: {fileID: 1363489324}
   - component: {fileID: 1363489323}
   - component: {fileID: 1363489326}
+  - component: {fileID: 1363489327}
   m_Layer: 5
   m_Name: Bf (25)
   m_TagString: Untagged
@@ -7827,6 +9115,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1363489327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363489321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 25
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1391488069
 GameObject:
   m_ObjectHideFlags: 0
@@ -8473,6 +9806,7 @@ GameObject:
   - component: {fileID: 1574488822}
   - component: {fileID: 1574488821}
   - component: {fileID: 1574488824}
+  - component: {fileID: 1574488825}
   m_Layer: 5
   m_Name: Bf (10)
   m_TagString: Untagged
@@ -8609,6 +9943,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1574488825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574488819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 10
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1585004585
 GameObject:
   m_ObjectHideFlags: 0
@@ -8622,6 +10001,7 @@ GameObject:
   - component: {fileID: 1585004588}
   - component: {fileID: 1585004587}
   - component: {fileID: 1585004590}
+  - component: {fileID: 1585004591}
   m_Layer: 5
   m_Name: Bf (29)
   m_TagString: Untagged
@@ -8758,6 +10138,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1585004591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585004585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 29
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1585318498
 GameObject:
   m_ObjectHideFlags: 0
@@ -8771,6 +10196,7 @@ GameObject:
   - component: {fileID: 1585318501}
   - component: {fileID: 1585318500}
   - component: {fileID: 1585318503}
+  - component: {fileID: 1585318504}
   m_Layer: 5
   m_Name: Hand (6)
   m_TagString: Untagged
@@ -8907,6 +10333,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1585318504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585318498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardHand
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 6
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1596066136
 GameObject:
   m_ObjectHideFlags: 0
@@ -9128,8 +10599,8 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1555414011}
-  m_Father: {fileID: 820115057}
-  m_RootOrder: 2
+  m_Father: {fileID: 2100638730}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9244,6 +10715,7 @@ GameObject:
   - component: {fileID: 1656968585}
   - component: {fileID: 1656968584}
   - component: {fileID: 1656968587}
+  - component: {fileID: 1656968588}
   m_Layer: 5
   m_Name: Bf (12)
   m_TagString: Untagged
@@ -9380,6 +10852,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1656968588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656968582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 12
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1670054728
 GameObject:
   m_ObjectHideFlags: 0
@@ -9488,6 +11005,7 @@ GameObject:
   - component: {fileID: 1679495411}
   - component: {fileID: 1679495410}
   - component: {fileID: 1679495413}
+  - component: {fileID: 1679495414}
   m_Layer: 5
   m_Name: Hand (5)
   m_TagString: Untagged
@@ -9624,6 +11142,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1679495414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679495408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardHand
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 5
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1799670979
 GameObject:
   m_ObjectHideFlags: 0
@@ -9827,6 +11390,7 @@ GameObject:
   - component: {fileID: 1878313594}
   - component: {fileID: 1878313593}
   - component: {fileID: 1878313596}
+  - component: {fileID: 1878313597}
   m_Layer: 5
   m_Name: Bf (11)
   m_TagString: Untagged
@@ -9963,6 +11527,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1878313597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878313591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 11
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1884208047
 GameObject:
   m_ObjectHideFlags: 0
@@ -10071,6 +11680,7 @@ GameObject:
   - component: {fileID: 1889387714}
   - component: {fileID: 1889387713}
   - component: {fileID: 1889387716}
+  - component: {fileID: 1889387717}
   m_Layer: 5
   m_Name: Hand (2)
   m_TagString: Untagged
@@ -10207,6 +11817,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1889387717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889387711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardHand
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1889467018
 GameObject:
   m_ObjectHideFlags: 0
@@ -10220,6 +11875,7 @@ GameObject:
   - component: {fileID: 1889467021}
   - component: {fileID: 1889467020}
   - component: {fileID: 1889467023}
+  - component: {fileID: 1889467024}
   m_Layer: 5
   m_Name: Bf (5)
   m_TagString: Untagged
@@ -10356,6 +12012,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1889467024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889467018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 5
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1937200185
 GameObject:
   m_ObjectHideFlags: 0
@@ -10369,6 +12070,7 @@ GameObject:
   - component: {fileID: 1937200188}
   - component: {fileID: 1937200187}
   - component: {fileID: 1937200190}
+  - component: {fileID: 1937200191}
   m_Layer: 5
   m_Name: Bf (21)
   m_TagString: Untagged
@@ -10505,6 +12207,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1937200191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937200185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 21
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1939080689
 GameObject:
   m_ObjectHideFlags: 0
@@ -10518,6 +12265,7 @@ GameObject:
   - component: {fileID: 1939080692}
   - component: {fileID: 1939080691}
   - component: {fileID: 1939080694}
+  - component: {fileID: 1939080695}
   m_Layer: 5
   m_Name: Bf (7)
   m_TagString: Untagged
@@ -10654,6 +12402,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1939080695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939080689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardBf
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 7
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1963185917
 GameObject:
   m_ObjectHideFlags: 0
@@ -10950,6 +12743,7 @@ GameObject:
   - component: {fileID: 2100638730}
   - component: {fileID: 2100638731}
   - component: {fileID: 2100638732}
+  - component: {fileID: 2100638733}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -10968,11 +12762,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1633888774}
   - {fileID: 1069880496}
   - {fileID: 1267536504}
   - {fileID: 853331114}
   m_Father: {fileID: 820115057}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11002,6 +12797,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cf7a1af48f55034399a7338ba138861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2100638733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100638729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3813a8107abcf854cb361c5137c63c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2107989263
@@ -11083,6 +12890,7 @@ GameObject:
   - component: {fileID: 2133246194}
   - component: {fileID: 2133246193}
   - component: {fileID: 2133246196}
+  - component: {fileID: 2133246197}
   m_Layer: 5
   m_Name: Hand (8)
   m_TagString: Untagged
@@ -11219,3 +13027,48 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 1, b: 0.990005, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!114 &2133246197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133246191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayCardHand
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 8
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2100638733}
+          m_TargetAssemblyTypeName: AnimaInfo, Assembly-CSharp
+          m_MethodName: DisplayNull
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

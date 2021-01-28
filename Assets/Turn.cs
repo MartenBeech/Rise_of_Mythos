@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Turn : MonoBehaviour
 {
-    public Card.Alignment turn = Card.Alignment.Ally;
+    public static Card.Alignment turn = Card.Alignment.Ally;
 
     public void EndTurn()
     {

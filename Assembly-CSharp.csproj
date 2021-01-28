@@ -71,8 +71,10 @@
     <Compile Include="Assets\UnitAttack.cs" />
     <Compile Include="Assets\Turn.cs" />
     <Compile Include="Assets\CardStat.cs" />
-    <Compile Include="Assets\AnimaCard.cs" />
     <Compile Include="Assets\SpecialTrigger.cs" />
+    <Compile Include="Assets\AnimaCard.cs" />
+    <Compile Include="Assets\SpecialInfo.cs" />
+    <Compile Include="Assets\AnimaInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

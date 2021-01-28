@@ -16,14 +16,14 @@ public class UnitAction : MonoBehaviour
         {
             counter -= Time.deltaTime;
 
-            if (counter <= UI.TIMER * 2 && readyToMove)
+            if (counter <= UI.TIMER * 2.04f && readyToMove)
             {
                 readyToMove = false;
                 UnitMove unitMove = new UnitMove();
                 unitMove.Move(units[0]);
             }
 
-            if (counter <= UI.TIMER && readyToAttack)
+            if (counter <= UI.TIMER * 1.02f && readyToAttack)
             {
                 readyToAttack = false;
                 UnitAttack unitAttack = new UnitAttack();
@@ -32,6 +32,9 @@ public class UnitAction : MonoBehaviour
 
             if (counter <= 0)
             {
+                units[0].attack += units[0].heroicThisTurn;
+                Card card = new Card();
+                card.DisplayCard(Bf.Bfs[units[0].tile], units[0]);
                 units.RemoveAt(0);
                 NextUnitTurn();
             }
@@ -75,9 +78,11 @@ public class UnitAction : MonoBehaviour
     {
         if (units.Count > 0)
         {
+            units[0].bonusAttackNextTurn = 0;
+            units[0].heroicThisTurn = 0;
             readyToMove = true;
             readyToAttack = true;
-            counter = UI.TIMER * 2;
+            counter = UI.TIMER * 2.04f;
         }
     }
 }

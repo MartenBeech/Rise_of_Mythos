@@ -17,7 +17,7 @@ public class AnimaCard : MonoBehaviour
     private Card card;
     private bool _newlySummoned;
 
-    private float counter = UI.TIMER * 0.95f;
+    private float counter = UI.TIMER * 1f;
 
     private void Awake()
     {

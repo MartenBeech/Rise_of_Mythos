@@ -58,6 +58,7 @@ public class Bf : MonoBehaviour
     public void BfClicked(int i)
     {
         selected = i;
+        
         if (Bfs[i].GetComponentInChildren<Outline>().enabled == true)
         {
             AddCardFromHand(Hand.Cards[Hand.selected], Hand.selected, selected);

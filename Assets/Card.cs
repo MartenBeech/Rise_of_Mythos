@@ -37,6 +37,8 @@ public class Card : MonoBehaviour
     public int range;
     public int tile;
 
+    public int bonusAttackNextTurn = 0;
+    public int heroicThisTurn = 0;
     public bool readyToAttack = false;
     public Sprite sprite;
     public Special special = new Special();

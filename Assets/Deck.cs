@@ -24,21 +24,19 @@ public class Deck : MonoBehaviour
         deck.Add(cardStat.SetStats(Card.Title.Captain));
         deck.Add(cardStat.SetStats(Card.Title.Captain));
 
-        for (int i = 0; i < Hand.SIZE; i++)
-        {
-            DrawCard();
-        }
-
         DisplayDeck();
     }
     public void DrawCard()
     {
-        if (deck.Count > 0)
+        for (int i = 0; i < Hand.SIZE; i++)
         {
-            Rng rng = new Rng();
-            int rnd = rng.Range(0, deck.Count);
-            Hand hand = new Hand();
-            hand.AddCardFromDeck(deck[rnd], rnd);
+            if (deck.Count > 0)
+            {
+                Rng rng = new Rng();
+                int rnd = rng.Range(0, deck.Count);
+                Hand hand = new Hand();
+                hand.AddCardFromDeck(deck[rnd], rnd);
+            }
         }
     }
 

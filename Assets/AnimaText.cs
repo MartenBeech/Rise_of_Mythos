@@ -9,7 +9,7 @@ public class AnimaText : MonoBehaviour
     private GameObject startPos;
     public static GameObject parent;
 
-    private float counter = UI.TIMER * 0.95f;
+    private float counter = UI.TIMER * 1f;
     
 
     private void Awake()

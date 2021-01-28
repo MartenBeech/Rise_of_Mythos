@@ -5,14 +5,30 @@ using UnityEngine.UI;
 
 public class Special : MonoBehaviour
 {
+    public bool wall = false;
+    public bool archer = false;
+    public bool cavalry = false;
+    public bool flying = false;
+    public bool vigilance = false;
+
     public int armor = 0;
     public int resistance = 0;
-    public bool vigilance = false;
     public int cure = 0;
     public int heroic = 0;
+
     public int lifeHuman = 0;
     public int lifeUndead = 0;
+
+    public bool charge = false;
+    public bool pierce = false;
+    public bool whirlwind = false;
+    public bool counterattack = false;
+
+
+    public bool penetrate = false;
+
     public bool kingsCommand = false;
+    public bool combatMaster = false;
 
     public int CheckArmor(Card dealer, Card target, int damage)
     {
@@ -51,10 +67,10 @@ public class Special : MonoBehaviour
             Tile tile = new Tile();
             if (tile.GetNearbyEnemies(dealer).Count > 0)
             {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public bool CheckVililanceAttack(Card dealer)
@@ -67,10 +83,10 @@ public class Special : MonoBehaviour
             {
                 UnitAttack unitAttack = new UnitAttack();
                 unitAttack.DealDamage(dealer, enemies[0], dealer.attack);
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public bool CheckCure(Card dealer)
@@ -105,7 +121,10 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.heroic > 0)
         {
-            dealer.attack += dealer.special.heroic;
+            if (dealer.heroicThisTurn == 0 || dealer.alignment != Turn.turn)
+            {
+                dealer.heroicThisTurn = dealer.special.heroic;
+            }
         }
     }
 
@@ -192,6 +211,96 @@ public class Special : MonoBehaviour
                 summonTile = emptyTiles[rng.Range(0, emptyTiles.Count)];
                 AnimaCard animaCard = new AnimaCard();
                 animaCard.MoveBfBf(_card, card.tile, summonTile, true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int CheckChargeAttack(Card dealer, Card target, int damage)
+    {
+        if (dealer.special.charge && target.special.archer)
+        {
+            damage *= 2;
+        }
+        return damage;
+    }
+
+    public void CheckChargeMove(Card card, int tileFrom, int tileTo)
+    {
+        if (card.special.charge)
+        {
+            card.bonusAttackNextTurn += Mathf.Abs(((tileTo - tileFrom) / 3) / 2);
+        }
+    }
+
+    public int CheckCombatMaster(Card dealer, Card target, int damage)
+    {
+        if (dealer.special.combatMaster)
+        {
+            if (target.special.archer || target.special.cavalry || target.special.armor >= 1 || target.special.wall || target.special.flying)
+            {
+                damage *= 2;
+            }
+        }
+        return damage;
+    }
+
+    public void CheckPierce(Card dealer, Card target)
+    {
+        if (dealer.special.pierce)
+        {
+            int tileCheck = 0;
+            if (dealer.alignment == Card.Alignment.Ally && target.tile < Bf.SIZE - 3)
+            {
+                tileCheck = target.tile + 3;
+            }
+            else if (dealer.alignment == Card.Alignment.Enemy && target.tile >= 3)
+            {
+                tileCheck = target.tile - 3;
+            }
+            else
+            {
+                return;
+            }
+
+            if (Bf.occupied[tileCheck])
+            {
+                if (Bf.Cards[tileCheck].alignment != dealer.alignment)
+                {
+                    UnitAttack unitAttack = new UnitAttack();
+                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack);
+                }
+            }
+        }
+    }
+
+    public bool CheckWhirlwind(Card dealer)
+    {
+        if (dealer.special.whirlwind)
+        {
+            Tile tile = new Tile();
+            List<Card> enemies = tile.GetNearbyEnemies(dealer);
+
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.DealDamage(dealer, enemies[i], dealer.attack);
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    public bool CheckCounterattack(Card dealer, Card target)
+    {
+        if (target.special.counterattack)
+        {
+            UnitAttack unitAttack = new UnitAttack();
+            unitAttack.DealDamage(target, dealer, target.attack);
+            if (target.health > 0)
+            {
                 return true;
             }
         }

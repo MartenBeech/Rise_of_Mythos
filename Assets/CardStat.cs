@@ -21,7 +21,8 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
 
                 card.alignment = Card.Alignment.Ally;
-                card.special.kingsCommand = true;
+                card.special.whirlwind = true;
+                card.special.heroic = 1;
                 break;
 
             case Card.Title.Captain:
@@ -29,11 +30,14 @@ public class CardStat : MonoBehaviour
                 card.health = 50;
                 card.cd = 0;
                 card.speed = 2;
-                card.range = 2;
+                card.range = 4;
                 card.race = Card.Race.Human;
                 card.damageType = Card.DamageType.Physical;
 
                 card.alignment = Card.Alignment.Enemy;
+                card.special.pierce = true;
+                card.special.charge = true;
+                card.special.archer = true;
                 break;
         }
 

@@ -5,28 +5,30 @@ using UnityEngine.UI;
 
 public class UnitAttack : MonoBehaviour
 {
-    public void Attack(Card card)
+    public void Attack(Card dealer)
     {
-        int tileCheck = card.tile;
-        bool externalDamageDealt = false;
+        int tileCheck = dealer.tile;
+        bool externalAttackAnimation = false;
 
         Special special = new Special();
-        if (special.CheckCure(card))
+        if (special.CheckCure(dealer))
         {
-            externalDamageDealt = true;
+            externalAttackAnimation = true;
         }
-        if (special.CheckSummonUnitEndTurn(card))
+        if (special.CheckSummonUnitEndTurn(dealer))
         {
-            externalDamageDealt = true;
+            externalAttackAnimation = true;
         }
 
-        if (!special.CheckVililanceAttack(card)) { }
+        if (special.CheckWhirlwind(dealer)) { }
+
+        else if (special.CheckVililanceAttack(dealer)) { }
 
         else
         {
-            if (card.alignment == Card.Alignment.Ally)
+            if (dealer.alignment == Card.Alignment.Ally)
             {
-                for (int i = 0; i < card.range; i++)
+                for (int i = 0; i < dealer.range; i++)
                 {
                     tileCheck += 3;
                     if (tileCheck >= Bf.SIZE)
@@ -36,19 +38,25 @@ public class UnitAttack : MonoBehaviour
 
                     if (Bf.occupied[tileCheck])
                     {
-                        if (Bf.Cards[tileCheck].alignment != card.alignment)
+                        Card target = Bf.Cards[tileCheck];
+                        if (target.alignment != dealer.alignment)
                         {
-                            DealDamage(card, Bf.Cards[tileCheck], card.attack);
+                            special.CheckPierce(dealer, target);
+                            DealDamage(dealer, target, dealer.attack);
+                            if (special.CheckCounterattack(dealer, Bf.Cards[tileCheck]))
+                            {
+
+                            }
                             return;
                         }
                     }
                 }
-                if (!externalDamageDealt)
+                if (!externalAttackAnimation)
                     UnitAction.counter -= UI.TIMER;
             }
             else
             {
-                for (int i = 0; i < card.range; i++)
+                for (int i = 0; i < dealer.range; i++)
                 {
                     tileCheck -= 3;
                     if (tileCheck < 0)
@@ -58,26 +66,32 @@ public class UnitAttack : MonoBehaviour
 
                     if (Bf.occupied[tileCheck])
                     {
-                        if (Bf.Cards[tileCheck].alignment != card.alignment)
+                        Card target = Bf.Cards[tileCheck];
+                        if (target.alignment != dealer.alignment)
                         {
-                            DealDamage(card, Bf.Cards[tileCheck], card.attack);
+                            special.CheckPierce(dealer, target);
+                            DealDamage(dealer, target, dealer.attack);
                             return;
                         }
                     }
                 }
-                if (!externalDamageDealt)
+                if (!externalAttackAnimation)
                     UnitAction.counter -= UI.TIMER;
             }
         }
     }
 
-    public void DealDamage(Card dealer, Card target, int damage, Card.DamageType damageType = Card.DamageType.Physical)
+    public void DealDamage(Card dealer, Card target, int damage)
     {
+        damage += dealer.bonusAttackNextTurn;
+
         if (damage > 0)
         {
             Special special = new Special();
             damage = special.CheckArmor(dealer, target, damage);
             damage = special.CheckResistance(dealer, target, damage);
+            damage = special.CheckChargeAttack(dealer, target, damage);
+            damage = special.CheckCombatMaster(dealer, target, damage);
 
             AnimaText animaText = new AnimaText();
             animaText.ShowText(Bf.Bfs[target.tile], damage.ToString(), Hue.red);
