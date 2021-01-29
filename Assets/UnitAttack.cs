@@ -15,6 +15,10 @@ public class UnitAttack : MonoBehaviour
         {
             externalAttackAnimation = true;
         }
+        if (special.CheckRegeneration(dealer))
+        {
+            externalAttackAnimation = true;
+        }
         if (special.CheckSummonUnitEndTurn(dealer))
         {
             externalAttackAnimation = true;
@@ -38,15 +42,8 @@ public class UnitAttack : MonoBehaviour
 
                     if (Bf.occupied[tileCheck])
                     {
-                        Card target = Bf.Cards[tileCheck];
-                        if (target.alignment != dealer.alignment)
+                        if (AttackAlignment(dealer, Bf.Cards[tileCheck]))
                         {
-                            special.CheckPierce(dealer, target);
-                            DealDamage(dealer, target, dealer.attack);
-                            if (special.CheckCounterattack(dealer, Bf.Cards[tileCheck]))
-                            {
-
-                            }
                             return;
                         }
                     }
@@ -66,11 +63,8 @@ public class UnitAttack : MonoBehaviour
 
                     if (Bf.occupied[tileCheck])
                     {
-                        Card target = Bf.Cards[tileCheck];
-                        if (target.alignment != dealer.alignment)
+                        if (AttackAlignment(dealer, Bf.Cards[tileCheck]))
                         {
-                            special.CheckPierce(dealer, target);
-                            DealDamage(dealer, target, dealer.attack);
                             return;
                         }
                     }
@@ -79,6 +73,26 @@ public class UnitAttack : MonoBehaviour
                     UnitAction.counter -= UI.TIMER;
             }
         }
+    }
+
+    public bool AttackAlignment(Card dealer, Card target)
+    {
+        if (target.alignment != dealer.alignment)
+        {
+            Special special = new Special();
+            special.CheckPierce(dealer, target);
+            special.CheckFirstStrike(dealer, target);
+            if (Bf.occupied[dealer.tile])
+            {
+                DealDamage(dealer, target, dealer.attack);
+                if (Bf.occupied[target.tile])
+                {
+                    special.CheckCounterattack(dealer, target);
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     public void DealDamage(Card dealer, Card target, int damage)
@@ -93,12 +107,17 @@ public class UnitAttack : MonoBehaviour
             damage = special.CheckChargeAttack(dealer, target, damage);
             damage = special.CheckCombatMaster(dealer, target, damage);
 
+            special.CheckDispel(dealer, target);
+
             AnimaText animaText = new AnimaText();
             animaText.ShowText(Bf.Bfs[target.tile], damage.ToString(), Hue.red);
 
-            special.CheckHeroic(dealer);
-
-            target.health -= damage;
+            if (damage > 0)
+            {
+                special.CheckHeroic(dealer);
+                target.health -= damage;
+            }
+            
             if (target.health <= 0)
             {
                 Bf bf = new Bf();
@@ -118,6 +137,9 @@ public class UnitAttack : MonoBehaviour
     {
         AnimaText animaText = new AnimaText();
         animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.green);
+
+        Special special = new Special();
+        special.CheckFaith(dealer);
 
         target.health += amount;
         if (target.health > target.healthMax)

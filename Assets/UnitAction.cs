@@ -28,13 +28,17 @@ public class UnitAction : MonoBehaviour
                 readyToAttack = false;
                 UnitAttack unitAttack = new UnitAttack();
                 unitAttack.Attack(units[0]);
+
+                units[0].attack += units[0].heroicThisTurn;
+                if (Bf.occupied[units[0].tile])
+                {
+                    Card card = new Card();
+                    card.DisplayCard(Bf.Bfs[units[0].tile], units[0]);
+                }
             }
 
             if (counter <= 0)
             {
-                units[0].attack += units[0].heroicThisTurn;
-                Card card = new Card();
-                card.DisplayCard(Bf.Bfs[units[0].tile], units[0]);
                 units.RemoveAt(0);
                 NextUnitTurn();
             }
@@ -83,6 +87,18 @@ public class UnitAction : MonoBehaviour
             readyToMove = true;
             readyToAttack = true;
             counter = UI.TIMER * 2.04f;
+        }
+
+        else
+        {
+            if (Turn.turn == Card.Alignment.Ally)
+            {
+                Turn.turn = Card.Alignment.Enemy;
+            }
+            else
+            {
+                Turn.turn = Card.Alignment.Ally;
+            }
         }
     }
 }

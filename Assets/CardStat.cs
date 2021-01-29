@@ -13,7 +13,7 @@ public class CardStat : MonoBehaviour
         {
             case Card.Title.Paladin:
                 card.attack = 5;
-                card.health = 50;
+                card.health = 10;
                 card.cd = 0;
                 card.speed = 2;
                 card.range = 2;
@@ -21,13 +21,13 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
 
                 card.alignment = Card.Alignment.Ally;
-                card.special.whirlwind = true;
-                card.special.heroic = 1;
+                card.special.regeneration = 10;
+                card.special.dispel = true;
                 break;
 
             case Card.Title.Captain:
                 card.attack = 5;
-                card.health = 50;
+                card.health = 10;
                 card.cd = 0;
                 card.speed = 2;
                 card.range = 4;
@@ -35,9 +35,8 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
 
                 card.alignment = Card.Alignment.Enemy;
-                card.special.pierce = true;
-                card.special.charge = true;
-                card.special.archer = true;
+                card.special.regeneration = 10;
+                card.special.heroic = 10;
                 break;
         }
 

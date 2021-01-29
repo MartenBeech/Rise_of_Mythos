@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class UnitMove : MonoBehaviour
 {
-    public void Move(Card card)
+    public void Move(Card dealer)
     {
-        int tileNew = card.tile;
-        int tileCheck = card.tile;
+        int tileNew = dealer.tile;
+        int tileCheck = dealer.tile;
 
         Special special = new Special();
-        if (special.CheckVililanceMove(card)) { }
+        if (special.CheckVililanceMove(dealer)) { }
 
         else
         {
-            if (card.alignment == Card.Alignment.Ally)
+            if (dealer.alignment == Card.Alignment.Ally)
             {
-                for (int i = 0; i < card.speed; i++)
+                for (int i = 0; i < dealer.speed; i++)
                 {
                     tileCheck += 3;
                     if (tileCheck >= Bf.SIZE)
@@ -31,16 +31,20 @@ public class UnitMove : MonoBehaviour
                     }
                     else
                     {
-                        if (Bf.Cards[tileCheck].alignment != card.alignment)
+                        Card target = Bf.Cards[tileCheck];
+                        if (target.alignment != dealer.alignment)
                         {
-                            break;
+                            if (!dealer.special.flying || target.special.flying)
+                            {
+                                break;
+                            }
                         }
                     }
                 }
             }
             else
             {
-                for (int i = 0; i < card.speed; i++)
+                for (int i = 0; i < dealer.speed; i++)
                 {
                     tileCheck -= 3;
                     if (tileCheck < 0)
@@ -54,9 +58,13 @@ public class UnitMove : MonoBehaviour
                     }
                     else
                     {
-                        if (Bf.Cards[tileCheck].alignment != card.alignment)
+                        Card target = Bf.Cards[tileCheck];
+                        if (target.alignment != dealer.alignment)
                         {
-                            break;
+                            if (!dealer.special.flying || target.special.flying)
+                            {
+                                break;
+                            }
                         }
                     }
                 }
@@ -64,10 +72,10 @@ public class UnitMove : MonoBehaviour
         }
         
         AnimaCard animaCard = new AnimaCard();
-        if (tileNew != card.tile)
+        if (tileNew != dealer.tile)
         {
-            special.CheckChargeMove(card, card.tile, tileNew);
-            animaCard.MoveBfBf(card, card.tile, tileNew);
+            special.CheckChargeMove(dealer, dealer.tile, tileNew);
+            animaCard.MoveBfBf(dealer, dealer.tile, tileNew);
         }
         else
         {

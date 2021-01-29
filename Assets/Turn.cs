@@ -11,14 +11,5 @@ public class Turn : MonoBehaviour
     {
         UnitAction unitAction = new UnitAction();
         unitAction.TakeAction(turn);
-
-        if (turn == Card.Alignment.Ally)
-        {
-            turn = Card.Alignment.Enemy;
-        }
-        else
-        {
-            turn = Card.Alignment.Ally;
-        }
     }
 }

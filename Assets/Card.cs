@@ -53,5 +53,6 @@ public class Card : MonoBehaviour
     {
         gameObject.GetComponentInChildren<Text>().text = null;
         gameObject.GetComponentInChildren<Image>().sprite = null;
+        gameObject.GetComponentInChildren<Image>().color = Hue.white;
     }
 }

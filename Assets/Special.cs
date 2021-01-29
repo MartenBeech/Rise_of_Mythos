@@ -15,6 +15,7 @@ public class Special : MonoBehaviour
     public int resistance = 0;
     public int cure = 0;
     public int heroic = 0;
+    public int regeneration = 0;
 
     public int lifeHuman = 0;
     public int lifeUndead = 0;
@@ -23,6 +24,9 @@ public class Special : MonoBehaviour
     public bool pierce = false;
     public bool whirlwind = false;
     public bool counterattack = false;
+    public bool firstStrike = false;
+    public bool dispel = false;
+    public bool faith = false;
 
 
     public bool penetrate = false;
@@ -121,62 +125,67 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.heroic > 0)
         {
-            if (dealer.heroicThisTurn == 0 || dealer.alignment != Turn.turn)
+            if (dealer.alignment != Turn.turn)
+            {
+                dealer.attack += dealer.special.heroic;
+            }
+
+            else if (dealer.heroicThisTurn == 0)
             {
                 dealer.heroicThisTurn = dealer.special.heroic;
             }
         }
     }
 
-    public void CheckLifeBonusBattlecry(Card card)
+    public void CheckLifeBonusBattlecry(Card dealer)
     {
-        if (card.special.lifeHuman > 0 || card.special.lifeUndead > 0)
+        if (dealer.special.lifeHuman > 0 || dealer.special.lifeUndead > 0)
         {
             Tile tile = new Tile();
-            List<Card> allies = tile.GetAllOtherAllies(card);
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
 
             for (int i = 0; i < allies.Count; i++)
             {
-                if (card.special.lifeHuman > 0 && allies[i].race == Card.Race.Human)
+                if (dealer.special.lifeHuman > 0 && allies[i].race == Card.Race.Human)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.IncreaseHealth(card, allies[i], card.special.lifeHuman);
+                    unitAttack.IncreaseHealth(dealer, allies[i], dealer.special.lifeHuman);
                 }
-                if (card.special.lifeUndead > 0 && allies[i].race == Card.Race.Undead)
+                if (dealer.special.lifeUndead > 0 && allies[i].race == Card.Race.Undead)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.IncreaseHealth(card, allies[i], card.special.lifeUndead);
+                    unitAttack.IncreaseHealth(dealer, allies[i], dealer.special.lifeUndead);
                 }
             }
         }
     }
 
-    public void CheckLifeBonusAura(Card card)
+    public void CheckLifeBonusAura(Card dealer)
     {
-        if (card.race == Card.Race.Human || card.race == Card.Race.Undead)
+        if (dealer.race == Card.Race.Human || dealer.race == Card.Race.Undead)
         {
             Tile tile = new Tile();
-            List<Card> allies = tile.GetAllOtherAllies(card);
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
         
             for (int i = 0; i < allies.Count; i++)
             {
-                if (allies[i].special.lifeHuman > 0 && card.race == Card.Race.Human)
+                if (allies[i].special.lifeHuman > 0 && dealer.race == Card.Race.Human)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.IncreaseHealth(allies[i], card, allies[i].special.lifeHuman);
+                    unitAttack.IncreaseHealth(allies[i], dealer, allies[i].special.lifeHuman);
                 }
-                if (allies[i].special.lifeUndead > 0 && card.race == Card.Race.Undead)
+                if (allies[i].special.lifeUndead > 0 && dealer.race == Card.Race.Undead)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.IncreaseHealth(allies[i], card, allies[i].special.lifeUndead);
+                    unitAttack.IncreaseHealth(allies[i], dealer, allies[i].special.lifeUndead);
                 }
             }
         }
     }
 
-    public bool CheckSummonUnitEndTurn(Card card)
+    public bool CheckSummonUnitEndTurn(Card dealer)
     {
-        if (card.special.kingsCommand)
+        if (dealer.special.kingsCommand)
         {
             CardStat cardStat = new CardStat();
             Card _card = cardStat.SetStats(Card.Title.Paladin);
@@ -185,7 +194,7 @@ public class Special : MonoBehaviour
             int summonTile = 0;
             List<int> emptyTiles = new List<int>();
 
-            if (card.alignment == Card.Alignment.Ally)
+            if (dealer.alignment == Card.Alignment.Ally)
             {
                 for (int i = 0; i < 9; i++)
                 {
@@ -210,7 +219,7 @@ public class Special : MonoBehaviour
             {
                 summonTile = emptyTiles[rng.Range(0, emptyTiles.Count)];
                 AnimaCard animaCard = new AnimaCard();
-                animaCard.MoveBfBf(_card, card.tile, summonTile, true);
+                animaCard.MoveBfBf(_card, dealer.tile, summonTile, true);
                 return true;
             }
         }
@@ -226,11 +235,11 @@ public class Special : MonoBehaviour
         return damage;
     }
 
-    public void CheckChargeMove(Card card, int tileFrom, int tileTo)
+    public void CheckChargeMove(Card dealer, int tileFrom, int tileTo)
     {
-        if (card.special.charge)
+        if (dealer.special.charge)
         {
-            card.bonusAttackNextTurn += Mathf.Abs(((tileTo - tileFrom) / 3) / 2);
+            dealer.bonusAttackNextTurn += Mathf.Abs(((tileTo - tileFrom) / 3) / 2);
         }
     }
 
@@ -282,28 +291,82 @@ public class Special : MonoBehaviour
             Tile tile = new Tile();
             List<Card> enemies = tile.GetNearbyEnemies(dealer);
 
-            for (int i = 0; i < enemies.Count; i++)
+            if (enemies.Count > 0)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(dealer, enemies[i], dealer.attack);
-            }
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    UnitAttack unitAttack = new UnitAttack();
+                    unitAttack.DealDamage(dealer, enemies[i], dealer.attack);
+                }
 
-            return true;
+                return true;
+            }
         }
         return false;
     }
 
-    public bool CheckCounterattack(Card dealer, Card target)
+    public void CheckCounterattack(Card dealer, Card target)
     {
         if (target.special.counterattack)
         {
             UnitAttack unitAttack = new UnitAttack();
             unitAttack.DealDamage(target, dealer, target.attack);
-            if (target.health > 0)
+        }
+    }
+
+    public bool CheckFirstStrike(Card dealer, Card target)
+    {
+        if (target.special.firstStrike)
+        {
+            UnitAttack unitAttack = new UnitAttack();
+            unitAttack.DealDamage(target, dealer, target.attack);
+            if (target.health <= 0)
             {
                 return true;
             }
         }
         return false;
+    }
+
+    public bool CheckRegeneration(Card dealer)
+    {
+        if (dealer.special.regeneration > 0)
+        {
+            if (dealer.health < dealer.healthMax)
+            {
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.Heal(dealer, dealer, dealer.special.regeneration);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void CheckDispel(Card dealer, Card target)
+    {
+        if (dealer.special.dispel)
+        {
+            if (target.attack > target.attackDefault)
+            {
+                target.attack = target.attackDefault;
+            }
+            if (target.health > target.healthDefault)
+            {
+                target.health = target.healthDefault;
+            }
+            if (target.healthMax > target.healthMaxDefault)
+            {
+                target.healthMax = target.healthMaxDefault;
+            }
+        }
+    }
+
+    public void CheckFaith(Card dealer)
+    {
+        if (dealer.special.faith)
+        {
+            dealer.attack += 1;
+            dealer.health += 1;
+        }
     }
 }
