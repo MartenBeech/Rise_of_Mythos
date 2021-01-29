@@ -35,7 +35,7 @@ public class UnitAttack : MonoBehaviour
                 for (int i = 0; i < dealer.range; i++)
                 {
                     tileCheck += 3;
-                    if (tileCheck >= Bf.SIZE)
+                    if (tileCheck >= Bf.SIZE || !dealer.canAttackThisTurn)
                     {
                         break;
                     }
@@ -56,7 +56,7 @@ public class UnitAttack : MonoBehaviour
                 for (int i = 0; i < dealer.range; i++)
                 {
                     tileCheck -= 3;
-                    if (tileCheck < 0)
+                    if (tileCheck < 0 || !dealer.canAttackThisTurn)
                     {
                         break;
                     }
@@ -80,14 +80,21 @@ public class UnitAttack : MonoBehaviour
         if (target.alignment != dealer.alignment)
         {
             Special special = new Special();
-            special.CheckPierce(dealer, target);
-            special.CheckFirstStrike(dealer, target);
-            if (Bf.occupied[dealer.tile])
+            target = special.CheckMartyrdom(target);
+            for (int i = 0; i < dealer.special.multistrike + 1; i++)
             {
-                DealDamage(dealer, target, dealer.attack);
-                if (Bf.occupied[target.tile])
+                if (Bf.occupied[dealer.tile] && Bf.occupied[target.tile])
                 {
-                    special.CheckCounterattack(dealer, target);
+                    special.CheckFirstStrike(dealer, target);
+                    if (Bf.occupied[dealer.tile])
+                    {
+                        DealDamage(dealer, target, dealer.attack);
+                        special.CheckPierce(dealer, target);
+                        if (Bf.occupied[target.tile])
+                        {
+                            special.CheckCounterattack(dealer, target);
+                        }
+                    }
                 }
             }
             return true;
@@ -106,11 +113,17 @@ public class UnitAttack : MonoBehaviour
             damage = special.CheckResistance(dealer, target, damage);
             damage = special.CheckChargeAttack(dealer, target, damage);
             damage = special.CheckCombatMaster(dealer, target, damage);
+            damage = special.CheckDragonSlayer(dealer, target, damage);
 
             special.CheckDispel(dealer, target);
 
             AnimaText animaText = new AnimaText();
-            animaText.ShowText(Bf.Bfs[target.tile], damage.ToString(), Hue.red);
+            bool clusteredText = false;
+            if (dealer.special.multistrike > 0 || (target.special.multistrike > 0) && (dealer.special.counterattack || dealer.special.firstStrike))
+            {
+                clusteredText = true;
+            }
+            animaText.ShowText(Bf.Bfs[target.tile], damage.ToString(), Hue.red, clusteredText);
 
             if (damage > 0)
             {
@@ -161,7 +174,16 @@ public class UnitAttack : MonoBehaviour
         target.healthMax += amount;
 
         target.DisplayCard(Bf.Bfs[target.tile], target);
-        target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
+    }
+
+    public void IncreaseRegeneration(Card dealer, Card target, int amount)
+    {
+        AnimaText animaText = new AnimaText();
+        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Regen", Hue.green);
+
+        target.special.regeneration += amount;
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
     }

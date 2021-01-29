@@ -16,12 +16,6 @@ public class Card : MonoBehaviour
     }
     public Alignment alignment;
 
-    public enum DamageType
-    {
-        Physical, Magical, True
-    }
-    public DamageType damageType;
-
     public enum Race
     {
         Human, Undead, Elf, Halfblood
@@ -39,6 +33,7 @@ public class Card : MonoBehaviour
 
     public int bonusAttackNextTurn = 0;
     public int heroicThisTurn = 0;
+    public bool canAttackThisTurn = true;
     public bool readyToAttack = false;
     public Sprite sprite;
     public Special special = new Special();

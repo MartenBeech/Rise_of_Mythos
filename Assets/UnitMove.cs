@@ -74,6 +74,7 @@ public class UnitMove : MonoBehaviour
         AnimaCard animaCard = new AnimaCard();
         if (tileNew != dealer.tile)
         {
+            special.CheckHeavyWeapon(dealer);
             special.CheckChargeMove(dealer, dealer.tile, tileNew);
             animaCard.MoveBfBf(dealer, dealer.tile, tileNew);
         }

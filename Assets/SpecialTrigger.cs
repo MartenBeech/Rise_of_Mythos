@@ -8,7 +8,9 @@ public class SpecialTrigger : MonoBehaviour
     Special special = new Special();
     public void Battlecry(Card card)
     {
-        special.CheckLifeBonusBattlecry(card);
-        special.CheckLifeBonusAura(card);
+        special.CheckLifeAuraBattlecry(card);
+        special.CheckLifeAuraSummon(card);
+        special.CheckRegenerationAuraBattlecry(card);
+        special.CheckRegenerationAuraSummon(card);
     }
 }

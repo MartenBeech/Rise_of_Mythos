@@ -26,6 +26,7 @@ public class UnitAction : MonoBehaviour
             if (counter <= UI.TIMER * 1.02f && readyToAttack)
             {
                 readyToAttack = false;
+                
                 UnitAttack unitAttack = new UnitAttack();
                 unitAttack.Attack(units[0]);
 
@@ -84,6 +85,7 @@ public class UnitAction : MonoBehaviour
         {
             units[0].bonusAttackNextTurn = 0;
             units[0].heroicThisTurn = 0;
+            units[0].canAttackThisTurn = true;
             readyToMove = true;
             readyToAttack = true;
             counter = UI.TIMER * 2.04f;

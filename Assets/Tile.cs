@@ -111,7 +111,33 @@ public class Tile : MonoBehaviour
                 }
             }
         }
+        return allies;
+    }
 
+    public List<Card> GetNearbyAllies(Card card)
+    {
+        List<Card> allies = new List<Card>();
+        List<int> tiles = GetNearbyTiles(card);
+        if (card.alignment == Card.Alignment.Ally)
+        {
+            tiles.Sort();
+        }
+        else
+        {
+            tiles.Sort();
+            tiles.Reverse();
+        }
+
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            if (Bf.occupied[tiles[i]])
+            {
+                if (Bf.Cards[tiles[i]].alignment == card.alignment)
+                {
+                    allies.Add(Bf.Cards[tiles[i]]);
+                }
+            }
+        }
         return allies;
     }
 }

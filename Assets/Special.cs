@@ -6,19 +6,21 @@ using UnityEngine.UI;
 public class Special : MonoBehaviour
 {
     public bool wall = false;
-    public bool archer = false;
-    public bool cavalry = false;
     public bool flying = false;
+
     public bool vigilance = false;
+    public bool penetrate = false;
+    public bool magical = false;
 
     public int armor = 0;
     public int resistance = 0;
     public int cure = 0;
     public int heroic = 0;
     public int regeneration = 0;
+    public int multistrike = 0;
 
-    public int lifeHuman = 0;
-    public int lifeUndead = 0;
+    public int lifeAura = 0;
+    public int regenerationAura = 0;
 
     public bool charge = false;
     public bool pierce = false;
@@ -27,9 +29,9 @@ public class Special : MonoBehaviour
     public bool firstStrike = false;
     public bool dispel = false;
     public bool faith = false;
-
-
-    public bool penetrate = false;
+    public bool martyrdom = false;
+    public bool heavyWeapon = false;
+    public bool dragonSlayer = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
@@ -38,7 +40,7 @@ public class Special : MonoBehaviour
     {
         if (target.special.armor > 0)
         {
-            if (dealer.damageType == Card.DamageType.Physical)
+            if (!dealer.special.penetrate && !dealer.special.magical)
             {
                 damage -= target.special.armor;
             }
@@ -53,7 +55,7 @@ public class Special : MonoBehaviour
     {
         if (target.special.resistance > 0)
         {
-            if (dealer.damageType == Card.DamageType.Magical)
+            if (dealer.special.magical && !dealer.special.penetrate)
             {
                 damage -= target.special.resistance;
             }
@@ -85,8 +87,11 @@ public class Special : MonoBehaviour
             List<Card> enemies = tile.GetNearbyEnemies(dealer);
             if (enemies.Count > 0)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(dealer, enemies[0], dealer.attack);
+                for (int i = 0; i < dealer.special.multistrike + 1; i++)
+                {
+                    UnitAttack unitAttack = new UnitAttack();
+                    unitAttack.DealDamage(dealer, enemies[0], dealer.attack);
+                }
                 return true;
             }
         }
@@ -137,48 +142,32 @@ public class Special : MonoBehaviour
         }
     }
 
-    public void CheckLifeBonusBattlecry(Card dealer)
+    public void CheckLifeAuraBattlecry(Card dealer)
     {
-        if (dealer.special.lifeHuman > 0 || dealer.special.lifeUndead > 0)
+        if (dealer.special.lifeAura > 0)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
 
             for (int i = 0; i < allies.Count; i++)
             {
-                if (dealer.special.lifeHuman > 0 && allies[i].race == Card.Race.Human)
-                {
-                    UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.IncreaseHealth(dealer, allies[i], dealer.special.lifeHuman);
-                }
-                if (dealer.special.lifeUndead > 0 && allies[i].race == Card.Race.Undead)
-                {
-                    UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.IncreaseHealth(dealer, allies[i], dealer.special.lifeUndead);
-                }
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.IncreaseHealth(dealer, allies[i], dealer.special.lifeAura);
             }
         }
     }
 
-    public void CheckLifeBonusAura(Card dealer)
+    public void CheckLifeAuraSummon(Card dealer)
     {
-        if (dealer.race == Card.Race.Human || dealer.race == Card.Race.Undead)
-        {
-            Tile tile = new Tile();
-            List<Card> allies = tile.GetAllOtherAllies(dealer);
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
         
-            for (int i = 0; i < allies.Count; i++)
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.lifeAura > 0)
             {
-                if (allies[i].special.lifeHuman > 0 && dealer.race == Card.Race.Human)
-                {
-                    UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.IncreaseHealth(allies[i], dealer, allies[i].special.lifeHuman);
-                }
-                if (allies[i].special.lifeUndead > 0 && dealer.race == Card.Race.Undead)
-                {
-                    UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.IncreaseHealth(allies[i], dealer, allies[i].special.lifeUndead);
-                }
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.IncreaseHealth(allies[i], dealer, allies[i].special.lifeAura);
             }
         }
     }
@@ -228,7 +217,7 @@ public class Special : MonoBehaviour
 
     public int CheckChargeAttack(Card dealer, Card target, int damage)
     {
-        if (dealer.special.charge && target.special.archer)
+        if (dealer.special.charge && target.range >= 4)
         {
             damage *= 2;
         }
@@ -247,7 +236,7 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.combatMaster)
         {
-            if (target.special.archer || target.special.cavalry || target.special.armor >= 1 || target.special.wall || target.special.flying)
+            if (target.range >= 4 || target.speed >= 4 || target.special.armor >= 1 || target.special.wall || target.special.flying)
             {
                 damage *= 2;
             }
@@ -295,10 +284,12 @@ public class Special : MonoBehaviour
             {
                 for (int i = 0; i < enemies.Count; i++)
                 {
-                    UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, enemies[i], dealer.attack);
+                    for (int j = 0; j < dealer.special.multistrike + 1; j++)
+                    {
+                        UnitAttack unitAttack = new UnitAttack();
+                        unitAttack.DealDamage(dealer, enemies[i], dealer.attack);
+                    }
                 }
-
                 return true;
             }
         }
@@ -368,5 +359,81 @@ public class Special : MonoBehaviour
             dealer.attack += 1;
             dealer.health += 1;
         }
+    }
+
+    public Card CheckMartyrdom(Card target)
+    {
+        if (target.special.martyrdom)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetNearbyAllies(target);
+            if (allies.Count > 0)
+            {
+                Rng rng = new Rng();
+                return allies[rng.Range(0, allies.Count)];
+            }
+        }
+        return target;
+    }
+
+    public void CheckRegenerationAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.regenerationAura > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.IncreaseRegeneration(dealer, allies[i], dealer.special.regenerationAura);
+            }
+        }
+    }
+
+    public void CheckRegenerationAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.regenerationAura > 0)
+            {
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.IncreaseRegeneration(allies[i], dealer, allies[i].special.regenerationAura);
+            }
+        }
+    }
+
+    public int CheckMultistrike(Card dealer, int damage)
+    {
+        int damageNew = damage;
+        for (int i = 0; i < dealer.special.multistrike; i++)
+        {
+            damageNew += damage;
+        }
+
+        return damageNew;
+    }
+
+    public void CheckHeavyWeapon(Card dealer)
+    {
+        if (dealer.special.heavyWeapon)
+        {
+            dealer.canAttackThisTurn = false;
+        }
+    }
+
+    public int CheckDragonSlayer(Card dealer, Card target, int damage)
+    {
+        if (dealer.special.dragonSlayer)
+        {
+            if (target.cd >= 5)
+            {
+                damage *= 2;
+            }
+        }
+        return damage;
     }
 }
