@@ -95,6 +95,23 @@ public class Tile : MonoBehaviour
         return allies;
     }
 
+    public List<Card> GetAllEnemies(Card card)
+    {
+        List<Card> enemies = new List<Card>();
+        for (int i = 0; i < Bf.SIZE; i++)
+        {
+            if (Bf.occupied[i])
+            {
+                if (Bf.Cards[i].alignment != card.alignment)
+                {
+                    enemies.Add(Bf.Cards[i]);
+                }
+            }
+        }
+
+        return enemies;
+    }
+
     public List<Card> GetAllOtherAllies(Card card)
     {
         List<Card> allies = new List<Card>();

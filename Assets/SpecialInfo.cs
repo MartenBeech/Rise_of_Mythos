@@ -7,7 +7,18 @@ public class SpecialInfo : MonoBehaviour
 {
     public string GetCardInfo(Card card)
     {
+        string _title = card.title.ToString();
+        for (int j = 1; j < _title.Length; j++)
+        {
+            if ((int)_title[j] >= 65 && (int)_title[j] <= 90) //Capital Letters
+            {
+                _title = _title.Insert(j, " ");
+                j++;
+            }
+        }
+
         string text =
+            "<b>" + _title + "</b>" + "\n" +
             "<b>" + "Attack: " + "</b>" + card.attack + "\n" +
             "<b>" + "Health: " + "</b>" + card.health + "/" + card.healthMax + "\n" +
             "<b>" + "Range/Speed: " + "</b>" + card.range + "/" + card.speed + "\n\n" +

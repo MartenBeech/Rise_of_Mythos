@@ -44,7 +44,7 @@ public class AnimaCard : MonoBehaviour
                 if (_newlySummoned)
                 {
                     SpecialTrigger specialTrigger = new SpecialTrigger();
-                    specialTrigger.Battlecry(card);
+                    specialTrigger.OnSummon(card);
                 }
                 Destroy(gameObject);
             }

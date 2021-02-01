@@ -135,6 +135,9 @@ public class UnitAttack : MonoBehaviour
             {
                 Bf bf = new Bf();
                 bf.RemoveCard(target.tile);
+
+                SpecialTrigger trigger = new SpecialTrigger();
+                trigger.OnDeath(target);
             }
             else
             {

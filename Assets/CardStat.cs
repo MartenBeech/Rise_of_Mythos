@@ -11,29 +11,49 @@ public class CardStat : MonoBehaviour
 
         switch(title)
         {
-            case Card.Title.Paladin:
-                card.attack = 5;
-                card.health = 30;
+            case Card.Title.PlaceHolder:
+                card.race = Card.Race.Human;
+                card.attack = 1;
+                card.health = 1;
                 card.cd = 0;
                 card.speed = 2;
                 card.range = 2;
-                card.race = Card.Race.Human;
 
                 card.alignment = Card.Alignment.Ally;
-                card.special.multistrike = 1;
-                card.special.vigilance = true;
-                card.special.heroic = 1;
+                break;
+
+            case Card.Title.Paladin:
+                card.race = Card.Race.Human;
+                card.attack = 5;
+                card.health = 10;
+                card.cd = 0;
+                card.speed = 2;
+                card.range = 2;
+                
+                card.alignment = Card.Alignment.Ally;
+                card.special.kingsCommand = true;
                 break;
 
             case Card.Title.Captain:
+                card.race = Card.Race.Human;
                 card.attack = 5;
-                card.health = 30;
+                card.health = 10;
                 card.cd = 0;
                 card.speed = 2;
                 card.range = 4;
-                card.race = Card.Race.Human;
-
+                
                 card.alignment = Card.Alignment.Enemy;
+                break;
+
+            case Card.Title.ZombieSwordsman:
+                card.race = Card.Race.Undead;
+                card.attack = 1;
+                card.health = 1;
+                card.cd = 0;
+                card.speed = 2;
+                card.range = 2;
+
+                card.alignment = Card.Alignment.Ally;
                 break;
         }
 
@@ -44,12 +64,23 @@ public class CardStat : MonoBehaviour
 
     private void SetDefaults(Card card, Card.Title title)
     {
+        card.title = title;
         card.attackDefault = card.attack;
         card.healthMaxDefault = card.healthMax = card.healthDefault = card.health;
         card.cdDefault = card.cd;
 
         card.tile = Bf.SIZE;
 
-        card.sprite = Resources.Load<Sprite>("Cards/" + title.ToString());
+        string _title = title.ToString();
+        for (int j = 1; j < _title.Length; j++)
+        {
+            if ((int)_title[j] >= 65 && (int)_title[j] <= 90) //Capital Letters
+            {
+                _title = _title.Insert(j, "_");
+                j++;
+            }
+        }
+
+        card.sprite = Resources.Load<Sprite>("Cards/" + _title);
     }
 }

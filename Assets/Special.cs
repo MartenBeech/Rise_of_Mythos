@@ -32,9 +32,11 @@ public class Special : MonoBehaviour
     public bool martyrdom = false;
     public bool heavyWeapon = false;
     public bool dragonSlayer = false;
+    public bool reanimate = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
+    public bool callOfTheUndeadKing = false;
 
     public int CheckArmor(Card dealer, Card target, int damage)
     {
@@ -177,7 +179,7 @@ public class Special : MonoBehaviour
         if (dealer.special.kingsCommand)
         {
             CardStat cardStat = new CardStat();
-            Card _card = cardStat.SetStats(Card.Title.Paladin);
+            Card _card = cardStat.SetStats(Card.Title.PlaceHolder);
 
             Rng rng = new Rng();
             int summonTile = 0;
@@ -435,5 +437,40 @@ public class Special : MonoBehaviour
             }
         }
         return damage;
+    }
+
+    public void CheckReanimate(Card target)
+    {
+        if (target.special.reanimate)
+        {
+            CardStat cardStat = new CardStat();
+            Card card = cardStat.SetStats(target.title);
+            card.special.reanimate = false;
+            AnimaCard animaCard = new AnimaCard();
+            animaCard.MoveBfBf(card, target.tile, target.tile, true);
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], "Reanimated", Hue.cyan);
+        }
+    }
+
+    public void CheckCallOfTheUndeadKing(Card target)
+    {
+        if (!Bf.occupied[target.tile])
+        {
+            Tile tile = new Tile();
+            List<Card> enemies = tile.GetAllEnemies(target);
+
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].special.callOfTheUndeadKing)
+                {
+                    CardStat cardStat = new CardStat();
+                    Card card = cardStat.SetStats(Card.Title.PlaceHolder);
+                    AnimaCard animaCard = new AnimaCard();
+                    animaCard.MoveBfBf(card, enemies[i].tile, target.tile, true);
+                    break;
+                }
+            }
+        }
     }
 }
