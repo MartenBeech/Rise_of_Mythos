@@ -18,9 +18,12 @@ public class Special : MonoBehaviour
     public int heroic = 0;
     public int regeneration = 0;
     public int multistrike = 0;
+    public int weaken = 0;
+    public int shadowBolt = 0;
 
     public int lifeAura = 0;
     public int regenerationAura = 0;
+    public int witheringAura = 0;
 
     public bool charge = false;
     public bool pierce = false;
@@ -32,7 +35,10 @@ public class Special : MonoBehaviour
     public bool martyrdom = false;
     public bool heavyWeapon = false;
     public bool dragonSlayer = false;
+    public bool knockBack = false;
     public bool reanimate = false;
+    public bool lifeSteal = false;
+    public bool soulBound = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
@@ -439,6 +445,22 @@ public class Special : MonoBehaviour
         return damage;
     }
 
+    public void CheckKnockBack(Card dealer, Card target)
+    {
+        if (dealer.special.knockBack)
+        {
+            Tile tile = new Tile();
+            int tileNew = tile.GetTileInFront(target, 2, true);
+            
+
+            if (tileNew != target.tile)
+            {
+                AnimaCard animaCard = new AnimaCard();
+                animaCard.MoveBfBf(target, target.tile, tileNew);
+            }
+        }
+    }
+
     public void CheckReanimate(Card target)
     {
         if (target.special.reanimate)
@@ -472,5 +494,81 @@ public class Special : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void CheckLifeSteal(Card dealer, int damage)
+    {
+        if (dealer.special.lifeSteal)
+        {
+            if (dealer.health < dealer.healthMax)
+            {
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.Heal(dealer, dealer, damage);
+            }
+        }
+    }
+
+    public void CheckWeaken(Card dealer, Card target)
+    {
+        if (dealer.special.weaken > 0)
+        {
+            if (target.attack > 0)
+            {
+                target.attack -= dealer.special.weaken;
+            }
+        }
+    }
+
+    public void CheckWitheringAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.witheringAura > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> enemies = tile.GetAllEnemies(dealer);
+
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.DecreaseHealth(dealer, enemies[i], dealer.special.witheringAura);
+            }
+        }
+    }
+
+    public void CheckWitheringAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> enemies = tile.GetAllEnemies(dealer);
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i].special.witheringAura > 0)
+            {
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.DecreaseHealth(enemies[i], dealer, enemies[i].special.witheringAura);
+            }
+        }
+    }
+
+    public void CheckSoulBound(Card target)
+    {
+        if (target.special.soulBound)
+        {
+            CardStat cardStat = new CardStat();
+            Card card = cardStat.SetStats(target.title);
+            card.special.soulBound = false;
+
+            Hand hand = new Hand();
+            hand.AddCardFromBf(card, target.tile);
+        }
+    }
+
+    public int CheckShadowBolt(Card dealer, int damage)
+    {
+        if (dealer.special.shadowBolt > 0)
+        {
+            Rng rng = new Rng();
+            damage = rng.Range(0, damage * dealer.special.shadowBolt);
+        }
+        return damage;
     }
 }

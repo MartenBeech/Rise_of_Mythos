@@ -10,24 +10,18 @@ public class UnitAttack : MonoBehaviour
         int tileCheck = dealer.tile;
         bool externalAttackAnimation = false;
 
+        SpecialTrigger trigger = new SpecialTrigger();
+        
+        if (trigger.OnTurnEnd(dealer))
+        {
+            externalAttackAnimation = true;
+        }
+
         Special special = new Special();
-        if (special.CheckCure(dealer))
-        {
-            externalAttackAnimation = true;
-        }
-        if (special.CheckRegeneration(dealer))
-        {
-            externalAttackAnimation = true;
-        }
-        if (special.CheckSummonUnitEndTurn(dealer))
-        {
-            externalAttackAnimation = true;
-        }
-
-        if (special.CheckWhirlwind(dealer)) { }
-
-        else if (special.CheckVililanceAttack(dealer)) { }
-
+        if (special.CheckWhirlwind(dealer))
+        { }
+        else if (special.CheckVililanceAttack(dealer)) 
+        { }
         else
         {
             if (dealer.alignment == Card.Alignment.Ally)
@@ -93,6 +87,7 @@ public class UnitAttack : MonoBehaviour
                         if (Bf.occupied[target.tile])
                         {
                             special.CheckCounterattack(dealer, target);
+                            special.CheckKnockBack(dealer, target);
                         }
                     }
                 }
@@ -106,47 +101,35 @@ public class UnitAttack : MonoBehaviour
     {
         damage += dealer.bonusAttackNextTurn;
 
+        SpecialTrigger trigger = new SpecialTrigger();
+        damage = trigger.OnDamageDealt(dealer, target, damage);
+
+        if (damage >= 0)
+        {
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], damage.ToString(), Hue.red);
+        }
+
         if (damage > 0)
         {
-            Special special = new Special();
-            damage = special.CheckArmor(dealer, target, damage);
-            damage = special.CheckResistance(dealer, target, damage);
-            damage = special.CheckChargeAttack(dealer, target, damage);
-            damage = special.CheckCombatMaster(dealer, target, damage);
-            damage = special.CheckDragonSlayer(dealer, target, damage);
-
-            special.CheckDispel(dealer, target);
-
-            AnimaText animaText = new AnimaText();
-            bool clusteredText = false;
-            if (dealer.special.multistrike > 0 || (target.special.multistrike > 0) && (dealer.special.counterattack || dealer.special.firstStrike))
-            {
-                clusteredText = true;
-            }
-            animaText.ShowText(Bf.Bfs[target.tile], damage.ToString(), Hue.red, clusteredText);
-
-            if (damage > 0)
-            {
-                special.CheckHeroic(dealer);
-                target.health -= damage;
-            }
-            
-            if (target.health <= 0)
-            {
-                Bf bf = new Bf();
-                bf.RemoveCard(target.tile);
-
-                SpecialTrigger trigger = new SpecialTrigger();
-                trigger.OnDeath(target);
-            }
-            else
-            {
-                target.DisplayCard(Bf.Bfs[target.tile], target);
-            }
-            target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
-
-            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
+            target.health -= damage;
         }
+            
+        if (target.health <= 0)
+        {
+            Bf bf = new Bf();
+            bf.RemoveCard(target.tile);
+
+            trigger.OnDeath(target);
+        }
+        else
+        {
+            target.DisplayCard(Bf.Bfs[target.tile], target);
+        }
+        target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
+        
     }
 
     public void Heal(Card dealer, Card target, int amount)
@@ -179,6 +162,26 @@ public class UnitAttack : MonoBehaviour
         target.DisplayCard(Bf.Bfs[target.tile], target);
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
+    }
+
+    public void DecreaseHealth(Card dealer, Card target, int amount)
+    {
+        AnimaText animaText = new AnimaText();
+        animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.red);
+
+        if (target.health > amount)
+            target.health -= amount;
+        else
+            target.health = 1;
+
+        if (target.healthMax > amount)
+            target.healthMax -= amount;
+        else
+            target.healthMax = 1;
+
+        target.DisplayCard(Bf.Bfs[target.tile], target);
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
     }
 
     public void IncreaseRegeneration(Card dealer, Card target, int amount)

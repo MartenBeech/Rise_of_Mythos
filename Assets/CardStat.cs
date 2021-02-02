@@ -16,8 +16,8 @@ public class CardStat : MonoBehaviour
                 card.attack = 1;
                 card.health = 1;
                 card.cd = 0;
-                card.speed = 2;
                 card.range = 2;
+                card.speed = 2;
 
                 card.alignment = Card.Alignment.Ally;
                 break;
@@ -25,24 +25,25 @@ public class CardStat : MonoBehaviour
             case Card.Title.Paladin:
                 card.race = Card.Race.Human;
                 card.attack = 5;
-                card.health = 10;
+                card.health = 50;
                 card.cd = 0;
-                card.speed = 2;
                 card.range = 2;
+                card.speed = 2;
                 
                 card.alignment = Card.Alignment.Ally;
-                card.special.kingsCommand = true;
+                card.special.shadowBolt = 2;
                 break;
 
             case Card.Title.Captain:
                 card.race = Card.Race.Human;
                 card.attack = 5;
-                card.health = 10;
+                card.health = 50;
                 card.cd = 0;
+                card.range = 10;
                 card.speed = 2;
-                card.range = 4;
                 
                 card.alignment = Card.Alignment.Enemy;
+                card.special.shadowBolt = 2;
                 break;
 
             case Card.Title.ZombieSwordsman:
@@ -50,8 +51,8 @@ public class CardStat : MonoBehaviour
                 card.attack = 1;
                 card.health = 1;
                 card.cd = 0;
-                card.speed = 2;
                 card.range = 2;
+                card.speed = 2;
 
                 card.alignment = Card.Alignment.Ally;
                 break;

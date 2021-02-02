@@ -157,4 +157,57 @@ public class Tile : MonoBehaviour
         }
         return allies;
     }
+
+    public int GetTileInFront(Card card, int tiles, bool reverseDirection = false)
+    {
+        int tileNew = card.tile;
+        Card.Alignment alignment = card.alignment;
+        if (reverseDirection)
+        {
+            if (card.alignment == Card.Alignment.Ally)
+            {
+                alignment = Card.Alignment.Enemy;
+            }
+            else
+            {
+                alignment = Card.Alignment.Ally;
+            }
+        }
+
+        if (alignment == Card.Alignment.Ally)
+        {
+            for (int i = card.tile + 3; i <= card.tile + (tiles * 3); i += 3)
+            {
+                if (i < Bf.SIZE)
+                {
+                    if (!Bf.occupied[i])
+                    {
+                        tileNew = i;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for (int i = card.tile - 3; i >= card.tile - (tiles * 3); i -= 3)
+            {
+                if (i >= 0)
+                {
+                    if (!Bf.occupied[i])
+                    {
+                        tileNew = i;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        return tileNew;
+    }
 }

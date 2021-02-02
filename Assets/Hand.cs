@@ -31,6 +31,18 @@ public class Hand : MonoBehaviour
         }
     }
 
+    public void AddCardFromBf(Card card, int i)
+    {
+        int handSpace = GetHandSpace();
+        if (handSpace < SIZE)
+        {
+            AnimaCard animaCard = new AnimaCard();
+            animaCard.MoveBfHand(card, i, handSpace);
+            Cards[handSpace] = card;
+            occupied[handSpace] = true;
+        }
+    }
+
     public void RemoveCard(int i)
     {
         if (occupied[i])

@@ -54,17 +54,27 @@ public class AnimaCard : MonoBehaviour
     public void MoveDeckHand(Card _card, int _from, int _to)
     {
         newlySummoned = false;
-        MoveCard(_card, Deck.Decks, Hand.Hands[_to], Hand.Cards[_to]);
+        MoveCard(_card, Deck.Decks, Hand.Hands[_to]);
         Hand.occupied[_to] = true;
         Hand.Cards[_to] = _card;
         Deck deck = new Deck();
         deck.RemoveCard(_from);
     }
 
+    public void MoveBfHand(Card _card, int _from, int _to)
+    {
+        newlySummoned = false;
+        MoveCard(_card, Bf.Bfs[_from], Hand.Hands[_to]);
+        Hand.occupied[_to] = true;
+        Hand.Cards[_to] = _card;
+        Bf bf = new Bf();
+        bf.RemoveCard(_from);
+    }
+
     public void MoveHandBf(Card _card, int _from, int _to)
     {
         newlySummoned = true;
-        MoveCard(_card, Hand.Hands[_from], Bf.Bfs[_to], Bf.Cards[_to]);
+        MoveCard(_card, Hand.Hands[_from], Bf.Bfs[_to]);
         Bf.occupied[_to] = true;
         Bf.Cards[_to] = _card;
         Hand hand = new Hand();
@@ -76,7 +86,7 @@ public class AnimaCard : MonoBehaviour
     public void MoveBfBf(Card _card, int _from, int _to, bool summoned = false)
     {
         newlySummoned = summoned;
-        MoveCard(_card, Bf.Bfs[_from], Bf.Bfs[_to], Bf.Cards[_to]);
+        MoveCard(_card, Bf.Bfs[_from], Bf.Bfs[_to]);
         Bf.occupied[_to] = true;
         Bf.Cards[_to] = _card;
         if (!summoned)
@@ -88,7 +98,7 @@ public class AnimaCard : MonoBehaviour
         _card.readyToAttack = true;
     }
 
-    public void MoveCard(Card _card, GameObject _from, GameObject _to, Card _cardTo)
+    public void MoveCard(Card _card, GameObject _from, GameObject _to)
     {
         prefab = Resources.Load<GameObject>("Assets/Card");
         parent = GameObject.Find("Animation");

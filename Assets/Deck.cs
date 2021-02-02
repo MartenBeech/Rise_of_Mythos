@@ -13,16 +13,15 @@ public class Deck : MonoBehaviour
         Decks = GameObject.Find("Deck");
 
         CardStat cardStat = new CardStat();
-        //deck.Add(cardStat.SetStats(Card.Title.Paladin));
-        //deck.Add(cardStat.SetStats(Card.Title.Paladin));
-        //deck.Add(cardStat.SetStats(Card.Title.Paladin));
-        //deck.Add(cardStat.SetStats(Card.Title.Paladin));
-        //deck.Add(cardStat.SetStats(Card.Title.Paladin));
-        //deck.Add(cardStat.SetStats(Card.Title.Captain));
-        //deck.Add(cardStat.SetStats(Card.Title.Captain));
-        //deck.Add(cardStat.SetStats(Card.Title.Captain));
-        //deck.Add(cardStat.SetStats(Card.Title.Captain));
-        //deck.Add(cardStat.SetStats(Card.Title.Captain));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin));
+        deck.Add(cardStat.SetStats(Card.Title.Captain));
+        deck.Add(cardStat.SetStats(Card.Title.Captain));
+        deck.Add(cardStat.SetStats(Card.Title.Captain));
+        deck.Add(cardStat.SetStats(Card.Title.Captain));
         deck.Add(cardStat.SetStats(Card.Title.ZombieSwordsman));
 
         DisplayDeck();
