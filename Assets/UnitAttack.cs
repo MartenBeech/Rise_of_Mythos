@@ -103,7 +103,7 @@ public class UnitAttack : MonoBehaviour
                         if (Bf.occupied[target.tile])
                         {
                             special.CheckCounterattack(dealer, target);
-                            special.CheckKnockBack(dealer, target);
+                            special.CheckKnockback(dealer, target);
                         }
                     }
                 }
@@ -113,12 +113,12 @@ public class UnitAttack : MonoBehaviour
         return false;
     }
 
-    public void DealDamage(Card dealer, Card target, int damage)
+    public void DealDamage(Card dealer, Card target, int damage, bool basicAttack = true)
     {
         damage += dealer.bonusAttackNextTurn;
 
         SpecialTrigger trigger = new SpecialTrigger();
-        damage = trigger.OnDamageDealt(dealer, target, damage);
+        damage = trigger.OnDamageDealt(dealer, target, damage, basicAttack);
 
         if (damage >= 0)
         {

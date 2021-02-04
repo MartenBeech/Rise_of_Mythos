@@ -22,38 +22,50 @@ public class Hero : MonoBehaviour
 
     public void AttackHero(Card dealer, Card.Alignment alignment)
     {
-        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
+        int damage = dealer.attack;
+        damage += dealer.bonusAttackNextTurn;
+
+        Special special = new Special();
+        special.CheckSoulEater(dealer);
+        
         for (int i = 0; i < dealer.special.multistrike + 1; i++)
         {
-            if (alignment == Card.Alignment.Ally)
+            DamageHero(dealer, alignment, damage);
+        }
+    }
+
+    public void DamageHero(Card dealer, Card.Alignment alignment, int damage)
+    {
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
+
+        if (alignment == Card.Alignment.Ally)
+        {
+            heroes[0].health -= damage;
+            if (heroes[0].health > 0)
             {
-                heroes[0].health -= dealer.attack;
-                if (heroes[0].health > 0)
-                {
-                    DisplayHero(Card.Alignment.Ally);
-                    AnimaText animaText = new AnimaText();
-                    animaText.ShowText(Heroes[0], dealer.attack.ToString(), Hue.red);
-                }
-                else
-                {
-                    Game game = new Game();
-                    game.LoseGame();
-                }
+                DisplayHero(Card.Alignment.Ally);
+                AnimaText animaText = new AnimaText();
+                animaText.ShowText(Heroes[0], damage.ToString(), Hue.red);
             }
             else
             {
-                heroes[1].health -= dealer.attack;
-                if (heroes[1].health > 0)
-                {
-                    DisplayHero(Card.Alignment.Enemy);
-                    AnimaText animaText = new AnimaText();
-                    animaText.ShowText(Heroes[1], dealer.attack.ToString(), Hue.red);
-                }
-                else
-                {
-                    Game game = new Game();
-                    game.WinGame();
-                }
+                Game game = new Game();
+                game.LoseGame();
+            }
+        }
+        else
+        {
+            heroes[1].health -= damage;
+            if (heroes[1].health > 0)
+            {
+                DisplayHero(Card.Alignment.Enemy);
+                AnimaText animaText = new AnimaText();
+                animaText.ShowText(Heroes[1], damage.ToString(), Hue.red);
+            }
+            else
+            {
+                Game game = new Game();
+                game.WinGame();
             }
         }
     }

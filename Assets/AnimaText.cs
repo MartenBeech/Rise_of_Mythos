@@ -15,9 +15,9 @@ public class AnimaText : MonoBehaviour
     private void Awake()
     {
         Rng rng = new Rng();
-        float rndX = rng.Range((int)(transform.position.x * 1000) - 300, (int)(transform.position.x * 1000) + 300);
+        float rndX = rng.Range((int)(transform.position.x * 1000) - 400, (int)(transform.position.x * 1000) + 400);
         rndX /= 1000;
-        float rndY = rng.Range((int)(transform.position.y * 1000) - 300, (int)(transform.position.y * 1000) + 300);
+        float rndY = rng.Range((int)(transform.position.y * 1000) - 400, (int)(transform.position.y * 1000) + 400);
         rndY /= 1000;
         transform.position = new Vector3(rndX, rndY);
        

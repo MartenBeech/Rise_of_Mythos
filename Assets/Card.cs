@@ -7,7 +7,7 @@ public class Card : MonoBehaviour
 {
     public enum Title
     {
-        PlaceHolder,
+        PlaceHolder, BoneHeap,
         Paladin, Captain,
         ZombieSwordsman
     }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CardStat : MonoBehaviour
 {
-    public Card SetStats(Card.Title title)
+    public Card SetStats(Card.Title title, Card.Alignment alignment)
     {
         Card card = new Card();
 
@@ -19,7 +19,18 @@ public class CardStat : MonoBehaviour
                 card.range = 2;
                 card.speed = 2;
 
-                card.alignment = Card.Alignment.Ally;
+                card.alignment = alignment;
+                break;
+
+            case Card.Title.BoneHeap:
+                card.race = Card.Race.Neutral;
+                card.attack = 0;
+                card.health = 1;
+                card.cd = 0;
+                card.range = 0;
+                card.speed = 0;
+
+                card.special.boneHeap = true;
                 break;
 
             case Card.Title.Paladin:
@@ -31,7 +42,8 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 
                 card.alignment = Card.Alignment.Ally;
-                card.special.whirlwind = true;
+                card.special.spellCurse = 2;
+                card.special.magical = true;
                 break;
 
             case Card.Title.Captain:
@@ -39,11 +51,11 @@ public class CardStat : MonoBehaviour
                 card.attack = 5;
                 card.health = 50;
                 card.cd = 0;
-                card.range = 10;
+                card.range = 2;
                 card.speed = 2;
                 
                 card.alignment = Card.Alignment.Enemy;
-                card.special.whirlwind = true;
+                card.special.spellFeed = true;
                 break;
 
             case Card.Title.ZombieSwordsman:
@@ -59,11 +71,11 @@ public class CardStat : MonoBehaviour
         }
 
 
-        SetDefaults(card, title);
+        SetDefaults(card, title, alignment);
         return card;
     }
 
-    private void SetDefaults(Card card, Card.Title title)
+    private void SetDefaults(Card card, Card.Title title, Card.Alignment alignment)
     {
         card.title = title;
         card.attackDefault = card.attack;
@@ -71,6 +83,7 @@ public class CardStat : MonoBehaviour
         card.cdDefault = card.cd;
 
         card.tile = Bf.SIZE;
+        card.alignment = alignment;
 
         card.nameTag = title.ToString();
         for (int j = 1; j < card.nameTag.Length; j++)

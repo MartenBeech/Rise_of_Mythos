@@ -13,16 +13,16 @@ public class Deck : MonoBehaviour
         Decks = GameObject.Find("Deck");
 
         CardStat cardStat = new CardStat();
-        deck.Add(cardStat.SetStats(Card.Title.Paladin));
-        deck.Add(cardStat.SetStats(Card.Title.Paladin));
-        deck.Add(cardStat.SetStats(Card.Title.Paladin));
-        deck.Add(cardStat.SetStats(Card.Title.Paladin));
-        deck.Add(cardStat.SetStats(Card.Title.Paladin));
-        deck.Add(cardStat.SetStats(Card.Title.Captain));
-        deck.Add(cardStat.SetStats(Card.Title.Captain));
-        deck.Add(cardStat.SetStats(Card.Title.Captain));
-        deck.Add(cardStat.SetStats(Card.Title.Captain));
-        deck.Add(cardStat.SetStats(Card.Title.ZombieSwordsman));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin, Card.Alignment.Ally));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin, Card.Alignment.Ally));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin, Card.Alignment.Ally));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin, Card.Alignment.Ally));
+        deck.Add(cardStat.SetStats(Card.Title.Paladin, Card.Alignment.Ally));
+        deck.Add(cardStat.SetStats(Card.Title.Captain, Card.Alignment.Enemy));
+        deck.Add(cardStat.SetStats(Card.Title.Captain, Card.Alignment.Enemy));
+        deck.Add(cardStat.SetStats(Card.Title.Captain, Card.Alignment.Enemy));
+        deck.Add(cardStat.SetStats(Card.Title.Captain, Card.Alignment.Enemy));
+        deck.Add(cardStat.SetStats(Card.Title.ZombieSwordsman, Card.Alignment.Ally));
 
         DisplayDeck();
     }
@@ -43,7 +43,7 @@ public class Deck : MonoBehaviour
     public void AddCard(Card.Title title)
     {
         CardStat cardStat = new CardStat();
-        Card card = cardStat.SetStats(title);
+        Card card = cardStat.SetStats(title, Card.Alignment.Ally);
         card.alignment = Card.Alignment.Ally;
         deck.Add(card);
         DisplayDeck();

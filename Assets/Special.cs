@@ -20,6 +20,13 @@ public class Special : MonoBehaviour
     public int multistrike = 0;
     public int weaken = 0;
     public int shadowBolt = 0;
+    public int poison = 0;
+    public int poisoned = 0;
+    public int immolate = 0;
+    public int reapingCurse = 0;
+    public int soulEater = 0;
+    public int spellCurse = 0;
+    public int spellCursed = 0;
 
     public int lifeAura = 0;
     public int regenerationAura = 0;
@@ -35,14 +42,25 @@ public class Special : MonoBehaviour
     public bool martyrdom = false;
     public bool heavyWeapon = false;
     public bool dragonSlayer = false;
-    public bool knockBack = false;
+    public bool knockback = false;
     public bool reanimate = false;
     public bool lifeSteal = false;
-    public bool soulBound = false;
+    public bool soulbound = false;
+    public bool freezing = false;
+    public bool incorporeal = false;
+    public bool fear = false;
+    public bool skeletal = false;
+    public bool boneHeap = false;
+    public bool vengefulCurse = false;
+    public bool vengefulCursed = false;
+    public bool spellFeed = false;
+    public bool panicStrike = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
     public bool callOfTheUndeadKing = false;
+    public bool frostSuit = false;
+    public bool soulHarvest = false;
 
     public int CheckArmor(Card dealer, Card target, int damage)
     {
@@ -98,7 +116,7 @@ public class Special : MonoBehaviour
                 for (int i = 0; i < dealer.special.multistrike + 1; i++)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, enemies[0], dealer.attack);
+                    unitAttack.DealDamage(dealer, enemies[0], dealer.attack, true);
                 }
                 return true;
             }
@@ -185,7 +203,7 @@ public class Special : MonoBehaviour
         if (dealer.special.kingsCommand)
         {
             CardStat cardStat = new CardStat();
-            Card _card = cardStat.SetStats(Card.Title.PlaceHolder);
+            Card _card = cardStat.SetStats(Card.Title.PlaceHolder, dealer.alignment);
 
             Rng rng = new Rng();
             int summonTile = 0;
@@ -223,20 +241,11 @@ public class Special : MonoBehaviour
         return false;
     }
 
-    public int CheckChargeAttack(Card dealer, Card target, int damage)
-    {
-        if (dealer.special.charge && target.range >= 4)
-        {
-            damage *= 2;
-        }
-        return damage;
-    }
-
     public void CheckChargeMove(Card dealer, int tileFrom, int tileTo)
     {
         if (dealer.special.charge)
         {
-            dealer.bonusAttackNextTurn += Mathf.Abs(((tileTo - tileFrom) / 3) / 2);
+            dealer.bonusAttackNextTurn += Mathf.Abs((tileTo - tileFrom) / 3);
         }
     }
 
@@ -257,13 +266,29 @@ public class Special : MonoBehaviour
         if (dealer.special.pierce)
         {
             int tileCheck = 0;
-            if (dealer.alignment == Card.Alignment.Ally && target.tile < Bf.SIZE - 3)
+            if (dealer.alignment == Card.Alignment.Ally)
             {
-                tileCheck = target.tile + 3;
+                if (target.tile < Bf.SIZE - 3)
+                {
+                    tileCheck = target.tile + 3;
+                }
+                else
+                {
+                    Hero hero = new Hero();
+                    hero.AttackHero(dealer, Card.Alignment.Enemy);
+                }
             }
             else if (dealer.alignment == Card.Alignment.Enemy && target.tile >= 3)
             {
-                tileCheck = target.tile - 3;
+                if (target.tile >= 3)
+                {
+                    tileCheck = target.tile - 3;
+                }
+                else
+                {
+                    Hero hero = new Hero();
+                    hero.AttackHero(dealer, Card.Alignment.Ally);
+                }
             }
             else
             {
@@ -275,7 +300,7 @@ public class Special : MonoBehaviour
                 if (Bf.Cards[tileCheck].alignment != dealer.alignment)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack);
+                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack, true);
                 }
             }
         }
@@ -295,8 +320,19 @@ public class Special : MonoBehaviour
                     for (int j = 0; j < dealer.special.multistrike + 1; j++)
                     {
                         UnitAttack unitAttack = new UnitAttack();
-                        unitAttack.DealDamage(dealer, enemies[i], dealer.attack);
+                        unitAttack.DealDamage(dealer, enemies[i], dealer.attack, true);
                     }
+                }
+
+                if (dealer.alignment == Card.Alignment.Ally && dealer.tile >= 27)
+                {
+                    Hero hero = new Hero();
+                    hero.AttackHero(dealer, Card.Alignment.Enemy);
+                }
+                else if (dealer.alignment == Card.Alignment.Enemy && dealer.tile < 3)
+                {
+                    Hero hero = new Hero();
+                    hero.AttackHero(dealer, Card.Alignment.Ally);
                 }
                 return true;
             }
@@ -309,7 +345,7 @@ public class Special : MonoBehaviour
         if (target.special.counterattack)
         {
             UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(target, dealer, target.attack);
+            unitAttack.DealDamage(target, dealer, target.attack, true);
         }
     }
 
@@ -318,7 +354,7 @@ public class Special : MonoBehaviour
         if (target.special.firstStrike)
         {
             UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(target, dealer, target.attack);
+            unitAttack.DealDamage(target, dealer, target.attack, true);
             if (target.health <= 0)
             {
                 return true;
@@ -437,7 +473,7 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.dragonSlayer)
         {
-            if (target.cd >= 5)
+            if (target.cdDefault >= 5)
             {
                 damage *= 2;
             }
@@ -445,9 +481,9 @@ public class Special : MonoBehaviour
         return damage;
     }
 
-    public void CheckKnockBack(Card dealer, Card target)
+    public void CheckKnockback(Card dealer, Card target)
     {
-        if (dealer.special.knockBack)
+        if (dealer.special.knockback)
         {
             Tile tile = new Tile();
             int tileNew = tile.GetTileInFront(target, 2, true);
@@ -466,7 +502,7 @@ public class Special : MonoBehaviour
         if (target.special.reanimate)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.SetStats(target.title);
+            Card card = cardStat.SetStats(target.title, target.alignment);
             card.special.reanimate = false;
             AnimaCard animaCard = new AnimaCard();
             animaCard.MoveBfBf(card, target.tile, target.tile, true);
@@ -477,21 +513,18 @@ public class Special : MonoBehaviour
 
     public void CheckCallOfTheUndeadKing(Card target)
     {
-        if (!Bf.occupied[target.tile])
-        {
-            Tile tile = new Tile();
-            List<Card> enemies = tile.GetAllEnemies(target);
+        Tile tile = new Tile();
+        List<Card> enemies = tile.GetAllEnemies(target);
 
-            for (int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i].special.callOfTheUndeadKing)
             {
-                if (enemies[i].special.callOfTheUndeadKing)
-                {
-                    CardStat cardStat = new CardStat();
-                    Card card = cardStat.SetStats(Card.Title.PlaceHolder);
-                    AnimaCard animaCard = new AnimaCard();
-                    animaCard.MoveBfBf(card, enemies[i].tile, target.tile, true);
-                    break;
-                }
+                CardStat cardStat = new CardStat();
+                Card card = cardStat.SetStats(Card.Title.PlaceHolder, target.alignment);
+                AnimaCard animaCard = new AnimaCard();
+                animaCard.MoveBfBf(card, enemies[i].tile, target.tile, true);
+                break;
             }
         }
     }
@@ -549,13 +582,13 @@ public class Special : MonoBehaviour
         }
     }
 
-    public void CheckSoulBound(Card target)
+    public void CheckSoulbound(Card target)
     {
-        if (target.special.soulBound)
+        if (target.special.soulbound)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.SetStats(target.title);
-            card.special.soulBound = false;
+            Card card = cardStat.SetStats(target.title, target.alignment);
+            card.special.soulbound = false;
 
             Hand hand = new Hand();
             hand.AddCardFromBf(card, target.tile);
@@ -570,5 +603,220 @@ public class Special : MonoBehaviour
             damage = rng.Range(0, damage * dealer.special.shadowBolt);
         }
         return damage;
+    }
+
+    public void CheckFreezing(Card dealer, Card target)
+    {
+        if (dealer.special.freezing)
+        {
+            if (target.speed > 1)
+            {
+                target.speed = 1;
+            }
+        }
+    }
+
+    public int CheckIncorporeal(Card dealer, Card target, int damage)
+    {
+        if (target.special.incorporeal)
+        {
+            if (!dealer.special.penetrate && !dealer.special.magical)
+            {
+                if (damage > 1)
+                {
+                    damage = 1;
+                }
+            }
+        }
+
+        return damage;
+    }
+
+    public void CheckFear(Card dealer, Card target, int damage)
+    {
+        if (dealer.special.fear && target.health > damage)
+        {
+            CardStat cardStat = new CardStat();
+            Card card = cardStat.SetStats(target.title, target.alignment);
+            dealer.special.fear = false;
+
+            Hand hand = new Hand();
+            hand.AddCardFromBf(card, target.tile);
+            target.health = 0;
+        }
+    }
+
+    public void CheckFrostSuit(Card dealer, Card target)
+    {
+        if (target.special.frostSuit)
+        {
+            dealer.speed = 0;
+        }
+    }
+
+    public void CheckSkeletal(Card target)
+    {
+        if (target.special.skeletal)
+        {
+            CardStat cardStat = new CardStat();
+            Card card = cardStat.SetStats(Card.Title.BoneHeap, target.alignment);
+            card.title = target.title;
+            card.nameTag = target.nameTag;
+            AnimaCard animaCard = new AnimaCard();
+            animaCard.MoveBfBf(card, target.tile, target.tile, true);
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], "Bone Heap", Hue.cyan);
+        }
+    }
+
+    public bool CheckBoneHeap(Card dealer)
+    {
+        if (dealer.special.boneHeap)
+        {
+            CardStat cardStat = new CardStat();
+            Card card = cardStat.SetStats(dealer.title, dealer.alignment);
+            AnimaCard animaCard = new AnimaCard();
+            animaCard.MoveBfBf(card, dealer.tile, dealer.tile, true);
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[dealer.tile], "Reassembled", Hue.cyan);
+            return true;
+        }
+        return false;
+    }
+
+    public void CheckPoison(Card dealer, Card target)
+    {
+        if (dealer.special.poison > 0)
+        {
+            if (target.special.poisoned < dealer.special.poison)
+            {
+                target.special.poisoned = dealer.special.poison;
+            }
+        }
+    }
+
+    public bool CheckDamageTakenEachTurn(Card dealer)
+    {
+        bool damageTaken = false;
+        if (dealer.special.poisoned > 0)
+        {
+            UnitAttack unitAttack = new UnitAttack();
+            unitAttack.DealDamage(dealer, dealer, dealer.special.poisoned, false);
+            damageTaken = true;
+        }
+        if (dealer.special.immolate > 0)
+        {
+            UnitAttack unitAttack = new UnitAttack();
+            unitAttack.DealDamage(dealer, dealer, dealer.special.immolate, false);
+            damageTaken = true;
+        }
+        return damageTaken;
+    }
+
+    public void CheckReapingCurse(Card target)
+    {
+        if (target.special.reapingCurse > 0)
+        {
+            Hero hero = new Hero();
+            if (target.alignment == Card.Alignment.Ally)
+            {
+                hero.DamageHero(target, Card.Alignment.Enemy, target.special.reapingCurse);
+            }
+            else
+            {
+                hero.DamageHero(target, Card.Alignment.Ally, target.special.reapingCurse);
+            }
+        }
+    }
+
+    public void CheckVengefulCurse(Card dealer, Card target)
+    {
+        if (dealer.special.vengefulCurse)
+        {
+            target.special.vengefulCursed = true;
+        }
+    }
+
+    public void CheckVengefulCursed(Card dealer)
+    {
+        if (dealer.special.vengefulCursed)
+        {
+            dealer.special.vengefulCursed = false;
+            UnitAttack unitAttack = new UnitAttack();
+            unitAttack.DealDamage(dealer, dealer, dealer.attack, false);
+        }
+    }
+
+    public void CheckSoulHarvest(Card target)
+    {
+        Tile tile = new Tile();
+        List<Card> enemies = tile.GetAllEnemies(target);
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i].special.soulHarvest)
+            {
+                AnimaText animaText = new AnimaText();
+                animaText.ShowText(Bf.Bfs[enemies[i].tile], "+1/+3", Hue.green);
+
+                enemies[i].attack += 1;
+                enemies[i].healthMax += 3;
+                enemies[i].health += 3;
+
+                target.DisplayCard(Bf.Bfs[enemies[i].tile], enemies[i]);
+            }
+        }
+    }
+
+    public void CheckSoulEater(Card dealer)
+    {
+        if (dealer.special.soulEater > 0)
+        {
+            dealer.attack += dealer.special.soulEater;
+            dealer.healthMax += dealer.special.soulEater;
+            dealer.health += dealer.special.soulEater;
+        }
+    }
+
+    public void CheckSpellCurse(Card dealer, Card target)
+    {
+        if (dealer.special.spellCurse > 0)
+        {
+            if (target.special.spellCursed < dealer.special.spellCurse)
+            {
+                target.special.spellCursed = dealer.special.spellCurse;
+            }
+        }
+    }
+
+    public int CheckSpellCursed(Card dealer, Card target, int damage)
+    {
+        if (target.special.spellCursed > 0)
+        {
+            if (dealer.special.magical && !dealer.special.penetrate)
+            {
+                damage += target.special.spellCursed;
+            }
+        }
+
+        return damage;
+    }
+
+    public void CheckSpellFeed(Card dealer, Card target)
+    {
+        if (target.special.spellFeed)
+        {
+            if (dealer.special.magical && !dealer.special.penetrate)
+            {
+                target.attack += 1;
+                target.healthMax += 1;
+                target.health += 1;
+            }
+        }
+    }
+
+    public void CheckPanicStrike(Card dealer)
+    {
+
     }
 }
