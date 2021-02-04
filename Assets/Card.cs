@@ -21,7 +21,7 @@ public class Card : MonoBehaviour
 
     public enum Race
     {
-        Human, Undead, Elf, Halfblood
+        Human, Undead, Elf, Halfblood, Neutral
     }
     public Race race;
 
@@ -33,6 +33,7 @@ public class Card : MonoBehaviour
     public int speed;
     public int range;
     public int tile;
+    public string nameTag;
 
     public int bonusAttackNextTurn = 0;
     public int heroicThisTurn = 0;
@@ -43,7 +44,16 @@ public class Card : MonoBehaviour
 
     public void DisplayCard(GameObject gameObject, Card card)
     {
-        gameObject.GetComponentInChildren<Text>().text = "<color=red>" + card.attack + "</color>" + " / " + "<color=green>" + card.health + "</color>";
+        gameObject.GetComponentInChildren<Text>().text =
+            (card.alignment == Card.Alignment.Ally ? "<color=green>" : "<color=red>") + "<size=" + (60 - (2 * card.nameTag.Length)) + ">" +
+            card.nameTag + "</size>" + "</color>" + "<size=36>" + "\n\n\n\n\n\n" + "</size>" +
+            "<color=red>" + card.attack + "</color>";
+        for (int i = card.attack.ToString().Length + card.health.ToString().Length; i < 9; i++)
+        {
+            gameObject.GetComponentInChildren<Text>().text += " ";
+        }
+        gameObject.GetComponentInChildren<Text>().text += "<color=green>" + card.health + "</color>";
+
         gameObject.GetComponentInChildren<Image>().sprite = card.sprite;
     }
 

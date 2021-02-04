@@ -18,7 +18,7 @@ public class SpecialInfo : MonoBehaviour
         }
 
         string text =
-            "<b>" + _title + "</b>" + "\n" +
+            "<b>" + card.nameTag + "</b>" + "\n" +
             "<b>" + "Attack: " + "</b>" + card.attack + "\n" +
             "<b>" + "Health: " + "</b>" + card.health + "/" + card.healthMax + "\n" +
             "<b>" + "Range/Speed: " + "</b>" + card.range + "/" + card.speed + "\n\n" +

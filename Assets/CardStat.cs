@@ -12,7 +12,7 @@ public class CardStat : MonoBehaviour
         switch(title)
         {
             case Card.Title.PlaceHolder:
-                card.race = Card.Race.Human;
+                card.race = Card.Race.Neutral;
                 card.attack = 1;
                 card.health = 1;
                 card.cd = 0;
@@ -31,7 +31,7 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 
                 card.alignment = Card.Alignment.Ally;
-                card.special.shadowBolt = 2;
+                card.special.whirlwind = true;
                 break;
 
             case Card.Title.Captain:
@@ -43,7 +43,7 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 
                 card.alignment = Card.Alignment.Enemy;
-                card.special.shadowBolt = 2;
+                card.special.whirlwind = true;
                 break;
 
             case Card.Title.ZombieSwordsman:
@@ -72,16 +72,16 @@ public class CardStat : MonoBehaviour
 
         card.tile = Bf.SIZE;
 
-        string _title = title.ToString();
-        for (int j = 1; j < _title.Length; j++)
+        card.nameTag = title.ToString();
+        for (int j = 1; j < card.nameTag.Length; j++)
         {
-            if ((int)_title[j] >= 65 && (int)_title[j] <= 90) //Capital Letters
+            if ((int)card.nameTag[j] >= 65 && (int)card.nameTag[j] <= 90) //Capital Letters
             {
-                _title = _title.Insert(j, "_");
+                card.nameTag = card.nameTag.Insert(j, " ");
                 j++;
             }
         }
 
-        card.sprite = Resources.Load<Sprite>("Cards/" + _title);
+        card.sprite = Resources.Load<Sprite>("Cards/" + card.race + "/" + card.nameTag.Replace(' ', '_'));
     }
 }

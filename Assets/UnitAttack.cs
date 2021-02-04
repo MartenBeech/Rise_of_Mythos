@@ -29,12 +29,20 @@ public class UnitAttack : MonoBehaviour
                 for (int i = 0; i < dealer.range; i++)
                 {
                     tileCheck += 3;
-                    if (tileCheck >= Bf.SIZE || !dealer.canAttackThisTurn)
+                    if (!dealer.canAttackThisTurn)
                     {
                         break;
                     }
 
-                    if (Bf.occupied[tileCheck])
+                    else if (tileCheck >= Bf.SIZE)
+                    {
+                        Hero hero = new Hero();
+                        hero.AttackHero(dealer, Card.Alignment.Enemy);
+                        externalAttackAnimation = true;
+                        break;
+                    }
+
+                    else if (Bf.occupied[tileCheck])
                     {
                         if (AttackAlignment(dealer, Bf.Cards[tileCheck]))
                         {
@@ -50,12 +58,20 @@ public class UnitAttack : MonoBehaviour
                 for (int i = 0; i < dealer.range; i++)
                 {
                     tileCheck -= 3;
-                    if (tileCheck < 0 || !dealer.canAttackThisTurn)
+                    if (!dealer.canAttackThisTurn)
                     {
                         break;
                     }
 
-                    if (Bf.occupied[tileCheck])
+                    else if (tileCheck < 0)
+                    {
+                        Hero hero = new Hero();
+                        hero.AttackHero(dealer, Card.Alignment.Ally);
+                        externalAttackAnimation = true;
+                        break;
+                    }
+
+                    else if (Bf.occupied[tileCheck])
                     {
                         if (AttackAlignment(dealer, Bf.Cards[tileCheck]))
                         {
