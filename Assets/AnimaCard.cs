@@ -57,8 +57,6 @@ public class AnimaCard : MonoBehaviour
         MoveCard(_card, Deck.Decks, Hand.Hands[_to]);
         Hand.occupied[_to] = true;
         Hand.Cards[_to] = _card;
-        Deck deck = new Deck();
-        deck.RemoveCard(_from);
     }
 
     public void MoveBfHand(Card _card, int _from, int _to)

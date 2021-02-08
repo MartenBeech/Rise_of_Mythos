@@ -27,6 +27,7 @@ public class Special : MonoBehaviour
     public int soulEater = 0;
     public int spellCurse = 0;
     public int spellCursed = 0;
+    public int spellFeed = 0;
 
     public int lifeAura = 0;
     public int regenerationAura = 0;
@@ -53,7 +54,6 @@ public class Special : MonoBehaviour
     public bool boneHeap = false;
     public bool vengefulCurse = false;
     public bool vengefulCursed = false;
-    public bool spellFeed = false;
     public bool panicStrike = false;
 
     public bool kingsCommand = false;
@@ -61,6 +61,7 @@ public class Special : MonoBehaviour
     public bool callOfTheUndeadKing = false;
     public bool frostSuit = false;
     public bool soulHarvest = false;
+
 
     public int CheckArmor(Card dealer, Card target, int damage)
     {
@@ -591,7 +592,7 @@ public class Special : MonoBehaviour
             card.special.soulbound = false;
 
             Hand hand = new Hand();
-            hand.AddCardFromBf(card, target.tile);
+            hand.AddCardFromBf(card, target.tile, target.alignment);
         }
     }
 
@@ -641,7 +642,7 @@ public class Special : MonoBehaviour
             dealer.special.fear = false;
 
             Hand hand = new Hand();
-            hand.AddCardFromBf(card, target.tile);
+            hand.AddCardFromBf(card, target.tile, target.alignment);
             target.health = 0;
         }
     }
@@ -757,11 +758,11 @@ public class Special : MonoBehaviour
             if (enemies[i].special.soulHarvest)
             {
                 AnimaText animaText = new AnimaText();
-                animaText.ShowText(Bf.Bfs[enemies[i].tile], "+1/+3", Hue.green);
+                animaText.ShowText(Bf.Bfs[enemies[i].tile], "+" + target.attackDefault / 2 + "/+" + target.healthDefault / 2, Hue.green);
 
-                enemies[i].attack += 1;
-                enemies[i].healthMax += 3;
-                enemies[i].health += 3;
+                enemies[i].attack += target.attackDefault / 2;
+                enemies[i].healthMax += target.healthMaxDefault / 2;
+                enemies[i].health += target.healthDefault / 2;
 
                 target.DisplayCard(Bf.Bfs[enemies[i].tile], enemies[i]);
             }
@@ -804,19 +805,49 @@ public class Special : MonoBehaviour
 
     public void CheckSpellFeed(Card dealer, Card target)
     {
-        if (target.special.spellFeed)
+        if (target.special.spellFeed > 0)
         {
             if (dealer.special.magical && !dealer.special.penetrate)
             {
-                target.attack += 1;
-                target.healthMax += 1;
-                target.health += 1;
+                target.attack += target.special.spellFeed;
+                target.healthMax += target.special.spellFeed;
+                target.health += target.special.spellFeed;
             }
         }
     }
 
     public void CheckPanicStrike(Card dealer)
     {
+        if (dealer.special.panicStrike)
+        {
+            int iMin = 0;
+            int iMax = Hand.SIZE;
+            if (dealer.alignment == Card.Alignment.Ally)
+            {
+                iMin = Hand.SIZE;
+                iMax = Hand.SIZE * 2;
+            }
 
+            List<int> occupied = new List<int>();
+            for (int i = iMin; i < iMax; i++)
+            {
+                if (Hand.occupied[i])
+                {
+                    occupied.Add(i);
+                }
+            }
+
+            if (occupied.Count > 0)
+            {
+                Rng rng = new Rng();
+                int rnd = occupied[rng.Range(0, occupied.Count)];
+                Hand.Cards[rnd].cd += 1;
+
+                if (rnd < Hand.SIZE)
+                {
+                    dealer.DisplayCard(Hand.Hands[rnd], Hand.Cards[rnd]);
+                }
+            }
+        }
     }
 }

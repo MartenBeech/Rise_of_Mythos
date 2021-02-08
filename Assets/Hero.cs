@@ -9,7 +9,7 @@ public class Hero : MonoBehaviour
     public static GameObject[] Heroes = new GameObject[SIZE];
     public static Hero[] heroes = new Hero[SIZE];
 
-    public int health,  healthDefault = 50;
+    public int health,  healthDefault = 1000;
 
     private void Start()
     {
@@ -27,9 +27,10 @@ public class Hero : MonoBehaviour
 
         Special special = new Special();
         special.CheckSoulEater(dealer);
-        
+
         for (int i = 0; i < dealer.special.multistrike + 1; i++)
         {
+            special.CheckPanicStrike(dealer);
             DamageHero(dealer, alignment, damage);
         }
     }

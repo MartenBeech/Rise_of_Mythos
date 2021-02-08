@@ -6,57 +6,83 @@ using UnityEngine.UI;
 public class Deck : MonoBehaviour
 {
     public static GameObject Decks;
-    public static List<Card> deck = new List<Card>();
+    public static List<Card> deckAlly = new List<Card>();
+    public static List<Card> deckEnemy = new List<Card>();
 
     private void Start()
     {
         Decks = GameObject.Find("Deck");
 
-        CardStat cardStat = new CardStat();
-        deck.Add(cardStat.SetStats(Card.Title.Paladin, Card.Alignment.Ally));
-        deck.Add(cardStat.SetStats(Card.Title.Paladin, Card.Alignment.Ally));
-        deck.Add(cardStat.SetStats(Card.Title.Paladin, Card.Alignment.Ally));
-        deck.Add(cardStat.SetStats(Card.Title.Paladin, Card.Alignment.Ally));
-        deck.Add(cardStat.SetStats(Card.Title.Paladin, Card.Alignment.Ally));
-        deck.Add(cardStat.SetStats(Card.Title.Captain, Card.Alignment.Enemy));
-        deck.Add(cardStat.SetStats(Card.Title.Captain, Card.Alignment.Enemy));
-        deck.Add(cardStat.SetStats(Card.Title.Captain, Card.Alignment.Enemy));
-        deck.Add(cardStat.SetStats(Card.Title.Captain, Card.Alignment.Enemy));
-        deck.Add(cardStat.SetStats(Card.Title.ZombieSwordsman, Card.Alignment.Ally));
-
-        DisplayDeck();
+        AddCard(Card.Title.Paladin, Card.Alignment.Ally);
+        AddCard(Card.Title.Paladin, Card.Alignment.Ally);
+        AddCard(Card.Title.Paladin, Card.Alignment.Ally);
+        AddCard(Card.Title.Paladin, Card.Alignment.Ally);
+        AddCard(Card.Title.Paladin, Card.Alignment.Ally);
+        AddCard(Card.Title.Captain, Card.Alignment.Enemy);
+        AddCard(Card.Title.Captain, Card.Alignment.Enemy);
+        AddCard(Card.Title.Captain, Card.Alignment.Enemy);
+        AddCard(Card.Title.Captain, Card.Alignment.Enemy);
+        AddCard(Card.Title.Captain, Card.Alignment.Enemy);
     }
-    public void DrawCard()
+    public void DrawCardClicked()
     {
-        for (int i = 0; i < Hand.SIZE; i++)
+        for (int i = 0; i < 10; i++)
         {
-            if (deck.Count > 0)
+            DrawCard(Card.Alignment.Ally);
+            DrawCard(Card.Alignment.Enemy);
+        }
+    }
+
+    public void DrawCard(Card.Alignment alignment)
+    {
+        if (alignment == Card.Alignment.Ally)
+        {
+            if (deckAlly.Count > 0)
             {
                 Rng rng = new Rng();
-                int rnd = rng.Range(0, deck.Count);
+                int rnd = rng.Range(0, deckAlly.Count);
                 Hand hand = new Hand();
-                hand.AddCardFromDeck(deck[rnd], rnd);
+                hand.AddCardFromDeck(deckAlly[rnd], rnd, alignment);
+                RemoveCard(rnd, alignment);
+            }
+        }
+        else
+        {
+            if (deckEnemy.Count > 0)
+            {
+                Rng rng = new Rng();
+                int rnd = rng.Range(0, deckEnemy.Count);
+                Hand hand = new Hand();
+                hand.AddCardFromDeck(deckEnemy[rnd], rnd, alignment);
+                RemoveCard(rnd, alignment);
             }
         }
     }
 
-    public void AddCard(Card.Title title)
+    public void AddCard(Card.Title title, Card.Alignment alignment)
     {
         CardStat cardStat = new CardStat();
-        Card card = cardStat.SetStats(title, Card.Alignment.Ally);
-        card.alignment = Card.Alignment.Ally;
-        deck.Add(card);
-        DisplayDeck();
+        Card card = cardStat.SetStats(title, alignment);
+        if (alignment == Card.Alignment.Ally)
+            deckAlly.Add(card);
+        else
+            deckAlly.Add(card);
+            //deckEnemy.Add(card); CHANGE
+
+            DisplayDeck();
     }
 
-    public void RemoveCard(int i)
+    public void RemoveCard(int i, Card.Alignment alignment)
     {
-        deck.RemoveAt(i);
+        if (alignment == Card.Alignment.Ally)
+            deckAlly.RemoveAt(i);
+        else
+            deckEnemy.RemoveAt(i);
         DisplayDeck();
     }
 
     public void DisplayDeck()
     {
-        Decks.GetComponentInChildren<Text>().text = "Deck" + "\n" + deck.Count;
+        Decks.GetComponentInChildren<Text>().text = "Your Deck: " + deckAlly.Count + "\n\n" + "Enemy Deck: " + deckEnemy.Count;
     }
 }

@@ -44,7 +44,13 @@ public class Card : MonoBehaviour
 
     public void DisplayCard(GameObject gameObject, Card card)
     {
-        gameObject.GetComponentInChildren<Text>().text =
+        gameObject.GetComponentInChildren<Text>().text = "";
+        if (card.cd > 0)
+        {
+            gameObject.GetComponentInChildren<Text>().text += "<size=50>" + card.cd + " / " + card.cdDefault + "</size>" + "\n";
+        }
+
+        gameObject.GetComponentInChildren<Text>().text +=
             (card.alignment == Card.Alignment.Ally ? "<color=green>" : "<color=red>") + "<size=" + (60 - (2 * card.nameTag.Length)) + ">" +
             card.nameTag + "</size>" + "</color>" + "<size=36>" + "\n\n\n\n\n\n" + "</size>" +
             "<color=red>" + card.attack + "</color>";

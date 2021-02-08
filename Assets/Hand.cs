@@ -7,8 +7,8 @@ public class Hand : MonoBehaviour
 {
     public const int SIZE = 10;
     public static GameObject[] Hands = new GameObject[SIZE];
-    public static Card[] Cards = new Card[SIZE];
-    public static bool[] occupied = new bool[SIZE];
+    public static Card[] Cards = new Card[SIZE * 2];
+    public static bool[] occupied = new bool[SIZE * 2];
     public static int selected = SIZE;
 
     private void Start()
@@ -19,25 +19,31 @@ public class Hand : MonoBehaviour
         }
     }
 
-    public void AddCardFromDeck(Card card, int i)
+    public void AddCardFromDeck(Card card, int i, Card.Alignment alignment)
     {
-        int handSpace = GetHandSpace();
-        if (handSpace < SIZE)
+        int handSpace = GetHandSpace(alignment);
+        if (handSpace != -1)
         {
-            AnimaCard animaCard = new AnimaCard();
-            animaCard.MoveDeckHand(card, i, handSpace);
+            if (handSpace < SIZE)
+            {
+                AnimaCard animaCard = new AnimaCard();
+                animaCard.MoveDeckHand(card, i, handSpace);
+            }
             Cards[handSpace] = card;
             occupied[handSpace] = true;
         }
     }
 
-    public void AddCardFromBf(Card card, int i)
+    public void AddCardFromBf(Card card, int i, Card.Alignment alignment)
     {
-        int handSpace = GetHandSpace();
-        if (handSpace < SIZE)
+        int handSpace = GetHandSpace(alignment);
+        if (handSpace != -1)
         {
-            AnimaCard animaCard = new AnimaCard();
-            animaCard.MoveBfHand(card, i, handSpace);
+            if (handSpace < SIZE)
+            {
+                AnimaCard animaCard = new AnimaCard();
+                animaCard.MoveBfHand(card, i, handSpace);
+            }
             Cards[handSpace] = card;
             occupied[handSpace] = true;
         }
@@ -48,19 +54,31 @@ public class Hand : MonoBehaviour
         if (occupied[i])
         {
             occupied[i] = false;
-            Cards[i].DisplayNull(Hands[i]);
+            if (i < SIZE)
+                Cards[i].DisplayNull(Hands[i]);
             Cards[i] = null;
         }
     }
 
-    private int GetHandSpace()
+    private int GetHandSpace(Card.Alignment alignment)
     {
-        for (int i = 0; i < SIZE; i++)
+        if (alignment == Card.Alignment.Ally)
         {
-            if (!occupied[i])
-                return i;
+            for (int i = 0; i < SIZE; i++)
+            {
+                if (!occupied[i])
+                    return i;
+            }
         }
-        return SIZE;
+        else
+        {
+            for (int i = SIZE; i < SIZE * 2; i++)
+            {
+                if (!occupied[i])
+                    return i;
+            }
+        }
+        return -1;
     }
 
     private void SelectCard(int i)
@@ -102,6 +120,16 @@ public class Hand : MonoBehaviour
                 DeselectCard();
                 SelectCard(i);
             }
+        }
+    }
+
+    public void ReduceCD(int i)
+    {
+        Cards[i].cd = (Cards[i].cd > 0 ? Cards[i].cd - 1 : 0);
+        if (i < SIZE)
+        {
+            Card card = new Card();
+            card.DisplayCard(Hands[i], Cards[i]);
         }
     }
 }

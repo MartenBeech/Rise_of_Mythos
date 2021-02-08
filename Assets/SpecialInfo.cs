@@ -36,6 +36,15 @@ public class SpecialInfo : MonoBehaviour
             (card.special.multistrike > 0 ? "<b>" + "Multistrike " + card.special.multistrike + ": " + "</b>" + "Attacks hit additional times" + "\n" : "") +
             (card.special.weaken > 0 ? "<b>" + "Weaken " + card.special.weaken + ": " + "</b>" + "Attacks reduce the target's attack value" + "\n" : "") +
             (card.special.shadowBolt > 0 ? "<b>" + "Shadow Bolt " + card.special.shadowBolt + ": " + "</b>" + "Attacks deal 0-" + card.special.shadowBolt + "00% damage" + "\n" : "") +
+            (card.special.poison > 0 ? "<b>" + "Poison " + card.special.poison + ": " + "</b>" + "Attacks causes the target to take damage each turn" + "\n" : "") +
+            (card.special.poisoned > 0 ? "<b>" + "Poisoned " + card.special.poisoned + ": " + "</b>" + "You take magical damage each turn" + "\n" : "") +
+            (card.special.immolate > 0 ? "<b>" + "Immolate " + card.special.immolate + ": " + "</b>" + "You take magical damage each turn" + "\n" : "") +
+            (card.special.reapingCurse > 0 ? "<b>" + "Reaping Curse " + card.special.reapingCurse + ": " + "</b>" + "Upon dying, deal damage to the enemy hero" + "\n" : "") +
+            (card.special.soulEater > 0 ? "<b>" + "Soul Eater " + card.special.soulEater + ": " + "</b>" + "Gain +" + card.special.soulEater + "/+" + card.special.soulEater + " whenever you attack the enemy hero" + "\n" : "") +
+            (card.special.spellCurse > 0 ? "<b>" + "Spell Curse " + card.special.soulEater + ": " + "</b>" + "Attacks curse the enemy to take increased magical damage" + "\n" : "") +
+            (card.special.spellCursed > 0 ? "<b>" + "Spell Cursed " + card.special.soulEater + ": " + "</b>" + "You take increased magical damage" + "\n" : "") +
+            (card.special.spellFeed > 0 ? "<b>" + "Spell Feed " + card.special.spellFeed + ": " + "</b>" + "Gain +" + card.special.spellFeed + "/+" + card.special.spellFeed + " whenever you take magical damage" + "\n" : "") +
+
 
             (card.special.lifeAura > 0 ? "<b>" + "Life Aura " + card.special.lifeAura + ": " + "</b>" + "Allied units have bonus health" + "\n" : "") +
             (card.special.regenerationAura > 0 ? "<b>" + "Regeneration Aura " + card.special.regenerationAura + ": " + "</b>" + "Allied units have Regeneration" + "\n" : "") +
@@ -58,11 +67,17 @@ public class SpecialInfo : MonoBehaviour
             (card.special.freezing ? "<b>" + "Freezing: " + "</b>" + "Damaged targets have their speed reduced to 1" + "\n" : "") +
             (card.special.incorporeal ? "<b>" + "Incorporeal: " + "</b>" + "Physical damage you receive is reduced to 1" + "\n" : "") +
             (card.special.fear ? "<b>" + "Fear: " + "</b>" + "First unit attacked returns to it's owner's hand" + "\n" : "") +
+            (card.special.skeletal ? "<b>" + "Skeletal: " + "</b>" + "Upon dying, turn into a Bone Heap which reanimates this unit next turn" + "\n" : "") +
+            (card.special.boneHeap ? "<b>" + "Bone Heap: " + "</b>" + "Reanimate the collapsed body at the end of your turn" + "\n" : "") +
+            (card.special.vengefulCurse ? "<b>" + "Vengeful Curse: " + "</b>" + "Attacking curses the target's next attack to also damage itself" + "\n" : "") +
+            (card.special.vengefulCursed ? "<b>" + "Vengeful Cursed: " + "</b>" + "Your next attack also damages yourself" + "\n" : "") +
+            (card.special.panicStrike ? "<b>" + "Panic Strike: " + "</b>" + "Attacking the enemy hero causes a random enemy card to gain +1 CD" + "\n" : "") +
 
             (card.special.kingsCommand ? "<b>" + "King's Command: " + "</b>" + "Summons a Horseman of same rank each turn" + "\n" : "") +
             (card.special.combatMaster ? "<b>" + "Combat Master: " + "</b>" + "Deals double damage to enemies with 4+ Range, 4+ Speed, Armor, Wall or Flying" + "\n" : "") +
             (card.special.callOfTheUndeadKing ? "<b>" + "Call of the Undead King: " + "</b>" + "Whenever an enemy dies, a zombie is summoned in its place" + "\n" : "") +
             (card.special.frostSuit ? "<b>" + "Frost Suit: " + "</b>" + "Upon taking damage, reduced the attacker's speed to 0" + "\n" : "") +
+            (card.special.soulHarvest ? "<b>" + "Soul Harvest: " + "</b>" + "Whenever an enemy dies, gain half its Attack and Health" + "\n" : "") +
 
             "";
 

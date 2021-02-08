@@ -93,13 +93,14 @@ public class UnitAction : MonoBehaviour
 
         else
         {
+            Turn turn = new Turn();
             if (Turn.turn == Card.Alignment.Ally)
             {
-                Turn.turn = Card.Alignment.Enemy;
+                turn.NewTurn(Card.Alignment.Enemy);
             }
             else
             {
-                Turn.turn = Card.Alignment.Ally;
+                turn.NewTurn(Card.Alignment.Ally);
             }
         }
     }

@@ -36,26 +36,25 @@ public class CardStat : MonoBehaviour
             case Card.Title.Paladin:
                 card.race = Card.Race.Human;
                 card.attack = 5;
-                card.health = 50;
+                card.health = 10;
                 card.cd = 0;
                 card.range = 2;
                 card.speed = 2;
                 
                 card.alignment = Card.Alignment.Ally;
-                card.special.spellCurse = 2;
-                card.special.magical = true;
+                card.special.panicStrike = true;
                 break;
 
             case Card.Title.Captain:
                 card.race = Card.Race.Human;
                 card.attack = 5;
-                card.health = 50;
+                card.health = 10;
                 card.cd = 0;
                 card.range = 2;
                 card.speed = 2;
                 
                 card.alignment = Card.Alignment.Enemy;
-                card.special.spellFeed = true;
+                card.special.panicStrike = true;
                 break;
 
             case Card.Title.ZombieSwordsman:

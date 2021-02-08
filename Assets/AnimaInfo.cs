@@ -12,8 +12,8 @@ public class AnimaInfo : MonoBehaviour
         prefab = Resources.Load<GameObject>("Assets/Info");
         parent = GameObject.Find("Animation");
 
-        SpecialInfo info = new SpecialInfo();
-        prefab.GetComponentInChildren<Text>().text = info.GetCardInfo(card);
+        SpecialInfo specialInfo = new SpecialInfo();
+        prefab.GetComponentInChildren<Text>().text = specialInfo.GetCardInfo(card);
 
         Vector3 newPos = new Vector3(position.transform.position.x + 3, position.transform.position.y, position.transform.position.z);
 
