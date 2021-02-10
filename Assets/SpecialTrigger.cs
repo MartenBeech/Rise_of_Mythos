@@ -12,6 +12,8 @@ public class SpecialTrigger : MonoBehaviour
         special.CheckLifeAuraSummon(card);
         special.CheckRegenerationAuraBattlecry(card);
         special.CheckRegenerationAuraSummon(card);
+        special.CheckRangeAuraBattlecry(card);
+        special.CheckRangeAuraSummon(card);
         special.CheckWitheringAuraBattlecry(card);
         special.CheckWitheringAuraSummon(card);
     }
@@ -43,6 +45,10 @@ public class SpecialTrigger : MonoBehaviour
             externalAttackAnimation = true;
         if (special.CheckDamageTakenEachTurn(dealer))
             externalAttackAnimation = true;
+        if (special.CheckHerosBane(dealer))
+            externalAttackAnimation = true;
+
+        special.CheckInspiration(dealer);
 
         return externalAttackAnimation;
     }
@@ -57,6 +63,7 @@ public class SpecialTrigger : MonoBehaviour
             damage = special.CheckShadowBolt(dealer, damage);
             damage = special.CheckCombatMaster(dealer, target, damage);
             damage = special.CheckDragonSlayer(dealer, target, damage);
+            damage = special.CheckEmber(dealer, target, damage);
         }
         damage = special.CheckIncorporeal(dealer, target, damage);
 

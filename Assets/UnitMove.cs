@@ -19,6 +19,18 @@ public class UnitMove : MonoBehaviour
             {
                 for (int i = 0; i < dealer.speed; i++)
                 {
+                    if (dealer.range >= 4)
+                    {
+                        Tile tile = new Tile();
+                        if (tile.GetEnemiesInFront(dealer, tileCheck, dealer.range).Count > 0)
+                        {
+                            break;
+                        }
+                        if (tile.GetDistanceToEnemyHero(dealer, tileCheck) <= dealer.range)
+                        {
+                            break;
+                        }
+                    }
                     tileCheck += 3;
                     if (tileCheck >= Bf.SIZE)
                     {
@@ -46,6 +58,18 @@ public class UnitMove : MonoBehaviour
             {
                 for (int i = 0; i < dealer.speed; i++)
                 {
+                    if (dealer.range >= 4)
+                    {
+                        Tile tile = new Tile();
+                        if (tile.GetEnemiesInFront(dealer, tileCheck, dealer.range).Count > 0)
+                        {
+                            break;
+                        }
+                        if (tile.GetDistanceToEnemyHero(dealer, tileCheck) <= dealer.range)
+                        {
+                            break;
+                        }
+                    }
                     tileCheck -= 3;
                     if (tileCheck < 0)
                     {

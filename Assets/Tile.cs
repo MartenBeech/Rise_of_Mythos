@@ -210,4 +210,88 @@ public class Tile : MonoBehaviour
         }
         return tileNew;
     }
+
+    public List<Card> GetEnemiesInFront(Card card, int startTile, int tiles, bool reverseDirection = false)
+    {
+        List<Card> enemies = new List<Card>();
+        Card.Alignment alignment = card.alignment;
+        if (reverseDirection)
+        {
+            if (card.alignment == Card.Alignment.Ally)
+            {
+                alignment = Card.Alignment.Enemy;
+            }
+            else
+            {
+                alignment = Card.Alignment.Ally;
+            }
+        }
+
+        if (alignment == Card.Alignment.Ally)
+        {
+            for (int i = startTile + 3; i <= startTile + (tiles * 3); i += 3)
+            {
+                if (i < Bf.SIZE)
+                {
+                    if (Bf.occupied[i])
+                    {
+                        if (Bf.Cards[i].alignment != card.alignment)
+                        {
+                            enemies.Add(Bf.Cards[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for (int i = startTile - 3; i >= startTile - (tiles * 3); i -= 3)
+            {
+                if (i >= 0)
+                {
+                    if (Bf.occupied[i])
+                    {
+                        if (Bf.Cards[i].alignment != card.alignment)
+                        {
+                            enemies.Add(Bf.Cards[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        return enemies;
+    }
+
+    public int GetDistanceToEnemyHero(Card card, int startTile, bool reverseDirection = false)
+    {
+        Card.Alignment alignment = card.alignment;
+        if (reverseDirection)
+        {
+            if (card.alignment == Card.Alignment.Ally)
+            {
+                alignment = Card.Alignment.Enemy;
+            }
+            else
+            {
+                alignment = Card.Alignment.Ally;
+            }
+        }
+
+        if (alignment == Card.Alignment.Ally)
+        {
+            return (((Bf.SIZE + 2) - startTile) / 3);
+        }
+        else
+        {
+            return ((3 + startTile) / 3);
+        }
+    }
 }

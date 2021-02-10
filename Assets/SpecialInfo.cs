@@ -44,15 +44,19 @@ public class SpecialInfo : MonoBehaviour
             (card.special.spellCurse > 0 ? "<b>" + "Spell Curse " + card.special.soulEater + ": " + "</b>" + "Attacks curse the enemy to take increased magical damage" + "\n" : "") +
             (card.special.spellCursed > 0 ? "<b>" + "Spell Cursed " + card.special.soulEater + ": " + "</b>" + "You take increased magical damage" + "\n" : "") +
             (card.special.spellFeed > 0 ? "<b>" + "Spell Feed " + card.special.spellFeed + ": " + "</b>" + "Gain +" + card.special.spellFeed + "/+" + card.special.spellFeed + " whenever you take magical damage" + "\n" : "") +
+            (card.special.inspiration > 0 ? "<b>" + "Inspiration " + card.special.inspiration + ": " + "</b>" + "Reduce the countdown of the card in your hand with the highest countdown" + "\n" : "") +
+            (card.special.herosBane > 0 ? "<b>" + "Hero's Bane " + card.special.herosBane + ": " + "</b>" + "Deal damage to the enemy hero each turn" + "\n" : "") +
+            (card.special.embered > 0 ? "<b>" + "Embered " + card.special.embered + ": " + "</b>" + "You take magical damage each turn" + "\n" : "") +
 
 
-            (card.special.lifeAura > 0 ? "<b>" + "Life Aura " + card.special.lifeAura + ": " + "</b>" + "Allied units have bonus health" + "\n" : "") +
-            (card.special.regenerationAura > 0 ? "<b>" + "Regeneration Aura " + card.special.regenerationAura + ": " + "</b>" + "Allied units have Regeneration" + "\n" : "") +
-            (card.special.witheringAura > 0 ? "<b>" + "Withering Aura " + card.special.witheringAura + ": " + "</b>" + "Enemy units have decreased health" + "\n" : "") +
+            (card.special.lifeAura > 0 ? "<b>" + "Life Aura " + card.special.lifeAura + ": " + "</b>" + "Allied units get bonus health" + "\n" : "") +
+            (card.special.regenerationAura > 0 ? "<b>" + "Regeneration Aura " + card.special.regenerationAura + ": " + "</b>" + "Allied units get Regeneration" + "\n" : "") +
+            (card.special.witheringAura > 0 ? "<b>" + "Withering Aura " + card.special.witheringAura + ": " + "</b>" + "Enemy units get decreased health" + "\n" : "") +
+            (card.special.rangeAura > 0 ? "<b>" + "Range Aura " + card.special.rangeAura + ": " + "</b>" + "Allied units get bonus range" + "\n" : "") +
 
             (card.special.charge ? "<b>" + "Charge: " + "</b>" + "For each tile moved, deal +1 damage on the next attack" + "\n" : "") +
             (card.special.pierce ? "<b>" + "Pierce: " + "</b>" + "Also deals damage to the enemy behind the target" + "\n" : "") +
-            (card.special.whirlwind ? "<b>" + "Whirlwind: " + "</b>" + "Can attack all adjacent enemies" + "\n" : "") +
+            (card.special.whirlwind ? "<b>" + "Whirlwind: " + "</b>" + "Attack all adjacent enemies" + "\n" : "") +
             (card.special.counterattack ? "<b>" + "Counterattack: " + "</b>" + "Can retaliate if attacked inside its range" + "\n" : "") +
             (card.special.firstStrike ? "<b>" + "First Strike: " + "</b>" + "Can retaliate before being attacked inside its range" + "\n" : "") +
             (card.special.dispel ? "<b>" + "Dispel: " + "</b>" + "Attacking an enemy first reduces their attack and health to their normal values" + "\n" : "") +
@@ -72,12 +76,15 @@ public class SpecialInfo : MonoBehaviour
             (card.special.vengefulCurse ? "<b>" + "Vengeful Curse: " + "</b>" + "Attacking curses the target's next attack to also damage itself" + "\n" : "") +
             (card.special.vengefulCursed ? "<b>" + "Vengeful Cursed: " + "</b>" + "Your next attack also damages yourself" + "\n" : "") +
             (card.special.panicStrike ? "<b>" + "Panic Strike: " + "</b>" + "Attacking the enemy hero causes a random enemy card to gain +1 CD" + "\n" : "") +
+            (card.special.sniper ? "<b>" + "Sniper: " + "</b>" + "Always attack the lowest health enemy in range" + "\n" : "") +
+            (card.special.ember ? "<b>" + "Ember: " + "</b>" + "Attacks burn the target each turn instead of dealing damage immediately. This stacks" + "\n" : "") +
 
             (card.special.kingsCommand ? "<b>" + "King's Command: " + "</b>" + "Summons a Horseman of same rank each turn" + "\n" : "") +
             (card.special.combatMaster ? "<b>" + "Combat Master: " + "</b>" + "Deals double damage to enemies with 4+ Range, 4+ Speed, Armor, Wall or Flying" + "\n" : "") +
             (card.special.callOfTheUndeadKing ? "<b>" + "Call of the Undead King: " + "</b>" + "Whenever an enemy dies, a zombie is summoned in its place" + "\n" : "") +
             (card.special.frostSuit ? "<b>" + "Frost Suit: " + "</b>" + "Upon taking damage, reduced the attacker's speed to 0" + "\n" : "") +
             (card.special.soulHarvest ? "<b>" + "Soul Harvest: " + "</b>" + "Whenever an enemy dies, gain half its Attack and Health" + "\n" : "") +
+            (card.special.multiShot ? "<b>" + "Multishot: " + "</b>" + "Attack all enemy units and heroes inside range" + "\n" : "") +
 
             "";
 

@@ -28,10 +28,14 @@ public class Special : MonoBehaviour
     public int spellCurse = 0;
     public int spellCursed = 0;
     public int spellFeed = 0;
+    public int inspiration = 0;
+    public int herosBane = 0;
+    public int embered = 0;
 
     public int lifeAura = 0;
     public int regenerationAura = 0;
     public int witheringAura = 0;
+    public int rangeAura = 0;
 
     public bool charge = false;
     public bool pierce = false;
@@ -55,12 +59,16 @@ public class Special : MonoBehaviour
     public bool vengefulCurse = false;
     public bool vengefulCursed = false;
     public bool panicStrike = false;
+    public bool sniper = false;
+    public bool ember = false;
+    
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
     public bool callOfTheUndeadKing = false;
     public bool frostSuit = false;
     public bool soulHarvest = false;
+    public bool multiShot = false;
 
 
     public int CheckArmor(Card dealer, Card target, int damage)
@@ -145,8 +153,8 @@ public class Special : MonoBehaviour
 
             if (mostDamage > 0)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.Heal(dealer, mostDamageCard, dealer.special.cure);
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.Heal(dealer, mostDamageCard, dealer.special.cure);
                 return true;
             }
         }
@@ -178,8 +186,8 @@ public class Special : MonoBehaviour
 
             for (int i = 0; i < allies.Count; i++)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.IncreaseHealth(dealer, allies[i], dealer.special.lifeAura);
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseHealth(dealer, allies[i], dealer.special.lifeAura);
             }
         }
     }
@@ -193,8 +201,8 @@ public class Special : MonoBehaviour
         {
             if (allies[i].special.lifeAura > 0)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.IncreaseHealth(allies[i], dealer, allies[i].special.lifeAura);
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseHealth(allies[i], dealer, allies[i].special.lifeAura);
             }
         }
     }
@@ -370,8 +378,8 @@ public class Special : MonoBehaviour
         {
             if (dealer.health < dealer.healthMax)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.Heal(dealer, dealer, dealer.special.regeneration);
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.Heal(dealer, dealer, dealer.special.regeneration);
                 return true;
             }
         }
@@ -430,8 +438,8 @@ public class Special : MonoBehaviour
 
             for (int i = 0; i < allies.Count; i++)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.IncreaseRegeneration(dealer, allies[i], dealer.special.regenerationAura);
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseRegeneration(dealer, allies[i], dealer.special.regenerationAura);
             }
         }
     }
@@ -445,8 +453,8 @@ public class Special : MonoBehaviour
         {
             if (allies[i].special.regenerationAura > 0)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.IncreaseRegeneration(allies[i], dealer, allies[i].special.regenerationAura);
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseRegeneration(allies[i], dealer, allies[i].special.regenerationAura);
             }
         }
     }
@@ -536,8 +544,8 @@ public class Special : MonoBehaviour
         {
             if (dealer.health < dealer.healthMax)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.Heal(dealer, dealer, damage);
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.Heal(dealer, dealer, damage);
             }
         }
     }
@@ -562,8 +570,8 @@ public class Special : MonoBehaviour
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DecreaseHealth(dealer, enemies[i], dealer.special.witheringAura);
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.DecreaseHealth(dealer, enemies[i], dealer.special.witheringAura);
             }
         }
     }
@@ -577,8 +585,8 @@ public class Special : MonoBehaviour
         {
             if (enemies[i].special.witheringAura > 0)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DecreaseHealth(enemies[i], dealer, enemies[i].special.witheringAura);
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.DecreaseHealth(enemies[i], dealer, enemies[i].special.witheringAura);
             }
         }
     }
@@ -709,6 +717,12 @@ public class Special : MonoBehaviour
         {
             UnitAttack unitAttack = new UnitAttack();
             unitAttack.DealDamage(dealer, dealer, dealer.special.immolate, false);
+            damageTaken = true;
+        }
+        if (dealer.special.embered > 0)
+        {
+            UnitAttack unitAttack = new UnitAttack();
+            unitAttack.DealDamage(dealer, dealer, dealer.special.embered, false);
             damageTaken = true;
         }
         return damageTaken;
@@ -849,5 +863,160 @@ public class Special : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool CheckSniper(Card dealer)
+    {
+        if (dealer.special.sniper)
+        {
+            Tile tile = new Tile();
+            List<Card> enemies = tile.GetEnemiesInFront(dealer, dealer.tile, dealer.range);
+            if (enemies.Count > 0)
+            {
+                int lowestHealth = 256;
+                int lowestHealthTile = Bf.SIZE;
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    if (enemies[i].health < lowestHealth)
+                    {
+                        lowestHealth = enemies[i].health;
+                        lowestHealthTile = enemies[i].tile;
+                    }
+                }
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.DealDamage(dealer, Bf.Cards[lowestHealthTile], dealer.attack);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void CheckRangeAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.rangeAura > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseRange(dealer, allies[i], dealer.special.rangeAura);
+            }
+        }
+    }
+
+    public void CheckRangeAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.rangeAura > 0)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseRange(allies[i], dealer, allies[i].special.rangeAura);
+            }
+        }
+    }
+
+    public bool CheckMultiShot(Card dealer)
+    {
+        if (dealer.special.multiShot)
+        {
+            Tile tile = new Tile();
+            List<Card> enemies = tile.GetEnemiesInFront(dealer, dealer.tile, dealer.range);
+            if (enemies.Count > 0)
+            {
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    UnitAttack unitAttack = new UnitAttack();
+                    unitAttack.DealDamage(dealer, enemies[i], dealer.attack);
+                }
+                if (tile.GetDistanceToEnemyHero(dealer, dealer.tile) <= dealer.range)
+                {
+                    Hero hero = new Hero();
+                    if (dealer.alignment == Card.Alignment.Ally)
+                        hero.AttackHero(dealer, Card.Alignment.Enemy);
+                    else
+                        hero.AttackHero(dealer, Card.Alignment.Ally);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void CheckInspiration(Card dealer)
+    {
+        if (dealer.special.inspiration > 0)
+        {
+            int iMin = 0;
+            int iMax = Hand.SIZE;
+            if (dealer.alignment == Card.Alignment.Enemy)
+            {
+                iMin = Hand.SIZE;
+                iMax = Hand.SIZE * 2;
+            }
+
+            for (int j = 0; j < dealer.special.inspiration; j++)
+            {
+                List<Card> occupied = new List<Card>();
+                for (int i = iMin; i < iMax; i++)
+                {
+                    if (Hand.occupied[i])
+                    {
+                        occupied.Add(Hand.Cards[i]);
+                    }
+                }
+
+                if (occupied.Count > 0)
+                {
+                    int highestCD = 0;
+                    int highestCDTile = Hand.SIZE * 2;
+                    for (int i = 0; i < occupied.Count; i++)
+                    {
+                        if (occupied[i].cd > highestCD)
+                        {
+                            highestCD = occupied[i].cd;
+                            highestCDTile = occupied[i].tile;
+                        }
+                    }
+                    if (highestCD > 0)
+                    {
+                        Hand.Cards[highestCDTile].cd -= 1;
+                        if (highestCDTile < Hand.SIZE)
+                        {
+                            dealer.DisplayCard(Hand.Hands[highestCDTile], Hand.Cards[highestCDTile]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public bool CheckHerosBane(Card dealer)
+    {
+        if (dealer.special.herosBane > 0)
+        {
+            Hero hero = new Hero();
+            if (dealer.alignment == Card.Alignment.Ally)
+                hero.DamageHero(dealer, Card.Alignment.Enemy, dealer.special.herosBane);
+            else
+                hero.DamageHero(dealer, Card.Alignment.Ally, dealer.special.herosBane);
+            return true;
+        }
+        return false;
+    }
+
+    public int CheckEmber(Card dealer, Card target, int damage)
+    {
+        if (dealer.special.ember)
+        {
+            target.special.embered += dealer.attack;
+            damage = 0;
+        }
+        return damage;
     }
 }
