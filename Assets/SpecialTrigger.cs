@@ -16,6 +16,12 @@ public class SpecialTrigger : MonoBehaviour
         special.CheckRangeAuraSummon(card);
         special.CheckWitheringAuraBattlecry(card);
         special.CheckWitheringAuraSummon(card);
+        special.CheckBlizzardAuraBattlecry(card);
+        special.CheckBlizzardAuraSummon(card);
+        special.CheckAttackAuraBattlecry(card);
+        special.CheckAttackAuraSummon(card);
+
+        special.CheckReinforcement(card);
     }
 
     public void OnDeath(Card target)
@@ -91,7 +97,6 @@ public class SpecialTrigger : MonoBehaviour
                 special.CheckFear(dealer, target, damage);
             }
         }
-        
 
         return damage;
     }

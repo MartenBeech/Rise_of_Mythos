@@ -294,4 +294,30 @@ public class Tile : MonoBehaviour
             return ((3 + startTile) / 3);
         }
     }
+
+    public int GetDistanceBetweenUnits(Card from, Card to)
+    {
+        return ((Mathf.Abs(from.tile - to.tile) + 2) / 3);
+    }
+
+    public List<int> GetTilesOnSameColumn(Card card)
+    {
+        List<int> tiles = new List<int>();
+        if (card.tile % 3 == 0)
+        {
+            tiles.Add(card.tile + 1);
+            tiles.Add(card.tile + 2);
+        }
+        else if (card.tile % 3 == 1)
+        {
+            tiles.Add(card.tile - 1);
+            tiles.Add(card.tile + 1);
+        }
+        else
+        {
+            tiles.Add(card.tile - 2);
+            tiles.Add(card.tile - 1);
+        }
+        return tiles;
+    }
 }

@@ -36,6 +36,8 @@ public class Special : MonoBehaviour
     public int regenerationAura = 0;
     public int witheringAura = 0;
     public int rangeAura = 0;
+    public int attackAura = 0;
+    public bool blizzardAura = false;
 
     public bool charge = false;
     public bool pierce = false;
@@ -61,7 +63,7 @@ public class Special : MonoBehaviour
     public bool panicStrike = false;
     public bool sniper = false;
     public bool ember = false;
-    
+    public bool nimble = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
@@ -69,6 +71,7 @@ public class Special : MonoBehaviour
     public bool frostSuit = false;
     public bool soulHarvest = false;
     public bool multiShot = false;
+    public bool reinforcement = false;
 
 
     public int CheckArmor(Card dealer, Card target, int damage)
@@ -353,8 +356,12 @@ public class Special : MonoBehaviour
     {
         if (target.special.counterattack)
         {
-            UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(target, dealer, target.attack, true);
+            Tile tile = new Tile();
+            if (tile.GetDistanceBetweenUnits(dealer, target) <= target.range)
+            {
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.DealDamage(target, dealer, target.attack, true);
+            }
         }
     }
 
@@ -362,8 +369,12 @@ public class Special : MonoBehaviour
     {
         if (target.special.firstStrike)
         {
-            UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(target, dealer, target.attack, true);
+            Tile tile = new Tile();
+            if (tile.GetDistanceBetweenUnits(dealer, target) <= target.range)
+            {
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.DealDamage(target, dealer, target.attack, true);
+            }
             if (target.health <= 0)
             {
                 return true;
@@ -556,7 +567,10 @@ public class Special : MonoBehaviour
         {
             if (target.attack > 0)
             {
-                target.attack -= dealer.special.weaken;
+                if (!target.special.nimble)
+                {
+                    target.attack -= dealer.special.weaken;
+                }
             }
         }
     }
@@ -620,7 +634,10 @@ public class Special : MonoBehaviour
         {
             if (target.speed > 1)
             {
-                target.speed = 1;
+                if (!target.special.nimble)
+                {
+                    target.speed = 1;
+                }
             }
         }
     }
@@ -659,7 +676,10 @@ public class Special : MonoBehaviour
     {
         if (target.special.frostSuit)
         {
-            dealer.speed = 0;
+            if (!target.special.nimble)
+            {
+                dealer.speed = 0;
+            }
         }
     }
 
@@ -1018,5 +1038,89 @@ public class Special : MonoBehaviour
             damage = 0;
         }
         return damage;
+    }
+
+    public void CheckBlizzardAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.blizzardAura)
+        {
+            Tile tile = new Tile();
+            List<Card> enemies = tile.GetAllEnemies(dealer);
+
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.DecreaseSpeed(dealer, enemies[i]);
+                unitSpecial.DecreaseRange(dealer, enemies[i]);
+            }
+        }
+    }
+
+    public void CheckBlizzardAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> enemies = tile.GetAllEnemies(dealer);
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i].special.blizzardAura)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.DecreaseSpeed(enemies[i], dealer);
+                unitSpecial.DecreaseRange(enemies[i], dealer);
+            }
+        }
+    }
+
+    public void CheckAttackAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.attackAura > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseAttack(dealer, allies[i], dealer.special.attackAura);
+            }
+        }
+    }
+
+    public void CheckAttackAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.attackAura > 0)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseAttack(allies[i], dealer, allies[i].special.attackAura);
+            }
+        }
+    }
+
+    public void CheckReinforcement(Card dealer)
+    {
+        if (dealer.special.reinforcement)
+        {
+            CardStat cardStat = new CardStat();
+            Card _card; 
+
+            Tile tile = new Tile();
+            List<int> tiles = tile.GetTilesOnSameColumn(dealer);
+
+            for (int i = 0; i < tiles.Count; i++)
+            {
+                if (!Bf.occupied[tiles[i]])
+                {
+                    _card = cardStat.SetStats(dealer.title, dealer.alignment);
+                    AnimaCard animaCard = new AnimaCard();
+                    animaCard.MoveBfBf(_card, dealer.tile, tiles[i], true);
+                }
+            }
+        }
     }
 }

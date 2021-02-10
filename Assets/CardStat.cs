@@ -42,7 +42,7 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 
                 card.alignment = Card.Alignment.Ally;
-                card.special.ember = true;
+                card.special.blizzardAura = true;
                 break;
 
             case Card.Title.Captain:
@@ -54,6 +54,7 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 
                 card.alignment = Card.Alignment.Enemy;
+                card.special.nimble = true;
                 break;
 
             case Card.Title.ZombieSwordsman:

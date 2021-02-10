@@ -27,53 +27,100 @@ public class UnitSpecial : MonoBehaviour
     public void IncreaseHealth(Card dealer, Card target, int amount)
     {
         AnimaText animaText = new AnimaText();
-        animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.green);
+        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + "Health", Hue.cyan);
 
         target.health += amount;
         target.healthMax += amount;
 
         target.DisplayCard(Bf.Bfs[target.tile], target);
 
-        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+    }
+
+    public void IncreaseAttack(Card dealer, Card target, int amount)
+    {
+        AnimaText animaText = new AnimaText();
+        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + "Attack", Hue.cyan);
+
+        target.attack += amount;
+
+        target.DisplayCard(Bf.Bfs[target.tile], target);
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }
 
     public void DecreaseHealth(Card dealer, Card target, int amount)
     {
-        AnimaText animaText = new AnimaText();
-        animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.red);
+        if (!target.special.nimble)
+        {
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], "-" + amount + "Health", Hue.magenta);
 
-        if (target.health > amount)
-            target.health -= amount;
-        else
-            target.health = 1;
+            if (target.health > amount)
+                target.health -= amount;
+            else
+                target.health = 1;
 
-        if (target.healthMax > amount)
-            target.healthMax -= amount;
-        else
-            target.healthMax = 1;
+            if (target.healthMax > amount)
+                target.healthMax -= amount;
+            else
+                target.healthMax = 1;
 
-        target.DisplayCard(Bf.Bfs[target.tile], target);
+            target.DisplayCard(Bf.Bfs[target.tile], target);
 
-        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.magenta;
+        }
     }
 
     public void IncreaseRegeneration(Card dealer, Card target, int amount)
     {
         AnimaText animaText = new AnimaText();
-        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Regen", Hue.green);
+        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Regen", Hue.cyan);
 
         target.special.regeneration += amount;
 
-        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }
 
     public void IncreaseRange(Card dealer, Card target, int amount)
     {
         AnimaText animaText = new AnimaText();
-        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Range", Hue.green);
+        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Range", Hue.cyan);
 
         target.range += amount;
 
-        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+    }
+
+    public void DecreaseSpeed(Card dealer, Card target)
+    {
+        if (!target.special.nimble)
+        {
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], "-Speed", Hue.magenta);
+
+            if (target.speed > 1)
+                target.speed -= 1;
+
+            target.DisplayCard(Bf.Bfs[target.tile], target);
+
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.magenta;
+        }
+    }
+
+    public void DecreaseRange(Card dealer, Card target)
+    {
+        if (!target.special.nimble)
+        {
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], "-Range", Hue.magenta);
+
+            if (target.range > 1)
+                target.range -= 1;
+
+            target.DisplayCard(Bf.Bfs[target.tile], target);
+
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.magenta;
+        }
     }
 }
