@@ -31,6 +31,8 @@ public class Special : MonoBehaviour
     public int inspiration = 0;
     public int herosBane = 0;
     public int embered = 0;
+    public int rallied = 0;
+    public int lightningBolt = 0;
 
     public int lifeAura = 0;
     public int regenerationAura = 0;
@@ -38,6 +40,7 @@ public class Special : MonoBehaviour
     public int rangeAura = 0;
     public int attackAura = 0;
     public bool blizzardAura = false;
+    public int herosBaneAura = 0;
 
     public bool charge = false;
     public bool pierce = false;
@@ -64,6 +67,13 @@ public class Special : MonoBehaviour
     public bool sniper = false;
     public bool ember = false;
     public bool nimble = false;
+    public bool conjure = false;
+    public bool donor = false;
+    public bool stun = false;
+    public bool stunned = false;
+    public bool distraction = false;
+    public bool spear = false;
+    public bool ambush = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
@@ -72,6 +82,7 @@ public class Special : MonoBehaviour
     public bool soulHarvest = false;
     public bool multiShot = false;
     public bool reinforcement = false;
+    public int disdain = 0;
 
 
     public int CheckArmor(Card dealer, Card target, int damage)
@@ -636,7 +647,7 @@ public class Special : MonoBehaviour
             {
                 if (!target.special.nimble)
                 {
-                    target.speed = 1;
+                    target.speed -= 1;
                 }
             }
         }
@@ -1122,5 +1133,163 @@ public class Special : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void CheckConjure(Card dealer)
+    {
+        if (dealer.special.conjure)
+        {
+            Deck deck = new Deck();
+            deck.DrawCard(dealer.alignment);
+        }
+    }
+
+    public void CheckRallied(Card dealer)
+    {
+        if (dealer.special.rallied > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+            dealer.attack += allies.Count * dealer.special.rallied;
+            dealer.health += allies.Count * dealer.special.rallied;
+            dealer.healthMax += allies.Count * dealer.special.rallied;
+
+            dealer.DisplayCard(Bf.Bfs[dealer.tile], dealer);
+        }
+    }
+
+    public void CheckDonor(Card dealer)
+    {
+        if (dealer.special.donor)
+        {
+            Deck deck = new Deck();
+            deck.DrawCard(dealer.alignment);
+        }
+    }
+
+    public bool CheckLightningBolt(Card dealer)
+    {
+        if (dealer.special.lightningBolt > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> enemies = tile.GetAllEnemies(dealer);
+            if (enemies.Count > 0)
+            {
+                Rng rng = new Rng();
+                Card target = enemies[rng.Range(0, enemies.Count)];
+                UnitAttack unitAttack = new UnitAttack();
+                unitAttack.DealDamage(dealer, target, dealer.special.lightningBolt, false);
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void CheckStun(Card dealer, Card target)
+    {
+        if (dealer.special.stun)
+        {
+            target.special.stunned = true;
+            dealer.special.stun = false;
+        }
+    }
+
+    public void CheckHerosBaneAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.herosBaneAura > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseHerosBane(dealer, allies[i], dealer.special.herosBaneAura);
+            }
+        }
+    }
+
+    public void CheckHerosBaneAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.herosBaneAura > 0)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseHerosBane(allies[i], dealer, allies[i].special.herosBaneAura);
+            }
+        }
+    }
+
+    public void CheckDistraction(Card dealer)
+    {
+        if (dealer.special.distraction)
+        {
+            int iMin = 0;
+            int iMax = Hand.SIZE;
+            if (dealer.alignment == Card.Alignment.Ally)
+            {
+                iMin = Hand.SIZE;
+                iMax = Hand.SIZE * 2;
+            }
+
+            List<int> occupied = new List<int>();
+            for (int i = iMin; i < iMax; i++)
+            {
+                if (Hand.occupied[i])
+                {
+                    occupied.Add(i);
+                }
+            }
+
+            if (occupied.Count > 0)
+            {
+                Rng rng = new Rng();
+                int rnd = occupied[rng.Range(0, occupied.Count)];
+                Hand.Cards[rnd].cd += 1;
+
+                if (rnd < Hand.SIZE)
+                {
+                    dealer.DisplayCard(Hand.Hands[rnd], Hand.Cards[rnd]);
+                }
+            }
+        }
+    }
+
+    public int CheckSpear(Card dealer, Card target, int damage)
+    {
+        if (dealer.special.spear)
+        {
+            if (target.speed >= 4)
+            {
+                damage *= 2;
+            }
+        }
+        return damage;
+    }
+
+    public void CheckDisdain(Card dealer, Card target)
+    {
+        if (dealer.special.disdain > 0)
+        {
+            if (target.cdDefault <= dealer.special.disdain)
+            {
+                target.health = 0;
+            }
+        }
+    }
+
+    public int CheckAmbush(Card dealer, int damage)
+    {
+        if (dealer.special.ambush)
+        {
+            dealer.special.ambush = false;
+            damage *= 2;
+        }
+        return damage;
     }
 }

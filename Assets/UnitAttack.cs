@@ -141,6 +141,7 @@ public class UnitAttack : MonoBehaviour
             bf.RemoveCard(target.tile);
 
             trigger.OnDeath(target);
+            trigger.OnKill(dealer);
         }
         else
         {

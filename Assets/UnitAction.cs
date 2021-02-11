@@ -83,12 +83,20 @@ public class UnitAction : MonoBehaviour
     {
         if (units.Count > 0)
         {
-            units[0].bonusAttackNextTurn = 0;
-            units[0].heroicThisTurn = 0;
-            units[0].canAttackThisTurn = true;
-            readyToMove = true;
-            readyToAttack = true;
-            counter = UI.TIMER * 2.04f;
+            if (units[0].special.stunned)
+            {
+                units[0].special.stunned = false;
+                counter = UI.TIMER * 0.02f;
+            }
+            else
+            {
+                units[0].bonusAttackNextTurn = 0;
+                units[0].heroicThisTurn = 0;
+                units[0].canAttackThisTurn = true;
+                readyToMove = true;
+                readyToAttack = true;
+                counter = UI.TIMER * 2.04f;
+            }
         }
 
         else

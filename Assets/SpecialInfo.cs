@@ -68,7 +68,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.reanimate ? "<b>" + "Reanimate: " + "</b>" + "This unit is resummoned the first time it dies" + "\n" : "") +
             (card.special.lifeSteal ? "<b>" + "Life Steal: " + "</b>" + "Restore your health equal to damage dealt" + "\n" : "") +
             (card.special.soulbound ? "<b>" + "Soulbound: " + "</b>" + "This unit is returned to it's owner's hand first time it dies" + "\n" : "") +
-            (card.special.freezing ? "<b>" + "Freezing: " + "</b>" + "Damaged targets have their speed reduced to 1" + "\n" : "") +
+            (card.special.freezing ? "<b>" + "Freezing: " + "</b>" + "Damaged targets have their speed reduced by 1, but not less than 1" + "\n" : "") +
             (card.special.incorporeal ? "<b>" + "Incorporeal: " + "</b>" + "Physical damage you receive is reduced to 1" + "\n" : "") +
             (card.special.fear ? "<b>" + "Fear: " + "</b>" + "First unit attacked returns to it's owner's hand" + "\n" : "") +
             (card.special.skeletal ? "<b>" + "Skeletal: " + "</b>" + "Upon dying, turn into a Bone Heap which reanimates this unit next turn" + "\n" : "") +

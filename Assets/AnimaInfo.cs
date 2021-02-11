@@ -15,7 +15,7 @@ public class AnimaInfo : MonoBehaviour
         SpecialInfo specialInfo = new SpecialInfo();
         prefab.GetComponentInChildren<Text>().text = specialInfo.GetCardInfo(card);
 
-        Vector3 newPos = new Vector3(position.transform.position.x + 3, position.transform.position.y, position.transform.position.z);
+        Vector3 newPos = new Vector3(position.transform.position.x + 3.1f, position.transform.position.y, position.transform.position.z);
 
         prefab = Instantiate(prefab, newPos, new Quaternion(0, 0, 0, 0), parent.transform);
     }

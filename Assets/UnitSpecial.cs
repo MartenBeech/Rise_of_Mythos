@@ -123,4 +123,14 @@ public class UnitSpecial : MonoBehaviour
             Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.magenta;
         }
     }
+
+    public void IncreaseHerosBane(Card dealer, Card target, int amount)
+    {
+        AnimaText animaText = new AnimaText();
+        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Hero's Bane", Hue.cyan);
+
+        target.special.herosBane += amount;
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+    }
 }

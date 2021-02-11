@@ -20,8 +20,12 @@ public class SpecialTrigger : MonoBehaviour
         special.CheckBlizzardAuraSummon(card);
         special.CheckAttackAuraBattlecry(card);
         special.CheckAttackAuraSummon(card);
+        special.CheckHerosBaneAuraBattlecry(card);
+        special.CheckHerosBaneAuraSummon(card);
 
         special.CheckReinforcement(card);
+        special.CheckConjure(card);
+        special.CheckRallied(card);
     }
 
     public void OnDeath(Card target)
@@ -30,12 +34,17 @@ public class SpecialTrigger : MonoBehaviour
         special.CheckSkeletal(target);
         special.CheckReapingCurse(target);
         special.CheckSoulbound(target);
+        special.CheckDonor(target);
         if (!Bf.occupied[target.tile])
         {
             special.CheckCallOfTheUndeadKing(target);
             special.CheckSoulHarvest(target);
-        }
-            
+        } 
+    }
+
+    public void OnKill(Card dealer)
+    {
+        special.CheckDonor(dealer);
     }
 
     public bool OnTurnEnd(Card dealer)
@@ -53,8 +62,11 @@ public class SpecialTrigger : MonoBehaviour
             externalAttackAnimation = true;
         if (special.CheckHerosBane(dealer))
             externalAttackAnimation = true;
+        if (special.CheckLightningBolt(dealer))
+            externalAttackAnimation = true;
 
         special.CheckInspiration(dealer);
+        special.CheckDistraction(dealer);
 
         return externalAttackAnimation;
     }
@@ -69,6 +81,8 @@ public class SpecialTrigger : MonoBehaviour
             damage = special.CheckShadowBolt(dealer, damage);
             damage = special.CheckCombatMaster(dealer, target, damage);
             damage = special.CheckDragonSlayer(dealer, target, damage);
+            damage = special.CheckSpear(dealer, target, damage);
+            damage = special.CheckAmbush(dealer, damage);
             damage = special.CheckEmber(dealer, target, damage);
         }
         damage = special.CheckIncorporeal(dealer, target, damage);
@@ -93,8 +107,10 @@ public class SpecialTrigger : MonoBehaviour
                 special.CheckVengefulCurse(dealer, target);
                 special.CheckVengefulCursed(dealer);
                 special.CheckSpellCurse(dealer, target);
+                special.CheckStun(dealer, target);
 
                 special.CheckFear(dealer, target, damage);
+                special.CheckDisdain(dealer, target);
             }
         }
 

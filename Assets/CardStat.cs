@@ -35,14 +35,15 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.Paladin:
                 card.race = Card.Race.Human;
-                card.attack = 1;
+                card.attack = 5;
                 card.health = 50;
                 card.cd = 0;
                 card.range = 2;
                 card.speed = 2;
                 
                 card.alignment = Card.Alignment.Ally;
-                card.special.blizzardAura = true;
+                card.special.ambush = true;
+                card.special.vigilance = true;
                 break;
 
             case Card.Title.Captain:
@@ -54,7 +55,6 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 
                 card.alignment = Card.Alignment.Enemy;
-                card.special.nimble = true;
                 break;
 
             case Card.Title.ZombieSwordsman:
