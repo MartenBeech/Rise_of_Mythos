@@ -10,7 +10,6 @@ public class Special : MonoBehaviour
 
     public bool vigilance = false;
     public bool penetrate = false;
-    public bool magical = false;
 
     public int armor = 0;
     public int resistance = 0;
@@ -31,8 +30,12 @@ public class Special : MonoBehaviour
     public int inspiration = 0;
     public int herosBane = 0;
     public int embered = 0;
-    public int rallied = 0;
     public int lightningBolt = 0;
+    public int rage = 0;
+    public int carnivore = 0;
+    public int bloodPrice = 0;
+    public int maim = 0;
+    public int maimed = 0;
 
     public int lifeAura = 0;
     public int regenerationAura = 0;
@@ -41,6 +44,8 @@ public class Special : MonoBehaviour
     public int attackAura = 0;
     public bool blizzardAura = false;
     public int herosBaneAura = 0;
+    public bool penetrateAura = false;
+    public int poisonAura = 0;
 
     public bool charge = false;
     public bool pierce = false;
@@ -74,6 +79,8 @@ public class Special : MonoBehaviour
     public bool distraction = false;
     public bool spear = false;
     public bool ambush = false;
+    public bool crushArmor = false;
+    public bool cleave = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
@@ -83,13 +90,14 @@ public class Special : MonoBehaviour
     public bool multiShot = false;
     public bool reinforcement = false;
     public int disdain = 0;
+    public bool cheif = false;
 
 
-    public int CheckArmor(Card dealer, Card target, int damage)
+    public int CheckArmor(Card dealer, Card target, int damage, Card.DamageType damageType)
     {
         if (target.special.armor > 0)
         {
-            if (!dealer.special.penetrate && !dealer.special.magical)
+            if (damageType == Card.DamageType.Physical && !dealer.special.penetrate)
             {
                 damage -= target.special.armor;
             }
@@ -100,11 +108,11 @@ public class Special : MonoBehaviour
         return damage;
     }
 
-    public int CheckResistance(Card dealer, Card target, int damage)
+    public int CheckResistance(Card dealer, Card target, int damage, Card.DamageType damageType)
     {
         if (target.special.resistance > 0)
         {
-            if (dealer.special.magical && !dealer.special.penetrate)
+            if (damageType == Card.DamageType.Magical && !dealer.special.penetrate)
             {
                 damage -= target.special.resistance;
             }
@@ -139,7 +147,7 @@ public class Special : MonoBehaviour
                 for (int i = 0; i < dealer.special.multistrike + 1; i++)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, enemies[0], dealer.attack, true);
+                    unitAttack.DealDamage(dealer, enemies[0], dealer.attack, dealer.damageType, true);
                 }
                 return true;
             }
@@ -323,7 +331,7 @@ public class Special : MonoBehaviour
                 if (Bf.Cards[tileCheck].alignment != dealer.alignment)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack, true);
+                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack, dealer.damageType, true);
                 }
             }
         }
@@ -343,7 +351,7 @@ public class Special : MonoBehaviour
                     for (int j = 0; j < dealer.special.multistrike + 1; j++)
                     {
                         UnitAttack unitAttack = new UnitAttack();
-                        unitAttack.DealDamage(dealer, enemies[i], dealer.attack, true);
+                        unitAttack.DealDamage(dealer, enemies[i], dealer.attack, dealer.damageType, true);
                     }
                 }
 
@@ -371,7 +379,7 @@ public class Special : MonoBehaviour
             if (tile.GetDistanceBetweenUnits(dealer, target) <= target.range)
             {
                 UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(target, dealer, target.attack, true);
+                unitAttack.DealDamage(target, dealer, target.attack, target.damageType, true);
             }
         }
     }
@@ -384,7 +392,7 @@ public class Special : MonoBehaviour
             if (tile.GetDistanceBetweenUnits(dealer, target) <= target.range)
             {
                 UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(target, dealer, target.attack, true);
+                unitAttack.DealDamage(target, dealer, target.attack, target.damageType, true);
             }
             if (target.health <= 0)
             {
@@ -653,11 +661,11 @@ public class Special : MonoBehaviour
         }
     }
 
-    public int CheckIncorporeal(Card dealer, Card target, int damage)
+    public int CheckIncorporeal(Card dealer, Card target, int damage, Card.DamageType damageType)
     {
         if (target.special.incorporeal)
         {
-            if (!dealer.special.penetrate && !dealer.special.magical)
+            if (damageType == Card.DamageType.Physical && !dealer.special.penetrate)
             {
                 if (damage > 1)
                 {
@@ -741,19 +749,19 @@ public class Special : MonoBehaviour
         if (dealer.special.poisoned > 0)
         {
             UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(dealer, dealer, dealer.special.poisoned, false);
+            unitAttack.DealDamage(dealer, dealer, dealer.special.poisoned, Card.DamageType.Magical, false);
             damageTaken = true;
         }
         if (dealer.special.immolate > 0)
         {
             UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(dealer, dealer, dealer.special.immolate, false);
+            unitAttack.DealDamage(dealer, dealer, dealer.special.immolate, Card.DamageType.Magical, false);
             damageTaken = true;
         }
         if (dealer.special.embered > 0)
         {
             UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(dealer, dealer, dealer.special.embered, false);
+            unitAttack.DealDamage(dealer, dealer, dealer.special.embered, Card.DamageType.Magical, false);
             damageTaken = true;
         }
         return damageTaken;
@@ -766,11 +774,11 @@ public class Special : MonoBehaviour
             Hero hero = new Hero();
             if (target.alignment == Card.Alignment.Ally)
             {
-                hero.DamageHero(target, Card.Alignment.Enemy, target.special.reapingCurse);
+                hero.DealDamage(target, Card.Alignment.Enemy, target.special.reapingCurse);
             }
             else
             {
-                hero.DamageHero(target, Card.Alignment.Ally, target.special.reapingCurse);
+                hero.DealDamage(target, Card.Alignment.Ally, target.special.reapingCurse);
             }
         }
     }
@@ -789,7 +797,7 @@ public class Special : MonoBehaviour
         {
             dealer.special.vengefulCursed = false;
             UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(dealer, dealer, dealer.attack, false);
+            unitAttack.DealDamage(dealer, dealer, dealer.attack, Card.DamageType.Magical, false);
         }
     }
 
@@ -835,11 +843,11 @@ public class Special : MonoBehaviour
         }
     }
 
-    public int CheckSpellCursed(Card dealer, Card target, int damage)
+    public int CheckSpellCursed(Card dealer, Card target, int damage, Card.DamageType damageType)
     {
         if (target.special.spellCursed > 0)
         {
-            if (dealer.special.magical && !dealer.special.penetrate)
+            if (damageType == Card.DamageType.Magical)
             {
                 damage += target.special.spellCursed;
             }
@@ -848,11 +856,11 @@ public class Special : MonoBehaviour
         return damage;
     }
 
-    public void CheckSpellFeed(Card dealer, Card target)
+    public void CheckSpellFeed(Card dealer, Card target, Card.DamageType damageType)
     {
         if (target.special.spellFeed > 0)
         {
-            if (dealer.special.magical && !dealer.special.penetrate)
+            if (damageType == Card.DamageType.Magical && !dealer.special.penetrate)
             {
                 target.attack += target.special.spellFeed;
                 target.healthMax += target.special.spellFeed;
@@ -915,7 +923,7 @@ public class Special : MonoBehaviour
                     }
                 }
                 UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(dealer, Bf.Cards[lowestHealthTile], dealer.attack);
+                unitAttack.DealDamage(dealer, Bf.Cards[lowestHealthTile], dealer.attack, dealer.damageType);
                 return true;
             }
         }
@@ -963,7 +971,7 @@ public class Special : MonoBehaviour
                 for (int i = 0; i < enemies.Count; i++)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, enemies[i], dealer.attack);
+                    unitAttack.DealDamage(dealer, enemies[i], dealer.attack, dealer.damageType);
                 }
                 if (tile.GetDistanceToEnemyHero(dealer, dealer.tile) <= dealer.range)
                 {
@@ -1033,9 +1041,9 @@ public class Special : MonoBehaviour
         {
             Hero hero = new Hero();
             if (dealer.alignment == Card.Alignment.Ally)
-                hero.DamageHero(dealer, Card.Alignment.Enemy, dealer.special.herosBane);
+                hero.DealDamage(dealer, Card.Alignment.Enemy, dealer.special.herosBane);
             else
-                hero.DamageHero(dealer, Card.Alignment.Ally, dealer.special.herosBane);
+                hero.DealDamage(dealer, Card.Alignment.Ally, dealer.special.herosBane);
             return true;
         }
         return false;
@@ -1144,15 +1152,15 @@ public class Special : MonoBehaviour
         }
     }
 
-    public void CheckRallied(Card dealer)
+    public void CheckCheif(Card dealer)
     {
-        if (dealer.special.rallied > 0)
+        if (dealer.special.cheif)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
-            dealer.attack += allies.Count * dealer.special.rallied;
-            dealer.health += allies.Count * dealer.special.rallied;
-            dealer.healthMax += allies.Count * dealer.special.rallied;
+            dealer.attack += allies.Count * 1;
+            dealer.health += allies.Count * 3;
+            dealer.healthMax += allies.Count * 3;
 
             dealer.DisplayCard(Bf.Bfs[dealer.tile], dealer);
         }
@@ -1178,7 +1186,7 @@ public class Special : MonoBehaviour
                 Rng rng = new Rng();
                 Card target = enemies[rng.Range(0, enemies.Count)];
                 UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(dealer, target, dealer.special.lightningBolt, false);
+                unitAttack.DealDamage(dealer, target, dealer.special.lightningBolt, Card.DamageType.Magical, false);
 
                 return true;
             }
@@ -1291,5 +1299,145 @@ public class Special : MonoBehaviour
             damage *= 2;
         }
         return damage;
+    }
+
+    public void CheckRage(Card target)
+    {
+        if (target.special.rage > 0)
+        {
+            target.attack += target.special.rage;
+        }
+    }
+
+    public void CheckCarnivore(Card dealer)
+    {
+        if (dealer.special.carnivore > 0)
+        {
+            dealer.healthMax += dealer.special.carnivore;
+            dealer.health += dealer.special.carnivore;
+        }
+    }
+
+    public bool CheckBloodPrice(Card dealer)
+    {
+        if (dealer.special.bloodPrice > 0)
+        {
+            Hero hero = new Hero();
+            hero.DealDamage(dealer, dealer.alignment, dealer.special.bloodPrice);
+            return true;
+        }
+        return false;
+    }
+
+    public void CheckMaim(Card dealer, Card target)
+    {
+        if (dealer.special.maim > 0)
+        {
+            if (target.special.maimed < dealer.special.maim)
+            {
+                target.special.maimed = dealer.special.maim;
+            }
+        }
+    }
+
+    public int CheckMaimed(Card dealer, Card target, int damage, Card.DamageType damageType)
+    {
+        if (target.special.maimed > 0)
+        {
+            if (damageType == Card.DamageType.Physical)
+            {
+                damage += target.special.maimed;
+            }
+        }
+        return damage;
+    }
+
+    public int CheckCrushArmor(Card dealer, Card target, int damage)
+    {
+        if (dealer.special.crushArmor)
+        {
+            if (target.special.armor > 0 || target.special.resistance > 0)
+            {
+                damage *= 2;
+            }
+        }
+        return damage;
+    }
+
+    public void CheckPenetrateAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.penetrateAura)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreasePenetrate(dealer, allies[i]);
+            }
+        }
+    }
+
+    public void CheckPenetrateAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.penetrateAura)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreasePenetrate(allies[i], dealer);
+            }
+        }
+    }
+
+    public void CheckCleave(Card dealer, Card target)
+    {
+        if (dealer.special.cleave)
+        {
+            Tile tile = new Tile();
+            List<int> tiles = tile.GetTilesOnSameColumn(target);
+            for (int i = 0; i < tiles.Count; i++)
+            {
+                if (Bf.occupied[tiles[i]])
+                {
+                    UnitAttack unitAttack = new UnitAttack();
+                    unitAttack.DealDamage(dealer, Bf.Cards[tiles[i]], dealer.attack, dealer.damageType, false);
+                }
+            }
+        }
+    }
+
+    public void CheckPoisonAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.poisonAura > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreasePoison(dealer, allies[i], dealer.special.poisonAura);
+            }
+        }
+    }
+
+    public void CheckPoisonAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.poisonAura > 0)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreasePoison(allies[i], dealer, allies[i].special.poisonAura);
+            }
+        }
     }
 }

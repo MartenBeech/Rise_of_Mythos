@@ -31,11 +31,11 @@ public class Hero : MonoBehaviour
         for (int i = 0; i < dealer.special.multistrike + 1; i++)
         {
             special.CheckPanicStrike(dealer);
-            DamageHero(dealer, alignment, damage);
+            DealDamage(dealer, alignment, damage);
         }
     }
 
-    public void DamageHero(Card dealer, Card.Alignment alignment, int damage)
+    public void DealDamage(Card dealer, Card.Alignment alignment, int damage)
     {
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
 

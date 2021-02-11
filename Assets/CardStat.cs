@@ -18,6 +18,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 0;
                 card.range = 2;
                 card.speed = 2;
+                card.damageType = Card.DamageType.Physical;
 
                 card.alignment = alignment;
                 break;
@@ -29,6 +30,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 0;
                 card.range = 0;
                 card.speed = 0;
+                card.damageType = Card.DamageType.Physical;
 
                 card.special.boneHeap = true;
                 break;
@@ -40,10 +42,11 @@ public class CardStat : MonoBehaviour
                 card.cd = 0;
                 card.range = 2;
                 card.speed = 2;
-                
+                card.damageType = Card.DamageType.Physical;
+
                 card.alignment = Card.Alignment.Ally;
-                card.special.ambush = true;
-                card.special.vigilance = true;
+                card.special.poison = 2;
+                card.special.counterattack = true;
                 break;
 
             case Card.Title.Captain:
@@ -53,8 +56,10 @@ public class CardStat : MonoBehaviour
                 card.cd = 0;
                 card.range = 2;
                 card.speed = 2;
-                
+                card.damageType = Card.DamageType.Physical;
+
                 card.alignment = Card.Alignment.Enemy;
+                card.special.armor = 1;
                 break;
 
             case Card.Title.ZombieSwordsman:
@@ -64,6 +69,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 0;
                 card.range = 2;
                 card.speed = 2;
+                card.damageType = Card.DamageType.Physical;
 
                 card.alignment = Card.Alignment.Ally;
                 break;

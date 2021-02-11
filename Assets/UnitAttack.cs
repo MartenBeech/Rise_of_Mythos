@@ -102,7 +102,7 @@ public class UnitAttack : MonoBehaviour
                     special.CheckFirstStrike(dealer, target);
                     if (Bf.occupied[dealer.tile])
                     {
-                        DealDamage(dealer, target, dealer.attack);
+                        DealDamage(dealer, target, dealer.attack, dealer.damageType);
                         special.CheckPierce(dealer, target);
                         if (Bf.occupied[target.tile])
                         {
@@ -117,12 +117,12 @@ public class UnitAttack : MonoBehaviour
         return false;
     }
 
-    public void DealDamage(Card dealer, Card target, int damage, bool basicAttack = true)
+    public void DealDamage(Card dealer, Card target, int damage, Card.DamageType damageType, bool basicAttack = true)
     {
         damage += dealer.bonusAttackNextTurn;
 
         SpecialTrigger trigger = new SpecialTrigger();
-        damage = trigger.OnDamageDealt(dealer, target, damage, basicAttack);
+        damage = trigger.OnDamageDealt(dealer, target, damage, damageType, basicAttack);
 
         if (damage >= 0)
         {

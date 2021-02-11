@@ -22,10 +22,14 @@ public class SpecialTrigger : MonoBehaviour
         special.CheckAttackAuraSummon(card);
         special.CheckHerosBaneAuraBattlecry(card);
         special.CheckHerosBaneAuraSummon(card);
+        special.CheckPenetrateAuraBattlecry(card);
+        special.CheckPenetrateAuraSummon(card);
+        special.CheckPoisonAuraBattlecry(card);
+        special.CheckPoisonAuraSummon(card);
 
         special.CheckReinforcement(card);
         special.CheckConjure(card);
-        special.CheckRallied(card);
+        special.CheckCheif(card);
     }
 
     public void OnDeath(Card target)
@@ -44,7 +48,7 @@ public class SpecialTrigger : MonoBehaviour
 
     public void OnKill(Card dealer)
     {
-        special.CheckDonor(dealer);
+        special.CheckCarnivore(dealer);
     }
 
     public bool OnTurnEnd(Card dealer)
@@ -64,6 +68,8 @@ public class SpecialTrigger : MonoBehaviour
             externalAttackAnimation = true;
         if (special.CheckLightningBolt(dealer))
             externalAttackAnimation = true;
+        if (special.CheckBloodPrice(dealer))
+            externalAttackAnimation = true;
 
         special.CheckInspiration(dealer);
         special.CheckDistraction(dealer);
@@ -71,11 +77,12 @@ public class SpecialTrigger : MonoBehaviour
         return externalAttackAnimation;
     }
 
-    public int OnDamageDealt(Card dealer, Card target, int damage, bool basicAttack = true)
+    public int OnDamageDealt(Card dealer, Card target, int damage, Card.DamageType damageType, bool basicAttack = true)
     {
-        damage = special.CheckArmor(dealer, target, damage);
-        damage = special.CheckSpellCursed(dealer, target, damage);
-        damage = special.CheckResistance(dealer, target, damage);
+        damage = special.CheckMaimed(dealer, target, damage, damageType);
+        damage = special.CheckArmor(dealer, target, damage, damageType);
+        damage = special.CheckSpellCursed(dealer, target, damage, damageType);
+        damage = special.CheckResistance(dealer, target, damage, damageType);
         if (basicAttack)
         {
             damage = special.CheckShadowBolt(dealer, damage);
@@ -83,18 +90,22 @@ public class SpecialTrigger : MonoBehaviour
             damage = special.CheckDragonSlayer(dealer, target, damage);
             damage = special.CheckSpear(dealer, target, damage);
             damage = special.CheckAmbush(dealer, damage);
+            damage = special.CheckCrushArmor(dealer, target, damage);
+
             damage = special.CheckEmber(dealer, target, damage);
         }
-        damage = special.CheckIncorporeal(dealer, target, damage);
+        damage = special.CheckIncorporeal(dealer, target, damage, damageType);
 
         if (basicAttack)
         {
             special.CheckDispel(dealer, target);
+            special.CheckCleave(dealer, target);
         }
 
         if (damage > 0)
         {
-            special.CheckSpellFeed(dealer, target);
+            special.CheckSpellFeed(dealer, target, damageType);
+            special.CheckRage(target);
 
             if (basicAttack)
             {
@@ -107,6 +118,7 @@ public class SpecialTrigger : MonoBehaviour
                 special.CheckVengefulCurse(dealer, target);
                 special.CheckVengefulCursed(dealer);
                 special.CheckSpellCurse(dealer, target);
+                special.CheckMaim(dealer, target);
                 special.CheckStun(dealer, target);
 
                 special.CheckFear(dealer, target, damage);

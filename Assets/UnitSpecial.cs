@@ -133,4 +133,24 @@ public class UnitSpecial : MonoBehaviour
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }
+
+    public void IncreasePenetrate(Card dealer, Card target)
+    {
+        AnimaText animaText = new AnimaText();
+        animaText.ShowText(Bf.Bfs[target.tile], "Penetrate", Hue.cyan);
+
+        target.special.penetrate = true;
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+    }
+
+    public void IncreasePoison(Card dealer, Card target, int amount)
+    {
+        AnimaText animaText = new AnimaText();
+        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Poison", Hue.cyan);
+
+        target.special.poison += amount;
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+    }
 }

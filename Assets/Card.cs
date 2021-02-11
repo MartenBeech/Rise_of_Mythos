@@ -25,6 +25,12 @@ public class Card : MonoBehaviour
     }
     public Race race;
 
+    public enum DamageType
+    {
+        Physical, Magical, True
+    }
+    public DamageType damageType;
+
     public int attack,      attackDefault;
     public int health,      healthDefault;
     public int healthMax,   healthMaxDefault;
