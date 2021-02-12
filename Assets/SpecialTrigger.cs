@@ -105,6 +105,7 @@ public class SpecialTrigger : MonoBehaviour
         if (damage > 0)
         {
             special.CheckSpellFeed(dealer, target, damageType);
+            special.CheckBattleSpirit(dealer, target, damageType);
             special.CheckRage(target);
 
             if (basicAttack)
@@ -120,9 +121,11 @@ public class SpecialTrigger : MonoBehaviour
                 special.CheckSpellCurse(dealer, target);
                 special.CheckMaim(dealer, target);
                 special.CheckStun(dealer, target);
+                special.CheckCharm(dealer, target);
 
                 special.CheckFear(dealer, target, damage);
                 special.CheckDisdain(dealer, target);
+                special.CheckKrush(dealer, target);
             }
         }
 

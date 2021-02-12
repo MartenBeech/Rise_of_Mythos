@@ -35,7 +35,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.multistrike > 0 ? "<b>" + "Multistrike " + card.special.multistrike + ": " + "</b>" + "Attacks hit additional times" + "\n" : "") +
             (card.special.weaken > 0 ? "<b>" + "Weaken " + card.special.weaken + ": " + "</b>" + "Attacks reduce the target's attack value" + "\n" : "") +
             (card.special.shadowBolt > 0 ? "<b>" + "Shadow Bolt " + card.special.shadowBolt + ": " + "</b>" + "Attacks deal 0-" + card.special.shadowBolt + "00% damage" + "\n" : "") +
-            (card.special.poison > 0 ? "<b>" + "Poison " + card.special.poison + ": " + "</b>" + "Attacks causes the target to take damage each turn" + "\n" : "") +
+            (card.special.poison > 0 ? "<b>" + "Poison " + card.special.poison + ": " + "</b>" + "Attacks causes the target to take magical damage each turn" + "\n" : "") +
             (card.special.poisoned > 0 ? "<b>" + "Poisoned " + card.special.poisoned + ": " + "</b>" + "You take magical damage each turn" + "\n" : "") +
             (card.special.immolate > 0 ? "<b>" + "Immolate " + card.special.immolate + ": " + "</b>" + "You take magical damage each turn" + "\n" : "") +
             (card.special.reapingCurse > 0 ? "<b>" + "Reaping Curse " + card.special.reapingCurse + ": " + "</b>" + "Upon dying, deal damage to the enemy hero" + "\n" : "") +
@@ -45,7 +45,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.spellFeed > 0 ? "<b>" + "Spell Feed " + card.special.spellFeed + ": " + "</b>" + "Gain +" + card.special.spellFeed + "/+" + card.special.spellFeed + " whenever you take magical damage" + "\n" : "") +
             (card.special.inspiration > 0 ? "<b>" + "Inspiration " + card.special.inspiration + ": " + "</b>" + "Reduce the countdown of the card in your hand with the highest countdown" + "\n" : "") +
             (card.special.herosBane > 0 ? "<b>" + "Hero's Bane " + card.special.herosBane + ": " + "</b>" + "Deal damage to the enemy hero each turn" + "\n" : "") +
-            (card.special.embered > 0 ? "<b>" + "Embered " + card.special.embered + ": " + "</b>" + "You take magical damage each turn" + "\n" : "") +
+            (card.special.embered > 0 ? "<b>" + "Embered " + card.special.embered + ": " + "</b>" + "You take magical damage next turn" + "\n" : "") +
             (card.special.lightningBolt > 0 ? "<b>" + "Lightning Bolt " + card.special.lightningBolt + ": " + "</b>" + "Deal damage to a random enemy unit each turn" + "\n" : "") +
             (card.special.rage > 0 ? "<b>" + "Rage " + card.special.rage + ": " + "</b>" + "Gain attack whenever you take damage" + "\n" : "") +
             (card.special.carnivore > 0 ? "<b>" + "Carnivore " + card.special.carnivore + ": " + "</b>" + "Gain health whenever you kill a unit" + "\n" : "") +
@@ -87,7 +87,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.vengefulCursed ? "<b>" + "Vengeful Cursed: " + "</b>" + "Your next attack also damages yourself" + "\n" : "") +
             (card.special.panicStrike ? "<b>" + "Panic Strike: " + "</b>" + "Attacking the enemy hero causes a random enemy card to gain +1 CD" + "\n" : "") +
             (card.special.sniper ? "<b>" + "Sniper: " + "</b>" + "Always attack the lowest health enemy in range" + "\n" : "") +
-            (card.special.ember ? "<b>" + "Ember: " + "</b>" + "Attacks burn the target each turn instead of dealing damage immediately. This stacks" + "\n" : "") +
+            (card.special.ember ? "<b>" + "Ember: " + "</b>" + "Attacks deal magical damage next turn instead of immediately" + "\n" : "") +
             (card.special.nimble ? "<b>" + "Nimble: " + "</b>" + "Your core stats cannot be reduced" + "\n" : "") +
             (card.special.conjure ? "<b>" + "Conjure: " + "</b>" + "Draw a card when summoned" + "\n" : "") +
             (card.special.donor ? "<b>" + "Donor: " + "</b>" + "Draw a card upon death" + "\n" : "") +

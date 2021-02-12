@@ -40,13 +40,12 @@ public class CardStat : MonoBehaviour
                 card.attack = 5;
                 card.health = 50;
                 card.cd = 0;
-                card.range = 2;
+                card.range = 1;
                 card.speed = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 card.alignment = Card.Alignment.Ally;
-                card.special.poison = 2;
-                card.special.counterattack = true;
+                card.special.firstStrike = true;
                 break;
 
             case Card.Title.Captain:
@@ -59,7 +58,8 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
 
                 card.alignment = Card.Alignment.Enemy;
-                card.special.armor = 1;
+                card.special.resistance = 1;
+                card.special.battleSpirit = 1;
                 break;
 
             case Card.Title.ZombieSwordsman:

@@ -36,6 +36,7 @@ public class Special : MonoBehaviour
     public int bloodPrice = 0;
     public int maim = 0;
     public int maimed = 0;
+    public int battleSpirit = 0;
 
     public int lifeAura = 0;
     public int regenerationAura = 0;
@@ -81,6 +82,7 @@ public class Special : MonoBehaviour
     public bool ambush = false;
     public bool crushArmor = false;
     public bool cleave = false;
+    public bool charm = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
@@ -91,6 +93,7 @@ public class Special : MonoBehaviour
     public bool reinforcement = false;
     public int disdain = 0;
     public bool cheif = false;
+    public bool krush = false;
 
 
     public int CheckArmor(Card dealer, Card target, int damage, Card.DamageType damageType)
@@ -762,6 +765,7 @@ public class Special : MonoBehaviour
         {
             UnitAttack unitAttack = new UnitAttack();
             unitAttack.DealDamage(dealer, dealer, dealer.special.embered, Card.DamageType.Magical, false);
+            dealer.special.embered = 0;
             damageTaken = true;
         }
         return damageTaken;
@@ -860,7 +864,7 @@ public class Special : MonoBehaviour
     {
         if (target.special.spellFeed > 0)
         {
-            if (damageType == Card.DamageType.Magical && !dealer.special.penetrate)
+            if (damageType == Card.DamageType.Magical)
             {
                 target.attack += target.special.spellFeed;
                 target.healthMax += target.special.spellFeed;
@@ -1437,6 +1441,43 @@ public class Special : MonoBehaviour
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
                 unitSpecial.IncreasePoison(allies[i], dealer, allies[i].special.poisonAura);
+            }
+        }
+    }
+
+    public void CheckCharm(Card dealer, Card target)
+    {
+        if (dealer.special.charm)
+        {
+            if (target.cd <= 3)
+            {
+                if (target.alignment == Card.Alignment.Ally)
+                    target.alignment = Card.Alignment.Enemy;
+                else
+                    target.alignment = Card.Alignment.Ally;
+                dealer.special.charm = false;
+            }
+        }
+    }
+
+    public void CheckKrush(Card dealer, Card target)
+    {
+        if (dealer.special.krush)
+        {
+            target.health = 0;
+            dealer.special.krush = false;
+        }
+    }
+
+    public void CheckBattleSpirit(Card dealer, Card target, Card.DamageType damageType)
+    {
+        if (target.special.battleSpirit > 0)
+        {
+            if (damageType == Card.DamageType.Physical)
+            {
+                target.attack += target.special.battleSpirit;
+                target.healthMax += target.special.battleSpirit;
+                target.health += target.special.battleSpirit;
             }
         }
     }
