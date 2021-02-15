@@ -72,12 +72,13 @@
     <Compile Include="Assets\Tile.cs" />
     <Compile Include="Assets\Bf.cs" />
     <Compile Include="Assets\UnitAttack.cs" />
+    <Compile Include="Assets\UnitSpecial.cs" />
     <Compile Include="Assets\Turn.cs" />
     <Compile Include="Assets\CardStat.cs" />
     <Compile Include="Assets\SpecialTrigger.cs" />
     <Compile Include="Assets\AnimaCard.cs" />
     <Compile Include="Assets\Hero.cs" />
-    <Compile Include="Assets\UnitSpecial.cs" />
+    <Compile Include="Assets\EnemyTurn.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

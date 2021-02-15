@@ -32,5 +32,12 @@ public class Turn : MonoBehaviour
                 hand.ReduceCD(i);
             }
         }
+
+        if (alignment == Card.Alignment.Enemy)
+        {
+            EnemyTurn enemyTurn = new EnemyTurn();
+            EnemyTurn.cardRunThrough = Hand.SIZE;
+            enemyTurn.PlayHand();
+        }
     }
 }

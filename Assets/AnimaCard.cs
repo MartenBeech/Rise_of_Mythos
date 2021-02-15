@@ -98,6 +98,18 @@ public class AnimaCard : MonoBehaviour
         _card.readyToAttack = true;
     }
 
+    public void MoveEnemyBf(Card _card, int _from, int _to)
+    {
+        newlySummoned = true;
+        MoveCard(_card, Hero.Heroes[1], Bf.Bfs[_to]);
+        Bf.occupied[_to] = true;
+        Bf.Cards[_to] = _card;
+        Hand hand = new Hand();
+        hand.RemoveCard(_from);
+        _card.tile = _to;
+        _card.readyToAttack = false;
+    }
+
     public void MoveCard(Card _card, GameObject _from, GameObject _to)
     {
         prefab = Resources.Load<GameObject>("Assets/Card");
@@ -107,6 +119,7 @@ public class AnimaCard : MonoBehaviour
         endSet = _to;
 
         prefab.GetComponentInChildren<Image>().sprite = _card.sprite;
+        prefab.GetComponentInChildren<Image>().color = _from.GetComponentInChildren<Image>().color;
         _card.DisplayCard(prefab, _card);
 
         prefab = Instantiate(prefab, startSet.transform.position, new Quaternion(0, 0, 0, 0), parent.transform);

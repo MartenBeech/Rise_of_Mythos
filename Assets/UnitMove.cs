@@ -12,12 +12,11 @@ public class UnitMove : MonoBehaviour
 
         Special special = new Special();
         if (special.CheckVililanceMove(dealer)) { }
-
         else
         {
-            if (dealer.alignment == Card.Alignment.Ally)
+            for (int i = 0; i < dealer.speed; i++)
             {
-                for (int i = 0; i < dealer.speed; i++)
+                if (!Bf.occupied[tileCheck] || tileCheck == dealer.tile)
                 {
                     if (dealer.range >= 4)
                     {
@@ -31,68 +30,42 @@ public class UnitMove : MonoBehaviour
                             break;
                         }
                     }
+                }
+
+                if (dealer.alignment == Card.Alignment.Ally)
+                {
                     tileCheck += 3;
                     if (tileCheck >= Bf.SIZE)
                     {
                         break;
                     }
-
-                    if (!Bf.occupied[tileCheck])
-                    {
-                        tileNew = tileCheck;
-                    }
-                    else
-                    {
-                        Card target = Bf.Cards[tileCheck];
-                        if (target.alignment != dealer.alignment)
-                        {
-                            if (!dealer.special.flying || target.special.flying)
-                            {
-                                break;
-                            }
-                        }
-                    }
                 }
-            }
-            else
-            {
-                for (int i = 0; i < dealer.speed; i++)
+                else
                 {
-                    if (dealer.range >= 4)
-                    {
-                        Tile tile = new Tile();
-                        if (tile.GetEnemiesInFront(dealer, tileCheck, dealer.range).Count > 0)
-                        {
-                            break;
-                        }
-                        if (tile.GetDistanceToEnemyHero(dealer, tileCheck) <= dealer.range)
-                        {
-                            break;
-                        }
-                    }
                     tileCheck -= 3;
                     if (tileCheck < 0)
                     {
                         break;
                     }
+                }
 
-                    if (!Bf.occupied[tileCheck])
+                if (!Bf.occupied[tileCheck])
+                {
+                    tileNew = tileCheck;
+                }
+                else
+                {
+                    Card target = Bf.Cards[tileCheck];
+                    if (target.alignment != dealer.alignment)
                     {
-                        tileNew = tileCheck;
-                    }
-                    else
-                    {
-                        Card target = Bf.Cards[tileCheck];
-                        if (target.alignment != dealer.alignment)
+                        if (!dealer.special.flying || target.special.flying)
                         {
-                            if (!dealer.special.flying || target.special.flying)
-                            {
-                                break;
-                            }
+                            break;
                         }
                     }
                 }
             }
+            
         }
         
         AnimaCard animaCard = new AnimaCard();

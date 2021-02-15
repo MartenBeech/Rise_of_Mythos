@@ -12,6 +12,10 @@ public class Bf : MonoBehaviour
     public static bool[] actionUsed = new bool[SIZE];
     public static int selected = SIZE;
 
+    public enum Column
+    {
+        Back, Middle, Front, Wall, MiddleRow, Random
+    }
     private void Start()
     {
         for (int i = 0; i < SIZE; i++)

@@ -31,6 +31,9 @@ public class Hand : MonoBehaviour
             }
             Cards[handSpace] = card;
             occupied[handSpace] = true;
+
+            Deck deck = new Deck();
+            deck.DisplayDeck();
         }
     }
 
@@ -46,6 +49,9 @@ public class Hand : MonoBehaviour
             }
             Cards[handSpace] = card;
             occupied[handSpace] = true;
+
+            Deck deck = new Deck();
+            deck.DisplayDeck();
         }
     }
 
@@ -57,6 +63,9 @@ public class Hand : MonoBehaviour
             if (i < SIZE)
                 Cards[i].DisplayNull(Hands[i]);
             Cards[i] = null;
+
+            Deck deck = new Deck();
+            deck.DisplayDeck();
         }
     }
 

@@ -99,7 +99,6 @@ public class SpecialTrigger : MonoBehaviour
         if (basicAttack)
         {
             special.CheckDispel(dealer, target);
-            special.CheckCleave(dealer, target);
         }
 
         if (damage > 0)

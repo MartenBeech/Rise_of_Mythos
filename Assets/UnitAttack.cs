@@ -104,6 +104,7 @@ public class UnitAttack : MonoBehaviour
                     {
                         DealDamage(dealer, target, dealer.attack, dealer.damageType);
                         special.CheckPierce(dealer, target);
+                        special.CheckCleave(dealer, target);
                         if (Bf.occupied[target.tile])
                         {
                             special.CheckCounterattack(dealer, target);

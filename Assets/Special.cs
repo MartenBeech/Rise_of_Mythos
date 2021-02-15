@@ -83,6 +83,7 @@ public class Special : MonoBehaviour
     public bool crushArmor = false;
     public bool cleave = false;
     public bool charm = false;
+    public bool hitAndRun = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
@@ -334,7 +335,7 @@ public class Special : MonoBehaviour
                 if (Bf.Cards[tileCheck].alignment != dealer.alignment)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack, dealer.damageType, true);
+                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack, dealer.damageType, false);
                 }
             }
         }
@@ -1478,6 +1479,57 @@ public class Special : MonoBehaviour
                 target.attack += target.special.battleSpirit;
                 target.healthMax += target.special.battleSpirit;
                 target.health += target.special.battleSpirit;
+            }
+        }
+    }
+
+    public void CheckHitAndRun(Card dealer)
+    {
+        if (dealer.special.hitAndRun)
+        {
+            int tileNew = dealer.tile;
+            int tileCheck = dealer.tile;
+
+            for (int i = 0; i < dealer.speed; i++)
+            {
+                if (dealer.alignment == Card.Alignment.Enemy)
+                {
+                    tileCheck += 3;
+                    if (tileCheck >= Bf.SIZE)
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    tileCheck -= 3;
+                    if (tileCheck < 0)
+                    {
+                        break;
+                    }
+                }
+
+                if (!Bf.occupied[tileCheck])
+                {
+                    tileNew = tileCheck;
+                }
+                else
+                {
+                    Card target = Bf.Cards[tileCheck];
+                    if (target.alignment != dealer.alignment)
+                    {
+                        if (!dealer.special.flying || target.special.flying)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            AnimaCard animaCard = new AnimaCard();
+            if (tileNew != dealer.tile)
+            {
+                animaCard.MoveBfBf(dealer, dealer.tile, tileNew);
             }
         }
     }

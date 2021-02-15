@@ -67,7 +67,7 @@ public class Deck : MonoBehaviour
             deckAlly.Add(card);
         else
             deckAlly.Add(card);
-            //deckEnemy.Add(card); CHANGE
+            //deckEnemy.Add(card);
 
             DisplayDeck();
     }
@@ -83,6 +83,23 @@ public class Deck : MonoBehaviour
 
     public void DisplayDeck()
     {
-        Decks.GetComponentInChildren<Text>().text = "Your Deck: " + deckAlly.Count + "\n\n" + "Enemy Deck: " + deckEnemy.Count;
+        int handAlly = 0;
+        for (int i = 0; i < Hand.SIZE; i++)
+        {
+            if (Hand.occupied[i])
+                handAlly++;
+        }
+        int handEnemy = 0;
+        for (int i = Hand.SIZE; i < Hand.SIZE * 2; i++)
+        {
+            if (Hand.occupied[i])
+                handEnemy++;
+        }
+
+        Decks.GetComponentInChildren<Text>().text =
+            "<color=green>" + "Hand: " + "</color>" + handAlly + "\n" +
+            "<color=green>" + "Deck: " + "</color>" + deckAlly.Count + "\n\n" +
+            "<color=red>" + "Hand: " + "</color>" + handEnemy + "\n" +
+            "<color=red>" + "Deck: " + "</color>" + deckEnemy.Count;
     }
 }

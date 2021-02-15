@@ -52,7 +52,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.bloodPrice > 0 ? "<b>" + "Blood Price " + card.special.bloodPrice + ": " + "</b>" + "Deal damage to your own hero each turn" + "\n" : "") +
             (card.special.maim > 0 ? "<b>" + "Maim " + card.special.maim + ": " + "</b>" + "Attacks causes the enemy to take increased physical damage" + "\n" : "") +
             (card.special.maimed > 0 ? "<b>" + "Maimed " + card.special.maimed + ": " + "</b>" + "You take increased physical damage" + "\n" : "") +
-
+            (card.special.battleSpirit > 0 ? "<b>" + "Battle Spirit " + card.special.battleSpirit + ": " + "</b>" + "Gain +" + card.special.battleSpirit + "/+" + card.special.battleSpirit + " whenever you take physical damage" + "\n" : "") +
 
             (card.special.lifeAura > 0 ? "<b>" + "Life Aura " + card.special.lifeAura + ": " + "</b>" + "Allied units get bonus health" + "\n" : "") +
             (card.special.regenerationAura > 0 ? "<b>" + "Regeneration Aura " + card.special.regenerationAura + ": " + "</b>" + "Allied units get Regeneration" + "\n" : "") +
@@ -62,7 +62,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.blizzardAura ? "<b>" + "Blizzard Aura: " + "</b>" + "Enemy units have -1 Range and Speed" + "\n" : "") +
             (card.special.herosBaneAura > 0 ? "<b>" + "Hero's Bane Aura " + card.special.herosBaneAura + ": " + "</b>" + "Allied units get Hero's Bane" + "\n" : "") +
             (card.special.penetrateAura ? "<b>" + "Penetrate Aura: " + "</b>" + "Allied units get Penetrate" + "\n" : "") +
-
+            (card.special.poisonAura > 0 ? "<b>" + "Poison Aura " + card.special.poisonAura + ": " + "</b>" + "Allied units get Poison" + "\n" : "") +
 
             (card.special.charge ? "<b>" + "Charge: " + "</b>" + "For each tile moved, deal +1 damage on the next attack" + "\n" : "") +
             (card.special.pierce ? "<b>" + "Pierce: " + "</b>" + "Also deals damage to the enemy behind the target" + "\n" : "") +
@@ -97,6 +97,8 @@ public class SpecialInfo : MonoBehaviour
             (card.special.spear ? "<b>" + "Spear: " + "</b>" + "Deal double damage to units with 4+ Speed" + "\n" : "") +
             (card.special.ambush ? "<b>" + "Ambush: " + "</b>" + "Your first attack deals double damage" + "\n" : "") +
             (card.special.crushArmor ? "<b>" + "Crush Armor: " + "</b>" + "Deal double damage to units with Armor or Resistance" + "\n" : "") +
+            (card.special.cleave ? "<b>" + "Cleave: " + "</b>" + "Damage all enemies on the same column as the target" + "\n" : "") +
+            (card.special.charm ? "<b>" + "Charm: " + "</b>" + "Take control over the first unit attacked with 3 or less cd" + "\n" : "") +
 
             (card.special.kingsCommand ? "<b>" + "King's Command: " + "</b>" + "Summons a Horseman of same rank each turn" + "\n" : "") +
             (card.special.combatMaster ? "<b>" + "Combat Master: " + "</b>" + "Deals double damage to enemies with 4+ Range, 4+ Speed, Armor, Wall or Flying" + "\n" : "") +
@@ -107,7 +109,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.reinforcement ? "<b>" + "Reinforcement: " + "</b>" + "On summon, also summon 2 copies of this unit on the same column" + "\n" : "") +
             (card.special.disdain > 0 ? "<b>" + "Disdain " + card.special.disdain + ": " + "</b>" + "Damagine units with " + card.special.disdain + " or less countdown instantly kills them" + "\n" : "") +
             (card.special.cheif ? "<b>" + "Cheif: " + "</b>" + "On summon, gain +1/+3 for each other allied unit" + "\n" : "") +
-
+            (card.special.krush ? "<b>" + "Krush: " + "</b>" + "Destroy the first unit attacked" + "\n" : "") +
 
             "";
 

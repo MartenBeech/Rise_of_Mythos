@@ -36,6 +36,8 @@ public class UnitAction : MonoBehaviour
                     Card card = new Card();
                     card.DisplayCard(Bf.Bfs[units[0].tile], units[0]);
                 }
+                Special special = new Special();
+                special.CheckHitAndRun(units[0]);
             }
 
             if (counter <= 0)
