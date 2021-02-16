@@ -14,6 +14,8 @@ public class SpecialTrigger : MonoBehaviour
         special.CheckRegenerationAuraSummon(card);
         special.CheckRangeAuraBattlecry(card);
         special.CheckRangeAuraSummon(card);
+        special.CheckSpeedAuraBattlecry(card);
+        special.CheckSpeedAuraSummon(card);
         special.CheckWitheringAuraBattlecry(card);
         special.CheckWitheringAuraSummon(card);
         special.CheckBlizzardAuraBattlecry(card);
@@ -26,6 +28,8 @@ public class SpecialTrigger : MonoBehaviour
         special.CheckPenetrateAuraSummon(card);
         special.CheckPoisonAuraBattlecry(card);
         special.CheckPoisonAuraSummon(card);
+        special.CheckArmorAuraBattlecry(card);
+        special.CheckArmorAuraSummon(card);
 
         special.CheckReinforcement(card);
         special.CheckConjure(card);
@@ -90,7 +94,7 @@ public class SpecialTrigger : MonoBehaviour
             damage = special.CheckDragonSlayer(dealer, target, damage);
             damage = special.CheckSpear(dealer, target, damage);
             damage = special.CheckAmbush(dealer, damage);
-            damage = special.CheckCrushArmor(dealer, target, damage);
+            damage = special.CheckCrushDefenses(dealer, target, damage);
 
             damage = special.CheckEmber(dealer, target, damage);
         }
@@ -112,7 +116,7 @@ public class SpecialTrigger : MonoBehaviour
                 special.CheckLifeSteal(dealer, damage);
                 special.CheckHeroic(dealer);
                 special.CheckWeaken(dealer, target);
-                special.CheckFreezing(dealer, target);
+                special.CheckFrostBolt(dealer, target);
                 special.CheckFrostSuit(dealer, target);
                 special.CheckPoison(dealer, target);
                 special.CheckVengefulCurse(dealer, target);
@@ -120,6 +124,7 @@ public class SpecialTrigger : MonoBehaviour
                 special.CheckSpellCurse(dealer, target);
                 special.CheckMaim(dealer, target);
                 special.CheckStun(dealer, target);
+                special.CheckPermaStun(dealer, target);
                 special.CheckCharm(dealer, target);
 
                 special.CheckFear(dealer, target, damage);

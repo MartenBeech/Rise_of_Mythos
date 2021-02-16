@@ -13,6 +13,7 @@ public class Special : MonoBehaviour
 
     public int armor = 0;
     public int resistance = 0;
+    public int charge = 0;
     public int cure = 0;
     public int heroic = 0;
     public int regeneration = 0;
@@ -42,13 +43,14 @@ public class Special : MonoBehaviour
     public int regenerationAura = 0;
     public int witheringAura = 0;
     public int rangeAura = 0;
+    public int speedAura = 0;
     public int attackAura = 0;
     public bool blizzardAura = false;
     public int herosBaneAura = 0;
     public bool penetrateAura = false;
     public int poisonAura = 0;
+    public int armorAura = 0;
 
-    public bool charge = false;
     public bool pierce = false;
     public bool whirlwind = false;
     public bool counterattack = false;
@@ -62,7 +64,7 @@ public class Special : MonoBehaviour
     public bool reanimate = false;
     public bool lifeSteal = false;
     public bool soulbound = false;
-    public bool freezing = false;
+    public bool frostBolt = false;
     public bool incorporeal = false;
     public bool fear = false;
     public bool skeletal = false;
@@ -77,13 +79,15 @@ public class Special : MonoBehaviour
     public bool donor = false;
     public bool stun = false;
     public bool stunned = false;
+    public bool permaStun = false;
     public bool distraction = false;
     public bool spear = false;
     public bool ambush = false;
-    public bool crushArmor = false;
     public bool cleave = false;
     public bool charm = false;
     public bool hitAndRun = false;
+    public bool bleedingAttack = false;
+    public bool bleeding = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
@@ -93,6 +97,7 @@ public class Special : MonoBehaviour
     public bool multiShot = false;
     public bool reinforcement = false;
     public int disdain = 0;
+    public bool crushDefenses = false;
     public bool cheif = false;
     public bool krush = false;
 
@@ -152,6 +157,8 @@ public class Special : MonoBehaviour
                 {
                     UnitAttack unitAttack = new UnitAttack();
                     unitAttack.DealDamage(dealer, enemies[0], dealer.attack, dealer.damageType, true);
+                    Special special = new Special();
+                    special.CheckCleave(dealer, enemies[0]);
                 }
                 return true;
             }
@@ -238,7 +245,7 @@ public class Special : MonoBehaviour
         if (dealer.special.kingsCommand)
         {
             CardStat cardStat = new CardStat();
-            Card _card = cardStat.SetStats(Card.Title.PlaceHolder, dealer.alignment);
+            Card _card = cardStat.GetStats(Card.Title.PlaceHolder, dealer.alignment);
 
             Rng rng = new Rng();
             int summonTile = 0;
@@ -278,9 +285,9 @@ public class Special : MonoBehaviour
 
     public void CheckChargeMove(Card dealer, int tileFrom, int tileTo)
     {
-        if (dealer.special.charge)
+        if (dealer.special.charge > 0)
         {
-            dealer.bonusAttackNextTurn += Mathf.Abs((tileTo - tileFrom) / 3);
+            dealer.bonusAttackNextTurn += Mathf.Abs((tileTo - tileFrom) / 3) * dealer.special.charge;
         }
     }
 
@@ -335,7 +342,7 @@ public class Special : MonoBehaviour
                 if (Bf.Cards[tileCheck].alignment != dealer.alignment)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack, dealer.damageType, false);
+                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack, dealer.damageType, true);
                 }
             }
         }
@@ -545,7 +552,7 @@ public class Special : MonoBehaviour
         if (target.special.reanimate)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.SetStats(target.title, target.alignment);
+            Card card = cardStat.GetStats(target.title, target.alignment);
             card.special.reanimate = false;
             AnimaCard animaCard = new AnimaCard();
             animaCard.MoveBfBf(card, target.tile, target.tile, true);
@@ -564,7 +571,7 @@ public class Special : MonoBehaviour
             if (enemies[i].special.callOfTheUndeadKing)
             {
                 CardStat cardStat = new CardStat();
-                Card card = cardStat.SetStats(Card.Title.PlaceHolder, target.alignment);
+                Card card = cardStat.GetStats(Card.Title.PlaceHolder, target.alignment);
                 AnimaCard animaCard = new AnimaCard();
                 animaCard.MoveBfBf(card, enemies[i].tile, target.tile, true);
                 break;
@@ -633,7 +640,7 @@ public class Special : MonoBehaviour
         if (target.special.soulbound)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.SetStats(target.title, target.alignment);
+            Card card = cardStat.GetStats(target.title, target.alignment);
             card.special.soulbound = false;
 
             Hand hand = new Hand();
@@ -651,15 +658,15 @@ public class Special : MonoBehaviour
         return damage;
     }
 
-    public void CheckFreezing(Card dealer, Card target)
+    public void CheckFrostBolt(Card dealer, Card target)
     {
-        if (dealer.special.freezing)
+        if (dealer.special.frostBolt)
         {
             if (target.speed > 1)
             {
                 if (!target.special.nimble)
                 {
-                    target.speed -= 1;
+                    target.speed = 1;
                 }
             }
         }
@@ -686,7 +693,7 @@ public class Special : MonoBehaviour
         if (dealer.special.fear && target.health > damage)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.SetStats(target.title, target.alignment);
+            Card card = cardStat.GetStats(target.title, target.alignment);
             dealer.special.fear = false;
 
             Hand hand = new Hand();
@@ -711,7 +718,7 @@ public class Special : MonoBehaviour
         if (target.special.skeletal)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.SetStats(Card.Title.BoneHeap, target.alignment);
+            Card card = cardStat.GetStats(Card.Title.BoneHeap, target.alignment);
             card.title = target.title;
             card.nameTag = target.nameTag;
             AnimaCard animaCard = new AnimaCard();
@@ -726,7 +733,7 @@ public class Special : MonoBehaviour
         if (dealer.special.boneHeap)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.SetStats(dealer.title, dealer.alignment);
+            Card card = cardStat.GetStats(dealer.title, dealer.alignment);
             AnimaCard animaCard = new AnimaCard();
             animaCard.MoveBfBf(card, dealer.tile, dealer.tile, true);
             AnimaText animaText = new AnimaText();
@@ -965,6 +972,36 @@ public class Special : MonoBehaviour
         }
     }
 
+    public void CheckSpeedAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.speedAura > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseSpeed(dealer, allies[i], dealer.special.speedAura);
+            }
+        }
+    }
+
+    public void CheckSpeedAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.speedAura > 0)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseSpeed(allies[i], dealer, allies[i].special.speedAura);
+            }
+        }
+    }
+
     public bool CheckMultiShot(Card dealer)
     {
         if (dealer.special.multiShot)
@@ -1140,7 +1177,7 @@ public class Special : MonoBehaviour
             {
                 if (!Bf.occupied[tiles[i]])
                 {
-                    _card = cardStat.SetStats(dealer.title, dealer.alignment);
+                    _card = cardStat.GetStats(dealer.title, dealer.alignment);
                     AnimaCard animaCard = new AnimaCard();
                     animaCard.MoveBfBf(_card, dealer.tile, tiles[i], true);
                 }
@@ -1205,6 +1242,14 @@ public class Special : MonoBehaviour
         {
             target.special.stunned = true;
             dealer.special.stun = false;
+        }
+    }
+
+    public void CheckPermaStun(Card dealer, Card target)
+    {
+        if (dealer.special.permaStun)
+        {
+            target.special.stunned = true;
         }
     }
 
@@ -1357,9 +1402,9 @@ public class Special : MonoBehaviour
         return damage;
     }
 
-    public int CheckCrushArmor(Card dealer, Card target, int damage)
+    public int CheckCrushDefenses(Card dealer, Card target, int damage)
     {
-        if (dealer.special.crushArmor)
+        if (dealer.special.crushDefenses)
         {
             if (target.special.armor > 0 || target.special.resistance > 0)
             {
@@ -1410,7 +1455,7 @@ public class Special : MonoBehaviour
                 if (Bf.occupied[tiles[i]])
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, Bf.Cards[tiles[i]], dealer.attack, dealer.damageType, false);
+                    unitAttack.DealDamage(dealer, Bf.Cards[tiles[i]], dealer.attack, dealer.damageType, true);
                 }
             }
         }
@@ -1531,6 +1576,44 @@ public class Special : MonoBehaviour
             {
                 animaCard.MoveBfBf(dealer, dealer.tile, tileNew);
             }
+        }
+    }
+
+    public void CheckArmorAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.armorAura > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseArmor(dealer, allies[i], dealer.special.armorAura);
+            }
+        }
+    }
+
+    public void CheckArmorAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.armorAura > 0)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseArmor(allies[i], dealer, allies[i].special.armorAura);
+            }
+        }
+    }
+
+    public void CheckBleedingAttack(Card dealer, Card target)
+    {
+        if (dealer.special.bleedingAttack)
+        {
+            target.special.bleeding = true;
         }
     }
 }

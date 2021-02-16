@@ -25,10 +25,11 @@ public class SpecialInfo : MonoBehaviour
 
             (card.special.wall ? "<b>" + "Wall: " + "</b>" + "Can't move or attack" + "\n" : "") +
             (card.special.flying ? "<b>" + "Flying: " + "</b>" + "Can fly over non-flying enemies" + "\n" : "") +
-            (card.special.vigilance ? "<b>" + "Vigilance: " + "</b>" + "Can attack adjacent enemies and won't move if any. Attacks backwards in preference" + "\n" : "") +
+            (card.special.vigilance ? "<b>" + "Vigilance: " + "</b>" + "Can attack adjacent enemies without moving first. Attacks backwards in preference" + "\n" : "") +
             (card.special.penetrate ? "<b>" + "Penetrate: " + "</b>" + "Your damage dealt cannot be reduced" + "\n" : "") +
             (card.special.armor > 0 ? "<b>" + "Armor " + card.special.armor + ": " + "</b>" + "Take reduced physical damage" + "\n" : "") +
             (card.special.resistance > 0 ? "<b>" + "Resistance " + card.special.resistance + ": " + "</b>" + "Take reduced magical damage" + "\n" : "") +
+            (card.special.charge > 0 ? "<b>" + "Charge " + card.special.charge + ": " + "</b>" + "For each tile moved, deal +" + card.special.charge + " damage on the next attack" + "\n" : "") +
             (card.special.cure > 0 ? "<b>" + "Cure " + card.special.cure + ": " + "</b>" + "Heal the most damaged ally each turn" + "\n" : "") +
             (card.special.heroic > 0 ? "<b>" + "Heroic " + card.special.heroic + ": " + "</b>" + "Gain attack after dealing damage" + "\n" : "") +
             (card.special.regeneration > 0 ? "<b>" + "Regeneration " + card.special.regeneration + ": " + "</b>" + "Heal yourself each turn" + "\n" : "") +
@@ -56,15 +57,16 @@ public class SpecialInfo : MonoBehaviour
 
             (card.special.lifeAura > 0 ? "<b>" + "Life Aura " + card.special.lifeAura + ": " + "</b>" + "Allied units get bonus health" + "\n" : "") +
             (card.special.regenerationAura > 0 ? "<b>" + "Regeneration Aura " + card.special.regenerationAura + ": " + "</b>" + "Allied units get Regeneration" + "\n" : "") +
-            (card.special.witheringAura > 0 ? "<b>" + "Withering Aura " + card.special.witheringAura + ": " + "</b>" + "Enemy units get decreased health" + "\n" : "") +
+            (card.special.witheringAura > 0 ? "<b>" + "Withering Aura " + card.special.witheringAura + ": " + "</b>" + "Enemy units get reduced health, but not less than 1" + "\n" : "") +
             (card.special.rangeAura > 0 ? "<b>" + "Range Aura " + card.special.rangeAura + ": " + "</b>" + "Allied units get bonus range" + "\n" : "") +
+            (card.special.speedAura > 0 ? "<b>" + "Speed Aura " + card.special.speedAura + ": " + "</b>" + "Allied units get bonus speed" + "\n" : "") +
             (card.special.attackAura > 0 ? "<b>" + "Attack Aura " + card.special.rangeAura + ": " + "</b>" + "Allied units get bonus attack" + "\n" : "") +
             (card.special.blizzardAura ? "<b>" + "Blizzard Aura: " + "</b>" + "Enemy units have -1 Range and Speed" + "\n" : "") +
             (card.special.herosBaneAura > 0 ? "<b>" + "Hero's Bane Aura " + card.special.herosBaneAura + ": " + "</b>" + "Allied units get Hero's Bane" + "\n" : "") +
             (card.special.penetrateAura ? "<b>" + "Penetrate Aura: " + "</b>" + "Allied units get Penetrate" + "\n" : "") +
             (card.special.poisonAura > 0 ? "<b>" + "Poison Aura " + card.special.poisonAura + ": " + "</b>" + "Allied units get Poison" + "\n" : "") +
+            (card.special.armorAura > 0 ? "<b>" + "Armor Aura " + card.special.poisonAura + ": " + "</b>" + "Allied units get Armor" + "\n" : "") +
 
-            (card.special.charge ? "<b>" + "Charge: " + "</b>" + "For each tile moved, deal +1 damage on the next attack" + "\n" : "") +
             (card.special.pierce ? "<b>" + "Pierce: " + "</b>" + "Also deals damage to the enemy behind the target" + "\n" : "") +
             (card.special.whirlwind ? "<b>" + "Whirlwind: " + "</b>" + "Attack all adjacent enemies" + "\n" : "") +
             (card.special.counterattack ? "<b>" + "Counterattack: " + "</b>" + "Can retaliate if attacked inside its range" + "\n" : "") +
@@ -78,7 +80,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.reanimate ? "<b>" + "Reanimate: " + "</b>" + "This unit is resummoned the first time it dies" + "\n" : "") +
             (card.special.lifeSteal ? "<b>" + "Life Steal: " + "</b>" + "Restore your health equal to damage dealt" + "\n" : "") +
             (card.special.soulbound ? "<b>" + "Soulbound: " + "</b>" + "This unit is returned to it's owner's hand first time it dies" + "\n" : "") +
-            (card.special.freezing ? "<b>" + "Freezing: " + "</b>" + "Damaged targets have their speed reduced by 1, but not less than 1" + "\n" : "") +
+            (card.special.frostBolt ? "<b>" + "Frost Bolt: " + "</b>" + "Damaged targets have their speed reduced to 1" + "\n" : "") +
             (card.special.incorporeal ? "<b>" + "Incorporeal: " + "</b>" + "Physical damage you receive is reduced to 1" + "\n" : "") +
             (card.special.fear ? "<b>" + "Fear: " + "</b>" + "First unit attacked returns to it's owner's hand" + "\n" : "") +
             (card.special.skeletal ? "<b>" + "Skeletal: " + "</b>" + "Upon dying, turn into a Bone Heap which reanimates this unit next turn" + "\n" : "") +
@@ -93,12 +95,14 @@ public class SpecialInfo : MonoBehaviour
             (card.special.donor ? "<b>" + "Donor: " + "</b>" + "Draw a card upon death" + "\n" : "") +
             (card.special.stun ? "<b>" + "Stun: " + "</b>" + "Your first attack stuns the target, skipping its next turn" + "\n" : "") +
             (card.special.stunned ? "<b>" + "Stunned: " + "</b>" + "Your next turn is skipped" + "\n" : "") +
+            (card.special.permaStun ? "<b>" + "Perma Stun: " + "</b>" + "Your attacks stuns the target, skipping its next turn" + "\n" : "") +
             (card.special.distraction ? "<b>" + "Distraction: " + "</b>" + "Increase the countdown of a random enemy card each turn" + "\n" : "") +
             (card.special.spear ? "<b>" + "Spear: " + "</b>" + "Deal double damage to units with 4+ Speed" + "\n" : "") +
             (card.special.ambush ? "<b>" + "Ambush: " + "</b>" + "Your first attack deals double damage" + "\n" : "") +
-            (card.special.crushArmor ? "<b>" + "Crush Armor: " + "</b>" + "Deal double damage to units with Armor or Resistance" + "\n" : "") +
             (card.special.cleave ? "<b>" + "Cleave: " + "</b>" + "Damage all enemies on the same column as the target" + "\n" : "") +
             (card.special.charm ? "<b>" + "Charm: " + "</b>" + "Take control over the first unit attacked with 3 or less cd" + "\n" : "") +
+            (card.special.bleedingAttack ? "<b>" + "Bleeding Attack: " + "</b>" + "Attacks make the target unable to be healed" + "\n" : "") +
+            (card.special.bleeding ? "<b>" + "Bleeding: " + "</b>" + "You cannot be healed" + "\n" : "") +
 
             (card.special.kingsCommand ? "<b>" + "King's Command: " + "</b>" + "Summons a Horseman of same rank each turn" + "\n" : "") +
             (card.special.combatMaster ? "<b>" + "Combat Master: " + "</b>" + "Deals double damage to enemies with 4+ Range, 4+ Speed, Armor, Wall or Flying" + "\n" : "") +
@@ -108,6 +112,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.multiShot ? "<b>" + "Multishot: " + "</b>" + "Attack all enemy units and heroes inside range" + "\n" : "") +
             (card.special.reinforcement ? "<b>" + "Reinforcement: " + "</b>" + "On summon, also summon 2 copies of this unit on the same column" + "\n" : "") +
             (card.special.disdain > 0 ? "<b>" + "Disdain " + card.special.disdain + ": " + "</b>" + "Damagine units with " + card.special.disdain + " or less countdown instantly kills them" + "\n" : "") +
+            (card.special.crushDefenses ? "<b>" + "Crush Defenses: " + "</b>" + "Deal double damage to units with Armor or Resistance" + "\n" : "") +
             (card.special.cheif ? "<b>" + "Cheif: " + "</b>" + "On summon, gain +1/+3 for each other allied unit" + "\n" : "") +
             (card.special.krush ? "<b>" + "Krush: " + "</b>" + "Destroy the first unit attacked" + "\n" : "") +
 

@@ -62,7 +62,7 @@ public class Deck : MonoBehaviour
     public void AddCard(Card.Title title, Card.Alignment alignment)
     {
         CardStat cardStat = new CardStat();
-        Card card = cardStat.SetStats(title, alignment);
+        Card card = cardStat.GetStats(title, alignment);
         if (alignment == Card.Alignment.Ally)
             deckAlly.Add(card);
         else

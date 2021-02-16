@@ -7,21 +7,24 @@ public class UnitSpecial : MonoBehaviour
 {
     public void Heal(Card dealer, Card target, int amount)
     {
-        AnimaText animaText = new AnimaText();
-        animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.green);
-
-        Special special = new Special();
-        special.CheckFaith(dealer);
-
-        target.health += amount;
-        if (target.health > target.healthMax)
+        if (!target.special.bleeding)
         {
-            target.health = target.healthMax;
-        }
-        target.DisplayCard(Bf.Bfs[target.tile], target);
-        target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.green);
 
-        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
+            Special special = new Special();
+            special.CheckFaith(dealer);
+
+            target.health += amount;
+            if (target.health > target.healthMax)
+            {
+                target.health = target.healthMax;
+            }
+            target.DisplayCard(Bf.Bfs[target.tile], target);
+            target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
+
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
+        }
     }
 
     public void IncreaseHealth(Card dealer, Card target, int amount)
@@ -54,7 +57,7 @@ public class UnitSpecial : MonoBehaviour
         if (!target.special.nimble)
         {
             AnimaText animaText = new AnimaText();
-            animaText.ShowText(Bf.Bfs[target.tile], "-" + amount + "Health", Hue.magenta);
+            animaText.ShowText(Bf.Bfs[target.tile], "-" + amount + " Health", Hue.magenta);
 
             if (target.health > amount)
                 target.health -= amount;
@@ -88,6 +91,16 @@ public class UnitSpecial : MonoBehaviour
         animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Range", Hue.cyan);
 
         target.range += amount;
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+    }
+
+    public void IncreaseSpeed(Card dealer, Card target, int amount)
+    {
+        AnimaText animaText = new AnimaText();
+        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Speed", Hue.cyan);
+
+        target.speed += amount;
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }
@@ -150,6 +163,16 @@ public class UnitSpecial : MonoBehaviour
         animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Poison", Hue.cyan);
 
         target.special.poison += amount;
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+    }
+
+    public void IncreaseArmor(Card dealer, Card target, int amount)
+    {
+        AnimaText animaText = new AnimaText();
+        animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Armor", Hue.cyan);
+
+        target.special.armor += amount;
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }

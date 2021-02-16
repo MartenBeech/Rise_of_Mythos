@@ -7,9 +7,33 @@ public class Card : MonoBehaviour
 {
     public enum Title
     {
+        Bat, CentaurArcher, CentaurRider, Crossbowman, DarkRider, DreadScout, ElvenArcher, ElvenFireApprentice, ElvenFrostApprentice, ElvenGuard,
+        ElvenHunter, ElvenSamurai, ElvenThunderApprentice, ElvenWitch, FelesMessenger, FelesTracker, Fencer, FoulSkeleton, Ghost, Guard,
+        HellHound, Horseman, HuntingDog, Lancer, Lizard, Mercenary, PegasusRider, PegasusScout, Priest, Priestess,
+        RepeatingCrossbow, Squire, ThunderLizard, Vampire, VampireApprentice, VenomousBat, VileSkeleton, WerewolfHowler, WerewolfIronclaw, Wraith,
+        ZombieGuard, ZombieSwordsman,
+
+        ArmouredLizard, BattlePriestess, BlackRider, BlessedElvenSamurai, BloodthirstyBat, CentaurGuerrilla, CentaurHunter, Cerberus, ChillingGhost, DreadKnight,
+        DreadWraith, ElvenFireMage, ElvenFrostArchmage, ElvenLongbowArcher, ElvenPraetorian, ElvenPriestess, ElvenSniper, ElvenThunderMage, FelesAssassin, FelesScout,
+        GrandFencer, HeavyCrossbowman, HeavyRepeatingCrossbow, HighPriestess, Hound, Knight, LanceKnight, MercenaryVeteran, Paladin, PegasusGuard,
+        PegasusLegionnaire, RottenSkeleton, SeniorThunderLizard, Sentinel, SepticBat, UnholySkeleton, VampireMage, VampireNoble, WerewolfProwler, WerewolfSteelclaw,
+        ZombieLegionnaire, ZombieSentinel,
+
+        AegisLizard, BattleAbbess, Captain, CentaurGuerrillaLeader, CentaurMarksman, ChampionKnight, CrossbowCaptain, DoomRider, DreadChampion, DreadPhantom,
+        ElvenFireArchmage, ElvenFrostSorcerer, ElvenHighPriestess, ElvenLegionnaire, ElvenMarksman, ElvenRebel, ElvenSharpShooter, ElvenThunderArchmage, FelesAssassinMaster, FelesSwordsman,
+        FencingMaster, FieryCerberus, FieryHound, HellishSkeleton, HolyMaster, IcyGaleGhost, LanceChampion, MercenaryCaptain, PegasusChampion, PegasusRaidLeader,
+        PlaguedSkeleton, RepeatingCrossbowCaptain, SawtoothThunderLizard, ScarletBat, SpitefulBat, Templar, VampireArchmage, VampireLord, WerewolfDeathclaw, WerewolfFleshripper,
+        ZombieCaptain, ZombieChampion,
+
+        CainTheTraitor, CerberusHegemon, ChiefIronhide, CrusaderLucanus, DariusDarkhand, DemonHunterAzrael, DesperateSoul, EacannTheCharger, FenrisTheButcher, FirstRangerTalenor,
+        LuciusSwift, MifzunaTheWind, OfeigurTheUndying, OpheliaWestWind, PontiffFaol, PrinceSerka, SilvaTheFrozenHeart, TanwenWildfire, VelynTheUnscarred, VirulentBatKing,
+        WindDancerElke,
+
+        AryaTheHonorable, BigShuck, ChieftainLionroar, DragonHunterVincent, EmperorAugustus, EmrysTheUnyielding, ExecutionerGrimbone, Gringheist, JasmineTheDervish, KathrynEmberwind,
+        KingVelAssar, LordFleder, MaiaShadowblade, PrincessSarya, RyliTheWhiteWitch, SorannTheUnforgiving, StormLizardKing, TarielThePhalanx, UndeadKingBael, VarkusTheBlight,
+        Whitemane,
+
         PlaceHolder, BoneHeap,
-        Paladin, Captain,
-        ZombieSwordsman
     }
     public Title title;
 
