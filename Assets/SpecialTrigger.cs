@@ -42,9 +42,9 @@ public class SpecialTrigger : MonoBehaviour
         special.CheckSkeletal(target);
         special.CheckReapingCurse(target);
         special.CheckSoulbound(target);
-        special.CheckDonor(target);
         if (!Bf.occupied[target.tile])
         {
+            special.CheckDonor(target);
             special.CheckCallOfTheUndeadKing(target);
             special.CheckSoulHarvest(target);
         } 

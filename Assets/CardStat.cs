@@ -26,7 +26,7 @@ public class CardStat : MonoBehaviour
         }
 
         card.race = Card.Race.Human;
-        card.sprite = Resources.Load<Sprite>("Cards/" + card.race + "/" + card.nameTag.Replace(' ', '_'));
+        card.sprite = Resources.Load<Sprite>("Cards/Rarity" + card.rarity + "/" + card.nameTag.Replace(' ', '_'));
     }
 
     public Card GetStats(Card.Title title, Card.Alignment alignment)
@@ -41,6 +41,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -51,6 +52,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -61,6 +63,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -71,6 +74,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -81,6 +85,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -91,6 +96,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -101,6 +107,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -111,6 +118,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -121,6 +129,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -131,6 +140,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -141,6 +151,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -151,6 +162,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -161,6 +173,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -171,6 +184,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -181,6 +195,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -191,6 +206,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -201,6 +217,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -211,6 +228,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -221,6 +239,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -231,6 +250,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -241,6 +261,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -251,6 +272,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -261,6 +283,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -271,6 +294,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -281,6 +305,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -291,6 +316,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -301,6 +327,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -311,6 +338,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -321,6 +349,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -331,6 +360,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -341,6 +371,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -351,6 +382,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -361,6 +393,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -371,6 +404,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -381,6 +415,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -391,6 +426,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -401,6 +437,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -411,6 +448,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -421,6 +459,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -431,16 +470,18 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
 
             case Card.Title.ZombieGuard:
-                card.attack = 1;
-                card.health = 3;
-                card.cd = 1;
+                card.attack = 2;
+                card.health = 5;
+                card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -451,6 +492,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -461,6 +503,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -471,6 +514,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -481,6 +525,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -491,6 +536,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -501,6 +547,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -511,6 +558,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -521,6 +569,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -531,6 +580,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -541,6 +591,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -551,6 +602,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -561,6 +613,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -571,6 +624,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -581,6 +635,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -591,6 +646,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -601,6 +657,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -611,6 +668,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -621,6 +679,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -631,6 +690,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -641,6 +701,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -651,6 +712,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -661,6 +723,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -671,6 +734,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -681,6 +745,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -691,6 +756,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -701,6 +767,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -711,6 +778,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -721,6 +789,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -731,6 +800,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -741,6 +811,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -751,6 +822,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -761,6 +833,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -771,6 +844,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -781,6 +855,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -791,6 +866,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -801,6 +877,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -811,6 +888,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -821,6 +899,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -831,6 +910,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -841,6 +921,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -851,6 +932,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -861,16 +943,18 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
 
             case Card.Title.ZombieSentinel:
-                card.attack = 2;
-                card.health = 8;
-                card.cd = 3;
+                card.attack = 3;
+                card.health = 9;
+                card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -881,6 +965,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -891,6 +976,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -901,6 +987,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -911,6 +998,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -921,6 +1009,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -931,6 +1020,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -941,6 +1031,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -951,6 +1042,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -961,6 +1053,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -971,6 +1064,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -981,6 +1075,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -991,6 +1086,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1001,6 +1097,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1011,6 +1108,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1021,6 +1119,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1031,6 +1130,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1041,6 +1141,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1051,6 +1152,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1061,6 +1163,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1071,6 +1174,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1081,6 +1185,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1091,6 +1196,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1101,6 +1207,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1111,6 +1218,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1121,6 +1229,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1131,6 +1240,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1141,6 +1251,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1151,6 +1262,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1161,6 +1273,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1171,6 +1284,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1181,6 +1295,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1191,6 +1306,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1201,6 +1317,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1211,6 +1328,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1221,6 +1339,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1231,6 +1350,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1241,6 +1361,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1251,6 +1372,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1261,6 +1383,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1271,16 +1394,18 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
 
             case Card.Title.ZombieCaptain:
                 card.attack = 3;
-                card.health = 7;
-                card.cd = 4;
+                card.health = 10;
+                card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1291,6 +1416,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1301,6 +1427,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1311,6 +1438,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1321,6 +1449,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1331,6 +1460,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1341,6 +1471,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1351,6 +1482,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1361,6 +1493,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1371,6 +1504,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1381,6 +1515,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1391,6 +1526,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1401,6 +1537,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1411,16 +1548,18 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
 
             case Card.Title.OfeigurTheUndying:
-                card.attack = 3;
-                card.health = 14;
-                card.cd = 5;
+                card.attack = 4;
+                card.health = 16;
+                card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1431,6 +1570,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1441,6 +1581,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1451,6 +1592,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1461,6 +1603,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1471,6 +1614,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1481,6 +1625,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1491,6 +1636,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1501,6 +1647,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1511,6 +1658,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1521,6 +1669,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1531,6 +1680,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1541,6 +1691,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1551,6 +1702,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 8;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1561,6 +1713,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1571,6 +1724,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1581,6 +1735,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1591,6 +1746,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1601,6 +1757,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1611,6 +1768,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1621,6 +1779,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1631,6 +1790,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1641,6 +1801,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1651,6 +1812,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1661,6 +1823,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1671,6 +1834,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1681,6 +1845,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1691,6 +1856,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 9;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1701,6 +1867,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1711,6 +1878,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
 
                 break;
@@ -1724,6 +1892,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 0;
                 card.range = 2;
                 card.speed = 2;
+                card.rarity = 0;
                 card.damageType = Card.DamageType.Physical;
                 break;
 
@@ -1734,6 +1903,7 @@ public class CardStat : MonoBehaviour
                 card.cd = 0;
                 card.range = 0;
                 card.speed = 0;
+                card.rarity = 0;
                 card.damageType = Card.DamageType.Physical;
 
                 card.special.boneHeap = true;

@@ -7,6 +7,7 @@ public class Hand : MonoBehaviour
 {
     public const int SIZE = 10;
     public static GameObject[] Hands = new GameObject[SIZE];
+    public static GameObject[] Hourglasses = new GameObject[SIZE];
     public static Card[] Cards = new Card[SIZE * 2];
     public static bool[] occupied = new bool[SIZE * 2];
     public static int selected = SIZE;
@@ -16,6 +17,7 @@ public class Hand : MonoBehaviour
         for (int i = 0; i < SIZE; i++)
         {
             Hands[i] = GameObject.Find("Hand (" + i + ")");
+            Hourglasses[i] = GameObject.Find("Hourglass (" + i + ")");
         }
     }
 
@@ -61,7 +63,12 @@ public class Hand : MonoBehaviour
         {
             occupied[i] = false;
             if (i < SIZE)
+            {
                 Cards[i].DisplayNull(Hands[i]);
+                Hourglasses[i].GetComponentInChildren<Image>().enabled = false;
+                Hourglasses[i].GetComponentInChildren<Text>().text = null;
+            }
+                
             Cards[i] = null;
 
             Deck deck = new Deck();

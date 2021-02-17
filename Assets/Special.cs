@@ -1055,21 +1055,28 @@ public class Special : MonoBehaviour
                 if (occupied.Count > 0)
                 {
                     int highestCD = 0;
-                    int highestCDTile = Hand.SIZE * 2;
                     for (int i = 0; i < occupied.Count; i++)
                     {
                         if (occupied[i].cd > highestCD)
                         {
                             highestCD = occupied[i].cd;
-                            highestCDTile = occupied[i].tile;
                         }
                     }
                     if (highestCD > 0)
                     {
-                        Hand.Cards[highestCDTile].cd -= 1;
-                        if (highestCDTile < Hand.SIZE)
+                        List<int> highestCDTiles = new List<int>();
+                        for (int i = 0; i < occupied.Count; i++)
                         {
-                            dealer.DisplayCard(Hand.Hands[highestCDTile], Hand.Cards[highestCDTile]);
+                            if (occupied[i].cd == highestCD)
+                                highestCDTiles.Add(occupied[i].tile);
+                        }
+
+                        Rng rng = new Rng();
+                        int rnd = rng.Range(0, highestCDTiles.Count);
+                        Hand.Cards[highestCDTiles[rnd]].cd -= 1;
+                        if (highestCDTiles[rnd] < Hand.SIZE)
+                        {
+                            dealer.DisplayCard(Hand.Hands[highestCDTiles[rnd]], Hand.Cards[highestCDTiles[rnd]]);
                         }
                     }
                 }
@@ -1187,10 +1194,20 @@ public class Special : MonoBehaviour
 
     public void CheckConjure(Card dealer)
     {
-        if (dealer.special.conjure)
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
         {
-            Deck deck = new Deck();
-            deck.DrawCard(dealer.alignment);
+            if (allies[i].special.conjure)
+            {
+                Deck deck = new Deck();
+                deck.DrawCard(allies[i].alignment);
+                allies[i].special.conjure = false;
+
+                AnimaText animaText = new AnimaText();
+                animaText.ShowText(Bf.Bfs[allies[i].tile], "Conjure", Hue.cyan);
+            }
         }
     }
 

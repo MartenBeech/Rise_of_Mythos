@@ -63,6 +63,7 @@ public class Card : MonoBehaviour
     public int speed;
     public int range;
     public int tile;
+    public int rarity;
     public string nameTag;
 
     public int bonusAttackNextTurn = 0;
@@ -74,13 +75,27 @@ public class Card : MonoBehaviour
 
     public void DisplayCard(GameObject gameObject, Card card)
     {
-        gameObject.GetComponentInChildren<Text>().text = "";
-        if (card.cd > 0)
+        for (int i = 0; i < Hand.SIZE; i++)
         {
-            gameObject.GetComponentInChildren<Text>().text += "<size=50>" + card.cd + " / " + card.cdDefault + "</size>" + "\n";
+            if (gameObject == Hand.Hands[i])
+            {
+                if (card.cd > 0)
+                {
+                    Hand.Hourglasses[i].GetComponentInChildren<Image>().enabled = true;
+                    Hand.Hourglasses[i].GetComponentInChildren<Text>().text = card.cd.ToString();
+                    Hand.Hands[i].GetComponentInChildren<Button>().enabled = false;
+                }
+                else
+                {
+                    Hand.Hourglasses[i].GetComponentInChildren<Image>().enabled = false;
+                    Hand.Hourglasses[i].GetComponentInChildren<Text>().text = null;
+                    Hand.Hands[i].GetComponentInChildren<Button>().enabled = true;
+                }
+                break;
+            }
         }
 
-        gameObject.GetComponentInChildren<Text>().text +=
+        gameObject.GetComponentInChildren<Text>().text =
             (card.alignment == Card.Alignment.Ally ? "<color=green>" : "<color=red>") + "<size=" + (60 - (2 * card.nameTag.Length)) + ">" +
             card.nameTag + "</size>" + "</color>" + "<size=36>" + "\n\n\n\n\n\n" + "</size>" +
             "<color=red>" + card.attack + "</color>";

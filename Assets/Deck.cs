@@ -13,16 +13,16 @@ public class Deck : MonoBehaviour
     {
         Decks = GameObject.Find("Deck");
 
-        AddCard(Card.Title.Paladin, Card.Alignment.Ally);
-        AddCard(Card.Title.Paladin, Card.Alignment.Ally);
-        AddCard(Card.Title.Paladin, Card.Alignment.Ally);
-        AddCard(Card.Title.Paladin, Card.Alignment.Ally);
-        AddCard(Card.Title.Paladin, Card.Alignment.Ally);
-        AddCard(Card.Title.Captain, Card.Alignment.Enemy);
-        AddCard(Card.Title.Captain, Card.Alignment.Enemy);
-        AddCard(Card.Title.Captain, Card.Alignment.Enemy);
-        AddCard(Card.Title.Captain, Card.Alignment.Enemy);
-        AddCard(Card.Title.Captain, Card.Alignment.Enemy);
+        AddCard(Card.Title.PlaceHolder, Card.Alignment.Ally);
+        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
+        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
+        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
+        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
+        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
+        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
+        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
+        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
+        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
     }
     public void DrawCardClicked()
     {

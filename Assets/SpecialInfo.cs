@@ -91,8 +91,8 @@ public class SpecialInfo : MonoBehaviour
             (card.special.sniper ? "<b>" + "Sniper: " + "</b>" + "Always attack the lowest health enemy in range" + "\n" : "") +
             (card.special.ember ? "<b>" + "Ember: " + "</b>" + "Attacks deal magical damage next turn instead of immediately" + "\n" : "") +
             (card.special.nimble ? "<b>" + "Nimble: " + "</b>" + "Your core stats cannot be reduced" + "\n" : "") +
-            (card.special.conjure ? "<b>" + "Conjure: " + "</b>" + "Draw a card when summoned" + "\n" : "") +
-            (card.special.donor ? "<b>" + "Donor: " + "</b>" + "Draw a card upon death" + "\n" : "") +
+            (card.special.conjure ? "<b>" + "Conjure: " + "</b>" + "The next card you summon draws you a card" + "\n" : "") +
+            (card.special.donor ? "<b>" + "Donor: " + "</b>" + "Draw a card when this unit fully dies" + "\n" : "") +
             (card.special.stun ? "<b>" + "Stun: " + "</b>" + "Your first attack stuns the target, skipping its next turn" + "\n" : "") +
             (card.special.stunned ? "<b>" + "Stunned: " + "</b>" + "Your next turn is skipped" + "\n" : "") +
             (card.special.permaStun ? "<b>" + "Perma Stun: " + "</b>" + "Your attacks stuns the target, skipping its next turn" + "\n" : "") +
