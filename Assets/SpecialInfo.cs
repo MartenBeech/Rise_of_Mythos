@@ -54,6 +54,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.maim > 0 ? "<b>" + "Maim " + card.special.maim + ": " + "</b>" + "Attacks causes the enemy to take increased physical damage" + "\n" : "") +
             (card.special.maimed > 0 ? "<b>" + "Maimed " + card.special.maimed + ": " + "</b>" + "You take increased physical damage" + "\n" : "") +
             (card.special.battleSpirit > 0 ? "<b>" + "Battle Spirit " + card.special.battleSpirit + ": " + "</b>" + "Gain +" + card.special.battleSpirit + "/+" + card.special.battleSpirit + " whenever you take physical damage" + "\n" : "") +
+            (card.special.knockback > 0 ? "<b>" + "Knockback " + card.special.knockback + ": " + "</b>" + "Damaged targets will be knocked back " + card.special.knockback + " tiles" + "\n" : "") +
 
             (card.special.lifeAura > 0 ? "<b>" + "Life Aura " + card.special.lifeAura + ": " + "</b>" + "Allied units get bonus health" + "\n" : "") +
             (card.special.regenerationAura > 0 ? "<b>" + "Regeneration Aura " + card.special.regenerationAura + ": " + "</b>" + "Allied units get Regeneration" + "\n" : "") +
@@ -69,14 +70,13 @@ public class SpecialInfo : MonoBehaviour
 
             (card.special.pierce ? "<b>" + "Pierce: " + "</b>" + "Also deals damage to the enemy behind the target" + "\n" : "") +
             (card.special.whirlwind ? "<b>" + "Whirlwind: " + "</b>" + "Attack all adjacent enemies" + "\n" : "") +
-            (card.special.counterattack ? "<b>" + "Counterattack: " + "</b>" + "Can retaliate if attacked inside its range" + "\n" : "") +
-            (card.special.firstStrike ? "<b>" + "First Strike: " + "</b>" + "Can retaliate before being attacked inside its range" + "\n" : "") +
+            (card.special.counterattack ? "<b>" + "Counterattack: " + "</b>" + "Retaliate if attacked inside your range" + "\n" : "") +
+            (card.special.firstStrike ? "<b>" + "First Strike: " + "</b>" + "Retaliate before being attacked inside your range" + "\n" : "") +
             (card.special.dispel ? "<b>" + "Dispel: " + "</b>" + "Attacking an enemy first reduces their attack and health to their normal values" + "\n" : "") +
             (card.special.faith ? "<b>" + "Faith: " + "</b>" + "Healing a unit grants you +1/+1" + "\n" : "") +
             (card.special.martyrdom ? "<b>" + "Martyrdom: " + "</b>" + "Redirect all damage taken by nearby allies towards yourself" + "\n" : "") +
             (card.special.heavyWeapon ? "<b>" + "Heavy Weapon: " + "</b>" + "Can not attack after moving" + "\n" : "") +
             (card.special.dragonSlayer ? "<b>" + "Dragon Slayer: " + "</b>" + "Deal double damage to units with 5+ CD" + "\n" : "") +
-            (card.special.knockback ? "<b>" + "Knockback: " + "</b>" + "Damaged targets will be knocked back 2 tiles" + "\n" : "") +
             (card.special.reanimate ? "<b>" + "Reanimate: " + "</b>" + "This unit is resummoned the first time it dies" + "\n" : "") +
             (card.special.lifeSteal ? "<b>" + "Life Steal: " + "</b>" + "Restore your health equal to damage dealt" + "\n" : "") +
             (card.special.soulbound ? "<b>" + "Soulbound: " + "</b>" + "This unit is returned to it's owner's hand first time it dies" + "\n" : "") +
@@ -103,6 +103,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.charm ? "<b>" + "Charm: " + "</b>" + "Take control over the first unit attacked with 3 or less cd" + "\n" : "") +
             (card.special.bleedingAttack ? "<b>" + "Bleeding Attack: " + "</b>" + "Attacks make the target unable to be healed" + "\n" : "") +
             (card.special.bleeding ? "<b>" + "Bleeding: " + "</b>" + "You cannot be healed" + "\n" : "") +
+            (card.special.influence ? "<b>" + "Influence: " + "</b>" + "Upon attacking, give a card in your hand +1/+1" + "\n" : "") +
 
             (card.special.kingsCommand ? "<b>" + "King's Command: " + "</b>" + "Summons a Horseman of same rank each turn" + "\n" : "") +
             (card.special.combatMaster ? "<b>" + "Combat Master: " + "</b>" + "Deals double damage to enemies with 4+ Range, 4+ Speed, Armor, Wall or Flying" + "\n" : "") +

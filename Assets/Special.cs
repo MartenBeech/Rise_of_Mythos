@@ -38,6 +38,7 @@ public class Special : MonoBehaviour
     public int maim = 0;
     public int maimed = 0;
     public int battleSpirit = 0;
+    public int knockback = 0;
 
     public int lifeAura = 0;
     public int regenerationAura = 0;
@@ -60,7 +61,6 @@ public class Special : MonoBehaviour
     public bool martyrdom = false;
     public bool heavyWeapon = false;
     public bool dragonSlayer = false;
-    public bool knockback = false;
     public bool reanimate = false;
     public bool lifeSteal = false;
     public bool soulbound = false;
@@ -88,6 +88,7 @@ public class Special : MonoBehaviour
     public bool hitAndRun = false;
     public bool bleedingAttack = false;
     public bool bleeding = false;
+    public bool influence = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
@@ -389,8 +390,18 @@ public class Special : MonoBehaviour
             Tile tile = new Tile();
             if (tile.GetDistanceBetweenUnits(dealer, target) <= target.range)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(target, dealer, target.attack, target.damageType, true);
+                for (int i = 0; i < target.special.multistrike + 1; i++)
+                {
+                    if (CheckWhirlwind(target)) 
+                    { }
+                    else
+                    {
+                        UnitAttack unitAttack = new UnitAttack();
+                        unitAttack.DealDamage(target, dealer, target.attack, target.damageType, true);
+                        CheckPierce(target, dealer);
+                        CheckCleave(target, dealer);
+                    }
+                }
             }
         }
     }
@@ -402,8 +413,18 @@ public class Special : MonoBehaviour
             Tile tile = new Tile();
             if (tile.GetDistanceBetweenUnits(dealer, target) <= target.range)
             {
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(target, dealer, target.attack, target.damageType, true);
+                for (int i = 0; i < target.special.multistrike + 1; i++)
+                {
+                    if (CheckWhirlwind(target))
+                    { }
+                    else
+                    {
+                        UnitAttack unitAttack = new UnitAttack();
+                        unitAttack.DealDamage(target, dealer, target.attack, target.damageType, true);
+                        CheckPierce(target, dealer);
+                        CheckCleave(target, dealer);
+                    }
+                }
             }
             if (target.health <= 0)
             {
@@ -533,10 +554,10 @@ public class Special : MonoBehaviour
 
     public void CheckKnockback(Card dealer, Card target)
     {
-        if (dealer.special.knockback)
+        if (dealer.special.knockback > 0)
         {
             Tile tile = new Tile();
-            int tileNew = tile.GetTileInFront(target, 2, true);
+            int tileNew = tile.GetTileInFront(target, dealer.special.knockback, true);
             
 
             if (tileNew != target.tile)
@@ -1631,6 +1652,43 @@ public class Special : MonoBehaviour
         if (dealer.special.bleedingAttack)
         {
             target.special.bleeding = true;
+        }
+    }
+
+    public void CheckInfluence(Card dealer)
+    {
+        if (dealer.special.influence)
+        {
+            int iMin = 0;
+            int iMax = Hand.SIZE;
+            if (dealer.alignment == Card.Alignment.Enemy)
+            {
+                iMin = Hand.SIZE;
+                iMax = Hand.SIZE * 2;
+            }
+
+            List<int> occupied = new List<int>();
+            for (int i = iMin; i < iMax; i++)
+            {
+                if (Hand.occupied[i])
+                {
+                    occupied.Add(i);
+                }
+            }
+
+            if (occupied.Count > 0)
+            {
+                Rng rng = new Rng();
+                int rnd = occupied[rng.Range(0, occupied.Count)];
+                Hand.Cards[rnd].attack += 1;
+                Hand.Cards[rnd].health += 1;
+                Hand.Cards[rnd].healthMax += 1;
+
+                if (rnd < Hand.SIZE)
+                {
+                    dealer.DisplayCard(Hand.Hands[rnd], Hand.Cards[rnd]);
+                }
+            }
         }
     }
 }

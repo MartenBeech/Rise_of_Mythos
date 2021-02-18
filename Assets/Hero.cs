@@ -26,7 +26,13 @@ public class Hero : MonoBehaviour
         damage += dealer.bonusAttackNextTurn;
 
         Special special = new Special();
-        special.CheckSoulEater(dealer);
+        damage = special.CheckShadowBolt(dealer, damage);
+        if (damage > 0)
+        {
+            special.CheckSoulEater(dealer);
+            special.CheckInfluence(dealer);
+            special.CheckHeroic(dealer);
+        }
 
         for (int i = 0; i < dealer.special.multistrike + 1; i++)
         {

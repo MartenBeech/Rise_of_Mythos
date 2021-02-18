@@ -14,15 +14,15 @@ public class Deck : MonoBehaviour
         Decks = GameObject.Find("Deck");
 
         AddCard(Card.Title.PlaceHolder, Card.Alignment.Ally);
-        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
-        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
-        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
-        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
-        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
-        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
-        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
-        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
-        AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Ally);
+        AddCard(Card.Title.PlaceHolder, Card.Alignment.Ally);
+        AddCard(Card.Title.PlaceHolder, Card.Alignment.Ally);
+        AddCard(Card.Title.PlaceHolder, Card.Alignment.Ally);
+        AddCard(Card.Title.PlaceHolder, Card.Alignment.Ally);
+        AddCard(Card.Title.Whitemane, Card.Alignment.Enemy);
+        AddCard(Card.Title.Whitemane, Card.Alignment.Enemy);
+        AddCard(Card.Title.Whitemane, Card.Alignment.Enemy);
+        AddCard(Card.Title.Whitemane, Card.Alignment.Enemy);
+        AddCard(Card.Title.Whitemane, Card.Alignment.Enemy);
     }
     public void DrawCardClicked()
     {

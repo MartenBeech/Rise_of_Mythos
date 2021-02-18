@@ -126,6 +126,7 @@ public class SpecialTrigger : MonoBehaviour
                 special.CheckStun(dealer, target);
                 special.CheckPermaStun(dealer, target);
                 special.CheckCharm(dealer, target);
+                special.CheckInfluence(dealer);
 
                 special.CheckFear(dealer, target, damage);
                 special.CheckDisdain(dealer, target);
