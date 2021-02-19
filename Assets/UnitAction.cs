@@ -38,6 +38,7 @@ public class UnitAction : MonoBehaviour
                 }
                 Special special = new Special();
                 special.CheckHitAndRun(units[0]);
+                special.CheckHeadbuttMove(units[0]);
             }
 
             if (counter <= 0)
@@ -95,6 +96,7 @@ public class UnitAction : MonoBehaviour
                 units[0].bonusAttackNextTurn = 0;
                 units[0].heroicThisTurn = 0;
                 units[0].canAttackThisTurn = true;
+                units[0].attackedThisTurn = false;
                 readyToMove = true;
                 readyToAttack = true;
                 counter = UI.TIMER * 2.04f;

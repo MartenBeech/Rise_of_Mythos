@@ -80,7 +80,6 @@ public class AnimaCard : MonoBehaviour
         Hand hand = new Hand();
         hand.RemoveCard(_from);
         _card.tile = _to;
-        _card.readyToAttack = false;
     }
 
     public void MoveBfBf(Card _card, int _from, int _to, bool summoned = false)
@@ -95,7 +94,6 @@ public class AnimaCard : MonoBehaviour
             bf.RemoveCard(_from);
         }
         _card.tile = _to;
-        _card.readyToAttack = true;
     }
 
     public void MoveEnemyBf(Card _card, int _from, int _to)
@@ -107,7 +105,6 @@ public class AnimaCard : MonoBehaviour
         Hand hand = new Hand();
         hand.RemoveCard(_from);
         _card.tile = _to;
-        _card.readyToAttack = false;
     }
 
     public void MoveCard(Card _card, GameObject _from, GameObject _to)

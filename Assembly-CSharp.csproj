@@ -66,6 +66,7 @@
     <Compile Include="Assets\Card.cs" />
     <Compile Include="Assets\Deck.cs" />
     <Compile Include="Assets\Game.cs" />
+    <Compile Include="Assets\EnemyTurn.cs" />
     <Compile Include="Assets\Hue.cs" />
     <Compile Include="Assets\UnitMove.cs" />
     <Compile Include="Assets\AnimaInfo.cs" />
@@ -78,7 +79,8 @@
     <Compile Include="Assets\SpecialTrigger.cs" />
     <Compile Include="Assets\AnimaCard.cs" />
     <Compile Include="Assets\Hero.cs" />
-    <Compile Include="Assets\EnemyTurn.cs" />
+    <Compile Include="Assets\Camera.cs" />
+    <Compile Include="Assets\Recruit.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

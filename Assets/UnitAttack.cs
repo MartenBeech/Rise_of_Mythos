@@ -102,16 +102,21 @@ public class UnitAttack : MonoBehaviour
                     special.CheckFirstStrike(dealer, target);
                     if (Bf.occupied[dealer.tile])
                     {
+                        dealer.attackedThisTurn = true;
                         DealDamage(dealer, target, dealer.attack, dealer.damageType);
                         special.CheckPierce(dealer, target);
                         special.CheckCleave(dealer, target);
                         if (Bf.occupied[target.tile])
                         {
                             special.CheckCounterattack(dealer, target);
-                            special.CheckKnockback(dealer, target);
                         }
                     }
                 }
+            }
+            if (Bf.occupied[target.tile])
+            {
+                special.CheckKnockback(dealer, target);
+                special.CheckHeadbuttAttack(dealer, target);
             }
             return true;
         }

@@ -7,11 +7,14 @@ public class UnitSpecial : MonoBehaviour
 {
     public void Heal(Card dealer, Card target, int amount)
     {
-        if (!target.special.bleeding)
-        {
-            AnimaText animaText = new AnimaText();
-            animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.green);
+        if (target.special.bleeding)
+            amount = 0;
 
+        AnimaText animaText = new AnimaText();
+        animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.green);
+
+        if (amount > 0)
+        {
             Special special = new Special();
             special.CheckFaith(dealer);
 
@@ -20,11 +23,12 @@ public class UnitSpecial : MonoBehaviour
             {
                 target.health = target.healthMax;
             }
-            target.DisplayCard(Bf.Bfs[target.tile], target);
-            target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
-
-            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
         }
+        
+        target.DisplayCard(Bf.Bfs[target.tile], target);
+        target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
+
+        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
     }
 
     public void IncreaseHealth(Card dealer, Card target, int amount)

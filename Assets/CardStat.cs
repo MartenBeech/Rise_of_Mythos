@@ -48,13 +48,14 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.CentaurArcher:
-                card.attack = 4;
-                card.health = 3;
+                card.attack = 3;
+                card.health = 4;
                 card.cd = 1;
                 card.range = 4;
                 card.speed = 4;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
+                card.special.hitAndRun = true;
                 break;
 
             case Card.Title.CentaurRider:
@@ -307,14 +308,14 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.Lizard:
                 card.attack = 2;
-                card.health = 9;
+                card.health = 10;
                 card.cd = 1;
-                card.range = 2;
+                card.range = 1;
                 card.speed = 1;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 1;
-                card.special.knockback = 1;
+                card.special.armor = 2;
+                card.special.headbutt = true;
                 break;
 
             case Card.Title.Mercenary:
@@ -397,9 +398,9 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.ThunderLizard:
                 card.attack = 2;
-                card.health = 12;
+                card.health = 14;
                 card.cd = 2;
-                card.range = 2;
+                card.range = 1;
                 card.speed = 1;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
@@ -513,14 +514,14 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.ArmouredLizard:
                 card.attack = 2;
-                card.health = 8;
+                card.health = 11;
                 card.cd = 2;
-                card.range = 2;
+                card.range = 1;
                 card.speed = 1;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
                 card.special.armor = 3;
-                card.special.knockback = 2;
+                card.special.headbutt = true;
                 break;
 
             case Card.Title.BattlePriestess:
@@ -587,13 +588,14 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.CentaurHunter:
-                card.attack = 6;
-                card.health = 3;
-                card.cd = 3;
+                card.attack = 5;
+                card.health = 9;
+                card.cd = 4;
                 card.range = 4;
                 card.speed = 4;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
+                card.special.hitAndRun = true;
                 break;
 
             case Card.Title.Cerberus:
@@ -888,9 +890,9 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.SeniorThunderLizard:
                 card.attack = 3;
-                card.health = 12;
+                card.health = 15;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 1;
                 card.speed = 1;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
@@ -1009,24 +1011,27 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.AegisLizard:
                 card.attack = 2;
-                card.health = 17;
+                card.health = 20;
                 card.cd = 5;
-                card.range = 2;
-                card.speed = 2;
+                card.range = 1;
+                card.speed = 1;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.armor = 4;
+                card.special.knockback = 10;
                 break;
 
             case Card.Title.BattleAbbess:
                 card.attack = 2;
                 card.health = 9;
                 card.cd = 6;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.penetrate = true;
+                card.special.faith = true;
+                card.special.cure = 3;
                 break;
 
             case Card.Title.Captain:
@@ -1037,29 +1042,30 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.armor = 3;
                 break;
 
             case Card.Title.CentaurGuerrillaLeader:
-                card.attack = 1;
-                card.health = 13;
+                card.attack = 0;
+                card.health = 10;
                 card.cd = 5;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.charge = 2;
+                card.special.hitAndRun = true;
                 break;
 
             case Card.Title.CentaurMarksman:
-                card.attack = 5;
-                card.health = 2;
+                card.attack = 4;
+                card.health = 5;
                 card.cd = 2;
-                card.range = 2;
-                card.speed = 2;
+                card.range = 4;
+                card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.hitAndRun = true;
                 break;
 
             case Card.Title.ChampionKnight:
@@ -1067,21 +1073,21 @@ public class CardStat : MonoBehaviour
                 card.health = 10;
                 card.cd = 3;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.heroic = 2;
                 break;
 
             case Card.Title.CrossbowCaptain:
                 card.attack = 7;
                 card.health = 16;
                 card.cd = 6;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.heavyWeapon = true;
                 break;
 
             case Card.Title.DoomRider:
@@ -1089,10 +1095,12 @@ public class CardStat : MonoBehaviour
                 card.health = 14;
                 card.cd = 6;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.armor = 1;
+                card.special.spellFeed = 2;
+                card.special.spellCurse = 3;
                 break;
 
             case Card.Title.DreadChampion:
@@ -1100,10 +1108,12 @@ public class CardStat : MonoBehaviour
                 card.health = 13;
                 card.cd = 5;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.armor = 1;
+                card.special.soulEater = 2;
+                card.special.fear = true;
                 break;
 
             case Card.Title.DreadPhantom:
@@ -1114,62 +1124,69 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.soulbound = true;
+                card.special.incorporeal = true;
+                card.special.fear = true;
                 break;
 
             case Card.Title.ElvenFireArchmage:
                 card.attack = 3;
                 card.health = 6;
                 card.cd = 3;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.ember = true;
+                card.special.herosBane = 2;
                 break;
 
             case Card.Title.ElvenFrostSorcerer:
                 card.attack = 2;
                 card.health = 13;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.frostBolt = true;
+                card.special.conjure = true;
                 break;
 
             case Card.Title.ElvenHighPriestess:
                 card.attack = 2;
                 card.health = 6;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.penetrate = true;
+                card.special.inspiration = 1;
+                card.special.cure = 3;
                 break;
 
             case Card.Title.ElvenLegionnaire:
                 card.attack = 4;
                 card.health = 11;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 3;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.spear = true;
+                card.special.vigilance = true;
+                card.special.nimble = true;
                 break;
 
             case Card.Title.ElvenMarksman:
                 card.attack = 5;
                 card.health = 4;
                 card.cd = 3;
-                card.range = 2;
+                card.range = 6;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
                 break;
 
             case Card.Title.ElvenRebel:
@@ -1180,29 +1197,32 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.nimble = true;
+                card.special.armor = 1;
+                card.special.resistance = 5;
                 break;
 
             case Card.Title.ElvenSharpShooter:
                 card.attack = 5;
                 card.health = 7;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 5;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.sniper = true;
                 break;
 
             case Card.Title.ElvenThunderArchmage:
                 card.attack = 1;
                 card.health = 9;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.stun = true;
+                card.special.lightningBolt = 4;
                 break;
 
             case Card.Title.FelesAssassinMaster:
@@ -1213,7 +1233,8 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.ambush = true;
+                card.special.penetrate = true;
                 break;
 
             case Card.Title.FelesSwordsman:
@@ -1224,7 +1245,7 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.ambush = true;
                 break;
 
             case Card.Title.FencingMaster:
@@ -1235,7 +1256,7 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.firstStrike = true;
                 break;
 
             case Card.Title.FieryCerberus:
@@ -1246,7 +1267,9 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.ember = true;
+                card.special.vigilance = true;
+                card.special.cleave = true;
                 break;
 
             case Card.Title.FieryHound:
@@ -1254,10 +1277,11 @@ public class CardStat : MonoBehaviour
                 card.health = 10;
                 card.cd = 3;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 3;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.counterattack = true;
+                card.special.rage = 1;
                 break;
 
             case Card.Title.HellishSkeleton:
@@ -1268,29 +1292,33 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.skeletal = true;
+                card.special.reapingCurse = 2;
                 break;
 
             case Card.Title.HolyMaster:
                 card.attack = 1;
                 card.health = 12;
                 card.cd = 5;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.penetrate = true;
+                card.special.dispel = true;
+                card.special.cure = 4;
                 break;
 
             case Card.Title.IcyGaleGhost:
                 card.attack = 5;
                 card.health = 7;
                 card.cd = 5;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.soulbound = true;
+                card.special.knockback = 2;
                 break;
 
             case Card.Title.LanceChampion:
@@ -1298,10 +1326,10 @@ public class CardStat : MonoBehaviour
                 card.health = 10;
                 card.cd = 4;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.charge = 1;
                 break;
 
             case Card.Title.MercenaryCaptain:
@@ -1312,7 +1340,8 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.whirlwind = true;
+                card.special.influence = true;
                 break;
 
             case Card.Title.PegasusChampion:
@@ -1320,10 +1349,11 @@ public class CardStat : MonoBehaviour
                 card.health = 7;
                 card.cd = 3;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.flying = true;
+                card.special.regeneration = 3;
                 break;
 
             case Card.Title.PegasusRaidLeader:
@@ -1331,43 +1361,48 @@ public class CardStat : MonoBehaviour
                 card.health = 7;
                 card.cd = 4;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.flying = true;
+                card.special.resistance = 4;
                 break;
 
             case Card.Title.PlaguedSkeleton:
                 card.attack = 3;
                 card.health = 3;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.skeletal = true;
+                card.special.poison = 3;
                 break;
 
             case Card.Title.RepeatingCrossbowCaptain:
                 card.attack = 2;
                 card.health = 9;
                 card.cd = 5;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.multistrike = 1;
+                card.special.vigilance = true;
+                card.special.heroic = 1;
                 break;
 
             case Card.Title.SawtoothThunderLizard:
                 card.attack = 2;
-                card.health = 18;
+                card.health = 21;
                 card.cd = 6;
-                card.range = 2;
-                card.speed = 2;
+                card.range = 1;
+                card.speed = 1;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.stun = true;
+                card.special.armor = 4;
                 break;
 
             case Card.Title.ScarletBat:
@@ -1378,7 +1413,9 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.flying = true;
+                card.special.bleedingAttack = true;
+                card.special.lifeSteal = true;
                 break;
 
             case Card.Title.SpitefulBat:
@@ -1389,7 +1426,8 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.flying = true;
+                card.special.poison = 3;
                 break;
 
             case Card.Title.Templar:
@@ -1400,18 +1438,21 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.vigilance = true;
+                card.special.armor = 1;
+                card.special.cure = 2;
                 break;
 
             case Card.Title.VampireArchmage:
                 card.attack = 1;
                 card.health = 13;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.lifeSteal = true;
+                card.special.weaken = 1;
                 break;
 
             case Card.Title.VampireLord:
@@ -1422,7 +1463,8 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.lifeSteal = true;
+                card.special.weaken = 2;
                 break;
 
             case Card.Title.WerewolfDeathclaw:
@@ -1430,10 +1472,12 @@ public class CardStat : MonoBehaviour
                 card.health = 13;
                 card.cd = 4;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 3;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.bloodPrice = 1;
+                card.special.penetrate = true;
+                card.special.maim = 2;
                 break;
 
             case Card.Title.WerewolfFleshripper:
@@ -1441,10 +1485,11 @@ public class CardStat : MonoBehaviour
                 card.health = 5;
                 card.cd = 6;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 3;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.bloodPrice = 2;
+                card.special.carnivore = 6;
                 break;
 
             case Card.Title.ZombieCaptain:
@@ -1455,7 +1500,9 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.reanimate = true;
+                card.special.armor = 3;
+                card.special.donor = true;
                 break;
 
             case Card.Title.ZombieChampion:
@@ -1466,18 +1513,21 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.reanimate = true;
+                card.special.vigilance = true;
+                card.special.regeneration = 3;
                 break;
 
             case Card.Title.CainTheTraitor:
                 card.attack = 3;
                 card.health = 10;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.skeletal = true;
+                card.special.vengefulCurse = true;
                 break;
 
             case Card.Title.CerberusHegemon:
@@ -1488,18 +1538,22 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.ember = true;
+                card.special.vigilance = true;
+                card.special.cleave = true;
+                card.special.rage = 1;
                 break;
 
             case Card.Title.ChiefIronhide:
                 card.attack = 1;
-                card.health = 15;
+                card.health = 18;
                 card.cd = 6;
-                card.range = 2;
-                card.speed = 2;
+                card.range = 1;
+                card.speed = 1;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.armor = 4;
+                card.special.armorAura = 1;
                 break;
 
             case Card.Title.CrusaderLucanus:
@@ -1510,7 +1564,9 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.vigilance = true;
+                card.special.cure = 2;
+                card.special.lifeAura = 3;
                 break;
 
             case Card.Title.DariusDarkhand:
@@ -1518,21 +1574,25 @@ public class CardStat : MonoBehaviour
                 card.health = 13;
                 card.cd = 2;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.armor = 1;
+                card.special.soulEater = 2;
+                card.special.panicStrike = true;
                 break;
 
             case Card.Title.DemonHunterAzrael:
                 card.attack = 2;
                 card.health = 10;
                 card.cd = 5;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.multistrike = 2;
+                card.special.pierce = true;
+                card.special.penetrate = true;
                 break;
 
             case Card.Title.DesperateSoul:
@@ -1543,7 +1603,9 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.soulbound = true;
+                card.special.incorporeal = true;
+                card.special.resistance = 99;
                 break;
 
             case Card.Title.EacannTheCharger:
@@ -1551,10 +1613,11 @@ public class CardStat : MonoBehaviour
                 card.health = 14;
                 card.cd = 5;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.pierce = true;
+                card.special.charge = 1;
                 break;
 
             case Card.Title.FenrisTheButcher:
@@ -1562,32 +1625,33 @@ public class CardStat : MonoBehaviour
                 card.health = 15;
                 card.cd = 3;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 3;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.bloodPrice = 2;
+                card.special.rage = 1;
                 break;
 
             case Card.Title.FirstRangerTalenor:
                 card.attack = 2;
                 card.health = 9;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 6;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.rangeAura = 1;
                 break;
 
             case Card.Title.LuciusSwift:
-                card.attack = 6;
+                card.attack = 5;
                 card.health = 1;
-                card.cd = 2;
-                card.range = 2;
-                card.speed = 2;
+                card.cd = 1;
+                card.range = 4;
+                card.speed = 4;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.hitAndRun = true;
                 break;
 
             case Card.Title.MifzunaTheWind:
@@ -1595,10 +1659,11 @@ public class CardStat : MonoBehaviour
                 card.health = 5;
                 card.cd = 3;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 10;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.ambush = true;
+                card.special.panicStrike = true;
                 break;
 
             case Card.Title.OfeigurTheUndying:
@@ -1609,7 +1674,9 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.reanimate = true;
+                card.special.martyrdom = true;
+                card.special.donor = true;
                 break;
 
             case Card.Title.OpheliaWestWind:
@@ -1617,10 +1684,11 @@ public class CardStat : MonoBehaviour
                 card.health = 10;
                 card.cd = 4;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.flying = true;
+                card.special.attackAura = 1;
                 break;
 
             case Card.Title.PontiffFaol:
@@ -1631,7 +1699,10 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.whirlwind = true;
+                card.special.penetrate = true;
+                card.special.martyrdom = true;
+                card.special.regeneration = 3;
                 break;
 
             case Card.Title.PrinceSerka:
@@ -1642,40 +1713,50 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.lifeSteal = true;
+                card.special.counterattack = true;
+                card.special.lifeAura = 3;
                 break;
 
             case Card.Title.SilvaTheFrozenHeart:
                 card.attack = 3;
                 card.health = 13;
                 card.cd = 5;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.stun = true;
+                card.special.lightningBolt = 3;
+                card.special.frostBolt = true;
+                card.special.conjure = true;
                 break;
 
             case Card.Title.TanwenWildfire:
                 card.attack = 5;
                 card.health = 14;
-                card.cd = 4;
+                card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.ember = true;
+                card.special.herosBane = 3;
+                card.special.immolate = 2;
                 break;
 
             case Card.Title.VelynTheUnscarred:
                 card.attack = 3;
                 card.health = 15;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 3;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.spear = true;
+                card.special.nimble = true;
+                card.special.resistance = 99;
+                card.special.vigilance = true;
                 break;
 
             case Card.Title.VirulentBatKing:
@@ -1686,7 +1767,9 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.flying = true;
+                card.special.bleedingAttack = true;
+                card.special.poison = 6;
                 break;
 
             case Card.Title.WindDancerElke:
@@ -1697,18 +1780,22 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.whirlwind = true;
+                card.special.penetrate = true;
+                card.special.heroic = 1;
                 break;
 
             case Card.Title.AryaTheHonorable:
                 card.attack = 1;
                 card.health = 19;
                 card.cd = 7;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.penetrate = true;
+                card.special.regeneration = 3;
+                card.special.regenerationAura = 2;
                 break;
 
             case Card.Title.BigShuck:
@@ -1716,10 +1803,10 @@ public class CardStat : MonoBehaviour
                 card.health = 12;
                 card.cd = 3;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 3;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.multistrike = 4;
                 break;
 
             case Card.Title.ChieftainLionroar:
@@ -1727,21 +1814,24 @@ public class CardStat : MonoBehaviour
                 card.health = 9;
                 card.cd = 3;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.hitAndRun = true;
+                card.special.speedAura = 1;
                 break;
 
             case Card.Title.DragonHunterVincent:
                 card.attack = 6;
                 card.health = 15;
                 card.cd = 6;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.heavyWeapon = true;
+                card.special.knockback = 2;
+                card.special.dragonSlayer = true;
                 break;
 
             case Card.Title.EmperorAugustus:
@@ -1752,7 +1842,7 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.kingsCommand = true;
                 break;
 
             case Card.Title.EmrysTheUnyielding:
@@ -1760,10 +1850,11 @@ public class CardStat : MonoBehaviour
                 card.health = 21;
                 card.cd = 7;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.penetrate = true;
+                card.special.combatMaster = true;
                 break;
 
             case Card.Title.ExecutionerGrimbone:
@@ -1774,18 +1865,23 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.skeletal = true;
+                card.special.reapingCurse = 3;
+                card.special.resistance = 2;
                 break;
 
             case Card.Title.Gringheist:
                 card.attack = 1;
                 card.health = 7;
                 card.cd = 4;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.soulbound = true;
+                card.special.shadowBolt = 3;
+                card.special.incorporeal = true;
+                card.special.blackIce = true;
                 break;
 
             case Card.Title.JasmineTheDervish:
@@ -1796,29 +1892,34 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.whirlwind = true;
+                card.special.firstStrike = true;
+                card.special.cheif = true;
+                card.special.influence = true;
                 break;
 
             case Card.Title.KathrynEmberwind:
                 card.attack = 2;
                 card.health = 13;
                 card.cd = 6;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.ember = true;
+                card.special.immolate = 2;
+                card.special.herosBaneAura = 1;
                 break;
 
             case Card.Title.KingVelAssar:
                 card.attack = 3;
                 card.health = 10;
                 card.cd = 5;
-                card.range = 2;
+                card.range = 10;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.multiShot = true;
                 break;
 
             case Card.Title.LordFleder:
@@ -1829,7 +1930,9 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.flying = true;
+                card.special.lifeSteal = true;
+                card.special.battleSpirit = 1;
                 break;
 
             case Card.Title.MaiaShadowblade:
@@ -1837,32 +1940,35 @@ public class CardStat : MonoBehaviour
                 card.health = 3;
                 card.cd = 1;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 10;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.ambush = true;
+                card.special.heroic = 1;
                 break;
 
             case Card.Title.PrincessSarya:
                 card.attack = 1;
                 card.health = 4;
                 card.cd = 7;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.lifeSteal = true;
+                card.special.witheringAura = 5;
                 break;
 
             case Card.Title.RyliTheWhiteWitch:
                 card.attack = 1;
                 card.health = 12;
                 card.cd = 5;
-                card.range = 2;
+                card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.blizzardAura = true;
+                card.special.frostBolt = true;
                 break;
 
             case Card.Title.SorannTheUnforgiving:
@@ -1873,18 +1979,22 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.vigilance = true;
+                card.special.penetrate = true;
+                card.special.nimble = true;
+                card.special.disdain = 2;
                 break;
 
             case Card.Title.StormLizardKing:
                 card.attack = 1;
-                card.health = 14;
+                card.health = 17;
                 card.cd = 5;
-                card.range = 2;
-                card.speed = 2;
+                card.range = 1;
+                card.speed = 1;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.permaStun = true;
+                card.special.armor = 4;
                 break;
 
             case Card.Title.TarielThePhalanx:
@@ -1892,10 +2002,12 @@ public class CardStat : MonoBehaviour
                 card.health = 10;
                 card.cd = 6;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.flying = true;
+                card.special.nimble = true;
+                card.special.reinforcement = true;
                 break;
 
             case Card.Title.UndeadKingBael:
@@ -1906,7 +2018,7 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.callOfTheUndeadKing = true;
                 break;
 
             case Card.Title.VarkusTheBlight:
@@ -1914,10 +2026,11 @@ public class CardStat : MonoBehaviour
                 card.health = 10;
                 card.cd = 7;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 4;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
+                card.special.armor = 1;
+                card.special.soulHarvest = true;
                 break;
 
             case Card.Title.Whitemane:
@@ -1925,27 +2038,27 @@ public class CardStat : MonoBehaviour
                 card.health = 13;
                 card.cd = 4;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 3;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-
-
+                card.special.bloodPrice = 2;
+                card.special.penetrate = true;
+                card.special.penetrateAura = true;
+                card.special.crushDefenses = true;
                 break;
 
 
 
-            case Card.Title.PlaceHolder:
+            case Card.Title.Null:
                 card.race = Card.Race.Neutral;
-                card.attack = 2;
+                card.attack = 50;
                 card.health = 50;
                 card.cd = 0;
                 card.range = 2;
-                card.speed = 2;
+                card.speed = 1;
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Physical;
-
-                card.special.multistrike = 1;
-                card.special.influence = true;
+                card.special.kingsCommand = true;
                 break;
 
             case Card.Title.BoneHeap:
@@ -1957,8 +2070,19 @@ public class CardStat : MonoBehaviour
                 card.speed = 0;
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Physical;
-
                 card.special.boneHeap = true;
+                break;
+
+            case Card.Title.RaisedDead:
+                card.race = Card.Race.Neutral;
+                card.attack = 2;
+                card.health = 3;
+                card.cd = 0;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 0;
+                card.damageType = Card.DamageType.Physical;
+                card.special.reanimate = true;
                 break;
         }
 

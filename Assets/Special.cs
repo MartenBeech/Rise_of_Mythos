@@ -89,11 +89,12 @@ public class Special : MonoBehaviour
     public bool bleedingAttack = false;
     public bool bleeding = false;
     public bool influence = false;
+    public bool headbutt = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
     public bool callOfTheUndeadKing = false;
-    public bool frostSuit = false;
+    public bool blackIce = false;
     public bool soulHarvest = false;
     public bool multiShot = false;
     public bool reinforcement = false;
@@ -241,14 +242,16 @@ public class Special : MonoBehaviour
         }
     }
 
-    public bool CheckSummonUnitEndTurn(Card dealer)
+    public bool CheckKingsCommand(Card dealer)
     {
         if (dealer.special.kingsCommand)
         {
             CardStat cardStat = new CardStat();
-            Card _card = cardStat.GetStats(Card.Title.PlaceHolder, dealer.alignment);
-
+            Card card = new Card();
+            List<Card> cards = card.GetCardsByCD(1);
             Rng rng = new Rng();
+            card = cardStat.GetStats(cards[rng.Range(0, cards.Count)].title, dealer.alignment);
+
             int summonTile = 0;
             List<int> emptyTiles = new List<int>();
 
@@ -277,7 +280,7 @@ public class Special : MonoBehaviour
             {
                 summonTile = emptyTiles[rng.Range(0, emptyTiles.Count)];
                 AnimaCard animaCard = new AnimaCard();
-                animaCard.MoveBfBf(_card, dealer.tile, summonTile, true);
+                animaCard.MoveBfBf(card, dealer.tile, summonTile, true);
                 return true;
             }
         }
@@ -592,7 +595,8 @@ public class Special : MonoBehaviour
             if (enemies[i].special.callOfTheUndeadKing)
             {
                 CardStat cardStat = new CardStat();
-                Card card = cardStat.GetStats(Card.Title.PlaceHolder, target.alignment);
+                Card.Alignment alignment = (target.alignment == Card.Alignment.Ally ? Card.Alignment.Enemy : Card.Alignment.Ally);
+                Card card = cardStat.GetStats(Card.Title.RaisedDead, alignment);
                 AnimaCard animaCard = new AnimaCard();
                 animaCard.MoveBfBf(card, enemies[i].tile, target.tile, true);
                 break;
@@ -616,12 +620,13 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.weaken > 0)
         {
-            if (target.attack > 0)
+            
+            if (!target.special.nimble)
             {
-                if (!target.special.nimble)
-                {
-                    target.attack -= dealer.special.weaken;
-                }
+                target.attack -= dealer.special.weaken;
+                
+                if (target.attack <= 0)
+                    target.attack = 0;
             }
         }
     }
@@ -723,9 +728,9 @@ public class Special : MonoBehaviour
         }
     }
 
-    public void CheckFrostSuit(Card dealer, Card target)
+    public void CheckBlackIce(Card dealer, Card target)
     {
-        if (target.special.frostSuit)
+        if (target.special.blackIce)
         {
             if (!target.special.nimble)
             {
@@ -1570,49 +1575,52 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.hitAndRun)
         {
-            int tileNew = dealer.tile;
-            int tileCheck = dealer.tile;
-
-            for (int i = 0; i < dealer.speed; i++)
+            if (dealer.attackedThisTurn)
             {
-                if (dealer.alignment == Card.Alignment.Enemy)
-                {
-                    tileCheck += 3;
-                    if (tileCheck >= Bf.SIZE)
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    tileCheck -= 3;
-                    if (tileCheck < 0)
-                    {
-                        break;
-                    }
-                }
+                int tileNew = dealer.tile;
+                int tileCheck = dealer.tile;
 
-                if (!Bf.occupied[tileCheck])
+                for (int i = 0; i < dealer.speed; i++)
                 {
-                    tileNew = tileCheck;
-                }
-                else
-                {
-                    Card target = Bf.Cards[tileCheck];
-                    if (target.alignment != dealer.alignment)
+                    if (dealer.alignment == Card.Alignment.Enemy)
                     {
-                        if (!dealer.special.flying || target.special.flying)
+                        tileCheck += 3;
+                        if (tileCheck >= Bf.SIZE)
                         {
                             break;
                         }
                     }
-                }
-            }
+                    else
+                    {
+                        tileCheck -= 3;
+                        if (tileCheck < 0)
+                        {
+                            break;
+                        }
+                    }
 
-            AnimaCard animaCard = new AnimaCard();
-            if (tileNew != dealer.tile)
-            {
-                animaCard.MoveBfBf(dealer, dealer.tile, tileNew);
+                    if (!Bf.occupied[tileCheck])
+                    {
+                        tileNew = tileCheck;
+                    }
+                    else
+                    {
+                        Card target = Bf.Cards[tileCheck];
+                        if (target.alignment != dealer.alignment)
+                        {
+                            if (!dealer.special.flying || target.special.flying)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                AnimaCard animaCard = new AnimaCard();
+                if (tileNew != dealer.tile)
+                {
+                    animaCard.MoveBfBf(dealer, dealer.tile, tileNew);
+                }
             }
         }
     }
@@ -1687,6 +1695,39 @@ public class Special : MonoBehaviour
                 if (rnd < Hand.SIZE)
                 {
                     dealer.DisplayCard(Hand.Hands[rnd], Hand.Cards[rnd]);
+                }
+            }
+        }
+    }
+
+    public void CheckHeadbuttAttack(Card dealer, Card target)
+    {
+        if (dealer.special.headbutt)
+        {
+            Tile tile = new Tile();
+            int tileNew = tile.GetTileInFront(target, 1, true);
+
+            if (tileNew != target.tile)
+            {
+                AnimaCard animaCard = new AnimaCard();
+                animaCard.MoveBfBf(target, target.tile, tileNew);
+            }
+        }
+    }
+
+    public void CheckHeadbuttMove(Card dealer)
+    {
+        if (dealer.special.headbutt)
+        {
+            if (dealer.attackedThisTurn)
+            {
+                Tile tile = new Tile();
+                int tileNew = tile.GetTileInFront(dealer, 1);
+
+                if (tileNew != dealer.tile)
+                {
+                    AnimaCard animaCard = new AnimaCard();
+                    animaCard.MoveBfBf(dealer, dealer.tile, tileNew);
                 }
             }
         }

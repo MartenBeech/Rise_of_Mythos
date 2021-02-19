@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class Card : MonoBehaviour
         KingVelAssar, LordFleder, MaiaShadowblade, PrincessSarya, RyliTheWhiteWitch, SorannTheUnforgiving, StormLizardKing, TarielThePhalanx, UndeadKingBael, VarkusTheBlight,
         Whitemane,
 
-        PlaceHolder, BoneHeap,
+        Null, BoneHeap, RaisedDead
     }
     public Title title;
 
@@ -69,7 +70,7 @@ public class Card : MonoBehaviour
     public int bonusAttackNextTurn = 0;
     public int heroicThisTurn = 0;
     public bool canAttackThisTurn = true;
-    public bool readyToAttack = false;
+    public bool attackedThisTurn = false;
     public Sprite sprite;
     public Special special = new Special();
 
@@ -113,5 +114,39 @@ public class Card : MonoBehaviour
         gameObject.GetComponentInChildren<Text>().text = null;
         gameObject.GetComponentInChildren<Image>().sprite = null;
         gameObject.GetComponentInChildren<Image>().color = Hue.white;
+    }
+
+    public List<Card> GetCardsByRarity(int _rarity)
+    {
+        List<Card> cards = new List<Card>();
+        CardStat cardStat = new CardStat();
+
+        for (int i = 0; i < Enum.GetNames(typeof(Title)).Length; i++)
+        {
+            Card card = cardStat.GetStats((Title)i, Alignment.Ally);
+            if (card.rarity == _rarity)
+            {
+                cards.Add(card);
+            }
+        }
+
+        return cards;
+    }
+
+    public List<Card> GetCardsByCD(int _cd)
+    {
+        List<Card> cards = new List<Card>();
+        CardStat cardStat = new CardStat();
+
+        for (int i = 0; i < Enum.GetNames(typeof(Title)).Length; i++)
+        {
+            Card card = cardStat.GetStats((Title)i, Alignment.Ally);
+            if (card.cd == _cd)
+            {
+                cards.Add(card);
+            }
+        }
+
+        return cards;
     }
 }

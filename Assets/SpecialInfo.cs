@@ -104,11 +104,13 @@ public class SpecialInfo : MonoBehaviour
             (card.special.bleedingAttack ? "<b>" + "Bleeding Attack: " + "</b>" + "Attacks make the target unable to be healed" + "\n" : "") +
             (card.special.bleeding ? "<b>" + "Bleeding: " + "</b>" + "You cannot be healed" + "\n" : "") +
             (card.special.influence ? "<b>" + "Influence: " + "</b>" + "Upon attacking, give a card in your hand +1/+1" + "\n" : "") +
+            (card.special.hitAndRun ? "<b>" + "Hit and Run: " + "</b>" + "After attacking, move backwards" + "\n" : "") +
+            (card.special.headbutt ? "<b>" + "Headbutt: " + "</b>" + "After attacking, push the target back 1 tile and move with it" + "\n" : "") +
 
             (card.special.kingsCommand ? "<b>" + "King's Command: " + "</b>" + "Summons a Horseman of same rank each turn" + "\n" : "") +
             (card.special.combatMaster ? "<b>" + "Combat Master: " + "</b>" + "Deals double damage to enemies with 4+ Range, 4+ Speed, Armor, Wall or Flying" + "\n" : "") +
-            (card.special.callOfTheUndeadKing ? "<b>" + "Call of the Undead King: " + "</b>" + "Whenever an enemy dies, a zombie is summoned in its place" + "\n" : "") +
-            (card.special.frostSuit ? "<b>" + "Frost Suit: " + "</b>" + "Upon taking damage, reduced the attacker's speed to 0" + "\n" : "") +
+            (card.special.callOfTheUndeadKing ? "<b>" + "Call of the Undead King: " + "</b>" + "Whenever an enemy dies, raise a 2/3 Zombie with Reanimate in its place" + "\n" : "") +
+            (card.special.blackIce ? "<b>" + "Black Ice: " + "</b>" + "Upon taking damage, reduced the attacker's speed to 0" + "\n" : "") +
             (card.special.soulHarvest ? "<b>" + "Soul Harvest: " + "</b>" + "Whenever an enemy dies, gain half its Attack and Health" + "\n" : "") +
             (card.special.multiShot ? "<b>" + "Multishot: " + "</b>" + "Attack all enemy units and heroes inside range" + "\n" : "") +
             (card.special.reinforcement ? "<b>" + "Reinforcement: " + "</b>" + "On summon, also summon 2 copies of this unit on the same column" + "\n" : "") +

@@ -62,7 +62,7 @@ public class SpecialTrigger : MonoBehaviour
             externalAttackAnimation = true;
         if (special.CheckRegeneration(dealer))
             externalAttackAnimation = true;
-        if (special.CheckSummonUnitEndTurn(dealer))
+        if (special.CheckKingsCommand(dealer))
             externalAttackAnimation = true;
         if (special.CheckBoneHeap(dealer))
             externalAttackAnimation = true;
@@ -117,7 +117,7 @@ public class SpecialTrigger : MonoBehaviour
                 special.CheckHeroic(dealer);
                 special.CheckWeaken(dealer, target);
                 special.CheckFrostBolt(dealer, target);
-                special.CheckFrostSuit(dealer, target);
+                special.CheckBlackIce(dealer, target);
                 special.CheckPoison(dealer, target);
                 special.CheckVengefulCurse(dealer, target);
                 special.CheckVengefulCursed(dealer);
