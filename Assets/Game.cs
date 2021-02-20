@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
-    public static int level = 0;
+    public static int level = 1;
+
     public void NewBattle()
     {
         Hero hero = new Hero();
@@ -14,10 +15,30 @@ public class Game : MonoBehaviour
         hero.DisplayHero(Card.Alignment.Ally);
         hero.DisplayHero(Card.Alignment.Enemy);
 
-        Recruit recruit = new Recruit();
-        recruit.NewCards();
-        Camera camera = new Camera();
-        camera.Recruit();
+        Deck.deckAlly.Clear();
+        Deck.deckEnemy.Clear();
+        for (int i = 0; i < Deck.deckAllyDefault.Count; i++)
+        {
+            Deck.deckAlly.Add(Deck.deckAllyDefault[i]);
+        }
+        for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
+        {
+            Deck.deckEnemy.Add(Deck.deckEnemyDefault[i]);
+        }
+        Deck deck = new Deck();
+        deck.DisplayDeck();
+
+        Hand hand = new Hand();
+        for (int i = 0; i < Hand.SIZE * 2; i++)
+        {
+            hand.RemoveCard(i);
+        }
+
+        Bf bf = new Bf();
+        for (int i = 0; i < Bf.SIZE; i++)
+        {
+            bf.RemoveCard(i);
+        }
     }
 
     public void WinGame()

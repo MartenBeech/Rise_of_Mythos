@@ -7,7 +7,9 @@ public class Deck : MonoBehaviour
 {
     public static GameObject Decks;
     public static List<Card> deckAlly = new List<Card>();
+    public static List<Card> deckAllyDefault = new List<Card>();
     public static List<Card> deckEnemy = new List<Card>();
+    public static List<Card> deckEnemyDefault = new List<Card>();
 
     private void Start()
     {
@@ -64,10 +66,10 @@ public class Deck : MonoBehaviour
         CardStat cardStat = new CardStat();
         Card card = cardStat.GetStats(title, alignment);
         if (alignment == Card.Alignment.Ally)
-            deckAlly.Add(card);
+            deckAllyDefault.Add(card);
         else
-            deckAlly.Add(card);
-            //deckEnemy.Add(card);
+            deckAllyDefault.Add(card);
+            //deckEnemyDefault.Add(card);
 
             DisplayDeck();
     }

@@ -2058,7 +2058,6 @@ public class CardStat : MonoBehaviour
                 card.speed = 1;
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Physical;
-                card.special.kingsCommand = true;
                 break;
 
             case Card.Title.BoneHeap:

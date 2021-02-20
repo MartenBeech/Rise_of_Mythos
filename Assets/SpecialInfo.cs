@@ -76,10 +76,10 @@ public class SpecialInfo : MonoBehaviour
             (card.special.faith ? "<b>" + "Faith: " + "</b>" + "Healing a unit grants you +1/+1" + "\n" : "") +
             (card.special.martyrdom ? "<b>" + "Martyrdom: " + "</b>" + "Redirect all damage taken by nearby allies towards yourself" + "\n" : "") +
             (card.special.heavyWeapon ? "<b>" + "Heavy Weapon: " + "</b>" + "Can not attack after moving" + "\n" : "") +
-            (card.special.dragonSlayer ? "<b>" + "Dragon Slayer: " + "</b>" + "Deal double damage to units with 5+ CD" + "\n" : "") +
+            (card.special.dragonSlayer ? "<b>" + "Dragon Slayer: " + "</b>" + "Deal double damage to units with 5+ countdown" + "\n" : "") +
             (card.special.reanimate ? "<b>" + "Reanimate: " + "</b>" + "This unit is resummoned the first time it dies" + "\n" : "") +
             (card.special.lifeSteal ? "<b>" + "Life Steal: " + "</b>" + "Restore your health equal to damage dealt" + "\n" : "") +
-            (card.special.soulbound ? "<b>" + "Soulbound: " + "</b>" + "This unit is returned to it's owner's hand first time it dies" + "\n" : "") +
+            (card.special.soulbound ? "<b>" + "Soulbound: " + "</b>" + "This unit is returned to it's owner's hand the first time it dies" + "\n" : "") +
             (card.special.frostBolt ? "<b>" + "Frost Bolt: " + "</b>" + "Damaged targets have their speed reduced to 1" + "\n" : "") +
             (card.special.incorporeal ? "<b>" + "Incorporeal: " + "</b>" + "Physical damage you receive is reduced to 1" + "\n" : "") +
             (card.special.fear ? "<b>" + "Fear: " + "</b>" + "First unit attacked returns to it's owner's hand" + "\n" : "") +
@@ -107,7 +107,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.hitAndRun ? "<b>" + "Hit and Run: " + "</b>" + "After attacking, move backwards" + "\n" : "") +
             (card.special.headbutt ? "<b>" + "Headbutt: " + "</b>" + "After attacking, push the target back 1 tile and move with it" + "\n" : "") +
 
-            (card.special.kingsCommand ? "<b>" + "King's Command: " + "</b>" + "Summons a Horseman of same rank each turn" + "\n" : "") +
+            (card.special.kingsCommand ? "<b>" + "King's Command: " + "</b>" + "Summons a random 1-countdown unit each turn" + "\n" : "") +
             (card.special.combatMaster ? "<b>" + "Combat Master: " + "</b>" + "Deals double damage to enemies with 4+ Range, 4+ Speed, Armor, Wall or Flying" + "\n" : "") +
             (card.special.callOfTheUndeadKing ? "<b>" + "Call of the Undead King: " + "</b>" + "Whenever an enemy dies, raise a 2/3 Zombie with Reanimate in its place" + "\n" : "") +
             (card.special.blackIce ? "<b>" + "Black Ice: " + "</b>" + "Upon taking damage, reduced the attacker's speed to 0" + "\n" : "") +

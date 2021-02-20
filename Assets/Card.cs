@@ -96,8 +96,14 @@ public class Card : MonoBehaviour
             }
         }
 
+        int nameTagSize = (60 - (2 * card.nameTag.Length));
+        if (nameTagSize > 40)
+            nameTagSize = 40;
+        else if (nameTagSize < 22)
+            nameTagSize = 22;
+
         gameObject.GetComponentInChildren<Text>().text =
-            (card.alignment == Card.Alignment.Ally ? "<color=green>" : "<color=red>") + "<size=" + (60 - (2 * card.nameTag.Length)) + ">" +
+            (card.alignment == Card.Alignment.Ally ? "<color=green>" : "<color=red>") + "<size=" + nameTagSize + ">" +
             card.nameTag + "</size>" + "</color>" + "<size=36>" + "\n\n\n\n\n\n" + "</size>" +
             "<color=red>" + card.attack + "</color>";
         for (int i = card.attack.ToString().Length + card.health.ToString().Length; i < 9; i++)
