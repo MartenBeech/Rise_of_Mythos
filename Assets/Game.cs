@@ -15,15 +15,16 @@ public class Game : MonoBehaviour
         hero.DisplayHero(Card.Alignment.Ally);
         hero.DisplayHero(Card.Alignment.Enemy);
 
+        CardStat cardStat = new CardStat();
         Deck.deckAlly.Clear();
         Deck.deckEnemy.Clear();
         for (int i = 0; i < Deck.deckAllyDefault.Count; i++)
         {
-            Deck.deckAlly.Add(Deck.deckAllyDefault[i]);
+            Deck.deckAlly.Add(cardStat.GetStats(Deck.deckAllyDefault[i].title, Deck.deckAllyDefault[i].alignment));
         }
         for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
         {
-            Deck.deckEnemy.Add(Deck.deckEnemyDefault[i]);
+            Deck.deckEnemy.Add(cardStat.GetStats(Deck.deckAllyDefault[i].title, Deck.deckAllyDefault[i].alignment));
         }
         Deck deck = new Deck();
         deck.DisplayDeck();
@@ -44,10 +45,13 @@ public class Game : MonoBehaviour
     public void WinGame()
     {
         level++;
+        Recruit recruit = new Recruit();
+        recruit.NewCards();
     }
 
     public void LoseGame()
     {
-
+        Recruit recruit = new Recruit();
+        recruit.NewCards();
     }
 }

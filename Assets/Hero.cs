@@ -9,7 +9,7 @@ public class Hero : MonoBehaviour
     public static GameObject[] Heroes = new GameObject[SIZE];
     public static Hero[] heroes = new Hero[SIZE];
 
-    public int health,  healthDefault = 10;
+    public int health,  healthDefault = 100;
     public bool destroyHero = false;
 
     private void Start()
@@ -25,22 +25,31 @@ public class Hero : MonoBehaviour
     {
         if (heroes[0].destroyHero)
         {
-            Heroes[0].transform.localScale = new Vector3(Heroes[0].transform.localScale.x - 0.001f, Heroes[0].transform.localScale.y - 0.001f, 1);
-            
+            Heroes[0].transform.localScale = new Vector3(Heroes[0].transform.localScale.x - (0.001f / UI.TIMER), Heroes[0].transform.localScale.y - (0.001f / UI.TIMER), 1);
+            if (Heroes[0].transform.localScale.x <= 0 || Heroes[0].transform.localScale.y <= 0)
+            {
+                heroes[0].destroyHero = false;
+                Heroes[0].transform.localScale = new Vector3(0.5f, 0.5f, 1);
+                Game game = new Game();
+                game.LoseGame();
+            }
         }
         if (heroes[1].destroyHero)
         {
-            Heroes[1].transform.localScale = new Vector3(Heroes[1].transform.localScale.x - 0.001f, Heroes[1].transform.localScale.y - 0.001f, 1);
+            Heroes[1].transform.localScale = new Vector3(Heroes[1].transform.localScale.x - (0.001f / UI.TIMER), Heroes[1].transform.localScale.y - (0.001f / UI.TIMER), 1);
             if (Heroes[1].transform.localScale.x <= 0 || Heroes[1].transform.localScale.y <= 0)
             {
                 heroes[1].destroyHero = false;
                 Heroes[1].transform.localScale = new Vector3(0.5f, 0.5f, 1);
+                Game game = new Game();
+                game.WinGame();
             }
         }
     }
 
     public void AttackHero(Card dealer, Card.Alignment alignment)
     {
+        dealer.attackedThisTurn = true;
         int damage = dealer.attack;
         damage += dealer.bonusAttackNextTurn;
 
@@ -62,34 +71,33 @@ public class Hero : MonoBehaviour
 
     public void DealDamage(Card dealer, Card.Alignment alignment, int damage)
     {
-        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
-
-        if (alignment == Card.Alignment.Ally)
+        if (heroes[0].health > 0 && heroes[1].health > 0)
         {
-            heroes[0].health -= damage;
-            DisplayHero(Card.Alignment.Ally);
-            AnimaText animaText = new AnimaText();
-            animaText.ShowText(Heroes[0], damage.ToString(), Hue.red);
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
 
-            if (heroes[0].health <= 0)
+            if (alignment == Card.Alignment.Ally)
             {
-                heroes[0].destroyHero = true;
-                //Game game = new Game();
-                //game.LoseGame();
+                heroes[0].health -= damage;
+                DisplayHero(Card.Alignment.Ally);
+                AnimaText animaText = new AnimaText();
+                animaText.ShowText(Heroes[0], damage.ToString(), Hue.red);
+
+                if (heroes[0].health <= 0)
+                {
+                    heroes[0].destroyHero = true;
+                }
             }
-        }
-        else
-        {
-            heroes[1].health -= damage;
-            DisplayHero(Card.Alignment.Enemy);
-            AnimaText animaText = new AnimaText();
-            animaText.ShowText(Heroes[1], damage.ToString(), Hue.red);
-
-            if (heroes[1].health <= 0)
+            else
             {
-                heroes[1].destroyHero = true;
-                //Game game = new Game();
-                //game.WinGame();
+                heroes[1].health -= damage;
+                DisplayHero(Card.Alignment.Enemy);
+                AnimaText animaText = new AnimaText();
+                animaText.ShowText(Heroes[1], damage.ToString(), Hue.red);
+
+                if (heroes[1].health <= 0)
+                {
+                    heroes[1].destroyHero = true;
+                }
             }
         }
     }

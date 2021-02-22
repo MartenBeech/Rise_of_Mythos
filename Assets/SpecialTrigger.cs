@@ -41,9 +41,9 @@ public class SpecialTrigger : MonoBehaviour
         special.CheckReanimate(target);
         special.CheckSkeletal(target);
         special.CheckReapingCurse(target);
-        special.CheckSoulbound(target);
         if (!Bf.occupied[target.tile])
         {
+            special.CheckSoulbound(target);
             special.CheckDonor(target);
             special.CheckCallOfTheUndeadKing(target);
             special.CheckSoulHarvest(target);
@@ -74,6 +74,8 @@ public class SpecialTrigger : MonoBehaviour
             externalAttackAnimation = true;
         if (special.CheckBloodPrice(dealer))
             externalAttackAnimation = true;
+        if (special.CheckThunderstorm(dealer))
+            externalAttackAnimation = true;
 
         special.CheckInspiration(dealer);
         special.CheckDistraction(dealer);
@@ -81,8 +83,9 @@ public class SpecialTrigger : MonoBehaviour
         return externalAttackAnimation;
     }
 
-    public int OnDamageDealt(Card dealer, Card target, int damage, Card.DamageType damageType, bool basicAttack = true)
+    public int OnDamageDealt(Card dealer, Card target, int _damage, Card.DamageType damageType, bool basicAttack = true)
     {
+        int damage = _damage;
         damage = special.CheckMaimed(dealer, target, damage, damageType);
         damage = special.CheckArmor(dealer, target, damage, damageType);
         damage = special.CheckSpellCursed(dealer, target, damage, damageType);
@@ -105,7 +108,7 @@ public class SpecialTrigger : MonoBehaviour
             special.CheckDispel(dealer, target);
         }
 
-        if (damage > 0)
+        if (_damage > 0)
         {
             special.CheckSpellFeed(dealer, target, damageType);
             special.CheckBattleSpirit(dealer, target, damageType);

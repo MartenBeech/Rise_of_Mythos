@@ -10,13 +10,6 @@ public class UnitAttack : MonoBehaviour
         int tileCheck = dealer.tile;
         bool externalAttackAnimation = false;
 
-        SpecialTrigger trigger = new SpecialTrigger();
-        
-        if (trigger.OnTurnEnd(dealer))
-        {
-            externalAttackAnimation = true;
-        }
-
         Special special = new Special();
         if (special.CheckWhirlwind(dealer))
         { }
@@ -50,12 +43,11 @@ public class UnitAttack : MonoBehaviour
                     {
                         if (AttackAlignment(dealer, Bf.Cards[tileCheck]))
                         {
-                            return;
+                            externalAttackAnimation = true;
+                            break;
                         }
                     }
                 }
-                if (!externalAttackAnimation)
-                    UnitAction.counter -= UI.TIMER;
             }
             else
             {
@@ -79,13 +71,21 @@ public class UnitAttack : MonoBehaviour
                     {
                         if (AttackAlignment(dealer, Bf.Cards[tileCheck]))
                         {
-                            return;
+                            externalAttackAnimation = true;
+                            break;
                         }
                     }
                 }
-                if (!externalAttackAnimation)
-                    UnitAction.counter -= UI.TIMER;
             }
+
+            SpecialTrigger trigger = new SpecialTrigger();
+            if (trigger.OnTurnEnd(dealer))
+            {
+                externalAttackAnimation = true;
+            }
+
+            if (!externalAttackAnimation)
+                UnitAction.counter -= UI.TIMER;
         }
     }
 

@@ -85,6 +85,9 @@ public class Recruit : MonoBehaviour
             case 9:
                 rarityChances = new int[] { 30, 30, 20, 20, 0 };
                 break;
+            case 10:
+                rarityChances = new int[] { 0, 0, 0, 0, 100 };
+                break;
             default:
                 rarityChances = new int[] { 22, 22, 22, 22, 12 };
                 break;
@@ -107,7 +110,11 @@ public class Recruit : MonoBehaviour
 
     public void ChooseCard(int i)
     {
-        Deck.deckAllyDefault.Add(Cards[i]);
+        Deck deck = new Deck();
+        deck.AddCard(Cards[i].title, Cards[i].alignment, 1);
+
+        Game game = new Game();
+        game.NewBattle();
 
         Camera camera = new Camera();
         camera.Battle();

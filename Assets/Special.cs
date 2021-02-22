@@ -101,7 +101,9 @@ public class Special : MonoBehaviour
     public int disdain = 0;
     public bool crushDefenses = false;
     public bool cheif = false;
+
     public bool krush = false;
+    public int thunderStorm = 0;
 
 
     public int CheckArmor(Card dealer, Card target, int damage, Card.DamageType damageType)
@@ -578,6 +580,7 @@ public class Special : MonoBehaviour
             CardStat cardStat = new CardStat();
             Card card = cardStat.GetStats(target.title, target.alignment);
             card.special.reanimate = false;
+            card.special.soulbound = target.special.soulbound;
             AnimaCard animaCard = new AnimaCard();
             animaCard.MoveBfBf(card, target.tile, target.tile, true);
             AnimaText animaText = new AnimaText();
@@ -1731,5 +1734,25 @@ public class Special : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool CheckThunderstorm(Card dealer)
+    {
+        if (dealer.special.thunderStorm > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> enemies = tile.GetAllEnemies(dealer);
+            if (enemies.Count > 0)
+            {
+                UnitAttack unitAttack = new UnitAttack();
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    unitAttack.DealDamage(dealer, enemies[i], dealer.special.thunderStorm, Card.DamageType.Magical, false);
+                }
+
+                return true;
+            }
+        }
+        return false;
     }
 }

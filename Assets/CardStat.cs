@@ -1643,6 +1643,20 @@ public class CardStat : MonoBehaviour
                 card.special.rangeAura = 1;
                 break;
 
+            case Card.Title.KathrynEmberwind:
+                card.attack = 2;
+                card.health = 13;
+                card.cd = 6;
+                card.range = 4;
+                card.speed = 2;
+                card.rarity = 4;
+                card.damageType = Card.DamageType.Physical;
+                card.special.ember = true;
+                card.special.immolate = 2;
+                card.special.herosBane = 1;
+                card.special.herosBaneAura = 1;
+                break;
+
             case Card.Title.LuciusSwift:
                 card.attack = 5;
                 card.health = 1;
@@ -1667,8 +1681,8 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.OfeigurTheUndying:
-                card.attack = 4;
-                card.health = 16;
+                card.attack = 3;
+                card.health = 10;
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
@@ -1676,7 +1690,9 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
                 card.special.reanimate = true;
                 card.special.martyrdom = true;
-                card.special.donor = true;
+                card.special.vigilance = true;
+                card.special.ambush = true;
+                card.special.regeneration = 3;
                 break;
 
             case Card.Title.OpheliaWestWind:
@@ -1716,20 +1732,6 @@ public class CardStat : MonoBehaviour
                 card.special.lifeSteal = true;
                 card.special.counterattack = true;
                 card.special.lifeAura = 3;
-                break;
-
-            case Card.Title.SilvaTheFrozenHeart:
-                card.attack = 3;
-                card.health = 13;
-                card.cd = 5;
-                card.range = 4;
-                card.speed = 2;
-                card.rarity = 4;
-                card.damageType = Card.DamageType.Physical;
-                card.special.stun = true;
-                card.special.lightningBolt = 3;
-                card.special.frostBolt = true;
-                card.special.conjure = true;
                 break;
 
             case Card.Title.TanwenWildfire:
@@ -1898,19 +1900,6 @@ public class CardStat : MonoBehaviour
                 card.special.influence = true;
                 break;
 
-            case Card.Title.KathrynEmberwind:
-                card.attack = 2;
-                card.health = 13;
-                card.cd = 6;
-                card.range = 4;
-                card.speed = 2;
-                card.rarity = 5;
-                card.damageType = Card.DamageType.Physical;
-                card.special.ember = true;
-                card.special.immolate = 2;
-                card.special.herosBaneAura = 1;
-                break;
-
             case Card.Title.KingVelAssar:
                 card.attack = 3;
                 card.health = 10;
@@ -1969,6 +1958,23 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
                 card.special.blizzardAura = true;
                 card.special.frostBolt = true;
+                break;
+
+            case Card.Title.SilvaTheAlmighty:
+                card.attack = 3;
+                card.health = 13;
+                card.cd = 7;
+                card.range = 4;
+                card.speed = 2;
+                card.rarity = 5;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stun = true;
+                card.special.lightningBolt = 3;
+                card.special.ember = true;
+                card.special.thunderStorm = 1;
+                card.special.herosBane = 1;
+                card.special.frostBolt = true;
+                card.special.conjure = true;
                 break;
 
             case Card.Title.SorannTheUnforgiving:
@@ -2051,13 +2057,20 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.Null:
                 card.race = Card.Race.Neutral;
-                card.attack = 50;
+                card.attack = 1;
                 card.health = 50;
                 card.cd = 0;
                 card.range = 2;
-                card.speed = 1;
+                card.speed = 2;
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Physical;
+                card.special.stun = true;
+                card.special.lightningBolt = 3;
+                card.special.ember = true;
+                card.special.thunderStorm = 1;
+                card.special.herosBane = 1;
+                card.special.frostBolt = true;
+                card.special.conjure = true;
                 break;
 
             case Card.Title.BoneHeap:

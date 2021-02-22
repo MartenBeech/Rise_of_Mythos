@@ -27,11 +27,11 @@ public class Card : MonoBehaviour
         ZombieCaptain, ZombieChampion,
 
         CainTheTraitor, CerberusHegemon, ChiefIronhide, CrusaderLucanus, DariusDarkhand, DemonHunterAzrael, DesperateSoul, EacannTheCharger, FenrisTheButcher, FirstRangerTalenor,
-        LuciusSwift, MifzunaTheWind, OfeigurTheUndying, OpheliaWestWind, PontiffFaol, PrinceSerka, SilvaTheFrozenHeart, TanwenWildfire, VelynTheUnscarred, VirulentBatKing,
+        KathrynEmberwind, LuciusSwift, MifzunaTheWind, OfeigurTheUndying, OpheliaWestWind, PontiffFaol, PrinceSerka, TanwenWildfire, VelynTheUnscarred, VirulentBatKing,
         WindDancerElke,
 
-        AryaTheHonorable, BigShuck, ChieftainLionroar, DragonHunterVincent, EmperorAugustus, EmrysTheUnyielding, ExecutionerGrimbone, Gringheist, JasmineTheDervish, KathrynEmberwind,
-        KingVelAssar, LordFleder, MaiaShadowblade, PrincessSarya, RyliTheWhiteWitch, SorannTheUnforgiving, StormLizardKing, TarielThePhalanx, UndeadKingBael, VarkusTheBlight,
+        AryaTheHonorable, BigShuck, ChieftainLionroar, DragonHunterVincent, EmperorAugustus, EmrysTheUnyielding, ExecutionerGrimbone, Gringheist, JasmineTheDervish, KingVelAssar, 
+        LordFleder, MaiaShadowblade, PrincessSarya, RyliTheWhiteWitch, SilvaTheAlmighty, SorannTheUnforgiving, StormLizardKing, TarielThePhalanx, UndeadKingBael, VarkusTheBlight,
         Whitemane,
 
         Null, BoneHeap, RaisedDead
@@ -91,6 +91,19 @@ public class Card : MonoBehaviour
                     Hand.Hourglasses[i].GetComponentInChildren<Image>().enabled = false;
                     Hand.Hourglasses[i].GetComponentInChildren<Text>().text = null;
                     Hand.Hands[i].GetComponentInChildren<Button>().enabled = true;
+                }
+                break;
+            }
+        }
+
+        for (int i = 0; i < Bf.SIZE; i++)
+        {
+            if (gameObject == Bf.Bfs[i])
+            {
+                if (!Bf.occupied[i])
+                {
+                    DisplayNull(gameObject);
+                    return;
                 }
                 break;
             }

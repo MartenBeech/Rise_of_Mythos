@@ -118,6 +118,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.crushDefenses ? "<b>" + "Crush Defenses: " + "</b>" + "Deal double damage to units with Armor or Resistance" + "\n" : "") +
             (card.special.cheif ? "<b>" + "Cheif: " + "</b>" + "On summon, gain +1/+3 for each other allied unit" + "\n" : "") +
             (card.special.krush ? "<b>" + "Krush: " + "</b>" + "Destroy the first unit attacked" + "\n" : "") +
+            (card.special.thunderStorm > 0 ? "<b>" + "Thunderstorm " + card.special.thunderStorm + ": " + "</b>" + "Deal damage to all enemy units each turn" + "\n" : "") +
 
             "";
 

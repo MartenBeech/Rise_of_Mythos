@@ -81,6 +81,8 @@
     <Compile Include="Assets\SpecialTrigger.cs" />
     <Compile Include="Assets\AnimaCard.cs" />
     <Compile Include="Assets\Hero.cs" />
+    <Compile Include="Assets\EnemyHero.cs" />
+    <Compile Include="Assets\EnemyDeck.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -15,16 +15,8 @@ public class Deck : MonoBehaviour
     {
         Decks = GameObject.Find("Deck");
 
-        AddCard(Card.Title.Null, Card.Alignment.Ally);
-        AddCard(Card.Title.Null, Card.Alignment.Ally);
-        AddCard(Card.Title.Null, Card.Alignment.Ally);
-        AddCard(Card.Title.Null, Card.Alignment.Ally);
-        AddCard(Card.Title.Null, Card.Alignment.Ally);
-        AddCard(Card.Title.Whitemane, Card.Alignment.Enemy);
-        AddCard(Card.Title.Whitemane, Card.Alignment.Enemy);
-        AddCard(Card.Title.Whitemane, Card.Alignment.Enemy);
-        AddCard(Card.Title.Whitemane, Card.Alignment.Enemy);
-        AddCard(Card.Title.Whitemane, Card.Alignment.Enemy);
+        AddCard(Card.Title.Null, Card.Alignment.Ally, 5);
+        AddCard(Card.Title.Null, Card.Alignment.Enemy, 5);
     }
     public void DrawCardClicked()
     {
@@ -61,17 +53,20 @@ public class Deck : MonoBehaviour
         }
     }
 
-    public void AddCard(Card.Title title, Card.Alignment alignment)
+    public void AddCard(Card.Title title, Card.Alignment alignment, int amount = 1)
     {
         CardStat cardStat = new CardStat();
-        Card card = cardStat.GetStats(title, alignment);
-        if (alignment == Card.Alignment.Ally)
-            deckAllyDefault.Add(card);
-        else
-            deckAllyDefault.Add(card);
+        for (int i = 0; i < amount; i++)
+        {
+            Card card = cardStat.GetStats(title, alignment);
+            if (alignment == Card.Alignment.Ally)
+                deckAllyDefault.Add(card);
+            else
+                deckAllyDefault.Add(card);
             //deckEnemyDefault.Add(card);
+        }
 
-            DisplayDeck();
+        DisplayDeck();
     }
 
     public void RemoveCard(int i, Card.Alignment alignment)
