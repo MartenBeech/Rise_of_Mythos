@@ -42,11 +42,32 @@ public class Bf : MonoBehaviour
 
     public void MarkPlayable()
     {
-        for (int i = 0; i < 30; i++)
+        if (Game.level == -2)
         {
-            if (!occupied[i])
+            for (int i = 6; i < 9; i++)
+                if (!occupied[i])
+                    Bfs[i].GetComponentInChildren<Outline>().enabled = true;
+        }
+        else if (Game.level == -1)
+        {
+            for (int i = 0; i < 3; i++)
+                if (!occupied[i])
+                    Bfs[i].GetComponentInChildren<Outline>().enabled = true;
+        }
+        else if (Game.level == 0)
+        {
+            for (int i = 3; i < 6; i++)
+                if (!occupied[i])
+                    Bfs[i].GetComponentInChildren<Outline>().enabled = true;
+        }
+        else
+        {
+            for (int i = 0; i < 9; i++)
             {
-                Bfs[i].GetComponentInChildren<Outline>().enabled = true;
+                if (!occupied[i])
+                {
+                    Bfs[i].GetComponentInChildren<Outline>().enabled = true;
+                }
             }
         }
     }

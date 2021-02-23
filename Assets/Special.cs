@@ -469,6 +469,14 @@ public class Special : MonoBehaviour
             {
                 target.healthMax = target.healthMaxDefault;
             }
+            if (target.speed > target.speedDefault)
+            {
+                target.speed = target.speedDefault;
+            }
+            if (target.range > target.rangeDefault)
+            {
+                target.range = target.rangeDefault;
+            }
         }
     }
 
@@ -1146,9 +1154,12 @@ public class Special : MonoBehaviour
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.DecreaseSpeed(dealer, enemies[i]);
-                unitSpecial.DecreaseRange(dealer, enemies[i]);
+                if (!enemies[i].special.nimble)
+                {
+                    UnitSpecial unitSpecial = new UnitSpecial();
+                    unitSpecial.DecreaseSpeed(dealer, enemies[i]);
+                    unitSpecial.DecreaseRange(dealer, enemies[i]);
+                }
             }
         }
     }
@@ -1162,9 +1173,12 @@ public class Special : MonoBehaviour
         {
             if (enemies[i].special.blizzardAura)
             {
-                UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.DecreaseSpeed(enemies[i], dealer);
-                unitSpecial.DecreaseRange(enemies[i], dealer);
+                if (!dealer.special.nimble)
+                {
+                    UnitSpecial unitSpecial = new UnitSpecial();
+                    unitSpecial.DecreaseSpeed(enemies[i], dealer);
+                    unitSpecial.DecreaseRange(enemies[i], dealer);
+                }
             }
         }
     }

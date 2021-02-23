@@ -17,12 +17,12 @@ public class EnemyHero : MonoBehaviour
         Null
     };
 
-    public Hero[] tutorials =
+    public static Hero[] novices =
     {
         Hero.Murazel, Hero.Qasim, Hero.Zakera
     };
     
-    public Hero[] heroes = 
+    public static Hero[] heroes = 
     {
         Hero.Ajit, Hero.Anastasya, Hero.Andras, Hero.Danan, Hero.Fahada, 
         Hero.Imani, Hero.Jengo, Hero.Kente, Hero.Konrad, Hero.Lasir, 
@@ -30,10 +30,33 @@ public class EnemyHero : MonoBehaviour
         Hero.Seamus, Hero.Tanis, Hero.Vayaron, Hero.Wysloth, Hero.Zenda
     };
 
-    public Hero[] bosses =
+    public static Hero[] bosses =
     {
         Hero.Adar, Hero.Ivan, Hero.Khalida, Hero.Ludmilla, Hero.Menan
     };
+
+    public Hero GetRandomNovice()
+    {
+        List<Hero> heroList = new List<Hero>();
+        for (int i = 0; i < novices.Length; i++)
+        {
+            if (novices[i] != Hero.Null)
+                heroList.Add(novices[i]);
+        }
+        Rng rng = new Rng();
+        int rnd = rng.Range(0, heroList.Count);
+
+        for (int i = 0; i < novices.Length; i++)
+        {
+            if (novices[i] == heroList[rnd])
+            {
+                novices[i] = Hero.Null;
+                break;
+            }
+        }
+
+        return heroList[rnd];
+    }
 
     public Hero GetRandomHero()
     {
@@ -51,6 +74,29 @@ public class EnemyHero : MonoBehaviour
             if (heroes[i] == heroList[rnd])
             {
                 heroes[i] = Hero.Null;
+                break;
+            }
+        }
+
+        return heroList[rnd];
+    }
+
+    public Hero GetRandomBoss()
+    {
+        List<Hero> heroList = new List<Hero>();
+        for (int i = 0; i < bosses.Length; i++)
+        {
+            if (bosses[i] != Hero.Null)
+                heroList.Add(bosses[i]);
+        }
+        Rng rng = new Rng();
+        int rnd = rng.Range(0, heroList.Count);
+
+        for (int i = 0; i < bosses.Length; i++)
+        {
+            if (bosses[i] == heroList[rnd])
+            {
+                bosses[i] = Hero.Null;
                 break;
             }
         }

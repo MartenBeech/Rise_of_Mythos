@@ -17,11 +17,26 @@ public class SpecialInfo : MonoBehaviour
             }
         }
 
+        string rangeDiff = "";
+        if (card.range > 2)
+            rangeDiff = "+" + (card.range - 2) + " Range\n";
+        else if (card.range < 2)
+            rangeDiff = (card.range - 2) + " Range\n";
+
+        string speedDiff = "";
+        if (card.speed > 2)
+            speedDiff = "+" + (card.speed - 2) + " Speed\n";
+        else if (card.speed < 2)
+            speedDiff = (card.speed - 2) + " Speed\n";
+
+
         string text =
             "<b>" + card.nameTag + "</b>" + " (" + card.cdDefault + ")" + "\n" +
             "<b>" + "Attack: " + "</b>" + card.attack + " " + card.damageType + "\n" +
-            "<b>" + "Health: " + "</b>" + card.health + "/" + card.healthMax + "\n" +
-            "<b>" + "Range/Speed: " + "</b>" + card.range + "/" + card.speed + "\n\n" +
+            "<b>" + "Health: " + "</b>" + card.health + "/" + card.healthMax + "\n\n" +
+
+            "<b>" + rangeDiff + 
+            speedDiff + "</b>" +
 
             (card.special.wall ? "<b>" + "Wall: " + "</b>" + "Can't move or attack" + "\n" : "") +
             (card.special.flying ? "<b>" + "Flying: " + "</b>" + "Can fly over non-flying enemies" + "\n" : "") +
@@ -44,7 +59,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.spellCurse > 0 ? "<b>" + "Spell Curse " + card.special.spellCurse + ": " + "</b>" + "Attacks curse the enemy to take increased magical damage" + "\n" : "") +
             (card.special.spellCursed > 0 ? "<b>" + "Spell Cursed " + card.special.spellCursed + ": " + "</b>" + "You take increased magical damage" + "\n" : "") +
             (card.special.spellFeed > 0 ? "<b>" + "Spell Feed " + card.special.spellFeed + ": " + "</b>" + "Gain +" + card.special.spellFeed + "/+" + card.special.spellFeed + " whenever you take magical damage" + "\n" : "") +
-            (card.special.inspiration > 0 ? "<b>" + "Inspiration " + card.special.inspiration + ": " + "</b>" + "Reduce the countdown of the card in your hand with the highest countdown" + "\n" : "") +
+            (card.special.inspiration > 0 ? "<b>" + "Inspiration " + card.special.inspiration + ": " + "</b>" + "Reduce the countdown of the highest countdown card in your hand" + "\n" : "") +
             (card.special.herosBane > 0 ? "<b>" + "Hero's Bane " + card.special.herosBane + ": " + "</b>" + "Deal damage to the enemy hero each turn" + "\n" : "") +
             (card.special.embered > 0 ? "<b>" + "Embered " + card.special.embered + ": " + "</b>" + "You take magical damage next turn" + "\n" : "") +
             (card.special.lightningBolt > 0 ? "<b>" + "Lightning Bolt " + card.special.lightningBolt + ": " + "</b>" + "Deal damage to a random enemy unit each turn" + "\n" : "") +

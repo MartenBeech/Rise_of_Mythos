@@ -24,6 +24,6 @@ public class Camera : MonoBehaviour
 
     public void Battle()
     {
-        Cam.transform.position = new Vector3(CanvasBattle.transform.position.x, CanvasBattle.transform.position.y, -10);
+        Cam.transform.position = new Vector3(CanvasBattle.transform.position.x + 0.8f, CanvasBattle.transform.position.y, -10);
     }
 }

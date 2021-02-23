@@ -130,6 +130,8 @@ public class EnemyTurn : MonoBehaviour
             return Bf.Column.Back;
         if (card.speed >= 4)
             return Bf.Column.Front;
+        if (card.speed <= 1)
+            return Bf.Column.Front;
 
         return Bf.Column.Random;
     }

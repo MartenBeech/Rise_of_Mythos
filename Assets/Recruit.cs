@@ -9,6 +9,7 @@ public class Recruit : MonoBehaviour
     public static GameObject[] Recruits = new GameObject[SIZE];
     public static GameObject[] Infos = new GameObject[SIZE];
     public static Card[] Cards = new Card[SIZE];
+    private int cardsToRecruit;
 
     private void Start()
     {
@@ -19,8 +20,9 @@ public class Recruit : MonoBehaviour
         }
     }
 
-    public void NewCards()
+    public void NewCards(int amount)
     {
+        cardsToRecruit = amount;
         Camera camera = new Camera();
         camera.Recruit();
         Rng rng = new Rng();
@@ -113,10 +115,16 @@ public class Recruit : MonoBehaviour
         Deck deck = new Deck();
         deck.AddCard(Cards[i].title, Cards[i].alignment, 1);
 
-        Game game = new Game();
-        game.NewBattle();
+        cardsToRecruit--;
+        if (cardsToRecruit > 0)
+            NewCards(cardsToRecruit);
+        else
+        {
+            Game game = new Game();
+            game.NewBattle();
 
-        Camera camera = new Camera();
-        camera.Battle();
+            Camera camera = new Camera();
+            camera.Battle();
+        }
     }
 }

@@ -61,8 +61,8 @@ public class Card : MonoBehaviour
     public int healthMax,   healthMaxDefault;
     public int cd,          cdDefault;
 
-    public int speed;
-    public int range;
+    public int speed,       speedDefault;
+    public int range,       rangeDefault;
     public int tile;
     public int rarity;
     public string nameTag;

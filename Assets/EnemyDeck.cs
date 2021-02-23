@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyDeck : MonoBehaviour
 {
-    public void SetEnemyDeck(EnemyHero.Hero hero)
+    public void SetEnemyDeckDefault(EnemyHero.Hero hero)
     {
         Deck.deckEnemyDefault.Clear();
         Deck deck = new Deck();
@@ -19,14 +19,6 @@ public class EnemyDeck : MonoBehaviour
         List<Card> cardsRarity5 = card.GetCardsByRarity(5);
         switch (hero)
         {
-            case EnemyHero.Hero.Murazel:
-            case EnemyHero.Hero.Qasim:
-            case EnemyHero.Hero.Zakera:
-                for (int i = 0; i < 15; i++)
-                    deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy);
-                break;
-
-
             case EnemyHero.Hero.Ajit:
             case EnemyHero.Hero.Anastasya:
             case EnemyHero.Hero.Andras:
@@ -49,13 +41,13 @@ public class EnemyDeck : MonoBehaviour
             case EnemyHero.Hero.Zenda:
                 for (int i = 0; i < 8; i++)
                     deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy);
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 8; i++)
                     deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy);
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 8; i++)
                     deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy);
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 4; i++)
                     deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy);
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                     deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy);
                 break;
 
@@ -83,7 +75,6 @@ public class EnemyDeck : MonoBehaviour
                 deck.AddCard(Card.Title.UndeadKingBael, Card.Alignment.Enemy, 1);
                 deck.AddCard(Card.Title.VarkusTheBlight, Card.Alignment.Enemy, 1);
                 deck.AddCard(Card.Title.Whitemane, Card.Alignment.Enemy, 1);
-
                 break;
 
             case EnemyHero.Hero.Ivan:
@@ -91,23 +82,29 @@ public class EnemyDeck : MonoBehaviour
                 deck.AddCard(Card.Title.Horseman, Card.Alignment.Enemy, 2);
                 deck.AddCard(Card.Title.PegasusScout, Card.Alignment.Enemy, 2);
                 deck.AddCard(Card.Title.PegasusRider, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.DarkRider, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.DreadScout, Card.Alignment.Enemy, 2);
 
-                deck.AddCard(Card.Title.LanceKnight, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.Knight, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.PegasusLegionnaire, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.PegasusGuard, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.LanceKnight, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.Knight, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.PegasusLegionnaire, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.PegasusGuard, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.BlackRider, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.DreadKnight, Card.Alignment.Enemy, 1);
 
-                deck.AddCard(Card.Title.LanceChampion, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ChampionKnight, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.PegasusChampion, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.PegasusRaidLeader, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.LanceChampion, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.ChampionKnight, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.PegasusChampion, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.PegasusRaidLeader, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.DoomRider, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.DreadChampion, Card.Alignment.Enemy, 1);
 
-                deck.AddCard(Card.Title.EacannTheCharger, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.OpheliaWestWind, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.EacannTheCharger, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.OpheliaWestWind, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.DariusDarkhand, Card.Alignment.Enemy, 2);
 
                 deck.AddCard(Card.Title.EmrysTheUnyielding, Card.Alignment.Enemy, 1);
                 deck.AddCard(Card.Title.TarielThePhalanx, Card.Alignment.Enemy, 1);
-
                 break;
 
             case EnemyHero.Hero.Khalida:
@@ -132,7 +129,6 @@ public class EnemyDeck : MonoBehaviour
 
                 deck.AddCard(Card.Title.SilvaTheAlmighty, Card.Alignment.Enemy, 1);
                 deck.AddCard(Card.Title.RyliTheWhiteWitch, Card.Alignment.Enemy, 1);
-
                 break;
 
             case EnemyHero.Hero.Ludmilla:
@@ -155,7 +151,6 @@ public class EnemyDeck : MonoBehaviour
                 deck.AddCard(Card.Title.DesperateSoul, Card.Alignment.Enemy, 2);
 
                 deck.AddCard(Card.Title.Gringheist, Card.Alignment.Enemy, 2);
-
                 break;
 
             case EnemyHero.Hero.Menan:
@@ -175,8 +170,6 @@ public class EnemyDeck : MonoBehaviour
 
                 deck.AddCard(Card.Title.LordFleder, Card.Alignment.Enemy, 2);
                 deck.AddCard(Card.Title.PrincessSarya, Card.Alignment.Enemy, 2);
-
-
                 break;
 
         }

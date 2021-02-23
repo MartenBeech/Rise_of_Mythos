@@ -11,6 +11,8 @@ public class CardStat : MonoBehaviour
         card.attackDefault = card.attack;
         card.healthMaxDefault = card.healthMax = card.healthDefault = card.health;
         card.cdDefault = card.cd;
+        card.speedDefault = card.speed;
+        card.rangeDefault = card.range;
 
         card.tile = Bf.SIZE;
         card.alignment = alignment;
@@ -87,7 +89,7 @@ public class CardStat : MonoBehaviour
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.armor = 1;
                 card.special.spellCurse = 2;
                 break;
@@ -120,7 +122,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.ember = true;
                 card.special.herosBane = 1;
                 break;
@@ -132,7 +134,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.frostBolt = true;
                 card.special.conjure = true;
                 break;
@@ -178,7 +180,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.stun = true;
                 card.special.lightningBolt = 2;
                 break;
@@ -190,7 +192,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.penetrate = true;
                 card.special.inspiration = 1;
                 break;
@@ -246,7 +248,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.soulbound = true;
                 card.special.frostBolt = true;
                 break;
@@ -269,7 +271,7 @@ public class CardStat : MonoBehaviour
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.ember = true;
                 card.special.cleave = true;
                 break;
@@ -358,7 +360,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.penetrate = true;
                 card.special.cure = 3;
                 break;
@@ -370,7 +372,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.penetrate = true;
                 break;
 
@@ -403,7 +405,7 @@ public class CardStat : MonoBehaviour
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.stun = true;
                 card.special.armor = 2;
                 break;
@@ -426,7 +428,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.lifeSteal = true;
                 break;
 
@@ -482,7 +484,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.soulbound = true;
                 card.special.shadowBolt = 2;
                 break;
@@ -531,7 +533,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.penetrate = true;
                 card.special.cure = 1;
                 card.special.faith = true;
@@ -544,7 +546,7 @@ public class CardStat : MonoBehaviour
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.armor = 1;
                 card.special.spellFeed = 1;
                 card.special.spellCurse = 2;
@@ -616,7 +618,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.soulbound = true;
                 card.special.frostBolt = true;
                 break;
@@ -640,7 +642,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.soulbound = true;
                 card.special.shadowBolt = 2;
                 card.special.fear = true;
@@ -653,7 +655,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.ember = true;
                 card.special.herosBane = 2;
                 break;
@@ -665,7 +667,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.frostBolt = true;
                 card.special.conjure = true;
                 break;
@@ -700,7 +702,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.penetrate = true;
                 card.special.inspiration = 1;
                 break;
@@ -723,7 +725,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.stun = true;
                 card.special.lightningBolt = 3;
                 break;
@@ -791,7 +793,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.penetrate = true;
                 card.special.cure = 4;
                 break;
@@ -895,7 +897,7 @@ public class CardStat : MonoBehaviour
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.stun = true;
                 card.special.armor = 3;
                 break;
@@ -942,7 +944,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.lifeSteal = true;
                 card.special.weaken = 1;
                 break;
@@ -1028,7 +1030,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.penetrate = true;
                 card.special.faith = true;
                 card.special.cure = 3;
@@ -1097,7 +1099,7 @@ public class CardStat : MonoBehaviour
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.armor = 1;
                 card.special.spellFeed = 2;
                 card.special.spellCurse = 3;
@@ -1136,7 +1138,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.ember = true;
                 card.special.herosBane = 2;
                 break;
@@ -1148,7 +1150,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.frostBolt = true;
                 card.special.conjure = true;
                 break;
@@ -1160,7 +1162,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.penetrate = true;
                 card.special.inspiration = 1;
                 card.special.cure = 3;
@@ -1220,7 +1222,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.stun = true;
                 card.special.lightningBolt = 4;
                 break;
@@ -1266,7 +1268,7 @@ public class CardStat : MonoBehaviour
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.ember = true;
                 card.special.vigilance = true;
                 card.special.cleave = true;
@@ -1303,7 +1305,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.penetrate = true;
                 card.special.dispel = true;
                 card.special.cure = 4;
@@ -1316,7 +1318,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.soulbound = true;
                 card.special.knockback = 2;
                 break;
@@ -1400,7 +1402,7 @@ public class CardStat : MonoBehaviour
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.stun = true;
                 card.special.armor = 4;
                 break;
@@ -1450,7 +1452,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.lifeSteal = true;
                 card.special.weaken = 1;
                 break;
@@ -1537,7 +1539,7 @@ public class CardStat : MonoBehaviour
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.ember = true;
                 card.special.vigilance = true;
                 card.special.cleave = true;
@@ -1650,7 +1652,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 4;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.ember = true;
                 card.special.immolate = 2;
                 card.special.herosBane = 1;
@@ -1714,7 +1716,7 @@ public class CardStat : MonoBehaviour
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.whirlwind = true;
                 card.special.penetrate = true;
                 card.special.martyrdom = true;
@@ -1741,7 +1743,7 @@ public class CardStat : MonoBehaviour
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.ember = true;
                 card.special.herosBane = 3;
                 card.special.immolate = 2;
@@ -1794,7 +1796,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.penetrate = true;
                 card.special.regeneration = 3;
                 card.special.regenerationAura = 2;
@@ -1879,7 +1881,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.soulbound = true;
                 card.special.shadowBolt = 3;
                 card.special.incorporeal = true;
@@ -1943,7 +1945,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.lifeSteal = true;
                 card.special.witheringAura = 5;
                 break;
@@ -1955,7 +1957,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.blizzardAura = true;
                 card.special.frostBolt = true;
                 break;
@@ -1967,7 +1969,7 @@ public class CardStat : MonoBehaviour
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.stun = true;
                 card.special.lightningBolt = 3;
                 card.special.ember = true;
@@ -1998,7 +2000,7 @@ public class CardStat : MonoBehaviour
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 5;
-                card.damageType = Card.DamageType.Physical;
+                card.damageType = Card.DamageType.Magical;
                 card.special.permaStun = true;
                 card.special.armor = 4;
                 break;

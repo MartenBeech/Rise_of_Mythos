@@ -14,9 +14,6 @@ public class Deck : MonoBehaviour
     private void Start()
     {
         Decks = GameObject.Find("Deck");
-
-        AddCard(Card.Title.Null, Card.Alignment.Ally, 5);
-        AddCard(Card.Title.Null, Card.Alignment.Enemy, 5);
     }
     public void DrawCardClicked()
     {
@@ -62,8 +59,7 @@ public class Deck : MonoBehaviour
             if (alignment == Card.Alignment.Ally)
                 deckAllyDefault.Add(card);
             else
-                deckAllyDefault.Add(card);
-            //deckEnemyDefault.Add(card);
+                deckEnemyDefault.Add(card);
         }
 
         DisplayDeck();

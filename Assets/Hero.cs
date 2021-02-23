@@ -9,7 +9,7 @@ public class Hero : MonoBehaviour
     public static GameObject[] Heroes = new GameObject[SIZE];
     public static Hero[] heroes = new Hero[SIZE];
 
-    public int health,  healthDefault = 100;
+    public int health,  healthDefault = 30;
     public bool destroyHero = false;
 
     private void Start()
@@ -111,6 +111,38 @@ public class Hero : MonoBehaviour
         else
         {
             Heroes[1].GetComponentInChildren<Text>().text = "<color=red>" + heroes[1].health + "/" + heroes[1].healthDefault + "</color>";
+        }
+    }
+
+    public int GetEnemyHealth(int level)
+    {
+        if (level <= 0)
+            return 10;
+        else if (level % 5 != 0)
+        {
+            if (level <= 5)
+                return 25;
+            else if (level <= 10)
+                return 30;
+            else if (level <= 15)
+                return 35;
+            else if (level <= 20)
+                return 40;
+            else
+                return 45;
+        }
+        else
+        {
+            if (level <= 5)
+                return 50;
+            else if (level <= 10)
+                return 60;
+            else if (level <= 15)
+                return 70;
+            else if (level <= 20)
+                return 80;
+            else
+                return 300;
         }
     }
 }

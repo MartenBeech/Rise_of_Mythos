@@ -33,11 +33,24 @@ public class Turn : MonoBehaviour
             }
         }
 
+        Deck deck = new Deck();
+        deck.DrawCard(turn);
+
         if (alignment == Card.Alignment.Enemy)
         {
             EnemyTurn enemyTurn = new EnemyTurn();
             EnemyTurn.cardRunThrough = Hand.SIZE;
             enemyTurn.PlayHand();
         }
+    }
+
+    public void EndTurnClicked()
+    {
+        if (Game.level <= 0)
+        {
+            Tutorial tutorial = new Tutorial();
+            tutorial.SetText(Game.level);
+        }
+        EndTurn();
     }
 }

@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Special.cs" />
+    <Compile Include="Assets\EnemyDeck.cs" />
     <Compile Include="Assets\AnimaText.cs" />
     <Compile Include="Assets\UI.cs" />
     <Compile Include="Assets\Hand.cs" />
@@ -82,7 +83,7 @@
     <Compile Include="Assets\AnimaCard.cs" />
     <Compile Include="Assets\Hero.cs" />
     <Compile Include="Assets\EnemyHero.cs" />
-    <Compile Include="Assets\EnemyDeck.cs" />
+    <Compile Include="Assets\Tutorial.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
