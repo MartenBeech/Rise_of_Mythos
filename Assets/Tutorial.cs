@@ -19,7 +19,7 @@ public class Tutorial : MonoBehaviour
         };
     private string[] text2 = new string[] { 
         "The botton left shows each player's deck and hand count. You would draw 1 card each turn if you had any in your deck.",
-        "Oh boy, your opponent just summoned 3 Elven Longbow Archers. They have 7 range and can attack from long distances.",
+        "Oh boy, your opponent just summoned 2 Elven Longbow Archers. They have 7 range and can attack from long distances.",
         "Units with 4+ range choose not to move when they have a target in range. Sadly for you, your hero is that target.",
         "You can now play your Lancers. They have 4 speed and <b>Charge</b> which allows them to deal more damage by gaining a runup. Play all 3 on the far left column.",
         "That should deal with them. Now charge for the enemy hero!"
@@ -52,7 +52,7 @@ public class Tutorial : MonoBehaviour
             case -2:
                 card = cardStat.GetStats(Card.Title.Fencer, Card.Alignment.Ally);
                 card.attack = card.attackDefault = 4;
-                card.health = card.healthDefault = 10;
+                card.health = card.healthDefault = 6;
                 card.cd = card.cdDefault = 3;
                 Deck.deckAlly.Add(card);
 
@@ -66,7 +66,7 @@ public class Tutorial : MonoBehaviour
                 break;
 
             case -1:
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     card = cardStat.GetStats(Card.Title.Lancer, Card.Alignment.Ally);
                     card.attack = card.attackDefault = 1;
@@ -106,7 +106,7 @@ public class Tutorial : MonoBehaviour
                 break;
 
             case -1:
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     card = cardStat.GetStats(Card.Title.ElvenLongbowArcher, Card.Alignment.Enemy);
                     card.attack = card.attackDefault = 1;

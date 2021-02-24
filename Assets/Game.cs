@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    public static bool gameOver = false;
     private void Start()
     {
-        NewGame();
+        WinBattle();
     }
 
-    public static int level = -2;
+    public static int level = 0;
 
     public void NewBattle()
     {
@@ -21,6 +22,18 @@ public class Game : MonoBehaviour
         Hero.heroes[1].health = Hero.heroes[1].healthDefault;
         hero.DisplayHero(Card.Alignment.Ally);
         hero.DisplayHero(Card.Alignment.Enemy);
+
+        Hand hand = new Hand();
+        for (int i = 0; i < Hand.SIZE * 2; i++)
+        {
+            hand.RemoveCard(i);
+        }
+
+        Bf bf = new Bf();
+        for (int i = 0; i < Bf.SIZE; i++)
+        {
+            bf.RemoveCard(i);
+        }
 
         EnemyHero.Hero enemy;
         EnemyHero enemyHero = new EnemyHero();
@@ -39,6 +52,7 @@ public class Game : MonoBehaviour
         }
         else
         {
+            Tutorial.Textbox.GetComponentInChildren<Text>().text = null;
             CardStat cardStat = new CardStat();
             Deck.deckAlly.Clear();
             for (int i = 0; i < Deck.deckAllyDefault.Count; i++)
@@ -55,21 +69,7 @@ public class Game : MonoBehaviour
             }
         }
 
-        
         Hero.Heroes[1].GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Heroes/" + enemy);
-
-
-        Hand hand = new Hand();
-        for (int i = 0; i < Hand.SIZE * 2; i++)
-        {
-            hand.RemoveCard(i);
-        }
-
-        Bf bf = new Bf();
-        for (int i = 0; i < Bf.SIZE; i++)
-        {
-            bf.RemoveCard(i);
-        }
 
         Deck deck = new Deck();
         for (int i = 0; i < 3; i++)
@@ -77,9 +77,11 @@ public class Game : MonoBehaviour
             deck.DrawCard(Card.Alignment.Ally);
             deck.DrawCard(Card.Alignment.Enemy);
         }
+
+        gameOver = false;
     }
 
-    public void WinGame()
+    public void WinBattle()
     {
         level++;
         if (level == 1)
@@ -96,7 +98,7 @@ public class Game : MonoBehaviour
             NewBattle();
     }
 
-    public void LoseGame()
+    public void LoseBattle()
     {
         NewBattle();
     }

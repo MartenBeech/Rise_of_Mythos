@@ -140,7 +140,7 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.ElvenGuard:
-                card.attack = 4;
+                card.attack = 3;
                 card.health = 7;
                 card.cd = 2;
                 card.range = 3;
@@ -193,7 +193,6 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.penetrate = true;
                 card.special.inspiration = 1;
                 break;
 
@@ -361,19 +360,17 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.penetrate = true;
                 card.special.cure = 3;
                 break;
 
             case Card.Title.Priestess:
-                card.attack = 6;
+                card.attack = 4;
                 card.health = 10;
-                card.cd = 4;
+                card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.penetrate = true;
                 break;
 
             case Card.Title.RepeatingCrossbow:
@@ -468,7 +465,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.WerewolfIronclaw:
                 card.attack = 3;
-                card.health = 14;
+                card.health = 12;
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 3;
@@ -534,7 +531,6 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.penetrate = true;
                 card.special.cure = 1;
                 card.special.faith = true;
                 break;
@@ -703,7 +699,6 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.penetrate = true;
                 card.special.inspiration = 1;
                 break;
 
@@ -794,7 +789,6 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.penetrate = true;
                 card.special.cure = 4;
                 break;
 
@@ -1031,7 +1025,6 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.penetrate = true;
                 card.special.faith = true;
                 card.special.cure = 3;
                 break;
@@ -1163,7 +1156,6 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.penetrate = true;
                 card.special.inspiration = 1;
                 card.special.cure = 3;
                 break;
@@ -1306,7 +1298,6 @@ public class CardStat : MonoBehaviour
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.penetrate = true;
                 card.special.dispel = true;
                 card.special.cure = 4;
                 break;
@@ -2007,8 +1998,8 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.TarielThePhalanx:
                 card.attack = 4;
-                card.health = 10;
-                card.cd = 6;
+                card.health = 15;
+                card.cd = 5;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 5;

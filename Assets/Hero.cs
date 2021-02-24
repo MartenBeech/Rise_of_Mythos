@@ -31,7 +31,7 @@ public class Hero : MonoBehaviour
                 heroes[0].destroyHero = false;
                 Heroes[0].transform.localScale = new Vector3(0.5f, 0.5f, 1);
                 Game game = new Game();
-                game.LoseGame();
+                game.LoseBattle();
             }
         }
         if (heroes[1].destroyHero)
@@ -42,7 +42,7 @@ public class Hero : MonoBehaviour
                 heroes[1].destroyHero = false;
                 Heroes[1].transform.localScale = new Vector3(0.5f, 0.5f, 1);
                 Game game = new Game();
-                game.WinGame();
+                game.WinBattle();
             }
         }
     }
@@ -85,6 +85,7 @@ public class Hero : MonoBehaviour
                 if (heroes[0].health <= 0)
                 {
                     heroes[0].destroyHero = true;
+                    Game.gameOver = true;
                 }
             }
             else
@@ -97,6 +98,7 @@ public class Hero : MonoBehaviour
                 if (heroes[1].health <= 0)
                 {
                     heroes[1].destroyHero = true;
+                    Game.gameOver = true;
                 }
             }
         }

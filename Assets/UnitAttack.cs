@@ -25,7 +25,7 @@ public class UnitAttack : MonoBehaviour
             {
                 for (int i = 0; i < dealer.range; i++)
                 {
-                    tileCheck += 3;
+                    tileCheck += 2;
                     if (!dealer.canAttackThisTurn)
                     {
                         break;
@@ -53,7 +53,7 @@ public class UnitAttack : MonoBehaviour
             {
                 for (int i = 0; i < dealer.range; i++)
                 {
-                    tileCheck -= 3;
+                    tileCheck -= 2;
                     if (!dealer.canAttackThisTurn)
                     {
                         break;

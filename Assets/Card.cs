@@ -117,13 +117,20 @@ public class Card : MonoBehaviour
 
         gameObject.GetComponentInChildren<Text>().text =
             (card.alignment == Card.Alignment.Ally ? "<color=green>" : "<color=red>") + "<size=" + nameTagSize + ">" +
-            card.nameTag + "</size>" + "</color>" + "<size=36>" + "\n\n\n\n\n\n" + "</size>" +
-            "<color=red>" + card.attack + "</color>";
-        for (int i = card.attack.ToString().Length + card.health.ToString().Length; i < 9; i++)
-        {
+            card.nameTag + "</size>" + "</color>" + "<size=37>" + "\n\n\n\n\n\n" + "</size>";
+
+        if (card.attack.ToString().Length < 2)
             gameObject.GetComponentInChildren<Text>().text += " ";
-        }
+
+        gameObject.GetComponentInChildren<Text>().text += (card.damageType == Card.DamageType.Physical ? "<color=red>" : "<color=blue>") + card.attack + "</color>";
+
+        for (int i = card.attack.ToString().Length + card.health.ToString().Length; i < 13; i++)
+            gameObject.GetComponentInChildren<Text>().text += "<size=47>" + " " + "</size>";
+
         gameObject.GetComponentInChildren<Text>().text += "<color=green>" + card.health + "</color>";
+
+        if (card.health.ToString().Length < 2)
+            gameObject.GetComponentInChildren<Text>().text += " ";
 
         gameObject.GetComponentInChildren<Image>().sprite = card.sprite;
     }

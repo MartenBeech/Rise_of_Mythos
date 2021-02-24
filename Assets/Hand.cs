@@ -21,7 +21,7 @@ public class Hand : MonoBehaviour
         }
     }
 
-    public void AddCardFromDeck(Card card, int i, Card.Alignment alignment)
+    public void AddCardFromDeck(Card card, Card.Alignment alignment)
     {
         int handSpace = GetHandSpace(alignment);
         if (handSpace != -1)
@@ -29,7 +29,7 @@ public class Hand : MonoBehaviour
             if (handSpace < SIZE)
             {
                 AnimaCard animaCard = new AnimaCard();
-                animaCard.MoveDeckHand(card, i, handSpace);
+                animaCard.MoveDeckHand(card, handSpace);
             }
             Cards[handSpace] = card;
             occupied[handSpace] = true;
@@ -48,6 +48,24 @@ public class Hand : MonoBehaviour
             {
                 AnimaCard animaCard = new AnimaCard();
                 animaCard.MoveBfHand(card, i, handSpace);
+            }
+            Cards[handSpace] = card;
+            occupied[handSpace] = true;
+
+            Deck deck = new Deck();
+            deck.DisplayDeck();
+        }
+    }
+
+    public void AddCardFromNowhere(Card card)
+    {
+        int handSpace = GetHandSpace(card.alignment);
+        if (handSpace != -1)
+        {
+            if (handSpace < SIZE)
+            {
+                AnimaCard animaCard = new AnimaCard();
+                animaCard.MoveDeckHand(card, handSpace);
             }
             Cards[handSpace] = card;
             occupied[handSpace] = true;

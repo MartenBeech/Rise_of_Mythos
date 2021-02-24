@@ -259,7 +259,7 @@ public class Special : MonoBehaviour
 
             if (dealer.alignment == Card.Alignment.Ally)
             {
-                for (int i = 0; i < 9; i++)
+                for (int i = 0; i < 6; i++)
                 {
                     if (!Bf.occupied[i])
                     {
@@ -269,7 +269,7 @@ public class Special : MonoBehaviour
             }
             else
             {
-                for (int i = Bf.SIZE - 9; i < Bf.SIZE; i++)
+                for (int i = Bf.SIZE - 6; i < Bf.SIZE; i++)
                 {
                     if (!Bf.occupied[i])
                     {
@@ -293,7 +293,7 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.charge > 0)
         {
-            dealer.bonusAttackNextTurn += Mathf.Abs((tileTo - tileFrom) / 3) * dealer.special.charge;
+            dealer.bonusAttackNextTurn += Mathf.Abs((tileTo - tileFrom) / 2) * dealer.special.charge;
         }
     }
 
@@ -316,9 +316,9 @@ public class Special : MonoBehaviour
             int tileCheck = 0;
             if (dealer.alignment == Card.Alignment.Ally)
             {
-                if (target.tile < Bf.SIZE - 3)
+                if (target.tile < Bf.SIZE - 2)
                 {
-                    tileCheck = target.tile + 3;
+                    tileCheck = target.tile + 2;
                 }
                 else
                 {
@@ -326,21 +326,17 @@ public class Special : MonoBehaviour
                     hero.AttackHero(dealer, Card.Alignment.Enemy);
                 }
             }
-            else if (dealer.alignment == Card.Alignment.Enemy && target.tile >= 3)
+            else
             {
-                if (target.tile >= 3)
+                if (target.tile >= 2)
                 {
-                    tileCheck = target.tile - 3;
+                    tileCheck = target.tile - 2;
                 }
                 else
                 {
                     Hero hero = new Hero();
                     hero.AttackHero(dealer, Card.Alignment.Ally);
                 }
-            }
-            else
-            {
-                return;
             }
 
             if (Bf.occupied[tileCheck])
@@ -372,12 +368,12 @@ public class Special : MonoBehaviour
                     }
                 }
 
-                if (dealer.alignment == Card.Alignment.Ally && dealer.tile >= 27)
+                if (dealer.alignment == Card.Alignment.Ally && dealer.tile >= Bf.SIZE - 2)
                 {
                     Hero hero = new Hero();
                     hero.AttackHero(dealer, Card.Alignment.Enemy);
                 }
-                else if (dealer.alignment == Card.Alignment.Enemy && dealer.tile < 3)
+                else if (dealer.alignment == Card.Alignment.Enemy && dealer.tile < 2)
                 {
                     Hero hero = new Hero();
                     hero.AttackHero(dealer, Card.Alignment.Ally);
@@ -1601,7 +1597,7 @@ public class Special : MonoBehaviour
                 {
                     if (dealer.alignment == Card.Alignment.Enemy)
                     {
-                        tileCheck += 3;
+                        tileCheck += 2;
                         if (tileCheck >= Bf.SIZE)
                         {
                             break;
@@ -1609,7 +1605,7 @@ public class Special : MonoBehaviour
                     }
                     else
                     {
-                        tileCheck -= 3;
+                        tileCheck -= 2;
                         if (tileCheck < 0)
                         {
                             break;

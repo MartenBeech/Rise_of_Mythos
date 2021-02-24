@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Bf : MonoBehaviour
 {
-    public const int SIZE = 30;
+    public const int SIZE = 20;
     public static GameObject[] Bfs = new GameObject[SIZE];
     public static Card[] Cards = new Card[SIZE];
     public static bool[] occupied = new bool[SIZE];
@@ -14,7 +14,7 @@ public class Bf : MonoBehaviour
 
     public enum Column
     {
-        Back, Middle, Front, Wall, MiddleRow, Random
+        Back, Middle, Front, Random
     }
     private void Start()
     {
@@ -22,6 +22,12 @@ public class Bf : MonoBehaviour
         {
             Bfs[i] = GameObject.Find("Bf (" + i + ")");
         }
+    }
+
+    public void AddCardFromNowhere(Card card, int to)
+    {
+        AnimaCard animaCard = new AnimaCard();
+        animaCard.MoveDeckBf(card, to);
     }
 
     public void AddCardFromHand(Card card, int from, int to)
@@ -44,25 +50,25 @@ public class Bf : MonoBehaviour
     {
         if (Game.level == -2)
         {
-            for (int i = 6; i < 9; i++)
+            for (int i = 4; i < 6; i++)
                 if (!occupied[i])
                     Bfs[i].GetComponentInChildren<Outline>().enabled = true;
         }
         else if (Game.level == -1)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
                 if (!occupied[i])
                     Bfs[i].GetComponentInChildren<Outline>().enabled = true;
         }
         else if (Game.level == 0)
         {
-            for (int i = 3; i < 6; i++)
+            for (int i = 2; i < 4; i++)
                 if (!occupied[i])
                     Bfs[i].GetComponentInChildren<Outline>().enabled = true;
         }
         else
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (!occupied[i])
                 {
@@ -74,7 +80,7 @@ public class Bf : MonoBehaviour
 
     public void UnmarkPlayable()
     {
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < SIZE; i++)
         {
             Bfs[i].GetComponentInChildren<Outline>().enabled = false;
         }

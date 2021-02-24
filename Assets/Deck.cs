@@ -33,7 +33,7 @@ public class Deck : MonoBehaviour
                 Rng rng = new Rng();
                 int rnd = rng.Range(0, deckAlly.Count);
                 Hand hand = new Hand();
-                hand.AddCardFromDeck(deckAlly[rnd], rnd, alignment);
+                hand.AddCardFromDeck(deckAlly[rnd], alignment);
                 RemoveCard(rnd, alignment);
             }
         }
@@ -44,7 +44,7 @@ public class Deck : MonoBehaviour
                 Rng rng = new Rng();
                 int rnd = rng.Range(0, deckEnemy.Count);
                 Hand hand = new Hand();
-                hand.AddCardFromDeck(deckEnemy[rnd], rnd, alignment);
+                hand.AddCardFromDeck(deckEnemy[rnd], alignment);
                 RemoveCard(rnd, alignment);
             }
         }

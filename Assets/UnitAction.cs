@@ -84,35 +84,38 @@ public class UnitAction : MonoBehaviour
 
     public void NextUnitTurn()
     {
-        if (units.Count > 0)
+        if (!Game.gameOver)
         {
-            if (units[0].special.stunned)
+            if (units.Count > 0)
             {
-                units[0].special.stunned = false;
-                counter = UI.TIMER * 0.02f;
+                if (units[0].special.stunned)
+                {
+                    units[0].special.stunned = false;
+                    counter = UI.TIMER * 0.02f;
+                }
+                else
+                {
+                    units[0].bonusAttackNextTurn = 0;
+                    units[0].heroicThisTurn = 0;
+                    units[0].canAttackThisTurn = true;
+                    units[0].attackedThisTurn = false;
+                    readyToMove = true;
+                    readyToAttack = true;
+                    counter = UI.TIMER * 2.04f;
+                }
             }
-            else
-            {
-                units[0].bonusAttackNextTurn = 0;
-                units[0].heroicThisTurn = 0;
-                units[0].canAttackThisTurn = true;
-                units[0].attackedThisTurn = false;
-                readyToMove = true;
-                readyToAttack = true;
-                counter = UI.TIMER * 2.04f;
-            }
-        }
 
-        else
-        {
-            Turn turn = new Turn();
-            if (Turn.turn == Card.Alignment.Ally)
-            {
-                turn.NewTurn(Card.Alignment.Enemy);
-            }
             else
             {
-                turn.NewTurn(Card.Alignment.Ally);
+                Turn turn = new Turn();
+                if (Turn.turn == Card.Alignment.Ally)
+                {
+                    turn.NewTurn(Card.Alignment.Enemy);
+                }
+                else
+                {
+                    turn.NewTurn(Card.Alignment.Ally);
+                }
             }
         }
     }

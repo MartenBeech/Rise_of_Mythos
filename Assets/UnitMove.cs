@@ -34,7 +34,7 @@ public class UnitMove : MonoBehaviour
 
                 if (dealer.alignment == Card.Alignment.Ally)
                 {
-                    tileCheck += 3;
+                    tileCheck += 2;
                     if (tileCheck >= Bf.SIZE)
                     {
                         break;
@@ -42,7 +42,7 @@ public class UnitMove : MonoBehaviour
                 }
                 else
                 {
-                    tileCheck -= 3;
+                    tileCheck -= 2;
                     if (tileCheck < 0)
                     {
                         break;

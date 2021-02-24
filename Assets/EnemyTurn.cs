@@ -47,7 +47,7 @@ public class EnemyTurn : MonoBehaviour
         switch(preferredColumn)
         {
             case Bf.Column.Back:
-                for (int i = Bf.SIZE - 3; i < Bf.SIZE; i++)
+                for (int i = Bf.SIZE - 2; i < Bf.SIZE; i++)
                 {
                     if (!Bf.occupied[i])
                         summonTiles.Add(i);
@@ -60,7 +60,7 @@ public class EnemyTurn : MonoBehaviour
                 return SummonCard(handSpace, Bf.Column.Random);
 
             case Bf.Column.Middle:
-                for (int i = Bf.SIZE - 6; i < Bf.SIZE - 3; i++)
+                for (int i = Bf.SIZE - 4; i < Bf.SIZE - 2; i++)
                 {
                     if (!Bf.occupied[i])
                         summonTiles.Add(i);
@@ -73,20 +73,7 @@ public class EnemyTurn : MonoBehaviour
                 return SummonCard(handSpace, Bf.Column.Random);
 
             case Bf.Column.Front:
-                for (int i = Bf.SIZE - 9; i < Bf.SIZE - 6; i++)
-                {
-                    if (!Bf.occupied[i])
-                        summonTiles.Add(i);
-                }
-                if (summonTiles.Count > 0)
-                {
-                    SummonCard(handSpace, summonTiles[rng.Range(0, summonTiles.Count)]);
-                    return true;
-                }
-                return SummonCard(handSpace, Bf.Column.Random);
-
-            case Bf.Column.MiddleRow:
-                for (int i = Bf.SIZE - 8; i < Bf.SIZE; i += 3)
+                for (int i = Bf.SIZE - 6; i < Bf.SIZE - 4; i++)
                 {
                     if (!Bf.occupied[i])
                         summonTiles.Add(i);
@@ -124,8 +111,6 @@ public class EnemyTurn : MonoBehaviour
 
     public Bf.Column GetPreferredColumn(Card card)
     {
-        if (card.special.whirlwind || card.special.vigilance)
-            return Bf.Column.MiddleRow;
         if (card.range >= 4)
             return Bf.Column.Back;
         if (card.speed >= 4)

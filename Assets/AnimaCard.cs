@@ -51,12 +51,21 @@ public class AnimaCard : MonoBehaviour
         }
     }
 
-    public void MoveDeckHand(Card _card, int _from, int _to)
+    public void MoveDeckHand(Card _card, int _to)
     {
         newlySummoned = false;
         MoveCard(_card, Deck.Decks, Hand.Hands[_to]);
         Hand.occupied[_to] = true;
         Hand.Cards[_to] = _card;
+        _card.tile = _to;
+    }
+
+    public void MoveDeckBf(Card _card, int _to)
+    {
+        newlySummoned = false;
+        MoveCard(_card, Deck.Decks, Bf.Bfs[_to]);
+        Bf.occupied[_to] = true;
+        Bf.Cards[_to] = _card;
         _card.tile = _to;
     }
 

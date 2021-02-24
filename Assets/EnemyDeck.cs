@@ -12,6 +12,9 @@ public class EnemyDeck : MonoBehaviour
         Deck deck = new Deck();
         Card card = new Card();
         Rng rng = new Rng();
+        Bf bf = new Bf();
+        Hand hand = new Hand();
+        CardStat cardStat = new CardStat();
         List<Card> cardsRarity1 = card.GetCardsByRarity(1);
         List<Card> cardsRarity2 = card.GetCardsByRarity(2);
         List<Card> cardsRarity3 = card.GetCardsByRarity(3);
@@ -39,16 +42,40 @@ public class EnemyDeck : MonoBehaviour
             case EnemyHero.Hero.Vayaron:
             case EnemyHero.Hero.Wysloth:
             case EnemyHero.Hero.Zenda:
-                for (int i = 0; i < 8; i++)
-                    deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy);
-                for (int i = 0; i < 8; i++)
-                    deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy);
-                for (int i = 0; i < 8; i++)
-                    deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy);
-                for (int i = 0; i < 4; i++)
-                    deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy);
-                for (int i = 0; i < 2; i++)
-                    deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy);
+                if (Game.level <= 10)
+                {
+                    for (int i = 0; i < 9; i++)
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy);
+                    for (int i = 0; i < Game.level; i++)
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy);
+                }
+                else if (Game.level <= 20)
+                {
+                    for (int i = 0; i < 5; i++)
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy);
+                    for (int i = 0; i < 5; i++)
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy);
+                    for (int i = 0; i < 5; i++)
+                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy);
+                    for (int i = 0; i < 3; i++)
+                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy);
+                    for (int i = 0; i < 2; i++)
+                        deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy);
+                }
+                else
+                {
+                    for (int i = 0; i < 7; i++)
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy);
+                    for (int i = 0; i < 7; i++)
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy);
+                    for (int i = 0; i < 7; i++)
+                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy);
+                    for (int i = 0; i < 5; i++)
+                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy);
+                    for (int i = 0; i < 4; i++)
+                        deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy);
+                }
+                
                 break;
 
 
