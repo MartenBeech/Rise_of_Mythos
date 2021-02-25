@@ -12,6 +12,7 @@ public class Game : MonoBehaviour
     }
 
     public static int level = 0;
+    public static int rank = -1;
 
     public void NewBattle()
     {
@@ -57,7 +58,7 @@ public class Game : MonoBehaviour
             Deck.deckAlly.Clear();
             for (int i = 0; i < Deck.deckAllyDefault.Count; i++)
             {
-                Deck.deckAlly.Add(cardStat.GetStats(Deck.deckAllyDefault[i].title, Deck.deckAllyDefault[i].alignment));
+                Deck.deckAlly.Add(cardStat.GetStats(Deck.deckAllyDefault[i].title, Deck.deckAllyDefault[i].alignment, Deck.deckAllyDefault[i].rank));
             }
 
             EnemyDeck enemyDeck = new EnemyDeck();
@@ -65,7 +66,7 @@ public class Game : MonoBehaviour
             Deck.deckEnemy.Clear();
             for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
             {
-                Deck.deckEnemy.Add(cardStat.GetStats(Deck.deckEnemyDefault[i].title, Deck.deckEnemyDefault[i].alignment));
+                Deck.deckEnemy.Add(cardStat.GetStats(Deck.deckEnemyDefault[i].title, Deck.deckEnemyDefault[i].alignment, Deck.deckEnemyDefault[i].rank));
             }
         }
 
@@ -84,6 +85,10 @@ public class Game : MonoBehaviour
     public void WinBattle()
     {
         level++;
+        if (level == 1 || level == 6 || level == 11 || level == 16 || level == 21)
+        {
+            rank++;
+        }
         if (level == 1)
         {
             Recruit recruit = new Recruit();

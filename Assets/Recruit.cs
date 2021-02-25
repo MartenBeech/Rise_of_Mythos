@@ -34,9 +34,9 @@ public class Recruit : MonoBehaviour
         Card card = new Card();
         CardStat cardStat = new CardStat();
         Card rndCard;
-        Cards[0] = cardStat.GetStats(Card.Title.Null, Card.Alignment.Ally);
-        Cards[1] = cardStat.GetStats(Card.Title.Null, Card.Alignment.Ally);
-        Cards[2] = cardStat.GetStats(Card.Title.Null, Card.Alignment.Ally);
+        Cards[0] = cardStat.GetStats(Card.Title.Null, Card.Alignment.Ally, Game.rank);
+        Cards[1] = cardStat.GetStats(Card.Title.Null, Card.Alignment.Ally, Game.rank);
+        Cards[2] = cardStat.GetStats(Card.Title.Null, Card.Alignment.Ally, Game.rank);
 
 
         int rarityChosen = GetRarityToRecruit();
@@ -51,8 +51,8 @@ public class Recruit : MonoBehaviour
                 rndCard = cards[rng.Range(0, cards.Count)];
             } while (rndCard.title == Cards[0].title || rndCard.title == Cards[1].title || rndCard.title == Cards[2].title);
 
-            card.DisplayCard(Recruits[i], rndCard);
-            Cards[i] = rndCard;
+            Cards[i] = cardStat.GetStats(rndCard.title, rndCard.alignment, Game.rank);
+            card.DisplayCard(Recruits[i], Cards[i]);
 
             SpecialInfo specialInfo = new SpecialInfo();
             Infos[i].GetComponentInChildren<Text>().text = specialInfo.GetCardInfo(rndCard);
@@ -119,7 +119,7 @@ public class Recruit : MonoBehaviour
     public void ChooseCard(int i)
     {
         Deck deck = new Deck();
-        deck.AddCard(Cards[i].title, Cards[i].alignment, 1);
+        deck.AddCard(Cards[i].title, Cards[i].alignment, Cards[i].rank, 1);
 
         cardsToRecruit--;
         if (cardsToRecruit > 0)

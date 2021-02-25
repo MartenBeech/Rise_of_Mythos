@@ -101,7 +101,6 @@ public class Special : MonoBehaviour
     public int disdain = 0;
     public bool crushDefenses = false;
     public bool cheif = false;
-
     public bool krush = false;
     public int thunderStorm = 0;
 
@@ -252,7 +251,7 @@ public class Special : MonoBehaviour
             Card card = new Card();
             List<Card> cards = card.GetCardsByCD(1);
             Rng rng = new Rng();
-            card = cardStat.GetStats(cards[rng.Range(0, cards.Count)].title, dealer.alignment);
+            card = cardStat.GetStats(cards[rng.Range(0, cards.Count)].title, dealer.alignment, dealer.rank);
 
             int summonTile = 0;
             List<int> emptyTiles = new List<int>();
@@ -582,7 +581,7 @@ public class Special : MonoBehaviour
         if (target.special.reanimate)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.GetStats(target.title, target.alignment);
+            Card card = cardStat.GetStats(target.title, target.alignment, target.rank);
             card.special.reanimate = false;
             card.special.soulbound = target.special.soulbound;
             AnimaCard animaCard = new AnimaCard();
@@ -603,7 +602,7 @@ public class Special : MonoBehaviour
             {
                 CardStat cardStat = new CardStat();
                 Card.Alignment alignment = (target.alignment == Card.Alignment.Ally ? Card.Alignment.Enemy : Card.Alignment.Ally);
-                Card card = cardStat.GetStats(Card.Title.RaisedDead, alignment);
+                Card card = cardStat.GetStats(Card.Title.RaisedDead, alignment, enemies[i].rank);
                 AnimaCard animaCard = new AnimaCard();
                 animaCard.MoveBfBf(card, enemies[i].tile, target.tile, true);
                 break;
@@ -673,7 +672,7 @@ public class Special : MonoBehaviour
         if (target.special.soulbound)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.GetStats(target.title, target.alignment);
+            Card card = cardStat.GetStats(target.title, target.alignment, target.rank);
             card.special.soulbound = false;
 
             Hand hand = new Hand();
@@ -726,7 +725,7 @@ public class Special : MonoBehaviour
         if (dealer.special.fear && target.health > damage)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.GetStats(target.title, target.alignment);
+            Card card = cardStat.GetStats(target.title, target.alignment, target.rank);
             dealer.special.fear = false;
 
             Hand hand = new Hand();
@@ -751,7 +750,7 @@ public class Special : MonoBehaviour
         if (target.special.skeletal)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.GetStats(Card.Title.BoneHeap, target.alignment);
+            Card card = cardStat.GetStats(Card.Title.BoneHeap, target.alignment, target.rank);
             card.title = target.title;
             card.nameTag = target.nameTag;
             AnimaCard animaCard = new AnimaCard();
@@ -766,7 +765,7 @@ public class Special : MonoBehaviour
         if (dealer.special.boneHeap)
         {
             CardStat cardStat = new CardStat();
-            Card card = cardStat.GetStats(dealer.title, dealer.alignment);
+            Card card = cardStat.GetStats(dealer.title, dealer.alignment, dealer.rank);
             AnimaCard animaCard = new AnimaCard();
             animaCard.MoveBfBf(card, dealer.tile, dealer.tile, true);
             AnimaText animaText = new AnimaText();
@@ -1223,7 +1222,7 @@ public class Special : MonoBehaviour
             {
                 if (!Bf.occupied[tiles[i]])
                 {
-                    _card = cardStat.GetStats(dealer.title, dealer.alignment);
+                    _card = cardStat.GetStats(dealer.title, dealer.alignment, dealer.rank);
                     AnimaCard animaCard = new AnimaCard();
                     animaCard.MoveBfBf(_card, dealer.tile, tiles[i], true);
                 }

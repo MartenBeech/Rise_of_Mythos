@@ -44,15 +44,9 @@ public class Card : MonoBehaviour
     }
     public Alignment alignment;
 
-    public enum Race
-    {
-        Human, Undead, Elf, Halfblood, Neutral
-    }
-    public Race race;
-
     public enum DamageType
     {
-        Physical, Magical, True
+        Physical, Magical
     }
     public DamageType damageType;
 
@@ -65,6 +59,8 @@ public class Card : MonoBehaviour
     public int range,       rangeDefault;
     public int tile;
     public int rarity;
+    public int rank;
+    public bool upgraded = false;
     public string nameTag;
 
     public int bonusAttackNextTurn = 0;

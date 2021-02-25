@@ -50,15 +50,15 @@ public class Tutorial : MonoBehaviour
         switch (level)
         {
             case -2:
-                card = cardStat.GetStats(Card.Title.Fencer, Card.Alignment.Ally);
+                card = cardStat.GetStats(Card.Title.Fencer, Card.Alignment.Ally, 0);
                 card.attack = card.attackDefault = 4;
-                card.health = card.healthDefault = 6;
+                card.health = card.healthDefault = card.healthMax = card.healthMaxDefault = 6;
                 card.cd = card.cdDefault = 3;
                 Deck.deckAlly.Add(card);
 
-                card = cardStat.GetStats(Card.Title.Priestess, Card.Alignment.Ally);
+                card = cardStat.GetStats(Card.Title.Priestess, Card.Alignment.Ally, 0);
                 card.attack = card.attackDefault = 4;
-                card.health = card.healthDefault = 10;
+                card.health = card.healthDefault = card.healthMax = card.healthMaxDefault = 10;
                 card.cd = card.cdDefault = 4;
                 card.range = card.rangeDefault = 2;
                 card.special.penetrate = false;
@@ -68,9 +68,9 @@ public class Tutorial : MonoBehaviour
             case -1:
                 for (int i = 0; i < 2; i++)
                 {
-                    card = cardStat.GetStats(Card.Title.Lancer, Card.Alignment.Ally);
+                    card = cardStat.GetStats(Card.Title.Lancer, Card.Alignment.Ally, 0);
                     card.attack = card.attackDefault = 1;
-                    card.health = card.healthDefault = 10;
+                    card.health = card.healthDefault = card.healthMax = card.healthMaxDefault = 10;
                     card.cd = card.cdDefault = 3;
 
                     Deck.deckAlly.Add(card);
@@ -78,9 +78,9 @@ public class Tutorial : MonoBehaviour
                 break;
 
             case 0:
-                card = cardStat.GetStats(Card.Title.Squire, Card.Alignment.Ally);
+                card = cardStat.GetStats(Card.Title.Squire, Card.Alignment.Ally, 0);
                 card.attack = card.attackDefault = 5;
-                card.health = card.healthDefault = 25;
+                card.health = card.healthDefault = card.healthMax = card.healthMaxDefault = 25;
                 card.cd = card.cdDefault = 3;
 
                 Deck.deckAlly.Add(card);
@@ -96,9 +96,9 @@ public class Tutorial : MonoBehaviour
         switch (level)
         {
             case -2:
-                card = cardStat.GetStats(Card.Title.Lizard, Card.Alignment.Enemy);
+                card = cardStat.GetStats(Card.Title.Lizard, Card.Alignment.Enemy, 0);
                 card.attack = card.attackDefault = 2;
-                card.health = card.healthDefault = 10;
+                card.health = card.healthDefault = card.healthMax = card.healthMaxDefault = 10;
                 card.cd = card.cdDefault = 2;
                 card.special.headbutt = false;
                 card.special.armor = 3;
@@ -108,9 +108,9 @@ public class Tutorial : MonoBehaviour
             case -1:
                 for (int i = 0; i < 2; i++)
                 {
-                    card = cardStat.GetStats(Card.Title.ElvenLongbowArcher, Card.Alignment.Enemy);
+                    card = cardStat.GetStats(Card.Title.ElvenLongbowArcher, Card.Alignment.Enemy, 0);
                     card.attack = card.attackDefault = 1;
-                    card.health = card.healthDefault = 5;
+                    card.health = card.healthDefault = card.healthMax = card.healthMaxDefault = 5;
                     card.cd = card.cdDefault = 1;
                     card.range = 7;
 
@@ -119,9 +119,9 @@ public class Tutorial : MonoBehaviour
                 break;
 
             case 0:
-                card = cardStat.GetStats(Card.Title.Knight, Card.Alignment.Enemy);
+                card = cardStat.GetStats(Card.Title.Knight, Card.Alignment.Enemy, 0);
                 card.attack = card.attackDefault = 3;
-                card.health = card.healthDefault = 15;
+                card.health = card.healthDefault = card.healthMax = card.healthMaxDefault = 15;
                 card.cd = card.cdDefault = 1;
 
                 Deck.deckEnemy.Add(card);
@@ -164,6 +164,6 @@ public class Tutorial : MonoBehaviour
 
     public void ShowText(string text)
     {
-        Textbox.GetComponentInChildren<Text>().text = text + "\n\n<i> (Press End Turn) </i>";
+        Textbox.GetComponentInChildren<Text>().text = text + "\n\n<i>(Press End Turn)</i>";
     }
 }

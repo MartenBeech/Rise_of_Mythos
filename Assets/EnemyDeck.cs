@@ -45,35 +45,35 @@ public class EnemyDeck : MonoBehaviour
                 if (Game.level <= 10)
                 {
                     for (int i = 0; i < 9; i++)
-                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
                     for (int i = 0; i < Game.level; i++)
-                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
                 }
                 else if (Game.level <= 20)
                 {
                     for (int i = 0; i < 5; i++)
-                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
                     for (int i = 0; i < 5; i++)
-                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
                     for (int i = 0; i < 5; i++)
-                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy, Game.rank);
                     for (int i = 0; i < 3; i++)
-                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy, Game.rank);
                     for (int i = 0; i < 2; i++)
-                        deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy, Game.rank);
                 }
                 else
                 {
                     for (int i = 0; i < 7; i++)
-                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
                     for (int i = 0; i < 7; i++)
-                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
                     for (int i = 0; i < 7; i++)
-                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy, Game.rank);
                     for (int i = 0; i < 5; i++)
-                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy, Game.rank);
                     for (int i = 0; i < 4; i++)
-                        deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy);
+                        deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy, Game.rank);
                 }
                 
                 break;
@@ -81,122 +81,122 @@ public class EnemyDeck : MonoBehaviour
 
 
             case EnemyHero.Hero.Adar:
-                deck.AddCard(Card.Title.AryaTheHonorable, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.BigShuck, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.ChieftainLionroar, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.DragonHunterVincent, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.EmperorAugustus, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.EmrysTheUnyielding, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.ExecutionerGrimbone, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.Gringheist, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.JasmineTheDervish, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.KathrynEmberwind, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.KingVelAssar, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.LordFleder, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.MaiaShadowblade, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.PrincessSarya, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.RyliTheWhiteWitch, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.SorannTheUnforgiving, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.StormLizardKing, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.TarielThePhalanx, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.UndeadKingBael, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.VarkusTheBlight, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.Whitemane, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.AryaTheHonorable, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.BigShuck, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.ChieftainLionroar, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.DragonHunterVincent, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.EmperorAugustus, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.EmrysTheUnyielding, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.ExecutionerGrimbone, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.Gringheist, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.JasmineTheDervish, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.KathrynEmberwind, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.KingVelAssar, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.LordFleder, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.MaiaShadowblade, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.PrincessSarya, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.RyliTheWhiteWitch, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.SorannTheUnforgiving, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.StormLizardKing, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.TarielThePhalanx, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.UndeadKingBael, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.VarkusTheBlight, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.Whitemane, Card.Alignment.Enemy, Game.rank, 1);
                 break;
 
             case EnemyHero.Hero.Ivan:
-                deck.AddCard(Card.Title.Lancer, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.Horseman, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.PegasusScout, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.PegasusRider, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.DarkRider, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.DreadScout, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.Lancer, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.Horseman, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.PegasusScout, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.PegasusRider, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.DarkRider, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.DreadScout, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.LanceKnight, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.Knight, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.PegasusLegionnaire, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.PegasusGuard, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.BlackRider, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.DreadKnight, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.LanceKnight, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.Knight, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.PegasusLegionnaire, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.PegasusGuard, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.BlackRider, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.DreadKnight, Card.Alignment.Enemy, Game.rank, 1);
 
-                deck.AddCard(Card.Title.LanceChampion, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.ChampionKnight, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.PegasusChampion, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.PegasusRaidLeader, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.DoomRider, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.DreadChampion, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.LanceChampion, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.ChampionKnight, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.PegasusChampion, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.PegasusRaidLeader, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.DoomRider, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.DreadChampion, Card.Alignment.Enemy, Game.rank, 1);
 
-                deck.AddCard(Card.Title.EacannTheCharger, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.OpheliaWestWind, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.DariusDarkhand, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.EacannTheCharger, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.OpheliaWestWind, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.DariusDarkhand, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.EmrysTheUnyielding, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.TarielThePhalanx, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.EmrysTheUnyielding, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.TarielThePhalanx, Card.Alignment.Enemy, Game.rank, 1);
                 break;
 
             case EnemyHero.Hero.Khalida:
 
-                deck.AddCard(Card.Title.ElvenThunderApprentice, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ElvenFireApprentice, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ElvenWitch, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ElvenFrostApprentice, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.ElvenThunderApprentice, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ElvenFireApprentice, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ElvenWitch, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ElvenFrostApprentice, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.ElvenThunderMage, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ElvenFireMage, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ElvenPriestess, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ElvenFrostArchmage, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.ElvenThunderMage, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ElvenFireMage, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ElvenPriestess, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ElvenFrostArchmage, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.ElvenThunderArchmage, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ElvenFireArchmage, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ElvenHighPriestess, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ElvenFrostSorcerer, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.ElvenThunderArchmage, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ElvenFireArchmage, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ElvenHighPriestess, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ElvenFrostSorcerer, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.KathrynEmberwind, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.TanwenWildfire, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.KathrynEmberwind, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.TanwenWildfire, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.SilvaTheAlmighty, Card.Alignment.Enemy, 1);
-                deck.AddCard(Card.Title.RyliTheWhiteWitch, Card.Alignment.Enemy, 1);
+                deck.AddCard(Card.Title.SilvaTheAlmighty, Card.Alignment.Enemy, Game.rank, 1);
+                deck.AddCard(Card.Title.RyliTheWhiteWitch, Card.Alignment.Enemy, Game.rank, 1);
                 break;
 
             case EnemyHero.Hero.Ludmilla:
-                deck.AddCard(Card.Title.ZombieSwordsman, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ZombieGuard, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.Wraith, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.Ghost, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.ZombieSwordsman, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ZombieGuard, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.Wraith, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.Ghost, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.ZombieSentinel, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ZombieLegionnaire, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.IcyGaleGhost, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.DreadWraith, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ChillingGhost, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.ZombieSentinel, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ZombieLegionnaire, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.IcyGaleGhost, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.DreadWraith, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ChillingGhost, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.ZombieChampion, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.ZombieCaptain, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.DreadPhantom, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.ZombieChampion, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.ZombieCaptain, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.DreadPhantom, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.DesperateSoul, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.OfeigurTheUndying, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.DesperateSoul, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.Gringheist, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.Gringheist, Card.Alignment.Enemy, Game.rank, 2);
                 break;
 
             case EnemyHero.Hero.Menan:
-                deck.AddCard(Card.Title.Bat, Card.Alignment.Enemy, 3);
-                deck.AddCard(Card.Title.Vampire, Card.Alignment.Enemy, 3);
-                deck.AddCard(Card.Title.VampireApprentice, Card.Alignment.Enemy, 3);
+                deck.AddCard(Card.Title.Bat, Card.Alignment.Enemy, Game.rank, 3);
+                deck.AddCard(Card.Title.Vampire, Card.Alignment.Enemy, Game.rank, 3);
+                deck.AddCard(Card.Title.VampireApprentice, Card.Alignment.Enemy, Game.rank, 3);
 
-                deck.AddCard(Card.Title.BloodthirstyBat, Card.Alignment.Enemy, 3);
-                deck.AddCard(Card.Title.VampireMage, Card.Alignment.Enemy, 3);
-                deck.AddCard(Card.Title.VampireNoble, Card.Alignment.Enemy, 3);
+                deck.AddCard(Card.Title.BloodthirstyBat, Card.Alignment.Enemy, Game.rank, 3);
+                deck.AddCard(Card.Title.VampireMage, Card.Alignment.Enemy, Game.rank, 3);
+                deck.AddCard(Card.Title.VampireNoble, Card.Alignment.Enemy, Game.rank, 3);
 
-                deck.AddCard(Card.Title.ScarletBat, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.VampireArchmage, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.VampireLord, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.ScarletBat, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.VampireArchmage, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.VampireLord, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.PrinceSerka, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.PrinceSerka, Card.Alignment.Enemy, Game.rank, 2);
 
-                deck.AddCard(Card.Title.LordFleder, Card.Alignment.Enemy, 2);
-                deck.AddCard(Card.Title.PrincessSarya, Card.Alignment.Enemy, 2);
+                deck.AddCard(Card.Title.LordFleder, Card.Alignment.Enemy, Game.rank, 2);
+                deck.AddCard(Card.Title.PrincessSarya, Card.Alignment.Enemy, Game.rank, 2);
                 break;
 
         }

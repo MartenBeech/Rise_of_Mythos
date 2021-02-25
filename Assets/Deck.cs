@@ -50,12 +50,12 @@ public class Deck : MonoBehaviour
         }
     }
 
-    public void AddCard(Card.Title title, Card.Alignment alignment, int amount = 1)
+    public void AddCard(Card.Title title, Card.Alignment alignment, int rank, int amount = 1)
     {
         CardStat cardStat = new CardStat();
         for (int i = 0; i < amount; i++)
         {
-            Card card = cardStat.GetStats(title, alignment);
+            Card card = cardStat.GetStats(title, alignment, rank);
             if (alignment == Card.Alignment.Ally)
                 deckAllyDefault.Add(card);
             else

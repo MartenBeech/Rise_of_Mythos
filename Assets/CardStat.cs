@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class CardStat : MonoBehaviour
 {
-    private void SetDefaults(Card card, Card.Title title, Card.Alignment alignment)
+    private void SetDefaults(Card card, Card.Title title, Card.Alignment alignment, int rank)
     {
         card.title = title;
-        card.attackDefault = card.attack;
-        card.healthMaxDefault = card.healthMax = card.healthDefault = card.health;
         card.cdDefault = card.cd;
         card.speedDefault = card.speed;
         card.rangeDefault = card.range;
 
         card.tile = Bf.SIZE;
         card.alignment = alignment;
+        card.rank = rank;
 
         card.nameTag = title.ToString();
         for (int j = 1; j < card.nameTag.Length; j++)
@@ -27,87 +26,190 @@ public class CardStat : MonoBehaviour
             }
         }
 
-        card.race = Card.Race.Human;
         card.sprite = Resources.Load<Sprite>("Cards/Rarity" + card.rarity + "/" + card.nameTag.Replace(' ', '_'));
     }
 
-    public Card GetStats(Card.Title title, Card.Alignment alignment)
+    public Card GetStats(Card.Title title, Card.Alignment alignment, int rank = -1)
     {
         Card card = new Card();
 
-        switch(title)
+        int[] attack = new int[6] { 0, 0, 0, 0, 0, 0 };
+        int[] health = new int[6] { 0, 0, 0, 0, 0, 0 };
+
+        bool wall = false;
+         bool flying = false;
+
+         bool vigilance = false;
+         bool penetrate = false;
+
+         int[] armor = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] resistance = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] charge = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] cure = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] heroic = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] regeneration = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] multistrike = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] weaken = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] shadowBolt = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] poison = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] poisoned = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] immolate = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] reapingCurse = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] soulEater = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] spellCurse = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] spellCursed = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] spellFeed = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] inspiration = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] herosBane = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] embered = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] lightningBolt = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] rage = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] carnivore = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] bloodPrice = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] maim = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] maimed = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] battleSpirit = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] knockback = new int[6] { 0, 0, 0, 0, 0, 0 };
+
+         int[] lifeAura = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] regenerationAura = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] witheringAura = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] rangeAura = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] speedAura = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] attackAura = new int[6] { 0, 0, 0, 0, 0, 0 };
+         bool blizzardAura = false;
+         int[] herosBaneAura = new int[6] { 0, 0, 0, 0, 0, 0 };
+         bool penetrateAura = false;
+         int[] poisonAura = new int[6] { 0, 0, 0, 0, 0, 0 };
+         int[] armorAura = new int[6] { 0, 0, 0, 0, 0, 0 };
+
+         bool pierce = false;
+         bool whirlwind = false;
+         bool counterattack = false;
+         bool firstStrike = false;
+         bool dispel = false;
+         bool faith = false;
+         bool martyrdom = false;
+         bool heavyWeapon = false;
+         bool dragonSlayer = false;
+         bool reanimate = false;
+         bool lifeSteal = false;
+         bool soulbound = false;
+         bool frostBolt = false;
+         bool incorporeal = false;
+         bool fear = false;
+         bool skeletal = false;
+         bool boneHeap = false;
+         bool vengefulCurse = false;
+         bool vengefulCursed = false;
+         bool panicStrike = false;
+         bool sniper = false;
+         bool ember = false;
+         bool nimble = false;
+         bool conjure = false;
+         bool donor = false;
+         bool stun = false;
+         bool stunned = false;
+         bool permaStun = false;
+         bool distraction = false;
+         bool spear = false;
+         bool ambush = false;
+         bool cleave = false;
+         bool charm = false;
+         bool hitAndRun = false;
+         bool bleedingAttack = false;
+         bool bleeding = false;
+         bool influence = false;
+         bool headbutt = false;
+
+         bool kingsCommand = false;
+         bool combatMaster = false;
+         bool callOfTheUndeadKing = false;
+         bool blackIce = false;
+         bool soulHarvest = false;
+         bool multiShot = false;
+         bool reinforcement = false;
+         int[] disdain = new int[6] { 0, 0, 0, 0, 0, 0 };
+         bool crushDefenses = false;
+         bool cheif = false;
+
+         bool krush = false;
+         int[] thunderStorm = new int[6] { 0, 0, 0, 0, 0, 0 };
+
+
+        switch (title)
         {
             case Card.Title.Bat:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 2, 2, 2, 3 };
+                health = new int[6] { 3, 5, 5, 7, 9, 11 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.lifeSteal = true;
+                flying = true;
+                lifeSteal = true;
                 break;
 
             case Card.Title.CentaurArcher:
-                card.attack = 3;
-                card.health = 4;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 1, 2, 2, 4, 4, 5 };
                 card.cd = 1;
                 card.range = 4;
                 card.speed = 4;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.hitAndRun = true;
+                hitAndRun = true;
                 break;
 
             case Card.Title.CentaurRider:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 3, 5, 7, 7, 9, 11 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.hitAndRun = true;
+                hitAndRun = true;
                 break;
 
             case Card.Title.Crossbowman:
-                card.attack = 4;
-                card.health = 11;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 5, 7, 8, 10, 11, 14 };
                 card.cd = 2;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.heavyWeapon = true;
+                heavyWeapon = true;
                 break;
 
             case Card.Title.DarkRider:
-                card.attack = 3;
-                card.health = 11;
+                attack = new int[6] { 1, 2, 2, 2, 3, 3 };
+                health = new int[6] { 7, 7, 7, 10, 11, 13 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.armor = 1;
-                card.special.spellCurse = 2;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
+                spellCurse = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.DreadScout:
-                card.attack = 3;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 5, 7, 7, 9, 10, 12 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 1;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
                 break;
 
             case Card.Title.ElvenArcher:
-                card.attack = 4;
-                card.health = 7;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 3, 5, 5, 7, 7, 8 };
                 card.cd = 2;
                 card.range = 5;
                 card.speed = 2;
@@ -116,44 +218,44 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.ElvenFireApprentice:
-                card.attack = 3;
-                card.health = 5;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 1, 3, 3, 5, 5, 5 };
                 card.cd = 1;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.ember = true;
-                card.special.herosBane = 1;
+                ember = true;
+                herosBane = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.ElvenFrostApprentice:
-                card.attack = 1;
-                card.health = 5;
+                attack = new int[6] { 0, 0, 1, 1, 1, 2 };
+                health = new int[6] { 2, 3, 3, 4, 5, 6 };
                 card.cd = 1;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.frostBolt = true;
-                card.special.conjure = true;
+                frostBolt = true;
+                conjure = true;
                 break;
 
             case Card.Title.ElvenGuard:
-                card.attack = 3;
-                card.health = 7;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 4, 5, 5, 7, 7, 9 };
                 card.cd = 2;
                 card.range = 3;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.spear = true;
-                card.special.vigilance = true;
+                spear = true;
+                vigilance = true;
                 break;
 
             case Card.Title.ElvenHunter:
-                card.attack = 6;
-                card.health = 3;
+                attack = new int[6] { 2, 3, 4, 5, 6, 8 };
+                health = new int[6] { 3, 3, 3, 3, 3, 3 };
                 card.cd = 3;
                 card.range = 5;
                 card.speed = 2;
@@ -162,66 +264,66 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.ElvenSamurai:
-                card.attack = 2;
-                card.health = 12;
+                attack = new int[6] { 0, 1, 1, 2, 2, 2 };
+                health = new int[6] { 7, 8, 9, 10, 12, 13 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 1;
-                card.special.resistance = 3;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
+                resistance = new int[6] { 1, 1, 2, 2, 3, 4 };
                 break;
 
             case Card.Title.ElvenThunderApprentice:
-                card.attack = 3;
-                card.health = 4;
+                attack = new int[6] { 0, 1, 1, 2, 3, 3 };
+                health = new int[6] { 2, 2, 4, 4, 4, 4 };
                 card.cd = 2;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.stun = true;
-                card.special.lightningBolt = 2;
+                stun = true;
+                lightningBolt = new int[6] { 1, 1, 1, 2, 2, 3 };
                 break;
 
             case Card.Title.ElvenWitch:
-                card.attack = 2;
-                card.health = 8;
+                attack = new int[6] { 0, 1, 1, 1, 2, 2 };
+                health = new int[6] { 4, 4, 6, 8, 8, 8 };
                 card.cd = 2;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.inspiration = 1;
+                inspiration = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.FelesMessenger:
-                card.attack = 2;
-                card.health = 6;
+                attack = new int[6] { 0, 1, 1, 1, 2, 2 };
+                health = new int[6] { 3, 3, 4, 6, 6, 9 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.distraction = true;
+                distraction = true;
                 break;
 
             case Card.Title.FelesTracker:
-                card.attack = 3;
-                card.health = 5;
+                attack = new int[6] { 1, 2, 2, 2, 3, 4 };
+                health = new int[6] { 2, 2, 3, 5, 5, 6 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.distraction = true;
-                card.special.hitAndRun = true;
+                distraction = true;
+                hitAndRun = true;
                 break;
 
             case Card.Title.Fencer:
-                card.attack = 4;
-                card.health = 7;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 3, 5, 5, 7, 7, 9 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
@@ -230,54 +332,54 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.FoulSkeleton:
-                card.attack = 4;
-                card.health = 6;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 2, 3, 3, 5, 6, 7 };
                 card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.skeletal = true;
+                skeletal = true;
                 break;
 
             case Card.Title.Ghost:
-                card.attack = 3;
-                card.health = 4;
+                attack = new int[6] { 1, 2, 2, 3, 3, 4 };
+                health = new int[6] { 1, 1, 2, 2, 4, 5 };
                 card.cd = 1;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.soulbound = true;
-                card.special.frostBolt = true;
+                soulbound = true;
+                frostBolt = true;
                 break;
 
             case Card.Title.Guard:
-                card.attack = 2;
-                card.health = 7;
+                attack = new int[6] { 0, 1, 1, 2, 2, 2 };
+                health = new int[6] { 4, 4, 4, 5, 7, 9 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 2;
+                armor = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.HellHound:
-                card.attack = 3;
-                card.health = 8;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 4, 6, 6, 8, 8, 9 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.ember = true;
-                card.special.cleave = true;
+                ember = true;
+                cleave = true;
                 break;
 
             case Card.Title.Horseman:
-                card.attack = 2;
-                card.health = 12;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 6, 8, 10, 10, 12, 13 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 4;
@@ -286,86 +388,86 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.HuntingDog:
-                card.attack = 2;
-                card.health = 7;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 3, 4, 5, 5, 7, 8 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.counterattack = true;
+                counterattack = true;
                 break;
 
             case Card.Title.Lancer:
-                card.attack = 2;
-                card.health = 5;
+                attack = new int[6] { 0, 0, 1, 1, 2, 3 };
+                health = new int[6] { 2, 3, 3, 5, 5, 6 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.charge = 1;
+                charge = new int[6] { 1, 1, 1, 1, 1, 1 };
                 break;
 
             case Card.Title.Lizard:
-                card.attack = 2;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 5, 7, 8, 8, 10, 12 };
                 card.cd = 1;
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 2;
-                card.special.headbutt = true;
+                armor = new int[6] { 1, 1, 2, 2, 2, 3 };
+                headbutt = true;
                 break;
 
             case Card.Title.Mercenary:
-                card.attack = 5;
-                card.health = 4;
+                attack = new int[6] { 2, 2, 3, 4, 5, 6 };
+                health = new int[6] { 2, 4, 4, 4, 4, 5 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.influence = true;
+                influence = true;
                 break;
 
             case Card.Title.PegasusRider:
-                card.attack = 4;
-                card.health = 7;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 3, 5, 5, 7, 7, 9 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
+                flying = true;
                 break;
 
             case Card.Title.PegasusScout:
-                card.attack = 3;
-                card.health = 6;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 3, 4, 4, 6, 6, 7 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
+                flying = true;
                 break;
 
             case Card.Title.Priest:
-                card.attack = 1;
-                card.health = 9;
+                attack = new int[6] { 0, 0, 0, 1, 1, 1 };
+                health = new int[6] { 4, 6, 6, 7, 9, 11 };
                 card.cd = 2;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.cure = 3;
+                cure = new int[6] { 2, 2, 3, 3, 3, 4 };
                 break;
 
             case Card.Title.Priestess:
-                card.attack = 4;
-                card.health = 10;
+                attack = new int[6] { 3, 3, 3, 4, 4, 5 };
+                health = new int[6] { 4, 6, 8, 8, 10, 12 };
                 card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
@@ -374,303 +476,303 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.RepeatingCrossbow:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 3, 5, 7, 7, 9, 10 };
                 card.cd = 2;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.multistrike = 1;
+                multistrike = new int[6] { 1, 1, 1, 1, 1, 1 };
                 break;
 
             case Card.Title.Squire:
-                card.attack = 3;
-                card.health = 7;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 4, 5, 5, 7, 7, 8 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.vigilance = true;
+                vigilance = true;
                 break;
 
             case Card.Title.ThunderLizard:
-                card.attack = 2;
-                card.health = 14;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 7, 9, 11, 12, 14, 16 };
                 card.cd = 2;
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.stun = true;
-                card.special.armor = 2;
+                stun = true;
+                armor = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.Vampire:
-                card.attack = 4;
-                card.health = 8;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 5, 6, 6, 8, 8, 10 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.lifeSteal = true;
+                lifeSteal = true;
                 break;
 
             case Card.Title.VampireApprentice:
-                card.attack = 2;
-                card.health = 12;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 6, 8, 10, 10, 12, 14 };
                 card.cd = 2;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.lifeSteal = true;
+                lifeSteal = true;
                 break;
 
             case Card.Title.VenomousBat:
-                card.attack = 2;
-                card.health = 5;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 2, 3, 3, 3, 5, 6 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.poison = 2;
+                flying = true;
+                poison = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.VileSkeleton:
-                card.attack = 2;
-                card.health = 6;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 2, 3, 4, 4, 6, 7 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.skeletal = true;
+                skeletal = true;
                 break;
 
             case Card.Title.WerewolfHowler:
-                card.attack = 6;
-                card.health = 10;
+                attack = new int[6] { 3, 3, 4, 5, 6, 7 };
+                health = new int[6] { 6, 8, 8, 9, 10, 12 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.bloodPrice = 1;
+                bloodPrice = new int[6] { 1, 1, 1, 1, 1, 1 };
                 break;
 
             case Card.Title.WerewolfIronclaw:
-                card.attack = 3;
-                card.health = 12;
+                attack = new int[6] { 2, 2, 2, 3, 3, 4 };
+                health = new int[6] { 6, 8, 10, 10, 12, 14 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.bloodPrice = 1;
+                bloodPrice = new int[6] { 1, 1, 1, 1, 1, 1 };
                 break;
 
             case Card.Title.Wraith:
-                card.attack = 6;
-                card.health = 4;
+                attack = new int[6] { 2, 3, 4, 5, 6, 7 };
+                health = new int[6] { 1, 1, 2, 3, 4, 5 };
                 card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Magical;
-                card.special.soulbound = true;
-                card.special.shadowBolt = 2;
+                soulbound = true;
+                shadowBolt = new int[6] { 2, 2, 2, 2, 2, 2 };
                 break;
 
             case Card.Title.ZombieGuard:
-                card.attack = 2;
-                card.health = 5;
+                attack = new int[6] { 0, 1, 1, 2, 2, 3 };
+                health = new int[6] { 3, 3, 4, 4, 5, 5 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.reanimate = true;
-                card.special.armor = 1;
-                card.special.donor = true;
+                reanimate = true;
+                armor = new int[6] { 1, 1, 1, 1, 1, 2 };
+                donor = true;
                 break;
 
             case Card.Title.ZombieSwordsman:
-                card.attack = 3;
-                card.health = 5;
+                attack = new int[6] { 2, 2, 2, 3, 3, 4 };
+                health = new int[6] { 1, 2, 3, 3, 5, 5 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
-                card.special.reanimate = true;
-                card.special.vigilance = true;
+                reanimate = true;
+                vigilance = true;
                 break;
 
             case Card.Title.ArmouredLizard:
-                card.attack = 2;
-                card.health = 11;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 7, 9, 9, 9, 11, 13 };
                 card.cd = 2;
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 3;
-                card.special.headbutt = true;
+                armor = new int[6] { 2, 2, 3, 3, 3, 4 };
+                headbutt = true;
                 break;
 
             case Card.Title.BattlePriestess:
-                card.attack = 2;
-                card.health = 7;
+                attack = new int[6] { 0, 0, 1, 1, 2, 2 };
+                health = new int[6] { 3, 5, 5, 7, 7, 9 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.cure = 1;
-                card.special.faith = true;
+                cure = new int[6] { 1, 1, 1, 1, 1, 2 };
+                faith = true;
                 break;
 
             case Card.Title.BlackRider:
-                card.attack = 2;
-                card.health = 14;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 6, 9, 12, 13, 14, 14 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.armor = 1;
-                card.special.spellFeed = 1;
-                card.special.spellCurse = 2;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
+                spellFeed = new int[6] { 1, 1, 1, 1, 1, 2 };
+                spellCurse = new int[6] { 1, 1, 1, 1, 2, 3 };
                 break;
 
             case Card.Title.BlessedElvenSamurai:
-                card.attack = 3;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 6, 8, 8, 10, 10, 13 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.nimble = true;
-                card.special.armor = 1;
-                card.special.resistance = 4;
+                nimble = true;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
+                resistance = new int[6] { 2, 2, 3, 3, 4, 5 };
                 break;
 
             case Card.Title.BloodthirstyBat:
-                card.attack = 3;
-                card.health = 7;
+                attack = new int[6] { 2, 2, 3, 3, 3, 4 };
+                health = new int[6] { 3, 4, 4, 5, 7, 8 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.lifeSteal = true;
+                flying = true;
+                lifeSteal = true;
                 break;
 
             case Card.Title.CentaurGuerrilla:
-                card.attack = 2;
-                card.health = 12;
+                attack = new int[6] { 0, 0, 1, 1, 2, 2 };
+                health = new int[6] { 4, 7, 7, 10, 12, 15 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.charge = 1;
-                card.special.hitAndRun = true;
+                charge = new int[6] { 1, 1, 1, 1, 1, 1 };
+                hitAndRun = true;
                 break;
 
             case Card.Title.CentaurHunter:
-                card.attack = 5;
-                card.health = 9;
+                attack = new int[6] { 2, 3, 3, 4, 5, 6 };
+                health = new int[6] { 5, 5, 7, 8, 9, 10 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 4;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.hitAndRun = true;
+                hitAndRun = true;
                 break;
 
             case Card.Title.Cerberus:
-                card.attack = 3;
-                card.health = 11;
+                attack = new int[6] { 1, 2, 2, 3, 3, 4 };
+                health = new int[6] { 7, 7, 9, 9, 11, 13 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.cleave = true;
+                cleave = true;
                 break;
 
             case Card.Title.ChillingGhost:
-                card.attack = 4;
-                card.health = 8;
+                attack = new int[6] { 1, 2, 2, 3, 4, 5 };
+                health = new int[6] { 4, 4, 6, 7, 8, 9 };
                 card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.soulbound = true;
-                card.special.frostBolt = true;
+                soulbound = true;
+                frostBolt = true;
                 break;
 
             case Card.Title.DreadKnight:
-                card.attack = 3;
-                card.health = 13;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 8, 11, 11, 11, 13, 15 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 1;
-                card.special.soulEater = 2;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
+                soulEater = new int[6] { 1, 1, 1, 2, 2, 2 };
                 break;
 
             case Card.Title.DreadWraith:
-                card.attack = 5;
-                card.health = 5;
+                attack = new int[6] { 3, 3, 3, 4, 5, 5 };
+                health = new int[6] { 2, 3, 5, 5, 5, 5 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.soulbound = true;
-                card.special.shadowBolt = 2;
-                card.special.fear = true;
+                soulbound = true;
+                shadowBolt = new int[6] { 2, 2, 2, 2, 2, 3 };
+                fear = true;
                 break;
 
             case Card.Title.ElvenFireMage:
-                card.attack = 3;
-                card.health = 2;
+                attack = new int[6] { 0, 1, 1, 2, 3, 3 };
+                health = new int[6] { 1, 1, 2, 2, 2, 2 };
                 card.cd = 2;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.ember = true;
-                card.special.herosBane = 2;
+                ember = true;
+                herosBane = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.ElvenFrostArchmage:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 3, 5, 7, 7, 9, 10 };
                 card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.frostBolt = true;
-                card.special.conjure = true;
+                frostBolt = true;
+                conjure = true;
                 break;
 
             case Card.Title.ElvenLongbowArcher:
-                card.attack = 3;
-                card.health = 3;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 1, 2, 2, 3, 3, 3 };
                 card.cd = 1;
                 card.range = 6;
                 card.speed = 2;
@@ -679,503 +781,504 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.ElvenPraetorian:
-                card.attack = 4;
-                card.health = 7;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 4, 5, 5, 7, 7, 8 };
                 card.cd = 3;
                 card.range = 3;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.spear = true;
-                card.special.vigilance = true;
-                card.special.nimble = true;
+                spear = true;
+                vigilance = true;
+                nimble = true;
                 break;
 
             case Card.Title.ElvenPriestess:
-                card.attack = 3;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 5, 7, 7, 9, 9, 9 };
                 card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.inspiration = 1;
+                inspiration = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.ElvenSniper:
-                card.attack = 4;
-                card.health = 4;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 1, 2, 2, 4, 4, 4 };
                 card.cd = 2;
                 card.range = 5;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.sniper = true;
+                sniper = true;
                 break;
 
             case Card.Title.ElvenThunderMage:
-                card.attack = 2;
-                card.health = 6;
+                attack = new int[6] { 0, 1, 1, 2, 2, 2 };
+                health = new int[6] { 4, 4, 4, 4, 6, 8 };
                 card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.stun = true;
-                card.special.lightningBolt = 3;
+                stun = true;
+                lightningBolt = new int[6] { 1, 2, 3, 3, 3, 4 };
                 break;
 
             case Card.Title.FelesAssassin:
-                card.attack = 5;
-                card.health = 7;
+                attack = new int[6] { 2, 2, 3, 4, 5, 6 };
+                health = new int[6] { 4, 6, 6, 6, 7, 8 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.ambush = true;
+                ambush = true;
                 break;
 
             case Card.Title.FelesScout:
-                card.attack = 3;
-                card.health = 7;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 5, 6, 6, 7, 7, 9 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.distraction = true;
+                distraction = true;
                 break;
 
             case Card.Title.GrandFencer:
-                card.attack = 2;
-                card.health = 13;
+                attack = new int[6] { 2, 2, 2, 2, 2, 3 };
+                health = new int[6] { 4, 6, 8, 10, 13, 14 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.counterattack = true;
+                counterattack = true;
                 break;
 
             case Card.Title.HeavyCrossbowman:
-                card.attack = 5;
-                card.health = 17;
+                attack = new int[6] { 3, 3, 4, 4, 5, 6 };
+                health = new int[6] { 9, 12, 13, 15, 17, 20 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.heavyWeapon = true;
+                heavyWeapon = true;
                 break;
 
             case Card.Title.HeavyRepeatingCrossbow:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 4, 5, 7, 7, 9, 10 };
                 card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.multistrike = 1;
-                card.special.vigilance = true;
+                multistrike = new int[6] { 1, 1, 1, 1, 1, 1 };
+                vigilance = true;
                 break;
 
             case Card.Title.HighPriestess:
-                card.attack = 2;
-                card.health = 12;
+                attack = new int[6] { 0, 0, 1, 1, 2, 2 };
+                health = new int[6] { 6, 8, 8, 10, 12, 14 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.cure = 4;
+                cure = new int[6] { 2, 2, 3, 4, 4, 5 };
                 break;
 
             case Card.Title.Hound:
-                card.attack = 2;
-                card.health = 12;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 6, 8, 10, 10, 12, 13 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.counterattack = true;
+                counterattack = true;
                 break;
 
             case Card.Title.Knight:
-                card.attack = 2;
-                card.health = 12;
+                attack = new int[6] { 1, 1, 1, 1, 2, 2 };
+                health = new int[6] { 5, 7, 9, 11, 12, 12 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.heroic = 1;
+                heroic = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.LanceKnight:
-                card.attack = 3;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 6, 8, 8, 10, 10, 11 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.charge = 1;
+                charge = new int[6] { 1, 1, 1, 1, 1, 1 };
                 break;
 
             case Card.Title.MercenaryVeteran:
-                card.attack = 4;
-                card.health = 9;
+                attack = new int[6] { 3, 3, 4, 4, 4, 6 };
+                health = new int[6] { 3, 5, 5, 7, 9, 9 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.influence = true;
+                influence = true;
                 break;
 
             case Card.Title.Paladin:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 3, 5, 7, 7, 9, 10 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.vigilance = true;
-                card.special.cure = 1;
+                vigilance = true;
+                cure = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.PegasusGuard:
-                card.attack = 2;
-                card.health = 5;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 3, 4, 5, 5, 5, 6 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.regeneration = 2;
+                flying = true;
+                regeneration = new int[6] { 1, 1, 1, 1, 2, 2 };
                 break;
 
             case Card.Title.PegasusLegionnaire:
-                card.attack = 3;
-                card.health = 8;
+                attack = new int[6] { 2, 2, 3, 3, 3, 4 };
+                health = new int[6] { 3, 4, 5, 7, 8, 9 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.resistance = 3;
+                flying = true;
+                resistance = new int[6] { 1, 2, 2, 2, 3, 3 };
                 break;
 
             case Card.Title.RottenSkeleton:
-                card.attack = 2;
-                card.health = 3;
+                attack = new int[6] { 1, 1, 2, 2, 2, 2 };
+                health = new int[6] { 1, 2, 2, 2, 3, 3 };
                 card.cd = 2;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.skeletal = true;
-                card.special.poison = 2;
+                skeletal = true;
+                poison = new int[6] { 1, 1, 1, 2, 2, 3 };
                 break;
 
             case Card.Title.SeniorThunderLizard:
-                card.attack = 3;
-                card.health = 15;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 10, 12, 13, 15, 15, 18 };
                 card.cd = 4;
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.stun = true;
-                card.special.armor = 3;
+                stun = true;
+                armor = new int[6] { 2, 2, 2, 3, 3, 4 };
                 break;
 
             case Card.Title.Sentinel:
-                card.attack = 3;
-                card.health = 12;
+                attack = new int[6] { 2, 2, 2, 3, 3, 3 };
+                health = new int[6] { 6, 8, 10, 10, 12, 14 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 2;
+                armor = new int[6] { 2, 2, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.SepticBat:
-                card.attack = 3;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 4, 6, 6, 8, 9, 10 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.poison = 2;
+                flying = true;
+                poison = new int[6] { 2, 2, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.UnholySkeleton:
-                card.attack = 3;
-                card.health = 3;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 2, 3, 3, 3, 3, 4 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.skeletal = true;
-                card.special.reapingCurse = 2;
+                skeletal = true;
+                reapingCurse = new int[6] { 1, 1, 1, 2, 2, 3 };
                 break;
 
             case Card.Title.VampireMage:
-                card.attack = 2;
-                card.health = 8;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 3, 4, 6, 6, 8, 8 };
                 card.cd = 2;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
-                card.special.lifeSteal = true;
-                card.special.weaken = 1;
+                lifeSteal = true;
+                weaken = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.VampireNoble:
-                card.attack = 4;
-                card.health = 14;
+                attack = new int[6] { 3, 3, 3, 4, 4, 5 };
+                health = new int[6] { 8, 10, 12, 12, 14, 15 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.lifeSteal = true;
+                lifeSteal = true;
                 break;
 
             case Card.Title.WerewolfProwler:
-                card.attack = 7;
-                card.health = 5;
+                attack = new int[6] { 3, 4, 5, 6, 7, 8 };
+                health = new int[6] { 5, 5, 5, 5, 5, 5 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.bloodPrice = 1;
-                card.special.carnivore = 3;
+                bloodPrice = new int[6] { 1, 1, 1, 1, 1, 1 };
+                carnivore = new int[6] { 1, 1, 2, 2, 3, 4 };
                 break;
 
             case Card.Title.WerewolfSteelclaw:
-                card.attack = 2;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 6, 7, 8, 8, 10, 12 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.bloodPrice = 1;
-                card.special.penetrate = true;
-                card.special.maim = 1;
+                bloodPrice = new int[6] { 1, 1, 1, 1, 1, 1 };
+                penetrate = true;
+                maim = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.ZombieLegionnaire:
-                card.attack = 2;
-                card.health = 7;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 3, 4, 5, 5, 7, 7 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.reanimate = true;
-                card.special.vigilance = true;
-                card.special.regeneration = 2;
+                reanimate = true;
+                vigilance = true;
+                regeneration = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.ZombieSentinel:
-                card.attack = 3;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 5, 7, 7, 9, 9, 11 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Physical;
-                card.special.reanimate = true;
-                card.special.armor = 1;
-                card.special.donor = true;
+                reanimate = true;
+                armor = new int[6] { 1, 1, 1, 1, 1, 2 };
+                donor = true;
                 break;
 
             case Card.Title.AegisLizard:
-                card.attack = 2;
-                card.health = 20;
+                attack = new int[6] { 2, 2, 2, 2, 2, 2 };
+                health = new int[6] { 8, 11, 14, 17, 20, 23 };
                 card.cd = 5;
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 4;
-                card.special.knockback = 10;
+                armor = new int[6] { 2, 3, 3, 4, 4, 5 };
+                knockback = new int[6] { 10, 10, 10, 10, 10, 10 };
                 break;
 
             case Card.Title.BattleAbbess:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 0, 1, 1, 2, 2, 3 };
+                health = new int[6] { 5, 5, 7, 7, 9, 11 };
                 card.cd = 6;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.faith = true;
-                card.special.cure = 3;
+                faith = true;
+                cure = new int[6] { 2, 2, 2, 3, 3, 3 };
                 break;
 
             case Card.Title.Captain:
-                card.attack = 3;
-                card.health = 13;
+                attack = new int[6] { 1, 2, 2, 2, 3, 4 };
+                health = new int[6] { 7, 7, 10, 12, 13, 14 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 3;
+                armor = new int[6] { 2, 2, 2, 3, 3, 4 };
                 break;
 
             case Card.Title.CentaurGuerrillaLeader:
-                card.attack = 0;
-                card.health = 10;
+                attack = new int[6] { 2, 2, 2, 2, 0, 2 };
+                health = new int[6] { 6, 7, 8, 10, 10, 10 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.charge = 2;
-                card.special.hitAndRun = true;
+                charge = new int[6] { 1, 1, 1, 1, 2, 2 };
+                hitAndRun = true;
                 break;
 
             case Card.Title.CentaurMarksman:
-                card.attack = 4;
-                card.health = 5;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 2, 3, 3, 5, 5, 6 };
                 card.cd = 2;
                 card.range = 4;
                 card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.hitAndRun = true;
+                hitAndRun = true;
                 break;
 
             case Card.Title.ChampionKnight:
-                card.attack = 2;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 6, 8, 8, 8, 10, 10 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.heroic = 2;
+                heroic = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.CrossbowCaptain:
-                card.attack = 7;
-                card.health = 16;
+                attack = new int[6] { 3, 4, 5, 6, 7, 8 };
+                health = new int[6] { 8, 10, 12, 14, 16, 18 };
                 card.cd = 6;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.heavyWeapon = true;
+                heavyWeapon = true;
                 break;
 
             case Card.Title.DoomRider:
-                card.attack = 3;
-                card.health = 14;
+                attack = new int[6] { 2, 2, 2, 2, 3, 3 };
+                health = new int[6] { 8, 10, 11, 12, 14, 14 };
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.armor = 1;
-                card.special.spellFeed = 2;
-                card.special.spellCurse = 3;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
+                spellFeed = new int[6] { 1, 1, 1, 2, 2, 3 };
+                spellCurse = new int[6] { 2, 2, 3, 3, 3, 4 };
                 break;
 
             case Card.Title.DreadChampion:
-                card.attack = 2;
-                card.health = 13;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 7, 9, 9, 10, 13, 13 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 1;
-                card.special.soulEater = 2;
-                card.special.fear = true;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
+                soulEater = new int[6] { 1, 1, 2, 2, 2, 3 };
+                fear = true;
                 break;
 
             case Card.Title.DreadPhantom:
-                card.attack = 3;
-                card.health = 7;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 4, 5, 5, 6, 7, 7 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.soulbound = true;
-                card.special.incorporeal = true;
-                card.special.fear = true;
+                soulbound = true;
+                incorporeal = true;
+                fear = true;
+                shadowBolt = new int[6] { 2, 2, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.ElvenFireArchmage:
-                card.attack = 3;
-                card.health = 6;
+                attack = new int[6] { 1, 2, 2, 3, 3, 4 };
+                health = new int[6] { 3, 3, 4, 5, 6, 7 };
                 card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.ember = true;
-                card.special.herosBane = 2;
+                ember = true;
+                herosBane = new int[6] { 2, 2, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.ElvenFrostSorcerer:
-                card.attack = 2;
-                card.health = 13;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 7, 9, 11, 11, 13, 15 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.frostBolt = true;
-                card.special.conjure = true;
+                frostBolt = true;
+                conjure = true;
                 break;
 
             case Card.Title.ElvenHighPriestess:
-                card.attack = 2;
-                card.health = 6;
+                attack = new int[6] { 0, 1, 1, 2, 2, 2 };
+                health = new int[6] { 6, 6, 6, 6, 6, 6 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.inspiration = 1;
-                card.special.cure = 3;
+                inspiration = new int[6] { 1, 1, 1, 1, 1, 2 };
+                cure = new int[6] { 1, 1, 2, 2, 3, 4 };
                 break;
 
             case Card.Title.ElvenLegionnaire:
-                card.attack = 4;
-                card.health = 11;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 6, 8, 8, 10, 11, 12 };
                 card.cd = 4;
                 card.range = 3;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.spear = true;
-                card.special.vigilance = true;
-                card.special.nimble = true;
+                spear = true;
+                vigilance = true;
+                nimble = true;
                 break;
 
             case Card.Title.ElvenMarksman:
-                card.attack = 5;
-                card.health = 4;
+                attack = new int[6] { 3, 3, 4, 4, 5, 6 };
+                health = new int[6] { 1, 2, 2, 4, 4, 4 };
                 card.cd = 3;
                 card.range = 6;
                 card.speed = 2;
@@ -1184,914 +1287,1006 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.ElvenRebel:
-                card.attack = 3;
-                card.health = 13;
+                attack = new int[6] { 1, 2, 2, 3, 3, 3 };
+                health = new int[6] { 9, 9, 10, 11, 13, 15 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.nimble = true;
-                card.special.armor = 1;
-                card.special.resistance = 5;
+                nimble = true;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
+                resistance = new int[6] { 3, 3, 4, 4, 5, 6 };
                 break;
 
             case Card.Title.ElvenSharpShooter:
-                card.attack = 5;
-                card.health = 7;
+                attack = new int[6] { 3, 3, 4, 4, 5, 6 };
+                health = new int[6] { 3, 5, 5, 7, 7, 7 };
                 card.cd = 4;
                 card.range = 5;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.sniper = true;
+                sniper = true;
                 break;
 
             case Card.Title.ElvenThunderArchmage:
-                card.attack = 1;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 1, 1, 1 };
+                health = new int[6] { 5, 5, 7, 7, 9, 10 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.stun = true;
-                card.special.lightningBolt = 4;
+                stun = true;
+                lightningBolt = new int[6] { 2, 3, 3, 4, 4, 5 };
                 break;
 
             case Card.Title.FelesAssassinMaster:
-                card.attack = 5;
-                card.health = 9;
+                attack = new int[6] { 3, 3, 4, 4, 5, 6 };
+                health = new int[6] { 5, 7, 7, 9, 9, 9 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.ambush = true;
-                card.special.penetrate = true;
+                ambush = true;
+                penetrate = true;
                 break;
 
             case Card.Title.FelesSwordsman:
-                card.attack = 4;
-                card.health = 7;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 3, 5, 5, 7, 7, 7 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.ambush = true;
+                ambush = true;
                 break;
 
             case Card.Title.FencingMaster:
-                card.attack = 3;
-                card.health = 14;
+                attack = new int[6] { 2, 2, 2, 3, 3, 4 };
+                health = new int[6] { 8, 10, 12, 12, 14, 15 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.firstStrike = true;
+                firstStrike = true;
                 break;
 
             case Card.Title.FieryCerberus:
-                card.attack = 3;
-                card.health = 9;
+                attack = new int[6] { 2, 2, 2, 3, 3, 4 };
+                health = new int[6] { 5, 6, 7, 7, 9, 10 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.ember = true;
-                card.special.vigilance = true;
-                card.special.cleave = true;
+                ember = true;
+                vigilance = true;
+                cleave = true;
                 break;
 
             case Card.Title.FieryHound:
-                card.attack = 2;
-                card.health = 10;
+                attack = new int[6] { 0, 1, 1, 2, 2, 2 };
+                health = new int[6] { 6, 6, 8, 8, 10, 10 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.counterattack = true;
-                card.special.rage = 1;
+                counterattack = true;
+                rage = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.HellishSkeleton:
-                card.attack = 3;
-                card.health = 4;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 1, 2, 2, 4, 4, 4 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.skeletal = true;
-                card.special.reapingCurse = 2;
+                skeletal = true;
+                reapingCurse = new int[6] { 2, 2, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.HolyMaster:
-                card.attack = 1;
-                card.health = 12;
+                attack = new int[6] { 0, 1, 1, 1, 1, 1 };
+                health = new int[6] { 8, 8, 10, 11, 12, 13 };
                 card.cd = 5;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.dispel = true;
-                card.special.cure = 4;
+                dispel = true;
+                cure = new int[6] { 2, 2, 2, 3, 4, 5 };
                 break;
 
             case Card.Title.IcyGaleGhost:
-                card.attack = 5;
-                card.health = 7;
+                attack = new int[6] { 1, 2, 3, 4, 5, 6 };
+                health = new int[6] { 3, 4, 5, 6, 7, 8 };
                 card.cd = 5;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.soulbound = true;
-                card.special.knockback = 2;
+                soulbound = true;
+                knockback = new int[6] { 2, 2, 2, 2, 2, 2 };
                 break;
 
             case Card.Title.LanceChampion:
-                card.attack = 5;
-                card.health = 10;
+                attack = new int[6] { 1, 2, 3, 4, 5, 6 };
+                health = new int[6] { 6, 7, 8, 9, 10, 11 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.charge = 1;
+                charge = new int[6] { 1, 1, 1, 1, 1, 1 };
                 break;
 
             case Card.Title.MercenaryCaptain:
-                card.attack = 2;
-                card.health = 10;
+                attack = new int[6] { 2, 2, 2, 2, 2, 3 };
+                health = new int[6] { 5, 6, 7, 9, 10, 10 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.whirlwind = true;
-                card.special.influence = true;
+                whirlwind = true;
+                influence = true;
                 break;
 
             case Card.Title.PegasusChampion:
-                card.attack = 3;
-                card.health = 7;
+                attack = new int[6] { 2, 2, 2, 3, 3, 4 };
+                health = new int[6] { 6, 7, 7, 7, 7, 7 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.regeneration = 3;
+                flying = true;
+                regeneration = new int[6] { 1, 1, 2, 2, 3, 4 };
                 break;
 
             case Card.Title.PegasusRaidLeader:
-                card.attack = 5;
-                card.health = 7;
+                attack = new int[6] { 3, 3, 4, 4, 5, 6 };
+                health = new int[6] { 4, 5, 5, 7, 7, 7 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.resistance = 4;
+                flying = true;
+                resistance = new int[6] { 2, 3, 3, 3, 4, 5 };
                 break;
 
             case Card.Title.PlaguedSkeleton:
-                card.attack = 3;
-                card.health = 3;
+                attack = new int[6] { 1, 2, 2, 3, 3, 3 };
+                health = new int[6] { 1, 1, 2, 2, 3, 3 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.skeletal = true;
-                card.special.poison = 3;
+                skeletal = true;
+                poison = new int[6] { 3, 3, 3, 3, 3, 4 };
                 break;
 
             case Card.Title.RepeatingCrossbowCaptain:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 3, 5, 7, 7, 9, 9 };
                 card.cd = 5;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.multistrike = 1;
-                card.special.vigilance = true;
-                card.special.heroic = 1;
+                multistrike = new int[6] { 1, 1, 1, 1, 1, 1 };
+                vigilance = true;
+                heroic = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.SawtoothThunderLizard:
-                card.attack = 2;
-                card.health = 21;
+                attack = new int[6] { 1, 1, 2, 2, 2, 3 };
+                health = new int[6] { 13, 16, 17, 18, 21, 21 };
                 card.cd = 6;
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.stun = true;
-                card.special.armor = 4;
+                stun = true;
+                armor = new int[6] { 3, 3, 3, 4, 4, 5 };
                 break;
 
             case Card.Title.ScarletBat:
-                card.attack = 3;
-                card.health = 13;
+                attack = new int[6] { 2, 2, 2, 3, 3, 4 };
+                health = new int[6] { 7, 9, 11, 11, 13, 14 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.bleedingAttack = true;
-                card.special.lifeSteal = true;
+                flying = true;
+                bleedingAttack = true;
+                lifeSteal = true;
                 break;
 
             case Card.Title.SpitefulBat:
-                card.attack = 3;
-                card.health = 12;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 8, 10, 10, 12, 12, 12 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.poison = 3;
+                flying = true;
+                poison = new int[6] { 3, 3, 3, 3, 3, 4 };
                 break;
 
             case Card.Title.Templar:
-                card.attack = 3;
-                card.health = 9;
+                attack = new int[6] { 1, 2, 2, 3, 3, 4 };
+                health = new int[6] { 5, 5, 7, 7, 9, 10 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.vigilance = true;
-                card.special.armor = 1;
-                card.special.cure = 2;
+                vigilance = true;
+                armor = new int[6] { 1, 1, 1, 1, 1, 2 };
+                cure = new int[6] { 1, 1, 1, 2, 2, 2 };
                 break;
 
             case Card.Title.VampireArchmage:
-                card.attack = 1;
-                card.health = 13;
+                attack = new int[6] { 1, 1, 1, 1, 1, 2 };
+                health = new int[6] { 8, 9, 10, 11, 13, 13 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Magical;
-                card.special.lifeSteal = true;
-                card.special.weaken = 1;
+                lifeSteal = true;
+                weaken = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.VampireLord:
-                card.attack = 3;
-                card.health = 11;
+                attack = new int[6] { 3, 3, 3, 3, 3, 4 };
+                health = new int[6] { 5, 7, 9, 9, 11, 13 };
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.lifeSteal = true;
-                card.special.weaken = 2;
+                lifeSteal = true;
+                weaken = new int[6] { 1, 1, 1, 2, 2, 2 };
                 break;
 
             case Card.Title.WerewolfDeathclaw:
-                card.attack = 2;
-                card.health = 13;
+                attack = new int[6] { 2, 2, 2, 2, 2, 2 };
+                health = new int[6] { 7, 9, 9, 11, 13, 13 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.bloodPrice = 1;
-                card.special.penetrate = true;
-                card.special.maim = 2;
+                bloodPrice = new int[6] { 1, 1, 1, 1, 1, 1 };
+                penetrate = true;
+                maim = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.WerewolfFleshripper:
-                card.attack = 9;
-                card.health = 5;
+                attack = new int[6] { 5, 6, 7, 8, 9, 10 };
+                health = new int[6] { 3, 3, 4, 4, 5, 5 };
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.bloodPrice = 2;
-                card.special.carnivore = 6;
+                bloodPrice = new int[6] { 2, 2, 2, 2, 2, 2 };
+                carnivore = new int[6] { 4, 5, 5, 6, 6, 7 };
                 break;
 
             case Card.Title.ZombieCaptain:
-                card.attack = 3;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 6, 7, 8, 9, 10, 11 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.reanimate = true;
-                card.special.armor = 3;
-                card.special.donor = true;
+                reanimate = true;
+                armor = new int[6] { 2, 2, 2, 3, 3, 3 };
+                donor = true;
                 break;
 
             case Card.Title.ZombieChampion:
-                card.attack = 3;
-                card.health = 8;
+                attack = new int[6] { 2, 2, 3, 3, 3, 4 };
+                health = new int[6] { 4, 5, 6, 7, 8, 9 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 3;
                 card.damageType = Card.DamageType.Physical;
-                card.special.reanimate = true;
-                card.special.vigilance = true;
-                card.special.regeneration = 3;
+                reanimate = true;
+                vigilance = true;
+                regeneration = new int[6] { 1, 1, 1, 2, 3, 3 };
                 break;
 
             case Card.Title.CainTheTraitor:
-                card.attack = 3;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 6, 8, 8, 10, 10, 12 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.skeletal = true;
-                card.special.vengefulCurse = true;
+                skeletal = true;
+                vengefulCurse = true;
                 break;
 
             case Card.Title.CerberusHegemon:
-                card.attack = 2;
-                card.health = 18;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 9, 12, 15, 15, 18, 18 };
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Magical;
-                card.special.ember = true;
-                card.special.vigilance = true;
-                card.special.cleave = true;
-                card.special.rage = 1;
+                ember = true;
+                vigilance = true;
+                cleave = true;
+                rage = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.ChiefIronhide:
-                card.attack = 1;
-                card.health = 18;
+                attack = new int[6] { 0, 0, 0, 1, 1, 1 };
+                health = new int[6] { 9, 12, 15, 15, 18, 18 };
                 card.cd = 6;
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 4;
-                card.special.armorAura = 1;
+                armor = new int[6] { 3, 3, 3, 4, 4, 5 };
+                armorAura = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.CrusaderLucanus:
-                card.attack = 2;
-                card.health = 12;
+                attack = new int[6] { 0, 0, 1, 1, 2, 2 };
+                health = new int[6] { 6, 8, 8, 10, 12, 12 };
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.vigilance = true;
-                card.special.cure = 2;
-                card.special.lifeAura = 3;
+                vigilance = true;
+                cure = new int[6] { 1, 1, 2, 2, 2, 3 };
+                lifeAura = new int[6] { 1, 1, 2, 2, 3, 4 };
                 break;
 
             case Card.Title.DariusDarkhand:
-                card.attack = 2;
-                card.health = 13;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 4, 7, 10, 10, 13, 13 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 1;
-                card.special.soulEater = 2;
-                card.special.panicStrike = true;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
+                soulEater = new int[6] { 1, 1, 1, 2, 2, 3 };
+                panicStrike = true;
                 break;
 
             case Card.Title.DemonHunterAzrael:
-                card.attack = 2;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 1, 1, 2, 2 };
+                health = new int[6] { 2, 4, 6, 8, 8, 11 };
                 card.cd = 5;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.multistrike = 2;
-                card.special.pierce = true;
-                card.special.penetrate = true;
+                multistrike = new int[6] { 2, 2, 2, 2, 2, 2 };
+                pierce = true;
+                penetrate = true;
                 break;
 
             case Card.Title.DesperateSoul:
-                card.attack = 4;
-                card.health = 8;
+                attack = new int[6] { 2, 2, 3, 3, 4, 4 };
+                health = new int[6] { 4, 5, 6, 7, 8, 9 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.soulbound = true;
-                card.special.incorporeal = true;
-                card.special.resistance = 99;
+                soulbound = true;
+                incorporeal = true;
+                resistance = new int[6] { 99, 99, 99, 99, 99, 99 };
+                shadowBolt = new int[6] { 2, 2, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.EacannTheCharger:
-                card.attack = 4;
-                card.health = 14;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 8, 11, 11, 14, 14, 16 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.pierce = true;
-                card.special.charge = 1;
+                pierce = true;
+                penetrate = true;
+                charge = new int[6] { 1, 1, 1, 1, 1, 1 };
                 break;
 
             case Card.Title.FenrisTheButcher:
-                card.attack = 6;
-                card.health = 15;
+                attack = new int[6] { 4, 4, 5, 5, 6, 7 };
+                health = new int[6] { 7, 10, 11, 14, 15, 15 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.bloodPrice = 2;
-                card.special.rage = 1;
+                bloodPrice = new int[6] { 2, 2, 2, 2, 2, 2 };
+                rage = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.FirstRangerTalenor:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 3, 5, 7, 7, 9, 9 };
                 card.cd = 4;
                 card.range = 6;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.rangeAura = 1;
+                rangeAura = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.KathrynEmberwind:
-                card.attack = 2;
-                card.health = 13;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 7, 9, 11, 11, 13, 13 };
                 card.cd = 6;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Magical;
-                card.special.ember = true;
-                card.special.immolate = 2;
-                card.special.herosBane = 1;
-                card.special.herosBaneAura = 1;
+                ember = true;
+                immolate = new int[6] { 2, 2, 2, 2, 2, 3 };
+                herosBane = new int[6] { 1, 1, 1, 1, 1, 2 };
+                herosBaneAura = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.LuciusSwift:
-                card.attack = 5;
-                card.health = 1;
+                attack = new int[6] { 1, 2, 3, 4, 5, 6 };
+                health = new int[6] { 1, 1, 1, 1, 1, 1 };
                 card.cd = 1;
                 card.range = 4;
                 card.speed = 4;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.hitAndRun = true;
+                hitAndRun = true;
                 break;
 
             case Card.Title.MifzunaTheWind:
-                card.attack = 4;
-                card.health = 5;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 3, 4, 4, 5, 5, 6 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 10;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.ambush = true;
-                card.special.panicStrike = true;
+                ambush = true;
+                panicStrike = true;
                 break;
 
             case Card.Title.OfeigurTheUndying:
-                card.attack = 3;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 8, 10, 10, 10, 10, 11 };
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.reanimate = true;
-                card.special.martyrdom = true;
-                card.special.vigilance = true;
-                card.special.ambush = true;
-                card.special.regeneration = 3;
+                reanimate = true;
+                martyrdom = true;
+                vigilance = true;
+                ambush = true;
+                regeneration = new int[6] { 2, 2, 2, 3, 3, 3 };
                 break;
 
             case Card.Title.OpheliaWestWind:
-                card.attack = 2;
-                card.health = 10;
+                attack = new int[6] { 2, 2, 2, 2, 2, 2 };
+                health = new int[6] { 2, 4, 6, 8, 10, 10 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.attackAura = 1;
+                flying = true;
+                attackAura = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.PontiffFaol:
-                card.attack = 1;
-                card.health = 15;
+                attack = new int[6] { 1, 1, 1, 1, 1, 3 };
+                health = new int[6] { 9, 11, 12, 13, 15, 15 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Magical;
-                card.special.whirlwind = true;
-                card.special.penetrate = true;
-                card.special.martyrdom = true;
-                card.special.regeneration = 3;
+                whirlwind = true;
+                penetrate = true;
+                martyrdom = true;
+                regeneration = new int[6] { 1, 1, 2, 3, 3, 3 };
                 break;
 
             case Card.Title.PrinceSerka:
-                card.attack = 2;
-                card.health = 15;
+                attack = new int[6] { 2, 2, 2, 2, 2, 3 };
+                health = new int[6] { 7, 10, 11, 14, 15, 15 };
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.lifeSteal = true;
-                card.special.counterattack = true;
-                card.special.lifeAura = 3;
+                lifeSteal = true;
+                counterattack = true;
+                lifeAura = new int[6] { 1, 1, 2, 2, 3, 4 };
                 break;
 
             case Card.Title.TanwenWildfire:
-                card.attack = 5;
-                card.health = 14;
+                attack = new int[6] { 3, 3, 4, 4, 5, 6 };
+                health = new int[6] { 6, 8, 9, 14, 14, 17 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Magical;
-                card.special.ember = true;
-                card.special.herosBane = 3;
-                card.special.immolate = 2;
+                ember = true;
+                herosBane = new int[6] { 2, 2, 2, 3, 3, 4 };
+                immolate = new int[6] { 1, 1, 1, 2, 2, 3 };
                 break;
 
             case Card.Title.VelynTheUnscarred:
-                card.attack = 3;
-                card.health = 15;
+                attack = new int[6] { 2, 2, 3, 3, 3, 4 };
+                health = new int[6] { 7, 9, 10, 12, 15, 17 };
                 card.cd = 4;
                 card.range = 3;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.spear = true;
-                card.special.nimble = true;
-                card.special.resistance = 99;
-                card.special.vigilance = true;
+                spear = true;
+                nimble = true;
+                resistance = new int[6] { 99, 99, 99, 99, 99, 99 };
+                vigilance = true;
                 break;
 
             case Card.Title.VirulentBatKing:
-                card.attack = 1;
-                card.health = 11;
+                attack = new int[6] { 1, 1, 1, 1, 1, 1 };
+                health = new int[6] { 7, 8, 9, 10, 11, 12 };
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.bleedingAttack = true;
-                card.special.poison = 6;
+                flying = true;
+                bleedingAttack = true;
+                poison = new int[6] { 2, 3, 4, 5, 6, 7 };
                 break;
 
             case Card.Title.WindDancerElke:
-                card.attack = 1;
-                card.health = 15;
+                attack = new int[6] { 1, 1, 1, 1, 1, 1 };
+                health = new int[6] { 6, 8, 10, 12, 15, 15 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
-                card.special.whirlwind = true;
-                card.special.penetrate = true;
-                card.special.heroic = 1;
+                whirlwind = true;
+                penetrate = true;
+                heroic = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.AryaTheHonorable:
-                card.attack = 1;
-                card.health = 19;
+                attack = new int[6] { 1, 1, 1, 1, 1, 1 };
+                health = new int[6] { 10, 13, 13, 16, 19, 19 };
                 card.cd = 7;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Magical;
-                card.special.penetrate = true;
-                card.special.regeneration = 3;
-                card.special.regenerationAura = 2;
+                regeneration = new int[6] { 2, 2, 3, 3, 3, 4 };
+                regenerationAura = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.BigShuck:
-                card.attack = 1;
-                card.health = 12;
+                attack = new int[6] { 1, 1, 1, 1, 1, 1 };
+                health = new int[6] { 6, 8, 10, 11, 12, 13 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.multistrike = 4;
+                multistrike = new int[6] { 2, 2, 2, 3, 4, 5 };
                 break;
 
             case Card.Title.ChieftainLionroar:
-                card.attack = 1;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 3, 5, 7, 7, 9, 9 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.hitAndRun = true;
-                card.special.speedAura = 1;
+                hitAndRun = true;
+                speedAura = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.DragonHunterVincent:
-                card.attack = 6;
-                card.health = 15;
+                attack = new int[6] { 4, 4, 5, 5, 6, 7 };
+                health = new int[6] { 9, 11, 11, 13, 15, 17 };
                 card.cd = 6;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.heavyWeapon = true;
-                card.special.knockback = 2;
-                card.special.dragonSlayer = true;
+                heavyWeapon = true;
+                knockback = new int[6] { 2, 2, 2, 2, 2, 2 };
+                dragonSlayer = true;
                 break;
 
             case Card.Title.EmperorAugustus:
-                card.attack = 4;
-                card.health = 20;
+                attack = new int[6] { 0, 1, 2, 3, 4, 5 };
+                health = new int[6] { 8, 11, 14, 17, 20, 23 };
                 card.cd = 8;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.kingsCommand = true;
+                kingsCommand = true;
                 break;
 
             case Card.Title.EmrysTheUnyielding:
-                card.attack = 5;
-                card.health = 21;
+                attack = new int[6] { 3, 3, 4, 4, 5, 6 };
+                health = new int[6] { 12, 15, 16, 19, 21, 24 };
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.penetrate = true;
-                card.special.combatMaster = true;
+                penetrate = true;
+                combatMaster = true;
                 break;
 
             case Card.Title.ExecutionerGrimbone:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                health = new int[6] { 5, 6, 7, 8, 9, 11 };
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.skeletal = true;
-                card.special.reapingCurse = 3;
-                card.special.resistance = 2;
+                skeletal = true;
+                reapingCurse = new int[6] { 2, 2, 2, 2, 3, 3 };
+                resistance = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.Gringheist:
-                card.attack = 1;
-                card.health = 7;
+                attack = new int[6] { 1, 1, 1, 1, 1, 2 };
+                health = new int[6] { 3, 4, 5, 6, 7, 8 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Magical;
-                card.special.soulbound = true;
-                card.special.shadowBolt = 3;
-                card.special.incorporeal = true;
-                card.special.blackIce = true;
+                soulbound = true;
+                frostBolt = true;
+                incorporeal = true;
+                blackIce = true;
                 break;
 
             case Card.Title.JasmineTheDervish:
-                card.attack = 1;
-                card.health = 15;
+                attack = new int[6] { 1, 1, 1, 1, 1, 2 };
+                health = new int[6] { 7, 9, 11, 13, 15, 15 };
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.whirlwind = true;
-                card.special.firstStrike = true;
-                card.special.cheif = true;
-                card.special.influence = true;
+                whirlwind = true;
+                firstStrike = true;
+                cheif = true;
+                influence = true;
                 break;
 
             case Card.Title.KingVelAssar:
-                card.attack = 3;
-                card.health = 10;
-                card.cd = 5;
+                attack = new int[6] { 1, 1, 2, 2, 3, 4 };
+                health = new int[6] { 5, 7, 7, 9, 10, 11 };
+                card.cd = 6;
                 card.range = 10;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.multiShot = true;
+                multiShot = true;
                 break;
 
             case Card.Title.LordFleder:
-                card.attack = 1;
-                card.health = 13;
+                attack = new int[6] { 0, 0, 1, 1, 1, 1 };
+                health = new int[6] { 7, 9, 9, 11, 13, 13 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.lifeSteal = true;
-                card.special.battleSpirit = 1;
+                flying = true;
+                lifeSteal = true;
+                battleSpirit = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.MaiaShadowblade:
-                card.attack = 2;
-                card.health = 3;
+                attack = new int[6] { 1, 1, 1, 2, 3, 3 };
+                health = new int[6] { 1, 2, 3, 3, 3, 3 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 10;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.ambush = true;
-                card.special.heroic = 1;
+                ambush = true;
+                heroic = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.PrincessSarya:
-                card.attack = 1;
-                card.health = 4;
+                attack = new int[6] { 1, 1, 1, 1, 1, 1 };
+                health = new int[6] { 4, 4, 4, 4, 4, 5 };
                 card.cd = 7;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Magical;
-                card.special.lifeSteal = true;
-                card.special.witheringAura = 5;
+                lifeSteal = true;
+                witheringAura = new int[6] { 1, 2, 3, 4, 5, 6 };
                 break;
 
             case Card.Title.RyliTheWhiteWitch:
-                card.attack = 1;
-                card.health = 12;
+                attack = new int[6] { 1, 1, 1, 1, 1, 1 };
+                health = new int[6] { 4, 6, 8, 10, 12, 14 };
                 card.cd = 5;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Magical;
-                card.special.blizzardAura = true;
-                card.special.frostBolt = true;
+                blizzardAura = true;
+                frostBolt = true;
                 break;
 
             case Card.Title.SilvaTheAlmighty:
-                card.attack = 3;
-                card.health = 13;
+                attack = new int[6] { 1, 1, 2, 2, 3, 3 };
+                health = new int[6] { 7, 10, 10, 13, 13, 13 };
                 card.cd = 7;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Magical;
-                card.special.stun = true;
-                card.special.lightningBolt = 3;
-                card.special.ember = true;
-                card.special.thunderStorm = 1;
-                card.special.herosBane = 1;
-                card.special.frostBolt = true;
-                card.special.conjure = true;
+                stun = true;
+                lightningBolt = new int[6] { 1, 1, 2, 2, 3, 4 };
+                ember = true;
+                thunderStorm = new int[6] { 1, 1, 1, 1, 1, 2 };
+                herosBane = new int[6] { 1, 1, 1, 1, 1, 2 };
+                frostBolt = true;
+                conjure = true;
                 break;
 
             case Card.Title.SorannTheUnforgiving:
-                card.attack = 2;
-                card.health = 9;
+                attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                health = new int[6] { 4, 6, 6, 7, 9, 9 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.vigilance = true;
-                card.special.penetrate = true;
-                card.special.nimble = true;
-                card.special.disdain = 2;
+                vigilance = true;
+                penetrate = true;
+                nimble = true;
+                disdain = new int[6] { 1, 1, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.StormLizardKing:
-                card.attack = 1;
-                card.health = 17;
+                attack = new int[6] { 1, 1, 1, 1, 1, 1 };
+                health = new int[6] { 8, 11, 11, 14, 17, 20 };
                 card.cd = 5;
                 card.range = 1;
                 card.speed = 1;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Magical;
-                card.special.permaStun = true;
-                card.special.armor = 4;
+                permaStun = true;
+                armor = new int[6] { 3, 3, 4, 4, 4, 5 };
                 break;
 
             case Card.Title.TarielThePhalanx:
-                card.attack = 4;
-                card.health = 15;
+                attack = new int[6] { 2, 2, 3, 3, 4, 5 };
+                health = new int[6] { 8, 10, 11, 14, 15, 17 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.flying = true;
-                card.special.nimble = true;
-                card.special.reinforcement = true;
+                flying = true;
+                nimble = true;
+                reinforcement = true;
                 break;
 
             case Card.Title.UndeadKingBael:
-                card.attack = 4;
-                card.health = 22;
+                attack = new int[6] { 0, 1, 2, 3, 4, 5 };
+                health = new int[6] { 14, 16, 18, 20, 22, 24 };
                 card.cd = 9;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.callOfTheUndeadKing = true;
+                callOfTheUndeadKing = true;
                 break;
 
             case Card.Title.VarkusTheBlight:
-                card.attack = 1;
-                card.health = 10;
+                attack = new int[6] { 1, 1, 1, 1, 1, 2 };
+                health = new int[6] { 4, 5, 6, 8, 10, 13 };
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.armor = 1;
-                card.special.soulHarvest = true;
+                armor = new int[6] { 1, 1, 1, 1, 1, 1 };
+                soulHarvest = true;
                 break;
 
             case Card.Title.Whitemane:
-                card.attack = 3;
-                card.health = 13;
+                attack = new int[6] { 2, 2, 2, 3, 3, 4 };
+                health = new int[6] { 5, 7, 9, 10, 13, 16 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 3;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
-                card.special.bloodPrice = 2;
-                card.special.penetrate = true;
-                card.special.penetrateAura = true;
-                card.special.crushDefenses = true;
+                bloodPrice = new int[6] { 2, 2, 2, 2, 2, 2 };
+                penetrate = true;
+                penetrateAura = true;
+                crushDefenses = true;
                 break;
 
 
 
             case Card.Title.Null:
-                card.race = Card.Race.Neutral;
-                card.attack = 1;
-                card.health = 50;
+                attack = new int[6] { 1, 1, 1, 1, 1, 1 };
+                health = new int[6] { 50, 50, 50, 50, 50, 50 };
                 card.cd = 0;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Physical;
-                card.special.stun = true;
-                card.special.lightningBolt = 3;
-                card.special.ember = true;
-                card.special.thunderStorm = 1;
-                card.special.herosBane = 1;
-                card.special.frostBolt = true;
-                card.special.conjure = true;
                 break;
 
             case Card.Title.BoneHeap:
-                card.race = Card.Race.Neutral;
-                card.attack = 0;
-                card.health = 1;
+                attack = new int[6] { 0, 0, 0, 0, 0, 0 };
+                health = new int[6] { 1, 1, 1, 1, 1, 1 };
                 card.cd = 0;
                 card.range = 0;
                 card.speed = 0;
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Physical;
-                card.special.boneHeap = true;
+                boneHeap = true;
                 break;
 
             case Card.Title.RaisedDead:
-                card.race = Card.Race.Neutral;
-                card.attack = 2;
-                card.health = 3;
+                attack = new int[6] { 0, 1, 1, 1, 2, 3 };
+                health = new int[6] { 1, 1, 2, 3, 3, 4 };
                 card.cd = 0;
                 card.range = 2;
                 card.speed = 2;
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Physical;
-                card.special.reanimate = true;
+                reanimate = true;
                 break;
         }
 
-        SetDefaults(card, title, alignment);
+        SetDefaults(card, title, alignment, rank);
+
+
+        card.special.wall = wall;
+        card.special.flying = flying;
+
+        card.special.vigilance = vigilance;
+        card.special.penetrate = penetrate;
+
+        card.special.armor = armor[rank];
+        card.special.resistance = resistance[rank];
+        card.special.charge = charge[rank];
+        card.special.cure = cure[rank];
+        card.special.heroic = heroic[rank];
+        card.special.regeneration = regeneration[rank];
+        card.special.multistrike = multistrike[rank];
+        card.special.weaken = weaken[rank];
+        card.special.shadowBolt = shadowBolt[rank];
+        card.special.poison = poison[rank];
+        card.special.poisoned = poisoned[rank];
+        card.special.immolate = immolate[rank];
+        card.special.reapingCurse = reapingCurse[rank];
+        card.special.soulEater = soulEater[rank];
+        card.special.spellCurse = spellCurse[rank];
+        card.special.spellCursed = spellCursed[rank];
+        card.special.spellFeed = spellFeed[rank];
+        card.special.inspiration = inspiration[rank];
+        card.special.herosBane = herosBane[rank];
+        card.special.embered = embered[rank];
+        card.special.lightningBolt = lightningBolt[rank];
+        card.special.rage = rage[rank];
+        card.special.carnivore = carnivore[rank];
+        card.special.bloodPrice = bloodPrice[rank];
+        card.special.maim = maim[rank];
+        card.special.maimed = maimed[rank];
+        card.special.battleSpirit = battleSpirit[rank];
+        card.special.knockback = knockback[rank];
+
+        card.special.lifeAura = lifeAura[rank];
+        card.special.regenerationAura = regenerationAura[rank];
+        card.special.witheringAura = witheringAura[rank];
+        card.special.rangeAura = rangeAura[rank];
+        card.special.speedAura = speedAura[rank];
+        card.special.attackAura = attackAura[rank];
+        card.special.blizzardAura = blizzardAura;
+        card.special.herosBaneAura = herosBaneAura[rank];
+        card.special.penetrateAura = penetrateAura;
+        card.special.poisonAura = poisonAura[rank];
+        card.special.armorAura = armorAura[rank];
+
+        card.special.pierce = pierce;
+        card.special.whirlwind = whirlwind;
+        card.special.counterattack = counterattack;
+        card.special.firstStrike = firstStrike;
+        card.special.dispel = dispel;
+        card.special.faith = faith;
+        card.special.martyrdom = martyrdom;
+        card.special.heavyWeapon = heavyWeapon;
+        card.special.dragonSlayer = dragonSlayer;
+        card.special.reanimate = reanimate;
+        card.special.lifeSteal = lifeSteal;
+        card.special.soulbound = soulbound;
+        card.special.frostBolt = frostBolt;
+        card.special.incorporeal = incorporeal;
+        card.special.fear = fear;
+        card.special.skeletal = skeletal;
+        card.special.boneHeap = boneHeap;
+        card.special.vengefulCurse = vengefulCurse;
+        card.special.vengefulCursed = vengefulCursed;
+        card.special.panicStrike = panicStrike;
+        card.special.sniper = sniper;
+        card.special.ember = ember;
+        card.special.nimble = nimble;
+        card.special.conjure = conjure;
+        card.special.donor = donor;
+        card.special.stun = stun;
+        card.special.stunned = stunned;
+        card.special.permaStun = permaStun;
+        card.special.distraction = distraction;
+        card.special.spear = spear;
+        card.special.ambush = ambush;
+        card.special.cleave = cleave;
+        card.special.charm = charm;
+        card.special.hitAndRun = hitAndRun;
+        card.special.bleedingAttack = bleedingAttack;
+        card.special.bleeding = bleeding;
+        card.special.influence = influence;
+        card.special.headbutt = headbutt;
+
+        card.special.kingsCommand = kingsCommand;
+        card.special.combatMaster = combatMaster;
+        card.special.callOfTheUndeadKing = callOfTheUndeadKing;
+        card.special.blackIce = blackIce;
+        card.special.soulHarvest = soulHarvest;
+        card.special.multiShot = multiShot;
+        card.special.reinforcement = reinforcement;
+        card.special.disdain = disdain[rank];
+        card.special.crushDefenses = crushDefenses;
+        card.special.cheif = cheif;
+        card.special.krush = krush;
+        card.special.thunderStorm = thunderStorm[rank];
+
         return card;
     }
 }
