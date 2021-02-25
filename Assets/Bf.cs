@@ -50,7 +50,7 @@ public class Bf : MonoBehaviour
     {
         if (Game.level == -2)
         {
-            for (int i = 4; i < 6; i++)
+            for (int i = 2; i < 4; i++)
                 if (!occupied[i])
                     Bfs[i].GetComponentInChildren<Outline>().enabled = true;
         }

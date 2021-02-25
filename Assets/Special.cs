@@ -11,46 +11,46 @@ public class Special : MonoBehaviour
     public bool vigilance = false;
     public bool penetrate = false;
 
-    public int armor = 0;
-    public int resistance = 0;
-    public int charge = 0;
-    public int cure = 0;
-    public int heroic = 0;
-    public int regeneration = 0;
-    public int multistrike = 0;
-    public int weaken = 0;
-    public int shadowBolt = 0;
-    public int poison = 0;
-    public int poisoned = 0;
-    public int immolate = 0;
-    public int reapingCurse = 0;
-    public int soulEater = 0;
-    public int spellCurse = 0;
-    public int spellCursed = 0;
-    public int spellFeed = 0;
-    public int inspiration = 0;
-    public int herosBane = 0;
-    public int embered = 0;
-    public int lightningBolt = 0;
-    public int rage = 0;
-    public int carnivore = 0;
-    public int bloodPrice = 0;
-    public int maim = 0;
-    public int maimed = 0;
-    public int battleSpirit = 0;
-    public int knockback = 0;
+    public int[] armor = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] resistance = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] charge = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] cure = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] heroic = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] regeneration = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] multistrike = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] weaken = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] shadowBolt = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] poison = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] poisoned = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] immolate = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] reapingCurse = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] soulEater = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] spellCurse = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] spellCursed = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] spellFeed = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] inspiration = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] herosBane = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] embered = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] lightningBolt = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] rage = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] carnivore = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] bloodPrice = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] maim = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] maimed = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] battleSpirit = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] knockback = new int[6] {0, 0, 0, 0, 0, 0};
 
-    public int lifeAura = 0;
-    public int regenerationAura = 0;
-    public int witheringAura = 0;
-    public int rangeAura = 0;
-    public int speedAura = 0;
-    public int attackAura = 0;
+    public int[] lifeAura = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] regenerationAura = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] witheringAura = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] rangeAura = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] speedAura = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] attackAura = new int[6] {0, 0, 0, 0, 0, 0};
     public bool blizzardAura = false;
-    public int herosBaneAura = 0;
+    public int[] herosBaneAura = new int[6] {0, 0, 0, 0, 0, 0};
     public bool penetrateAura = false;
-    public int poisonAura = 0;
-    public int armorAura = 0;
+    public int[] poisonAura = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] armorAura = new int[6] {0, 0, 0, 0, 0, 0};
 
     public bool pierce = false;
     public bool whirlwind = false;
@@ -98,20 +98,20 @@ public class Special : MonoBehaviour
     public bool soulHarvest = false;
     public bool multiShot = false;
     public bool reinforcement = false;
-    public int disdain = 0;
+    public int[] disdain = new int[6] {0, 0, 0, 0, 0, 0};
     public bool crushDefenses = false;
     public bool cheif = false;
     public bool krush = false;
-    public int thunderStorm = 0;
+    public int[] thunderStorm = new int[6] {0, 0, 0, 0, 0, 0};
 
 
     public int CheckArmor(Card dealer, Card target, int damage, Card.DamageType damageType)
     {
-        if (target.special.armor > 0)
+        if (target.special.armor[target.rank] > 0)
         {
             if (damageType == Card.DamageType.Physical && !dealer.special.penetrate)
             {
-                damage -= target.special.armor;
+                damage -= target.special.armor[target.rank];
             }
         }
         if (damage < 0)
@@ -122,11 +122,11 @@ public class Special : MonoBehaviour
 
     public int CheckResistance(Card dealer, Card target, int damage, Card.DamageType damageType)
     {
-        if (target.special.resistance > 0)
+        if (target.special.resistance[target.rank] > 0)
         {
             if (damageType == Card.DamageType.Magical && !dealer.special.penetrate)
             {
-                damage -= target.special.resistance;
+                damage -= target.special.resistance[target.rank];
             }
         }
         if (damage < 0)
@@ -156,10 +156,10 @@ public class Special : MonoBehaviour
             List<Card> enemies = tile.GetNearbyEnemies(dealer);
             if (enemies.Count > 0)
             {
-                for (int i = 0; i < dealer.special.multistrike + 1; i++)
+                for (int i = 0; i < dealer.special.multistrike[dealer.rank] + 1; i++)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, enemies[0], dealer.attack, dealer.damageType, true);
+                    unitAttack.DealDamage(dealer, enemies[0], dealer.attack[dealer.rank], dealer.damageType, true);
                     Special special = new Special();
                     special.CheckCleave(dealer, enemies[0]);
                 }
@@ -171,7 +171,7 @@ public class Special : MonoBehaviour
 
     public bool CheckCure(Card dealer)
     {
-        if (dealer.special.cure > 0)
+        if (dealer.special.cure[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
@@ -180,9 +180,9 @@ public class Special : MonoBehaviour
 
             for (int i = 0; i < allies.Count; i++)
             {
-                if (allies[i].healthDefault - allies[i].health > mostDamage)
+                if (allies[i].healthDefault[allies[i].rank] - allies[i].health[allies[i].rank] > mostDamage)
                 {
-                    mostDamage = allies[i].healthDefault - allies[i].health;
+                    mostDamage = allies[i].healthDefault[allies[i].rank] - allies[i].health[allies[i].rank];
                     mostDamageCard = allies[i];
                 }
             }
@@ -190,7 +190,7 @@ public class Special : MonoBehaviour
             if (mostDamage > 0)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.Heal(dealer, mostDamageCard, dealer.special.cure);
+                unitSpecial.Heal(dealer, mostDamageCard, dealer.special.cure[dealer.rank]);
                 return true;
             }
         }
@@ -199,23 +199,23 @@ public class Special : MonoBehaviour
 
     public void CheckHeroic(Card dealer)
     {
-        if (dealer.special.heroic > 0)
+        if (dealer.special.heroic[dealer.rank] > 0)
         {
             if (dealer.alignment != Turn.turn)
             {
-                dealer.attack += dealer.special.heroic;
+                dealer.attack[dealer.rank] += dealer.special.heroic[dealer.rank];
             }
 
             else if (dealer.heroicThisTurn == 0)
             {
-                dealer.heroicThisTurn = dealer.special.heroic;
+                dealer.heroicThisTurn = dealer.special.heroic[dealer.rank];
             }
         }
     }
 
     public void CheckLifeAuraBattlecry(Card dealer)
     {
-        if (dealer.special.lifeAura > 0)
+        if (dealer.special.lifeAura[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
@@ -223,7 +223,7 @@ public class Special : MonoBehaviour
             for (int i = 0; i < allies.Count; i++)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseHealth(dealer, allies[i], dealer.special.lifeAura);
+                unitSpecial.IncreaseHealth(dealer, allies[i], dealer.special.lifeAura[dealer.rank]);
             }
         }
     }
@@ -235,10 +235,10 @@ public class Special : MonoBehaviour
         
         for (int i = 0; i < allies.Count; i++)
         {
-            if (allies[i].special.lifeAura > 0)
+            if (allies[i].special.lifeAura[allies[i].rank] > 0)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseHealth(allies[i], dealer, allies[i].special.lifeAura);
+                unitSpecial.IncreaseHealth(allies[i], dealer, allies[i].special.lifeAura[allies[i].rank]);
             }
         }
     }
@@ -290,9 +290,9 @@ public class Special : MonoBehaviour
 
     public void CheckChargeMove(Card dealer, int tileFrom, int tileTo)
     {
-        if (dealer.special.charge > 0)
+        if (dealer.special.charge[dealer.rank] > 0)
         {
-            dealer.bonusAttackNextTurn += Mathf.Abs((tileTo - tileFrom) / 2) * dealer.special.charge;
+            dealer.bonusAttackNextTurn += Mathf.Abs((tileTo - tileFrom) / 2) * dealer.special.charge[dealer.rank];
         }
     }
 
@@ -300,7 +300,7 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.combatMaster)
         {
-            if (target.range >= 4 || target.speed >= 4 || target.special.armor >= 1 || target.special.wall || target.special.flying)
+            if (target.range >= 4 || target.speed >= 4 || target.special.armor[target.rank] >= 1 || target.special.wall || target.special.flying)
             {
                 damage *= 2;
             }
@@ -343,7 +343,7 @@ public class Special : MonoBehaviour
                 if (Bf.Cards[tileCheck].alignment != dealer.alignment)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack, dealer.damageType, true);
+                    unitAttack.DealDamage(dealer, Bf.Cards[tileCheck], dealer.attack[dealer.rank], dealer.damageType, true);
                 }
             }
         }
@@ -360,10 +360,10 @@ public class Special : MonoBehaviour
             {
                 for (int i = 0; i < enemies.Count; i++)
                 {
-                    for (int j = 0; j < dealer.special.multistrike + 1; j++)
+                    for (int j = 0; j < dealer.special.multistrike[dealer.rank] + 1; j++)
                     {
                         UnitAttack unitAttack = new UnitAttack();
-                        unitAttack.DealDamage(dealer, enemies[i], dealer.attack, dealer.damageType, true);
+                        unitAttack.DealDamage(dealer, enemies[i], dealer.attack[dealer.rank], dealer.damageType, true);
                     }
                 }
 
@@ -390,14 +390,14 @@ public class Special : MonoBehaviour
             Tile tile = new Tile();
             if (tile.GetDistanceBetweenUnits(dealer, target) <= target.range)
             {
-                for (int i = 0; i < target.special.multistrike + 1; i++)
+                for (int i = 0; i < target.special.multistrike[target.rank] + 1; i++)
                 {
                     if (CheckWhirlwind(target)) 
                     { }
                     else
                     {
                         UnitAttack unitAttack = new UnitAttack();
-                        unitAttack.DealDamage(target, dealer, target.attack, target.damageType, true);
+                        unitAttack.DealDamage(target, dealer, target.attack[target.rank], target.damageType, true);
                         CheckPierce(target, dealer);
                         CheckCleave(target, dealer);
                     }
@@ -413,20 +413,20 @@ public class Special : MonoBehaviour
             Tile tile = new Tile();
             if (tile.GetDistanceBetweenUnits(dealer, target) <= target.range)
             {
-                for (int i = 0; i < target.special.multistrike + 1; i++)
+                for (int i = 0; i < target.special.multistrike[target.rank] + 1; i++)
                 {
                     if (CheckWhirlwind(target))
                     { }
                     else
                     {
                         UnitAttack unitAttack = new UnitAttack();
-                        unitAttack.DealDamage(target, dealer, target.attack, target.damageType, true);
+                        unitAttack.DealDamage(target, dealer, target.attack[target.rank], target.damageType, true);
                         CheckPierce(target, dealer);
                         CheckCleave(target, dealer);
                     }
                 }
             }
-            if (target.health <= 0)
+            if (target.health[target.rank] <= 0)
             {
                 return true;
             }
@@ -436,12 +436,12 @@ public class Special : MonoBehaviour
 
     public bool CheckRegeneration(Card dealer)
     {
-        if (dealer.special.regeneration > 0)
+        if (dealer.special.regeneration[dealer.rank] > 0)
         {
-            if (dealer.health < dealer.healthMax)
+            if (dealer.health[dealer.rank] < dealer.healthMax[dealer.rank])
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.Heal(dealer, dealer, dealer.special.regeneration);
+                unitSpecial.Heal(dealer, dealer, dealer.special.regeneration[dealer.rank]);
                 return true;
             }
         }
@@ -452,17 +452,17 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.dispel)
         {
-            if (target.attack > target.attackDefault)
+            if (target.attack[target.rank] > target.attackDefault[target.rank])
             {
-                target.attack = target.attackDefault;
+                target.attack[target.rank] = target.attackDefault[target.rank];
             }
-            if (target.health > target.healthDefault)
+            if (target.health[target.rank] > target.healthDefault[target.rank])
             {
-                target.health = target.healthDefault;
+                target.health[target.rank] = target.healthDefault[target.rank];
             }
-            if (target.healthMax > target.healthMaxDefault)
+            if (target.healthMax[target.rank] > target.healthMaxDefault[target.rank])
             {
-                target.healthMax = target.healthMaxDefault;
+                target.healthMax[target.rank] = target.healthMaxDefault[target.rank];
             }
             if (target.speed > target.speedDefault)
             {
@@ -479,8 +479,8 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.faith)
         {
-            dealer.attack += 1;
-            dealer.health += 1;
+            dealer.attack[dealer.rank] += 1;
+            dealer.health[dealer.rank] += 1;
         }
     }
 
@@ -501,7 +501,7 @@ public class Special : MonoBehaviour
 
     public void CheckRegenerationAuraBattlecry(Card dealer)
     {
-        if (dealer.special.regenerationAura > 0)
+        if (dealer.special.regenerationAura[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
@@ -509,7 +509,7 @@ public class Special : MonoBehaviour
             for (int i = 0; i < allies.Count; i++)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseRegeneration(dealer, allies[i], dealer.special.regenerationAura);
+                unitSpecial.IncreaseRegeneration(dealer, allies[i], dealer.special.regenerationAura[dealer.rank]);
             }
         }
     }
@@ -521,10 +521,10 @@ public class Special : MonoBehaviour
 
         for (int i = 0; i < allies.Count; i++)
         {
-            if (allies[i].special.regenerationAura > 0)
+            if (allies[i].special.regenerationAura[allies[i].rank] > 0)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseRegeneration(allies[i], dealer, allies[i].special.regenerationAura);
+                unitSpecial.IncreaseRegeneration(allies[i], dealer, allies[i].special.regenerationAura[allies[i].rank]);
             }
         }
     }
@@ -532,7 +532,7 @@ public class Special : MonoBehaviour
     public int CheckMultistrike(Card dealer, int damage)
     {
         int damageNew = damage;
-        for (int i = 0; i < dealer.special.multistrike; i++)
+        for (int i = 0; i < dealer.special.multistrike[dealer.rank]; i++)
         {
             damageNew += damage;
         }
@@ -562,10 +562,10 @@ public class Special : MonoBehaviour
 
     public void CheckKnockback(Card dealer, Card target)
     {
-        if (dealer.special.knockback > 0)
+        if (dealer.special.knockback[dealer.rank] > 0)
         {
             Tile tile = new Tile();
-            int tileNew = tile.GetTileInFront(target, dealer.special.knockback, true);
+            int tileNew = tile.GetTileInFront(target, dealer.special.knockback[dealer.rank], true);
             
 
             if (tileNew != target.tile)
@@ -614,7 +614,7 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.lifeSteal)
         {
-            if (dealer.health < dealer.healthMax)
+            if (dealer.health[dealer.rank] < dealer.healthMax[dealer.rank])
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
                 unitSpecial.Heal(dealer, dealer, damage);
@@ -624,22 +624,22 @@ public class Special : MonoBehaviour
 
     public void CheckWeaken(Card dealer, Card target)
     {
-        if (dealer.special.weaken > 0)
+        if (dealer.special.weaken[dealer.rank] > 0)
         {
             
             if (!target.special.nimble)
             {
-                target.attack -= dealer.special.weaken;
+                target.attack[target.rank] -= dealer.special.weaken[dealer.rank];
                 
-                if (target.attack <= 0)
-                    target.attack = 0;
+                if (target.attack[target.rank] <= 0)
+                    target.attack[target.rank] = 0;
             }
         }
     }
 
     public void CheckWitheringAuraBattlecry(Card dealer)
     {
-        if (dealer.special.witheringAura > 0)
+        if (dealer.special.witheringAura[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> enemies = tile.GetAllEnemies(dealer);
@@ -647,7 +647,7 @@ public class Special : MonoBehaviour
             for (int i = 0; i < enemies.Count; i++)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.DecreaseHealth(dealer, enemies[i], dealer.special.witheringAura);
+                unitSpecial.DecreaseHealth(dealer, enemies[i], dealer.special.witheringAura[dealer.rank]);
             }
         }
     }
@@ -659,10 +659,10 @@ public class Special : MonoBehaviour
 
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (enemies[i].special.witheringAura > 0)
+            if (enemies[i].special.witheringAura[enemies[i].rank] > 0)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.DecreaseHealth(enemies[i], dealer, enemies[i].special.witheringAura);
+                unitSpecial.DecreaseHealth(enemies[i], dealer, enemies[i].special.witheringAura[enemies[i].rank]);
             }
         }
     }
@@ -682,10 +682,10 @@ public class Special : MonoBehaviour
 
     public int CheckShadowBolt(Card dealer, int damage)
     {
-        if (dealer.special.shadowBolt > 0)
+        if (dealer.special.shadowBolt[dealer.rank] > 0)
         {
             Rng rng = new Rng();
-            damage = rng.Range(0, damage * dealer.special.shadowBolt);
+            damage = rng.Range(0, damage * dealer.special.shadowBolt[dealer.rank]);
         }
         return damage;
     }
@@ -722,7 +722,7 @@ public class Special : MonoBehaviour
 
     public void CheckFear(Card dealer, Card target, int damage)
     {
-        if (dealer.special.fear && target.health > damage)
+        if (dealer.special.fear && target.health[target.rank] > damage)
         {
             CardStat cardStat = new CardStat();
             Card card = cardStat.GetStats(target.title, target.alignment, target.rank);
@@ -730,7 +730,7 @@ public class Special : MonoBehaviour
 
             Hand hand = new Hand();
             hand.AddCardFromBf(card, target.tile, target.alignment);
-            target.health = 0;
+            target.health[target.rank] = 0;
         }
     }
 
@@ -777,11 +777,11 @@ public class Special : MonoBehaviour
 
     public void CheckPoison(Card dealer, Card target)
     {
-        if (dealer.special.poison > 0)
+        if (dealer.special.poison[dealer.rank] > 0)
         {
-            if (target.special.poisoned < dealer.special.poison)
+            if (target.special.poisoned[target.rank] < dealer.special.poison[dealer.rank])
             {
-                target.special.poisoned = dealer.special.poison;
+                target.special.poisoned[target.rank] = dealer.special.poison[dealer.rank];
             }
         }
     }
@@ -789,23 +789,23 @@ public class Special : MonoBehaviour
     public bool CheckDamageTakenEachTurn(Card dealer)
     {
         bool damageTaken = false;
-        if (dealer.special.poisoned > 0)
+        if (dealer.special.poisoned[dealer.rank] > 0)
         {
             UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(dealer, dealer, dealer.special.poisoned, Card.DamageType.Magical, false);
+            unitAttack.DealDamage(dealer, dealer, dealer.special.poisoned[dealer.rank], Card.DamageType.Magical, false);
             damageTaken = true;
         }
-        if (dealer.special.immolate > 0)
+        if (dealer.special.immolate[dealer.rank] > 0)
         {
             UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(dealer, dealer, dealer.special.immolate, Card.DamageType.Magical, false);
+            unitAttack.DealDamage(dealer, dealer, dealer.special.immolate[dealer.rank], Card.DamageType.Magical, false);
             damageTaken = true;
         }
-        if (dealer.special.embered > 0)
+        if (dealer.special.embered[dealer.rank] > 0)
         {
             UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(dealer, dealer, dealer.special.embered, Card.DamageType.Magical, false);
-            dealer.special.embered = 0;
+            unitAttack.DealDamage(dealer, dealer, dealer.special.embered[dealer.rank], Card.DamageType.Magical, false);
+            dealer.special.embered[dealer.rank] = 0;
             damageTaken = true;
         }
         return damageTaken;
@@ -813,16 +813,16 @@ public class Special : MonoBehaviour
 
     public void CheckReapingCurse(Card target)
     {
-        if (target.special.reapingCurse > 0)
+        if (target.special.reapingCurse[target.rank] > 0)
         {
             Hero hero = new Hero();
             if (target.alignment == Card.Alignment.Ally)
             {
-                hero.DealDamage(target, Card.Alignment.Enemy, target.special.reapingCurse);
+                hero.DealDamage(target, Card.Alignment.Enemy, target.special.reapingCurse[target.rank]);
             }
             else
             {
-                hero.DealDamage(target, Card.Alignment.Ally, target.special.reapingCurse);
+                hero.DealDamage(target, Card.Alignment.Ally, target.special.reapingCurse[target.rank]);
             }
         }
     }
@@ -841,7 +841,7 @@ public class Special : MonoBehaviour
         {
             dealer.special.vengefulCursed = false;
             UnitAttack unitAttack = new UnitAttack();
-            unitAttack.DealDamage(dealer, dealer, dealer.attack, Card.DamageType.Magical, false);
+            unitAttack.DealDamage(dealer, dealer, dealer.attack[dealer.rank], Card.DamageType.Magical, false);
         }
     }
 
@@ -855,11 +855,11 @@ public class Special : MonoBehaviour
             if (enemies[i].special.soulHarvest)
             {
                 AnimaText animaText = new AnimaText();
-                animaText.ShowText(Bf.Bfs[enemies[i].tile], "+" + target.attackDefault / 2 + "/+" + target.healthDefault / 2, Hue.green);
+                animaText.ShowText(Bf.Bfs[enemies[i].tile], "+" + target.attackDefault[target.rank] / 2 + "/+" + target.healthDefault[target.rank] / 2, Hue.green);
 
-                enemies[i].attack += target.attackDefault / 2;
-                enemies[i].healthMax += target.healthMaxDefault / 2;
-                enemies[i].health += target.healthDefault / 2;
+                enemies[i].attack[enemies[i].rank] += target.attackDefault[target.rank] / 2;
+                enemies[i].healthMax[enemies[i].rank] += target.healthMaxDefault[target.rank] / 2;
+                enemies[i].health[enemies[i].rank] += target.healthDefault[target.rank] / 2;
 
                 target.DisplayCard(Bf.Bfs[enemies[i].tile], enemies[i]);
             }
@@ -868,32 +868,32 @@ public class Special : MonoBehaviour
 
     public void CheckSoulEater(Card dealer)
     {
-        if (dealer.special.soulEater > 0)
+        if (dealer.special.soulEater[dealer.rank] > 0)
         {
-            dealer.attack += dealer.special.soulEater;
-            dealer.healthMax += dealer.special.soulEater;
-            dealer.health += dealer.special.soulEater;
+            dealer.attack[dealer.rank] += dealer.special.soulEater[dealer.rank];
+            dealer.healthMax[dealer.rank] += dealer.special.soulEater[dealer.rank];
+            dealer.health[dealer.rank] += dealer.special.soulEater[dealer.rank];
         }
     }
 
     public void CheckSpellCurse(Card dealer, Card target)
     {
-        if (dealer.special.spellCurse > 0)
+        if (dealer.special.spellCurse[dealer.rank] > 0)
         {
-            if (target.special.spellCursed < dealer.special.spellCurse)
+            if (target.special.spellCursed[target.rank] < dealer.special.spellCurse[dealer.rank])
             {
-                target.special.spellCursed = dealer.special.spellCurse;
+                target.special.spellCursed[target.rank] = dealer.special.spellCurse[dealer.rank];
             }
         }
     }
 
     public int CheckSpellCursed(Card dealer, Card target, int damage, Card.DamageType damageType)
     {
-        if (target.special.spellCursed > 0)
+        if (target.special.spellCursed[target.rank] > 0)
         {
             if (damageType == Card.DamageType.Magical)
             {
-                damage += target.special.spellCursed;
+                damage += target.special.spellCursed[target.rank];
             }
         }
 
@@ -902,13 +902,13 @@ public class Special : MonoBehaviour
 
     public void CheckSpellFeed(Card dealer, Card target, Card.DamageType damageType)
     {
-        if (target.special.spellFeed > 0)
+        if (target.special.spellFeed[target.rank] > 0)
         {
             if (damageType == Card.DamageType.Magical)
             {
-                target.attack += target.special.spellFeed;
-                target.healthMax += target.special.spellFeed;
-                target.health += target.special.spellFeed;
+                target.attack[target.rank] += target.special.spellFeed[target.rank];
+                target.healthMax[target.rank] += target.special.spellFeed[target.rank];
+                target.health[target.rank] += target.special.spellFeed[target.rank];
             }
         }
     }
@@ -960,14 +960,14 @@ public class Special : MonoBehaviour
                 int lowestHealthTile = Bf.SIZE;
                 for (int i = 0; i < enemies.Count; i++)
                 {
-                    if (enemies[i].health < lowestHealth)
+                    if (enemies[i].health[enemies[i].rank] < lowestHealth)
                     {
-                        lowestHealth = enemies[i].health;
+                        lowestHealth = enemies[i].health[enemies[i].rank];
                         lowestHealthTile = enemies[i].tile;
                     }
                 }
                 UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(dealer, Bf.Cards[lowestHealthTile], dealer.attack, dealer.damageType);
+                unitAttack.DealDamage(dealer, Bf.Cards[lowestHealthTile], dealer.attack[dealer.rank], dealer.damageType);
                 return true;
             }
         }
@@ -976,7 +976,7 @@ public class Special : MonoBehaviour
 
     public void CheckRangeAuraBattlecry(Card dealer)
     {
-        if (dealer.special.rangeAura > 0)
+        if (dealer.special.rangeAura[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
@@ -984,7 +984,7 @@ public class Special : MonoBehaviour
             for (int i = 0; i < allies.Count; i++)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseRange(dealer, allies[i], dealer.special.rangeAura);
+                unitSpecial.IncreaseRange(dealer, allies[i], dealer.special.rangeAura[dealer.rank]);
             }
         }
     }
@@ -996,17 +996,17 @@ public class Special : MonoBehaviour
 
         for (int i = 0; i < allies.Count; i++)
         {
-            if (allies[i].special.rangeAura > 0)
+            if (allies[i].special.rangeAura[allies[i].rank] > 0)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseRange(allies[i], dealer, allies[i].special.rangeAura);
+                unitSpecial.IncreaseRange(allies[i], dealer, allies[i].special.rangeAura[allies[i].rank]);
             }
         }
     }
 
     public void CheckSpeedAuraBattlecry(Card dealer)
     {
-        if (dealer.special.speedAura > 0)
+        if (dealer.special.speedAura[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
@@ -1014,7 +1014,7 @@ public class Special : MonoBehaviour
             for (int i = 0; i < allies.Count; i++)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseSpeed(dealer, allies[i], dealer.special.speedAura);
+                unitSpecial.IncreaseSpeed(dealer, allies[i], dealer.special.speedAura[dealer.rank]);
             }
         }
     }
@@ -1026,10 +1026,10 @@ public class Special : MonoBehaviour
 
         for (int i = 0; i < allies.Count; i++)
         {
-            if (allies[i].special.speedAura > 0)
+            if (allies[i].special.speedAura[allies[i].rank] > 0)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseSpeed(allies[i], dealer, allies[i].special.speedAura);
+                unitSpecial.IncreaseSpeed(allies[i], dealer, allies[i].special.speedAura[allies[i].rank]);
             }
         }
     }
@@ -1045,7 +1045,7 @@ public class Special : MonoBehaviour
                 for (int i = 0; i < enemies.Count; i++)
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, enemies[i], dealer.attack, dealer.damageType);
+                    unitAttack.DealDamage(dealer, enemies[i], dealer.attack[dealer.rank], dealer.damageType);
                 }
                 if (tile.GetDistanceToEnemyHero(dealer, dealer.tile) <= dealer.range)
                 {
@@ -1063,7 +1063,7 @@ public class Special : MonoBehaviour
 
     public void CheckInspiration(Card dealer)
     {
-        if (dealer.special.inspiration > 0)
+        if (dealer.special.inspiration[dealer.rank] > 0)
         {
             int iMin = 0;
             int iMax = Hand.SIZE;
@@ -1073,7 +1073,7 @@ public class Special : MonoBehaviour
                 iMax = Hand.SIZE * 2;
             }
 
-            for (int j = 0; j < dealer.special.inspiration; j++)
+            for (int j = 0; j < dealer.special.inspiration[dealer.rank]; j++)
             {
                 List<Card> occupied = new List<Card>();
                 for (int i = iMin; i < iMax; i++)
@@ -1118,13 +1118,13 @@ public class Special : MonoBehaviour
 
     public bool CheckHerosBane(Card dealer)
     {
-        if (dealer.special.herosBane > 0)
+        if (dealer.special.herosBane[dealer.rank] > 0)
         {
             Hero hero = new Hero();
             if (dealer.alignment == Card.Alignment.Ally)
-                hero.DealDamage(dealer, Card.Alignment.Enemy, dealer.special.herosBane);
+                hero.DealDamage(dealer, Card.Alignment.Enemy, dealer.special.herosBane[dealer.rank]);
             else
-                hero.DealDamage(dealer, Card.Alignment.Ally, dealer.special.herosBane);
+                hero.DealDamage(dealer, Card.Alignment.Ally, dealer.special.herosBane[dealer.rank]);
             return true;
         }
         return false;
@@ -1134,7 +1134,7 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.ember)
         {
-            target.special.embered += dealer.attack;
+            target.special.embered[target.rank] += dealer.attack[dealer.rank];
             damage = 0;
         }
         return damage;
@@ -1180,7 +1180,7 @@ public class Special : MonoBehaviour
 
     public void CheckAttackAuraBattlecry(Card dealer)
     {
-        if (dealer.special.attackAura > 0)
+        if (dealer.special.attackAura[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
@@ -1188,7 +1188,7 @@ public class Special : MonoBehaviour
             for (int i = 0; i < allies.Count; i++)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseAttack(dealer, allies[i], dealer.special.attackAura);
+                unitSpecial.IncreaseAttack(dealer, allies[i], dealer.special.attackAura[dealer.rank]);
             }
         }
     }
@@ -1200,10 +1200,10 @@ public class Special : MonoBehaviour
 
         for (int i = 0; i < allies.Count; i++)
         {
-            if (allies[i].special.attackAura > 0)
+            if (allies[i].special.attackAura[allies[i].rank] > 0)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseAttack(allies[i], dealer, allies[i].special.attackAura);
+                unitSpecial.IncreaseAttack(allies[i], dealer, allies[i].special.attackAura[allies[i].rank]);
             }
         }
     }
@@ -1255,9 +1255,9 @@ public class Special : MonoBehaviour
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
-            dealer.attack += allies.Count * 1;
-            dealer.health += allies.Count * 3;
-            dealer.healthMax += allies.Count * 3;
+            dealer.attack[dealer.rank] += allies.Count * 1;
+            dealer.health[dealer.rank] += allies.Count * 3;
+            dealer.healthMax[dealer.rank] += allies.Count * 3;
 
             dealer.DisplayCard(Bf.Bfs[dealer.tile], dealer);
         }
@@ -1274,7 +1274,7 @@ public class Special : MonoBehaviour
 
     public bool CheckLightningBolt(Card dealer)
     {
-        if (dealer.special.lightningBolt > 0)
+        if (dealer.special.lightningBolt[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> enemies = tile.GetAllEnemies(dealer);
@@ -1283,7 +1283,7 @@ public class Special : MonoBehaviour
                 Rng rng = new Rng();
                 Card target = enemies[rng.Range(0, enemies.Count)];
                 UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(dealer, target, dealer.special.lightningBolt, Card.DamageType.Magical, false);
+                unitAttack.DealDamage(dealer, target, dealer.special.lightningBolt[dealer.rank], Card.DamageType.Magical, false);
 
                 return true;
             }
@@ -1310,7 +1310,7 @@ public class Special : MonoBehaviour
 
     public void CheckHerosBaneAuraBattlecry(Card dealer)
     {
-        if (dealer.special.herosBaneAura > 0)
+        if (dealer.special.herosBaneAura[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
@@ -1318,7 +1318,7 @@ public class Special : MonoBehaviour
             for (int i = 0; i < allies.Count; i++)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseHerosBane(dealer, allies[i], dealer.special.herosBaneAura);
+                unitSpecial.IncreaseHerosBane(dealer, allies[i], dealer.special.herosBaneAura[dealer.rank]);
             }
         }
     }
@@ -1330,10 +1330,10 @@ public class Special : MonoBehaviour
 
         for (int i = 0; i < allies.Count; i++)
         {
-            if (allies[i].special.herosBaneAura > 0)
+            if (allies[i].special.herosBaneAura[allies[i].rank] > 0)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseHerosBane(allies[i], dealer, allies[i].special.herosBaneAura);
+                unitSpecial.IncreaseHerosBane(allies[i], dealer, allies[i].special.herosBaneAura[allies[i].rank]);
             }
         }
     }
@@ -1387,11 +1387,11 @@ public class Special : MonoBehaviour
 
     public void CheckDisdain(Card dealer, Card target)
     {
-        if (dealer.special.disdain > 0)
+        if (dealer.special.disdain[dealer.rank] > 0)
         {
-            if (target.cdDefault <= dealer.special.disdain)
+            if (target.cdDefault <= dealer.special.disdain[dealer.rank])
             {
-                target.health = 0;
+                target.health[target.rank] = 0;
             }
         }
     }
@@ -1408,27 +1408,27 @@ public class Special : MonoBehaviour
 
     public void CheckRage(Card target)
     {
-        if (target.special.rage > 0)
+        if (target.special.rage[target.rank] > 0)
         {
-            target.attack += target.special.rage;
+            target.attack[target.rank] += target.special.rage[target.rank];
         }
     }
 
     public void CheckCarnivore(Card dealer)
     {
-        if (dealer.special.carnivore > 0)
+        if (dealer.special.carnivore[dealer.rank] > 0)
         {
-            dealer.healthMax += dealer.special.carnivore;
-            dealer.health += dealer.special.carnivore;
+            dealer.healthMax[dealer.rank] += dealer.special.carnivore[dealer.rank];
+            dealer.health[dealer.rank] += dealer.special.carnivore[dealer.rank];
         }
     }
 
     public bool CheckBloodPrice(Card dealer)
     {
-        if (dealer.special.bloodPrice > 0)
+        if (dealer.special.bloodPrice[dealer.rank] > 0)
         {
             Hero hero = new Hero();
-            hero.DealDamage(dealer, dealer.alignment, dealer.special.bloodPrice);
+            hero.DealDamage(dealer, dealer.alignment, dealer.special.bloodPrice[dealer.rank]);
             return true;
         }
         return false;
@@ -1436,22 +1436,22 @@ public class Special : MonoBehaviour
 
     public void CheckMaim(Card dealer, Card target)
     {
-        if (dealer.special.maim > 0)
+        if (dealer.special.maim[dealer.rank] > 0)
         {
-            if (target.special.maimed < dealer.special.maim)
+            if (target.special.maimed[target.rank] < dealer.special.maim[dealer.rank])
             {
-                target.special.maimed = dealer.special.maim;
+                target.special.maimed[target.rank] = dealer.special.maim[dealer.rank];
             }
         }
     }
 
     public int CheckMaimed(Card dealer, Card target, int damage, Card.DamageType damageType)
     {
-        if (target.special.maimed > 0)
+        if (target.special.maimed[target.rank] > 0)
         {
             if (damageType == Card.DamageType.Physical)
             {
-                damage += target.special.maimed;
+                damage += target.special.maimed[target.rank];
             }
         }
         return damage;
@@ -1461,7 +1461,7 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.crushDefenses)
         {
-            if (target.special.armor > 0 || target.special.resistance > 0)
+            if (target.special.armor[target.rank] > 0 || target.special.resistance[target.rank] > 0)
             {
                 damage *= 2;
             }
@@ -1510,7 +1510,7 @@ public class Special : MonoBehaviour
                 if (Bf.occupied[tiles[i]])
                 {
                     UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, Bf.Cards[tiles[i]], dealer.attack, dealer.damageType, true);
+                    unitAttack.DealDamage(dealer, Bf.Cards[tiles[i]], dealer.attack[dealer.rank], dealer.damageType, true);
                 }
             }
         }
@@ -1518,7 +1518,7 @@ public class Special : MonoBehaviour
 
     public void CheckPoisonAuraBattlecry(Card dealer)
     {
-        if (dealer.special.poisonAura > 0)
+        if (dealer.special.poisonAura[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
@@ -1526,7 +1526,7 @@ public class Special : MonoBehaviour
             for (int i = 0; i < allies.Count; i++)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreasePoison(dealer, allies[i], dealer.special.poisonAura);
+                unitSpecial.IncreasePoison(dealer, allies[i], dealer.special.poisonAura[dealer.rank]);
             }
         }
     }
@@ -1538,10 +1538,10 @@ public class Special : MonoBehaviour
 
         for (int i = 0; i < allies.Count; i++)
         {
-            if (allies[i].special.poisonAura > 0)
+            if (allies[i].special.poisonAura[allies[i].rank] > 0)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreasePoison(allies[i], dealer, allies[i].special.poisonAura);
+                unitSpecial.IncreasePoison(allies[i], dealer, allies[i].special.poisonAura[allies[i].rank]);
             }
         }
     }
@@ -1565,20 +1565,20 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.krush)
         {
-            target.health = 0;
+            target.health[target.rank] = 0;
             dealer.special.krush = false;
         }
     }
 
     public void CheckBattleSpirit(Card dealer, Card target, Card.DamageType damageType)
     {
-        if (target.special.battleSpirit > 0)
+        if (target.special.battleSpirit[target.rank] > 0)
         {
             if (damageType == Card.DamageType.Physical)
             {
-                target.attack += target.special.battleSpirit;
-                target.healthMax += target.special.battleSpirit;
-                target.health += target.special.battleSpirit;
+                target.attack[target.rank] += target.special.battleSpirit[target.rank];
+                target.healthMax[target.rank] += target.special.battleSpirit[target.rank];
+                target.health[target.rank] += target.special.battleSpirit[target.rank];
             }
         }
     }
@@ -1639,7 +1639,7 @@ public class Special : MonoBehaviour
 
     public void CheckArmorAuraBattlecry(Card dealer)
     {
-        if (dealer.special.armorAura > 0)
+        if (dealer.special.armorAura[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> allies = tile.GetAllOtherAllies(dealer);
@@ -1647,7 +1647,7 @@ public class Special : MonoBehaviour
             for (int i = 0; i < allies.Count; i++)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseArmor(dealer, allies[i], dealer.special.armorAura);
+                unitSpecial.IncreaseArmor(dealer, allies[i], dealer.special.armorAura[dealer.rank]);
             }
         }
     }
@@ -1659,10 +1659,10 @@ public class Special : MonoBehaviour
 
         for (int i = 0; i < allies.Count; i++)
         {
-            if (allies[i].special.armorAura > 0)
+            if (allies[i].special.armorAura[allies[i].rank] > 0)
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
-                unitSpecial.IncreaseArmor(allies[i], dealer, allies[i].special.armorAura);
+                unitSpecial.IncreaseArmor(allies[i], dealer, allies[i].special.armorAura[allies[i].rank]);
             }
         }
     }
@@ -1700,9 +1700,9 @@ public class Special : MonoBehaviour
             {
                 Rng rng = new Rng();
                 int rnd = occupied[rng.Range(0, occupied.Count)];
-                Hand.Cards[rnd].attack += 1;
-                Hand.Cards[rnd].health += 1;
-                Hand.Cards[rnd].healthMax += 1;
+                Hand.Cards[rnd].attack[Hand.Cards[rnd].rank] += 1;
+                Hand.Cards[rnd].health[Hand.Cards[rnd].rank] += 1;
+                Hand.Cards[rnd].healthMax[Hand.Cards[rnd].rank] += 1;
 
                 if (rnd < Hand.SIZE)
                 {
@@ -1747,7 +1747,7 @@ public class Special : MonoBehaviour
 
     public bool CheckThunderstorm(Card dealer)
     {
-        if (dealer.special.thunderStorm > 0)
+        if (dealer.special.thunderStorm[dealer.rank] > 0)
         {
             Tile tile = new Tile();
             List<Card> enemies = tile.GetAllEnemies(dealer);
@@ -1756,7 +1756,7 @@ public class Special : MonoBehaviour
                 UnitAttack unitAttack = new UnitAttack();
                 for (int i = 0; i < enemies.Count; i++)
                 {
-                    unitAttack.DealDamage(dealer, enemies[i], dealer.special.thunderStorm, Card.DamageType.Magical, false);
+                    unitAttack.DealDamage(dealer, enemies[i], dealer.special.thunderStorm[dealer.rank], Card.DamageType.Magical, false);
                 }
 
                 return true;

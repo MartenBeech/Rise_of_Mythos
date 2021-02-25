@@ -11,13 +11,14 @@ public class Game : MonoBehaviour
         WinBattle();
     }
 
-    public static int level = 0;
+    public static int level = -3;
     public static int rank = -1;
 
     public void NewBattle()
     {
         Hero hero = new Hero();
         Hero.heroes[1].healthDefault = hero.GetEnemyHealth(level);
+        Hero.heroes[0].healthDefault = hero.GetAllyHealth(level);
 
         Hero.heroes[0].health = Hero.heroes[0].healthDefault;
         Hero.heroes[1].health = Hero.heroes[1].healthDefault;
@@ -110,14 +111,6 @@ public class Game : MonoBehaviour
 
     public void NewGame()
     {
-        //Deck deck = new Deck();
-        //Card card = new Card();
-        //Rng rng = new Rng();
-        //List<Card> cardsRarity1 = card.GetCardsByRarity(1);
-
-        //for (int i = 0; i < 10; i++)
-        //    deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Ally);
-
         NewBattle();
     }
 }

@@ -26,7 +26,7 @@ public class Recruit : MonoBehaviour
 
     public void NewCards(int amount)
     {
-        Textbox.GetComponentInChildren<Text>().text = "Recruit " + amount + (amount > 1 ? " cards" : " card");
+        Textbox.GetComponentInChildren<Text>().text = "Recruit a card to your deck (" + amount + " more to go)";
         cardsToRecruit = amount;
         Camera camera = new Camera();
         camera.Recruit();
@@ -55,7 +55,7 @@ public class Recruit : MonoBehaviour
             card.DisplayCard(Recruits[i], Cards[i]);
 
             SpecialInfo specialInfo = new SpecialInfo();
-            Infos[i].GetComponentInChildren<Text>().text = specialInfo.GetCardInfo(rndCard);
+            Infos[i].GetComponentInChildren<Text>().text = specialInfo.GetCardInfo(Cards[i]);
             Hourglasses[i].GetComponentInChildren<Text>().text = rndCard.cd.ToString();
         }
     }
@@ -67,37 +67,37 @@ public class Recruit : MonoBehaviour
         switch (Game.level)
         {
             case 1:
-                rarityChances = new int[] { 80, 20, 0, 0, 0 };
+                rarityChances = new int[] { 100, 0, 0, 0, 0 };
                 break;
             case 2:
-                rarityChances = new int[] { 70, 30, 0, 0, 0 };
+                rarityChances = new int[] { 0, 100, 0, 0, 0 };
                 break;
             case 3:
-                rarityChances = new int[] { 60, 40, 0, 0, 0 };
+                rarityChances = new int[] { 0, 80, 20, 0, 0 };
                 break;
             case 4:
-                rarityChances = new int[] { 50, 40, 10, 0, 0 };
+                rarityChances = new int[] { 0, 60, 40, 0, 0 };
                 break;
             case 5:
                 rarityChances = new int[] { 0, 0, 0, 100, 0 };
                 break;
             case 6:
-                rarityChances = new int[] { 45, 30, 25, 0, 0 };
+                rarityChances = new int[] { 0, 45, 45, 10, 0 };
                 break;
             case 7:
-                rarityChances = new int[] { 35, 35, 30, 0, 0 };
+                rarityChances = new int[] { 0, 40, 40, 20, 0 };
                 break;
             case 8:
-                rarityChances = new int[] { 30, 30, 30, 10, 0 };
+                rarityChances = new int[] { 0, 35, 35, 30, 0 };
                 break;
             case 9:
-                rarityChances = new int[] { 30, 30, 20, 20, 0 };
+                rarityChances = new int[] { 0, 25, 40, 35, 0 };
                 break;
             case 10:
                 rarityChances = new int[] { 0, 0, 0, 0, 100 };
                 break;
             default:
-                rarityChances = new int[] { 22, 22, 22, 22, 12 };
+                rarityChances = new int[] { 24, 24, 24, 16, 12 };
                 break;
         }
 

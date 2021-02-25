@@ -18,10 +18,10 @@ public class UnitSpecial : MonoBehaviour
             Special special = new Special();
             special.CheckFaith(dealer);
 
-            target.health += amount;
-            if (target.health > target.healthMax)
+            target.health[target.rank] += amount;
+            if (target.health[target.rank] > target.healthMax[target.rank])
             {
-                target.health = target.healthMax;
+                target.health[target.rank] = target.healthMax[target.rank];
             }
         }
         
@@ -36,8 +36,8 @@ public class UnitSpecial : MonoBehaviour
         AnimaText animaText = new AnimaText();
         animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + "Health", Hue.cyan);
 
-        target.health += amount;
-        target.healthMax += amount;
+        target.health[target.rank] += amount;
+        target.healthMax[target.rank] += amount;
 
         target.DisplayCard(Bf.Bfs[target.tile], target);
 
@@ -49,7 +49,7 @@ public class UnitSpecial : MonoBehaviour
         AnimaText animaText = new AnimaText();
         animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + "Attack", Hue.cyan);
 
-        target.attack += amount;
+        target.attack[target.rank] += amount;
 
         target.DisplayCard(Bf.Bfs[target.tile], target);
 
@@ -63,15 +63,15 @@ public class UnitSpecial : MonoBehaviour
             AnimaText animaText = new AnimaText();
             animaText.ShowText(Bf.Bfs[target.tile], "-" + amount + " Health", Hue.magenta);
 
-            if (target.health > amount)
-                target.health -= amount;
+            if (target.health[target.rank] > amount)
+                target.health[target.rank] -= amount;
             else
-                target.health = 1;
+                target.health[target.rank] = 1;
 
-            if (target.healthMax > amount)
-                target.healthMax -= amount;
+            if (target.healthMax[target.rank] > amount)
+                target.healthMax[target.rank] -= amount;
             else
-                target.healthMax = 1;
+                target.healthMax[target.rank] = 1;
 
             target.DisplayCard(Bf.Bfs[target.tile], target);
 
@@ -84,7 +84,7 @@ public class UnitSpecial : MonoBehaviour
         AnimaText animaText = new AnimaText();
         animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Regen", Hue.cyan);
 
-        target.special.regeneration += amount;
+        target.special.regeneration[target.rank] += amount;
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }
@@ -146,7 +146,7 @@ public class UnitSpecial : MonoBehaviour
         AnimaText animaText = new AnimaText();
         animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Hero's Bane", Hue.cyan);
 
-        target.special.herosBane += amount;
+        target.special.herosBane[target.rank] += amount;
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }
@@ -166,7 +166,7 @@ public class UnitSpecial : MonoBehaviour
         AnimaText animaText = new AnimaText();
         animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Poison", Hue.cyan);
 
-        target.special.poison += amount;
+        target.special.poison[target.rank] += amount;
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }
@@ -176,7 +176,7 @@ public class UnitSpecial : MonoBehaviour
         AnimaText animaText = new AnimaText();
         animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Armor", Hue.cyan);
 
-        target.special.armor += amount;
+        target.special.armor[target.rank] += amount;
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }

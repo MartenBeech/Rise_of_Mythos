@@ -30,7 +30,7 @@ public class UnitAction : MonoBehaviour
                 UnitAttack unitAttack = new UnitAttack();
                 unitAttack.Attack(units[0]);
 
-                units[0].attack += units[0].heroicThisTurn;
+                units[0].attack[units[0].rank] += units[0].heroicThisTurn;
                 if (Bf.occupied[units[0].tile])
                 {
                     Card card = new Card();

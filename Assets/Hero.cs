@@ -9,7 +9,7 @@ public class Hero : MonoBehaviour
     public static GameObject[] Heroes = new GameObject[SIZE];
     public static Hero[] heroes = new Hero[SIZE];
 
-    public int health,  healthDefault = 30;
+    public int health,  healthDefault = 20;
     public bool destroyHero = false;
 
     private void Start()
@@ -50,19 +50,22 @@ public class Hero : MonoBehaviour
     public void AttackHero(Card dealer, Card.Alignment alignment)
     {
         dealer.attackedThisTurn = true;
-        int damage = dealer.attack;
+        int damage = dealer.attack[dealer.rank];
         damage += dealer.bonusAttackNextTurn;
 
         Special special = new Special();
         damage = special.CheckShadowBolt(dealer, damage);
         if (damage > 0)
         {
-            special.CheckSoulEater(dealer);
-            special.CheckInfluence(dealer);
+            special.CheckLifeSteal(dealer, damage);
             special.CheckHeroic(dealer);
+            special.CheckInfluence(dealer);
+            special.CheckSoulEater(dealer);
+            
+            
         }
 
-        for (int i = 0; i < dealer.special.multistrike + 1; i++)
+        for (int i = 0; i < dealer.special.multistrike[dealer.rank] + 1; i++)
         {
             special.CheckPanicStrike(dealer);
             DealDamage(dealer, alignment, damage);
@@ -123,15 +126,15 @@ public class Hero : MonoBehaviour
         else if (level % 5 != 0)
         {
             if (level <= 5)
-                return 25;
+                return 10;
             else if (level <= 10)
-                return 30;
+                return 20;
             else if (level <= 15)
-                return 35;
+                return 30;
             else if (level <= 20)
                 return 40;
             else
-                return 45;
+                return 50;
         }
         else
         {
@@ -146,5 +149,23 @@ public class Hero : MonoBehaviour
             else
                 return 300;
         }
+    }
+
+    public int GetAllyHealth(int level)
+    {
+        if (level <= 0)
+            return 30;
+        
+        else if (level <= 5)
+            return 20;
+        else if (level <= 10)
+            return 25;
+        else if (level <= 15)
+            return 30;
+        else if (level <= 20)
+            return 35;
+        else
+            return 40;
+        
     }
 }

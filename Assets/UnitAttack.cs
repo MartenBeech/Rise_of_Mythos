@@ -95,7 +95,7 @@ public class UnitAttack : MonoBehaviour
         {
             Special special = new Special();
             target = special.CheckMartyrdom(target);
-            for (int i = 0; i < dealer.special.multistrike + 1; i++)
+            for (int i = 0; i < dealer.special.multistrike[dealer.rank] + 1; i++)
             {
                 if (Bf.occupied[dealer.tile] && Bf.occupied[target.tile])
                 {
@@ -103,7 +103,7 @@ public class UnitAttack : MonoBehaviour
                     if (Bf.occupied[dealer.tile])
                     {
                         dealer.attackedThisTurn = true;
-                        DealDamage(dealer, target, dealer.attack, dealer.damageType);
+                        DealDamage(dealer, target, dealer.attack[dealer.rank], dealer.damageType);
                         special.CheckPierce(dealer, target);
                         special.CheckCleave(dealer, target);
                         if (Bf.occupied[target.tile])
@@ -138,10 +138,10 @@ public class UnitAttack : MonoBehaviour
 
         if (damage > 0)
         {
-            target.health -= damage;
+            target.health[dealer.rank] -= damage;
         }
             
-        if (target.health <= 0)
+        if (target.health[dealer.rank] <= 0)
         {
             Bf bf = new Bf();
             bf.RemoveCard(target.tile);

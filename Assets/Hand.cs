@@ -33,6 +33,7 @@ public class Hand : MonoBehaviour
             }
             Cards[handSpace] = card;
             occupied[handSpace] = true;
+            card.tile = handSpace;
 
             Deck deck = new Deck();
             deck.DisplayDeck();

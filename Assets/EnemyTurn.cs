@@ -86,7 +86,7 @@ public class EnemyTurn : MonoBehaviour
                 return SummonCard(handSpace, Bf.Column.Random);
 
             case Bf.Column.Random:
-                for (int i = Bf.SIZE - 9; i < Bf.SIZE; i++)
+                for (int i = Bf.SIZE - 6; i < Bf.SIZE; i++)
                 {
                     if (!Bf.occupied[i])
                         summonTiles.Add(i);

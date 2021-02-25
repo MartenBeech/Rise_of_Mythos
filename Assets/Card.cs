@@ -50,9 +50,9 @@ public class Card : MonoBehaviour
     }
     public DamageType damageType;
 
-    public int attack,      attackDefault;
-    public int health,      healthDefault;
-    public int healthMax,   healthMaxDefault;
+    public int[] attack,      attackDefault;
+    public int[] health,      healthDefault;
+    public int[] healthMax,   healthMaxDefault;
     public int cd,          cdDefault;
 
     public int speed,       speedDefault;
@@ -115,17 +115,17 @@ public class Card : MonoBehaviour
             (card.alignment == Card.Alignment.Ally ? "<color=green>" : "<color=red>") + "<size=" + nameTagSize + ">" +
             card.nameTag + "</size>" + "</color>" + "<size=37>" + "\n\n\n\n\n\n" + "</size>";
 
-        if (card.attack.ToString().Length < 2)
+        if (card.attack[card.rank].ToString().Length < 2)
             gameObject.GetComponentInChildren<Text>().text += " ";
 
-        gameObject.GetComponentInChildren<Text>().text += (card.damageType == Card.DamageType.Physical ? "<color=red>" : "<color=blue>") + card.attack + "</color>";
+        gameObject.GetComponentInChildren<Text>().text += (card.damageType == Card.DamageType.Physical ? "<color=red>" : "<color=blue>") + card.attack[card.rank] + "</color>";
 
-        for (int i = card.attack.ToString().Length + card.health.ToString().Length; i < 13; i++)
+        for (int i = card.attack[card.rank].ToString().Length + card.health[card.rank].ToString().Length; i < 13; i++)
             gameObject.GetComponentInChildren<Text>().text += "<size=47>" + " " + "</size>";
 
-        gameObject.GetComponentInChildren<Text>().text += "<color=green>" + card.health + "</color>";
+        gameObject.GetComponentInChildren<Text>().text += "<color=green>" + card.health[card.rank] + "</color>";
 
-        if (card.health.ToString().Length < 2)
+        if (card.health[card.rank].ToString().Length < 2)
             gameObject.GetComponentInChildren<Text>().text += " ";
 
         gameObject.GetComponentInChildren<Image>().sprite = card.sprite;
@@ -145,7 +145,7 @@ public class Card : MonoBehaviour
 
         for (int i = 0; i < Enum.GetNames(typeof(Title)).Length; i++)
         {
-            Card card = cardStat.GetStats((Title)i, Alignment.Ally);
+            Card card = cardStat.GetStats((Title)i, Alignment.Ally, Game.rank);
             if (card.rarity == _rarity)
             {
                 cards.Add(card);
@@ -162,7 +162,7 @@ public class Card : MonoBehaviour
 
         for (int i = 0; i < Enum.GetNames(typeof(Title)).Length; i++)
         {
-            Card card = cardStat.GetStats((Title)i, Alignment.Ally);
+            Card card = cardStat.GetStats((Title)i, Alignment.Ally, Game.rank);
             if (card.cd == _cd)
             {
                 cards.Add(card);

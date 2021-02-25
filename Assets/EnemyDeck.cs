@@ -42,11 +42,26 @@ public class EnemyDeck : MonoBehaviour
             case EnemyHero.Hero.Vayaron:
             case EnemyHero.Hero.Wysloth:
             case EnemyHero.Hero.Zenda:
-                if (Game.level <= 10)
+                if (Game.level <= 5)
                 {
-                    for (int i = 0; i < 9; i++)
+                    //bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.ElvenWitch, Card.Alignment.Enemy, 0), 15);
+                    for (int i = 0; i < 10; i++)
                         deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
-                    for (int i = 0; i < Game.level; i++)
+                    for (int i = 0; i < Game.level - 1; i++)
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
+                }
+                else if (Game.level <= 10)
+                {
+                    for (int i = 0; i < 10; i++)
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
+                    for (int i = 0; i < Game.level - 1; i++)
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
+                }
+                else if (Game.level <= 15)
+                {
+                    for (int i = 0; i < 10; i++)
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
+                    for (int i = 0; i < Game.level - 1; i++)
                         deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
                 }
                 else if (Game.level <= 20)
