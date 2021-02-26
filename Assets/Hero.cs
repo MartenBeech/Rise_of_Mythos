@@ -58,6 +58,7 @@ public class Hero : MonoBehaviour
         if (damage > 0)
         {
             special.CheckLifeSteal(dealer, damage);
+            special.CheckLifeAbsorb(dealer, damage);
             special.CheckHeroic(dealer);
             special.CheckInfluence(dealer);
             special.CheckSoulEater(dealer);

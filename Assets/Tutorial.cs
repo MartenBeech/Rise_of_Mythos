@@ -15,13 +15,13 @@ public class Tutorial : MonoBehaviour
         "Play your Fencer in the same row as the Lizard to defend your Hero. She will be able to move up to 2 tiles, and then attack 2 tiles in front of her.",
         "Unfortunately, your Fencer's <b>Physical</b> damage is no match against the Lizard's <b>Armor</b>. Luckily, your Priestess deals <b>Magical</b> damage. Play her on the same row.",
         "",
-        "Phew, that was close. Now your units are unthreatened to attack the Enemy Hero."
+        "Phew, that was close! Now your units are unthreatened to attack the enemy hero."
         };
     private string[] text2 = new string[] { 
-        "The bottom left shows each player's deck and hand count. You would draw 1 card each turn if you had any in your deck.",
+        "The bottom left shows each player's deck and hand count. You draw 1 card each turn.",
         "Oh boy, your opponent just summoned 2 Elven Longbow Archers. They have 7 range and can attack from long distances.",
         "Units with 4+ range choose not to move when they have a target in range. Sadly for you, your hero is that target.",
-        "You can now play your Lancers. They have 4 speed and <b>Charge</b> which allows them to deal more damage by gaining a runup. Play both in the far left column.",
+        "You can now play your Lancers. They have 4 speed and <b>Charge</b> which allows them to deal more damage by gaining a runup. Play 2 Lancers in the far left column.",
         "That should deal with them. Now charge for the enemy hero!"
     };
     private string[] text3 = new string[] { 
@@ -44,87 +44,90 @@ public class Tutorial : MonoBehaviour
     {
         arrayPoint = 0;
         SetText(level);
-        Deck.deckAlly.Clear();
-        CardStat cardStat = new CardStat();
+        Deck.deckAllyDefault.Clear();
         Card card = new Card();
+        Deck deck = new Deck();
         switch (level)
         {
             case -2:
-                card = cardStat.GetStats(Card.Title.Fencer, Card.Alignment.Ally, 0);
+                deck.AddCard(Card.Title.Fencer, Card.Alignment.Ally, 0, 1);
+                card = Deck.deckAllyDefault[0];
                 card.attack[card.rank] = card.attackDefault[card.rank] = 5;
                 card.health[card.rank] = card.healthDefault[card.rank] = card.healthMax[card.rank] = card.healthMaxDefault[card.rank] = 6;
                 card.cd = card.cdDefault = 3;
-                Deck.deckAlly.Add(card);
+                Deck.deckAllyDefault[0] = card;
 
-                card = cardStat.GetStats(Card.Title.Priestess, Card.Alignment.Ally, 0);
+                deck.AddCard(Card.Title.Priestess, Card.Alignment.Ally, 0, 1);
+                card = Deck.deckAllyDefault[1];
                 card.attack[card.rank] = card.attackDefault[card.rank] = 5;
                 card.health[card.rank] = card.healthDefault[card.rank] = card.healthMax[card.rank] = card.healthMaxDefault[card.rank] = 10;
                 card.cd = card.cdDefault = 4;
                 card.range = card.rangeDefault = 2;
                 card.special.penetrate = false;
-                Deck.deckAlly.Add(card);
+                Deck.deckAllyDefault[1] = card;
                 break;
 
             case -1:
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    card = cardStat.GetStats(Card.Title.Lancer, Card.Alignment.Ally, 0);
+                    deck.AddCard(Card.Title.Lancer, Card.Alignment.Ally, 0, 1);
+                    card = Deck.deckAllyDefault[i];
                     card.attack[card.rank] = card.attackDefault[card.rank] = 1;
                     card.health[card.rank] = card.healthDefault[card.rank] = card.healthMax[card.rank] = card.healthMaxDefault[card.rank] = 10;
                     card.cd = card.cdDefault = 3;
-
-                    Deck.deckAlly.Add(card);
+                    Deck.deckAllyDefault[i] = card;
                 }
                 break;
 
             case 0:
-                card = cardStat.GetStats(Card.Title.Squire, Card.Alignment.Ally, 0);
+                deck.AddCard(Card.Title.Squire, Card.Alignment.Ally, 0, 1);
+                card = Deck.deckAllyDefault[0];
                 card.attack[card.rank] = card.attackDefault[card.rank] = 5;
                 card.health[card.rank] = card.healthDefault[card.rank] = card.healthMax[card.rank] = card.healthMaxDefault[card.rank] = 25;
                 card.cd = card.cdDefault = 3;
-
-                Deck.deckAlly.Add(card);
+                Deck.deckAllyDefault[0] = card;
                 break;
         }
     }
 
     public void SetDeckEnemy(int level)
     {
-        Deck.deckEnemy.Clear();
-        CardStat cardStat = new CardStat();
+        Deck.deckEnemyDefault.Clear();
         Card card = new Card();
+        Deck deck = new Deck();
         switch (level)
         {
             case -2:
-                card = cardStat.GetStats(Card.Title.Lizard, Card.Alignment.Enemy, 0);
+                deck.AddCard(Card.Title.Lizard, Card.Alignment.Enemy, 0, 1);
+                card = Deck.deckEnemyDefault[0];
                 card.attack[card.rank] = card.attackDefault[card.rank] = 2;
                 card.health[card.rank] = card.healthDefault[card.rank] = card.healthMax[card.rank] = card.healthMaxDefault[card.rank] = 10;
                 card.cd = card.cdDefault = 2;
                 card.special.headbutt = false;
                 card.special.armor[card.rank] = 4;
-                Deck.deckEnemy.Add(card);
+                Deck.deckEnemyDefault[0] = card;
                 break;
 
             case -1:
                 for (int i = 0; i < 2; i++)
                 {
-                    card = cardStat.GetStats(Card.Title.ElvenLongbowArcher, Card.Alignment.Enemy, 0);
+                    deck.AddCard(Card.Title.ElvenLongbowArcher, Card.Alignment.Enemy, 0, 1);
+                    card = Deck.deckEnemyDefault[i];
                     card.attack[card.rank] = card.attackDefault[card.rank] = 1;
                     card.health[card.rank] = card.healthDefault[card.rank] = card.healthMax[card.rank] = card.healthMaxDefault[card.rank] = 5;
                     card.cd = card.cdDefault = 1;
                     card.range = 7;
-
-                    Deck.deckEnemy.Add(card);
+                    Deck.deckEnemyDefault[i] = card;
                 }
                 break;
 
             case 0:
-                card = cardStat.GetStats(Card.Title.Knight, Card.Alignment.Enemy, 0);
+                deck.AddCard(Card.Title.Knight, Card.Alignment.Enemy, 0, 1);
+                card = Deck.deckEnemyDefault[0];
                 card.attack[card.rank] = card.attackDefault[card.rank] = 3;
                 card.health[card.rank] = card.healthDefault[card.rank] = card.healthMax[card.rank] = card.healthMaxDefault[card.rank] = 15;
                 card.cd = card.cdDefault = 1;
-
-                Deck.deckEnemy.Add(card);
+                Deck.deckEnemyDefault[0] = card;
                 break;
         }
     }

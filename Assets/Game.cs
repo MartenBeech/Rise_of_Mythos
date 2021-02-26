@@ -11,11 +11,14 @@ public class Game : MonoBehaviour
         WinBattle();
     }
 
-    public static int level = -3;
-    public static int rank = -1;
+    public static int level = 0;    //-3
+    public static int rank = (level / 5) - 1;
 
     public void NewBattle()
     {
+        Camera camera = new Camera();
+        camera.Battle();
+
         Hero hero = new Hero();
         Hero.heroes[1].healthDefault = hero.GetEnemyHealth(level);
         Hero.heroes[0].healthDefault = hero.GetAllyHealth(level);
@@ -55,20 +58,21 @@ public class Game : MonoBehaviour
         else
         {
             Tutorial.Textbox.GetComponentInChildren<Text>().text = null;
-            CardStat cardStat = new CardStat();
-            Deck.deckAlly.Clear();
-            for (int i = 0; i < Deck.deckAllyDefault.Count; i++)
-            {
-                Deck.deckAlly.Add(cardStat.GetStats(Deck.deckAllyDefault[i].title, Deck.deckAllyDefault[i].alignment, Deck.deckAllyDefault[i].rank));
-            }
-
             EnemyDeck enemyDeck = new EnemyDeck();
             enemyDeck.SetEnemyDeckDefault(enemy);
-            Deck.deckEnemy.Clear();
-            for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
-            {
-                Deck.deckEnemy.Add(cardStat.GetStats(Deck.deckEnemyDefault[i].title, Deck.deckEnemyDefault[i].alignment, Deck.deckEnemyDefault[i].rank));
-            }
+        }
+
+        CardCopy cardCopy = new CardCopy();
+        Deck.deckAlly.Clear();
+        for (int i = 0; i < Deck.deckAllyDefault.Count; i++)
+        {
+            Deck.deckAlly.Add(cardCopy.GetCopyOfCard(Deck.deckAllyDefault[i]));
+        }
+        
+        Deck.deckEnemy.Clear();
+        for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
+        {
+            Deck.deckEnemy.Add(cardCopy.GetCopyOfCard(Deck.deckEnemyDefault[i]));
         }
 
         Hero.Heroes[1].GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Heroes/" + enemy);
@@ -86,9 +90,14 @@ public class Game : MonoBehaviour
     public void WinBattle()
     {
         level++;
-        if (level == 1 || level == 6 || level == 11 || level == 16 || level == 21)
+        if (level % 5 == 1)
         {
             rank++;
+            if (level > 5)
+            {
+                Upgrade upgrade = new Upgrade();
+                upgrade.UpgradeAllCards();
+            }
         }
         if (level == 1)
         {

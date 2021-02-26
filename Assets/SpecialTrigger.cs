@@ -38,16 +38,23 @@ public class SpecialTrigger : MonoBehaviour
 
     public void OnDeath(Card target)
     {
-        special.CheckReanimate(target);
-        special.CheckSkeletal(target);
-        special.CheckReapingCurse(target);
-        if (!Bf.occupied[target.tile])
+        if (target.returnedToHand)
         {
-            special.CheckSoulbound(target);
-            special.CheckDonor(target);
-            special.CheckCallOfTheUndeadKing(target);
-            special.CheckSoulHarvest(target);
-        } 
+            target.returnedToHand = false;
+        }
+        else
+        {
+            special.CheckReanimate(target);
+            special.CheckSkeletal(target);
+            special.CheckReapingCurse(target);
+            if (!Bf.occupied[target.tile])
+            {
+                special.CheckSoulbound(target);
+                special.CheckDonor(target);
+                special.CheckCallOfTheUndeadKing(target);
+                special.CheckSoulHarvest(target);
+            }
+        }
     }
 
     public void OnKill(Card dealer)
@@ -117,6 +124,7 @@ public class SpecialTrigger : MonoBehaviour
             if (basicAttack)
             {
                 special.CheckLifeSteal(dealer, damage);
+                special.CheckLifeAbsorb(dealer, damage);
                 special.CheckHeroic(dealer);
                 special.CheckWeaken(dealer, target);
                 special.CheckFrostBolt(dealer, target);

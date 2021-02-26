@@ -12,13 +12,13 @@ public class UnitAttack : MonoBehaviour
 
         Special special = new Special();
         if (special.CheckWhirlwind(dealer))
-        { }
-        else if (special.CheckVililanceAttack(dealer)) 
-        { }
+            externalAttackAnimation = true;
+        else if (special.CheckVililanceAttack(dealer))
+            externalAttackAnimation = true;
         else if (special.CheckMultiShot(dealer))
-        { }
+            externalAttackAnimation = true;
         else if (special.CheckSniper(dealer))
-        { }
+            externalAttackAnimation = true;
         else
         {
             if (dealer.alignment == Card.Alignment.Ally)
@@ -77,16 +77,15 @@ public class UnitAttack : MonoBehaviour
                     }
                 }
             }
-
-            SpecialTrigger trigger = new SpecialTrigger();
-            if (trigger.OnTurnEnd(dealer))
-            {
-                externalAttackAnimation = true;
-            }
-
-            if (!externalAttackAnimation)
-                UnitAction.counter -= UI.TIMER;
         }
+        SpecialTrigger trigger = new SpecialTrigger();
+        if (trigger.OnTurnEnd(dealer))
+        {
+            externalAttackAnimation = true;
+        }
+
+        if (!externalAttackAnimation)
+            UnitAction.counter -= UI.TIMER;
     }
 
     public bool AttackAlignment(Card dealer, Card target)
@@ -138,10 +137,10 @@ public class UnitAttack : MonoBehaviour
 
         if (damage > 0)
         {
-            target.health[dealer.rank] -= damage;
+            target.health[target.rank] -= damage;
         }
             
-        if (target.health[dealer.rank] <= 0)
+        if (target.health[target.rank] <= 0)
         {
             Bf bf = new Bf();
             bf.RemoveCard(target.tile);
@@ -155,6 +154,7 @@ public class UnitAttack : MonoBehaviour
         }
         target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
 
-        Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
+        if (Bf.occupied[dealer.tile])
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
     }
 }

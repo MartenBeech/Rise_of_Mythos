@@ -19,9 +19,9 @@ public class Recruit : MonoBehaviour
         {
             Recruits[i] = GameObject.Find("RecruitCard (" + i + ")");
             Infos[i] = GameObject.Find("RecruitInfo (" + i + ")");
-            Textbox = GameObject.Find("RecruitText");
             Hourglasses[i] = GameObject.Find("RecruitHourglass (" + i + ")");
         }
+        Textbox = GameObject.Find("RecruitText");
     }
 
     public void NewCards(int amount)
@@ -38,10 +38,7 @@ public class Recruit : MonoBehaviour
         Cards[1] = cardStat.GetStats(Card.Title.Null, Card.Alignment.Ally, Game.rank);
         Cards[2] = cardStat.GetStats(Card.Title.Null, Card.Alignment.Ally, Game.rank);
 
-
         int rarityChosen = GetRarityToRecruit();
-
-        
 
         for (int i = 0; i < SIZE; i++)
         {
@@ -126,11 +123,8 @@ public class Recruit : MonoBehaviour
             NewCards(cardsToRecruit);
         else
         {
-            Game game = new Game();
-            game.NewBattle();
-
-            Camera camera = new Camera();
-            camera.Battle();
+            Upgrade upgrade = new Upgrade();
+            upgrade.NewCards();
         }
     }
 }

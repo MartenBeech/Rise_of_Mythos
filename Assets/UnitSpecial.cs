@@ -93,8 +93,9 @@ public class UnitSpecial : MonoBehaviour
     {
         AnimaText animaText = new AnimaText();
         animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Range", Hue.cyan);
-
-        target.range += amount;
+        
+        if (target.range > 0)
+            target.range += amount;
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }
@@ -104,7 +105,8 @@ public class UnitSpecial : MonoBehaviour
         AnimaText animaText = new AnimaText();
         animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Speed", Hue.cyan);
 
-        target.speed += amount;
+        if (target.speed > 0)
+            target.speed += amount;
 
         Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
     }

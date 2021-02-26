@@ -34,7 +34,8 @@ public class Card : MonoBehaviour
         LordFleder, MaiaShadowblade, PrincessSarya, RyliTheWhiteWitch, SilvaTheAlmighty, SorannTheUnforgiving, StormLizardKing, TarielThePhalanx, UndeadKingBael, VarkusTheBlight,
         Whitemane,
 
-        Null, BoneHeap, RaisedDead
+        Null, BoneHeap, RaisedDead,
+        ArcaneCrystalTower, BoneWall, SentryTower, WarTotem, FlyerWall
     }
     public Title title;
 
@@ -50,24 +51,28 @@ public class Card : MonoBehaviour
     }
     public DamageType damageType;
 
-    public int[] attack,      attackDefault;
-    public int[] health,      healthDefault;
-    public int[] healthMax,   healthMaxDefault;
-    public int cd,          cdDefault;
+    public int[] attack = new int[6] { -1, -1, -1, -1, -1, -1 };
+    public int[] attackDefault = new int[6] { -1, -1, -1, -1, -1, -1 };
+    public int[] health = new int[6] { -1, -1, -1, -1, -1, -1 };
+    public int[] healthDefault = new int[6] { -1, -1, -1, -1, -1, -1 };
+    public int[] healthMax = new int[6] { -1, -1, -1, -1, -1, -1 };
+    public int[] healthMaxDefault = new int[6] { -1, -1, -1, -1, -1, -1 };
 
-    public int speed,       speedDefault;
-    public int range,       rangeDefault;
-    public int tile;
-    public int rarity;
-    public int rank;
+    public int cd = -1,          cdDefault = -1;
+    public int speed = -1,       speedDefault = -1;
+    public int range = -1,       rangeDefault = -1;
+    public int tile = -1;
+    public int rarity = -1;
+    public int rank = -1;
     public bool upgraded = false;
-    public string nameTag;
+    public string nameTag = "";
 
     public int bonusAttackNextTurn = 0;
     public int heroicThisTurn = 0;
     public bool canAttackThisTurn = true;
     public bool attackedThisTurn = false;
-    public Sprite sprite;
+    public bool returnedToHand = false;
+    public Sprite sprite = null;
     public Special special = new Special();
 
     public void DisplayCard(GameObject gameObject, Card card)

@@ -68,7 +68,11 @@ public class Bf : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < 6; i++)
+            int tiles = 3;
+            if (Hand.Cards[Hand.selected].special.wall)
+                tiles = 5;
+
+            for (int i = 0; i < tiles * 2; i++)
             {
                 if (!occupied[i])
                 {

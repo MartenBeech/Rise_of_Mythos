@@ -42,53 +42,58 @@ public class EnemyDeck : MonoBehaviour
             case EnemyHero.Hero.Vayaron:
             case EnemyHero.Hero.Wysloth:
             case EnemyHero.Hero.Zenda:
-                if (Game.level <= 5)
-                {
-                    //bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.ElvenWitch, Card.Alignment.Enemy, 0), 15);
-                    for (int i = 0; i < 10; i++)
-                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
-                    for (int i = 0; i < Game.level - 1; i++)
-                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
-                }
-                else if (Game.level <= 10)
+                if (Game.level < 5)
                 {
                     for (int i = 0; i < 10; i++)
                         deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
                     for (int i = 0; i < Game.level - 1; i++)
                         deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
                 }
-                else if (Game.level <= 15)
+                else if (Game.level < 10)
                 {
-                    for (int i = 0; i < 10; i++)
-                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
-                    for (int i = 0; i < Game.level - 1; i++)
-                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
-                }
-                else if (Game.level <= 20)
-                {
+                    for (int i = 0; i < 8; i++)
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
                     for (int i = 0; i < 5; i++)
-                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
-                    for (int i = 0; i < 5; i++)
-                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
-                    for (int i = 0; i < 5; i++)
-                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy, Game.rank);
-                    for (int i = 0; i < 3; i++)
-                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy, Game.rank);
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
                     for (int i = 0; i < 2; i++)
-                        deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy, Game.rank);
+                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
+                }
+                else if (Game.level < 15)
+                {
+                    for (int i = 0; i < 7; i++)
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
+                    for (int i = 0; i < 5; i++)
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
+                    for (int i = 0; i < 5; i++)
+                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
+                    for (int i = 0; i < 3; i++)
+                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
+                }
+                else if (Game.level < 20)
+                {
+                    for (int i = 0; i < 6; i++)
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
+                    for (int i = 0; i < 6; i++)
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
+                    for (int i = 0; i < 6; i++)
+                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
+                    for (int i = 0; i < 4; i++)
+                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
+                    for (int i = 0; i < 3; i++)
+                        deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
                 }
                 else
                 {
                     for (int i = 0; i < 7; i++)
-                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank);
+                        deck.AddCard(cardsRarity1[rng.Range(0, cardsRarity1.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
                     for (int i = 0; i < 7; i++)
-                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank);
+                        deck.AddCard(cardsRarity2[rng.Range(0, cardsRarity2.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
                     for (int i = 0; i < 7; i++)
-                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy, Game.rank);
+                        deck.AddCard(cardsRarity3[rng.Range(0, cardsRarity3.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
                     for (int i = 0; i < 5; i++)
-                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy, Game.rank);
+                        deck.AddCard(cardsRarity4[rng.Range(0, cardsRarity4.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
                     for (int i = 0; i < 4; i++)
-                        deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy, Game.rank);
+                        deck.AddCard(cardsRarity5[rng.Range(0, cardsRarity5.Count)].title, Card.Alignment.Enemy, Game.rank + 1);
                 }
                 
                 break;
@@ -117,6 +122,14 @@ public class EnemyDeck : MonoBehaviour
                 deck.AddCard(Card.Title.UndeadKingBael, Card.Alignment.Enemy, Game.rank, 1);
                 deck.AddCard(Card.Title.VarkusTheBlight, Card.Alignment.Enemy, Game.rank, 1);
                 deck.AddCard(Card.Title.Whitemane, Card.Alignment.Enemy, Game.rank, 1);
+
+                for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
+                {
+                    Deck.deckEnemyDefault[i].cd--;
+                    Deck.deckEnemyDefault[i].cdDefault--;
+                }
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.WarTotem, Card.Alignment.Ally, Game.rank), 8);
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.WarTotem, Card.Alignment.Ally, Game.rank), 9);
                 break;
 
             case EnemyHero.Hero.Ivan:
@@ -147,6 +160,13 @@ public class EnemyDeck : MonoBehaviour
 
                 deck.AddCard(Card.Title.EmrysTheUnyielding, Card.Alignment.Enemy, Game.rank, 1);
                 deck.AddCard(Card.Title.TarielThePhalanx, Card.Alignment.Enemy, Game.rank, 1);
+
+                for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
+                {
+                    Deck.deckEnemyDefault[i].special.charge[Deck.deckEnemyDefault[i].rank]++;
+                }
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.FlyerWall, Card.Alignment.Ally, Game.rank), 8);
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.FlyerWall, Card.Alignment.Ally, Game.rank), 9);
                 break;
 
             case EnemyHero.Hero.Khalida:
@@ -171,6 +191,13 @@ public class EnemyDeck : MonoBehaviour
 
                 deck.AddCard(Card.Title.SilvaTheAlmighty, Card.Alignment.Enemy, Game.rank, 1);
                 deck.AddCard(Card.Title.RyliTheWhiteWitch, Card.Alignment.Enemy, Game.rank, 1);
+
+                for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
+                {
+                    Deck.deckEnemyDefault[i].special.thunderStorm[Deck.deckEnemyDefault[i].rank]++;
+                }
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.ArcaneCrystalTower, Card.Alignment.Ally, Game.rank), 8);
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.ArcaneCrystalTower, Card.Alignment.Ally, Game.rank), 9);
                 break;
 
             case EnemyHero.Hero.Ludmilla:
@@ -193,6 +220,14 @@ public class EnemyDeck : MonoBehaviour
                 deck.AddCard(Card.Title.DesperateSoul, Card.Alignment.Enemy, Game.rank, 2);
 
                 deck.AddCard(Card.Title.Gringheist, Card.Alignment.Enemy, Game.rank, 2);
+
+                for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
+                {
+                    Deck.deckEnemyDefault[i].special.soulbound = true;
+                    Deck.deckEnemyDefault[i].special.reanimate = true;
+                }
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.BoneWall, Card.Alignment.Ally, Game.rank), 8);
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.BoneWall, Card.Alignment.Ally, Game.rank), 9);
                 break;
 
             case EnemyHero.Hero.Menan:
@@ -212,6 +247,14 @@ public class EnemyDeck : MonoBehaviour
 
                 deck.AddCard(Card.Title.LordFleder, Card.Alignment.Enemy, Game.rank, 2);
                 deck.AddCard(Card.Title.PrincessSarya, Card.Alignment.Enemy, Game.rank, 2);
+
+                for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
+                {
+                    Deck.deckEnemyDefault[i].special.lifeAbsorb = true;
+                    Deck.deckEnemyDefault[i].special.lifeSteal = false;
+                }
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.SentryTower, Card.Alignment.Ally, Game.rank), 8);
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.SentryTower, Card.Alignment.Ally, Game.rank), 9);
                 break;
 
         }

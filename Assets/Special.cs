@@ -7,7 +7,6 @@ public class Special : MonoBehaviour
 {
     public bool wall = false;
     public bool flying = false;
-
     public bool vigilance = false;
     public bool penetrate = false;
 
@@ -103,6 +102,7 @@ public class Special : MonoBehaviour
     public bool cheif = false;
     public bool krush = false;
     public int[] thunderStorm = new int[6] {0, 0, 0, 0, 0, 0};
+    public bool lifeAbsorb = false;
 
 
     public int CheckArmor(Card dealer, Card target, int damage, Card.DamageType damageType)
@@ -727,6 +727,7 @@ public class Special : MonoBehaviour
             CardStat cardStat = new CardStat();
             Card card = cardStat.GetStats(target.title, target.alignment, target.rank);
             dealer.special.fear = false;
+            target.returnedToHand = true;
 
             Hand hand = new Hand();
             hand.AddCardFromBf(card, target.tile, target.alignment);
@@ -930,7 +931,8 @@ public class Special : MonoBehaviour
             {
                 if (Hand.occupied[i])
                 {
-                    occupied.Add(i);
+                    if (Hand.Cards[i].cd > 0)
+                        occupied.Add(i);
                 }
             }
 
@@ -1355,7 +1357,8 @@ public class Special : MonoBehaviour
             {
                 if (Hand.occupied[i])
                 {
-                    occupied.Add(i);
+                    if (Hand.Cards[i].cd > 0)
+                        occupied.Add(i);
                 }
             }
 
@@ -1631,7 +1634,8 @@ public class Special : MonoBehaviour
                 AnimaCard animaCard = new AnimaCard();
                 if (tileNew != dealer.tile)
                 {
-                    animaCard.MoveBfBf(dealer, dealer.tile, tileNew);
+                    if (Bf.occupied[dealer.tile])
+                        animaCard.MoveBfBf(dealer, dealer.tile, tileNew);
                 }
             }
         }
@@ -1721,8 +1725,12 @@ public class Special : MonoBehaviour
 
             if (tileNew != target.tile)
             {
-                AnimaCard animaCard = new AnimaCard();
-                animaCard.MoveBfBf(target, target.tile, tileNew);
+                if (Bf.occupied[dealer.tile])
+                {
+                    AnimaCard animaCard = new AnimaCard();
+                    animaCard.MoveBfBf(target, target.tile, tileNew);
+                }
+                    
             }
         }
     }
@@ -1763,5 +1771,17 @@ public class Special : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void CheckLifeAbsorb(Card dealer, int damage)
+    {
+        if (dealer.special.lifeAbsorb)
+        {
+            if (dealer.health[dealer.rank] < dealer.healthMax[dealer.rank])
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.Heal(dealer, dealer, damage * 2);
+            }
+        }
     }
 }
