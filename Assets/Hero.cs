@@ -140,13 +140,13 @@ public class Hero : MonoBehaviour
         else
         {
             if (level <= 5)
-                return 50;
+                return 30;
             else if (level <= 10)
-                return 60;
+                return 50;
             else if (level <= 15)
                 return 70;
             else if (level <= 20)
-                return 80;
+                return 90;
             else
                 return 300;
         }

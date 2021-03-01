@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     public static bool gameOver = false;
+    public static EnemyHero.Hero enemy;
     private void Start()
     {
         WinBattle();
@@ -39,15 +40,6 @@ public class Game : MonoBehaviour
         {
             bf.RemoveCard(i);
         }
-
-        EnemyHero.Hero enemy;
-        EnemyHero enemyHero = new EnemyHero();
-        if (level <= 0)
-            enemy = enemyHero.GetRandomNovice();
-        else if (level % 5 != 0)
-            enemy = enemyHero.GetRandomHero();
-        else
-            enemy = enemyHero.GetRandomBoss();
 
         if (level <= 0)
         {
@@ -87,6 +79,19 @@ public class Game : MonoBehaviour
         gameOver = false;
     }
 
+    public EnemyHero.Hero GetRandomEnemy()
+    {
+        EnemyHero.Hero enemy;
+        EnemyHero enemyHero = new EnemyHero();
+        if (level <= 0)
+            enemy = enemyHero.GetRandomNovice();
+        else if (level % 5 != 0)
+            enemy = enemyHero.GetRandomHero();
+        else
+            enemy = enemyHero.GetRandomBoss();
+        return enemy;
+    }
+
     public void WinBattle()
     {
         level++;
@@ -110,7 +115,10 @@ public class Game : MonoBehaviour
             recruit.NewCards(1);
         }
         else
+        {
+            enemy = GetRandomEnemy();
             NewBattle();
+        }
     }
 
     public void LoseBattle()
@@ -120,6 +128,7 @@ public class Game : MonoBehaviour
 
     public void NewGame()
     {
+        enemy = GetRandomEnemy();
         NewBattle();
     }
 }

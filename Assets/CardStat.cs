@@ -106,8 +106,8 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.ElvenArcher:
-                card.attack = new int[6] { 2, 2, 3, 3, 4, 5 };
-                card.health = new int[6] { 2, 4, 4, 6, 7, 8 };
+                card.attack = new int[6] { 1, 2, 3, 3, 4, 5 };
+                card.health = new int[6] { 4, 4, 4, 6, 7, 8 };
                 card.cd = 2;
                 card.range = 5;
                 card.speed = 2;
@@ -558,7 +558,7 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
                 card.special.nimble = true;
                 card.special.armor = new int[6] { 1, 1, 1, 1, 1, 1 };
-                card.special.resistance = new int[6] { 2, 2, 3, 3, 4, 5 };
+                card.special.resistance = new int[6] { 1, 2, 3, 3, 4, 5 };
                 break;
 
             case Card.Title.BloodthirstyBat:

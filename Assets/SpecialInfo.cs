@@ -62,12 +62,12 @@ public class SpecialInfo : MonoBehaviour
             (card.special.witheringAura[card.rank] > 0 ? "<b>" + "Withering Aura " + card.special.witheringAura[card.rank] + ": " + "</b>" + "Enemy units get reduced health, but not less than 1" + "\n" : "") +
             (card.special.rangeAura[card.rank] > 0 ? "<b>" + "Range Aura " + card.special.rangeAura[card.rank] + ": " + "</b>" + "Allied units get bonus range" + "\n" : "") +
             (card.special.speedAura[card.rank] > 0 ? "<b>" + "Speed Aura " + card.special.speedAura[card.rank] + ": " + "</b>" + "Allied units get bonus speed" + "\n" : "") +
-            (card.special.attackAura[card.rank] > 0 ? "<b>" + "Attack Aura " + card.special.rangeAura[card.rank] + ": " + "</b>" + "Allied units get bonus attack" + "\n" : "") +
+            (card.special.attackAura[card.rank] > 0 ? "<b>" + "Attack Aura " + card.special.attackAura[card.rank] + ": " + "</b>" + "Allied units get bonus attack" + "\n" : "") +
             (card.special.blizzardAura ? "<b>" + "Blizzard Aura: " + "</b>" + "Enemy units have -1 Range and Speed" + "\n" : "") +
             (card.special.herosBaneAura[card.rank] > 0 ? "<b>" + "Hero's Bane Aura " + card.special.herosBaneAura[card.rank] + ": " + "</b>" + "Allied units get Hero's Bane" + "\n" : "") +
             (card.special.penetrateAura ? "<b>" + "Penetrate Aura: " + "</b>" + "Allied units get Penetrate" + "\n" : "") +
             (card.special.poisonAura[card.rank] > 0 ? "<b>" + "Poison Aura " + card.special.poisonAura[card.rank] + ": " + "</b>" + "Allied units get Poison" + "\n" : "") +
-            (card.special.armorAura[card.rank] > 0 ? "<b>" + "Armor Aura " + card.special.poisonAura[card.rank] + ": " + "</b>" + "Allied units get Armor" + "\n" : "") +
+            (card.special.armorAura[card.rank] > 0 ? "<b>" + "Armor Aura " + card.special.armorAura[card.rank] + ": " + "</b>" + "Allied units get Armor" + "\n" : "") +
 
             (card.special.pierce ? "<b>" + "Pierce: " + "</b>" + "Also deals damage to the enemy behind the target" + "\n" : "") +
             (card.special.whirlwind ? "<b>" + "Whirlwind: " + "</b>" + "Attack all adjacent enemies" + "\n" : "") +
