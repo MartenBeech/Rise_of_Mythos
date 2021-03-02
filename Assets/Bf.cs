@@ -44,6 +44,7 @@ public class Bf : MonoBehaviour
             Cards[i].DisplayNull(Bfs[i]);
             Cards[i] = null;
         }
+        Bfs[i].GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("UI/EmptyCard");
     }
 
     public void MarkPlayable()

@@ -93,6 +93,8 @@ public class Hand : MonoBehaviour
             Deck deck = new Deck();
             deck.DisplayDeck();
         }
+        if (i < SIZE)
+            Hands[i].GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("UI/CardBack");
     }
 
     private int GetHandSpace(Card.Alignment alignment)

@@ -112,7 +112,7 @@ public class Hero : MonoBehaviour
     {
         if (alignment == Card.Alignment.Ally)
         {
-            Heroes[0].GetComponentInChildren<Text>().text = "<color=red>" + heroes[0].health + "/" + heroes[0].healthDefault + "</color>";
+            Heroes[0].GetComponentInChildren<Text>().text = "<color=green>" + heroes[0].health + "/" + heroes[0].healthDefault + "</color>";
         }
         else
         {
