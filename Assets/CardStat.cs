@@ -39,7 +39,7 @@ public class CardStat : MonoBehaviour
         {
             case Card.Title.Bat:
                 card.attack = new int[6] { 1, 1, 2, 2, 2, 3 };
-                card.health = new int[6] { 3, 5, 5, 7, 9, 11 };
+                card.health = new int[6] { 4, 6, 6, 8, 10, 12 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
@@ -431,7 +431,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.VenomousBat:
                 card.attack = new int[6] { 1, 1, 1, 2, 2, 2 };
-                card.health = new int[6] { 2, 3, 3, 3, 5, 6 };
+                card.health = new int[6] { 4, 5, 5, 5, 7, 8 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 2;
@@ -563,7 +563,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.BloodthirstyBat:
                 card.attack = new int[6] { 2, 2, 3, 3, 3, 4 };
-                card.health = new int[6] { 3, 4, 4, 5, 7, 8 };
+                card.health = new int[6] { 4, 5, 5, 6, 8, 9 };
                 card.cd = 2;
                 card.range = 2;
                 card.speed = 2;
@@ -909,7 +909,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.SepticBat:
                 card.attack = new int[6] { 1, 1, 2, 2, 3, 3 };
-                card.health = new int[6] { 4, 6, 6, 8, 9, 10 };
+                card.health = new int[6] { 6, 8, 8, 10, 11, 12 };
                 card.cd = 3;
                 card.range = 2;
                 card.speed = 2;
@@ -1401,7 +1401,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.ScarletBat:
                 card.attack = new int[6] { 2, 2, 2, 3, 3, 4 };
-                card.health = new int[6] { 7, 9, 11, 11, 13, 14 };
+                card.health = new int[6] { 8, 10, 12, 12, 14, 15 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
@@ -1414,7 +1414,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.SpitefulBat:
                 card.attack = new int[6] { 1, 1, 2, 2, 3, 3 };
-                card.health = new int[6] { 8, 10, 10, 12, 12, 12 };
+                card.health = new int[6] { 10, 12, 12, 14, 14, 14 };
                 card.cd = 5;
                 card.range = 2;
                 card.speed = 2;
@@ -1758,8 +1758,8 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.VirulentBatKing:
-                card.attack = new int[6] { 1, 1, 1, 1, 1, 1 };
-                card.health = new int[6] { 7, 8, 9, 10, 11, 12 };
+                card.attack = new int[6] { 1, 1, 1, 1, 1, 2 };
+                card.health = new int[6] { 9, 10, 11, 12, 13, 14 };
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
@@ -1917,6 +1917,7 @@ public class CardStat : MonoBehaviour
                 card.special.flying = true;
                 card.special.lifeSteal = true;
                 card.special.battleSpirit = new int[6] { 1, 1, 1, 1, 1, 2 };
+                card.special.bleedingAttack = true;
                 break;
 
             case Card.Title.MaiaShadowblade:

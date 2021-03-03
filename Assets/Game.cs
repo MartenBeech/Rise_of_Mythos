@@ -54,6 +54,13 @@ public class Game : MonoBehaviour
             enemyDeck.SetEnemyDeckDefault(enemy);
         }
 
+        if (level == 1)
+        {
+            UI ui = new UI();
+            while (UI.TIMER != 1f)
+                ui.SpeedUpGame();
+        }
+
         CardCopy cardCopy = new CardCopy();
         Deck.deckAlly.Clear();
         for (int i = 0; i < Deck.deckAllyDefault.Count; i++)

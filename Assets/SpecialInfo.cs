@@ -110,7 +110,7 @@ public class SpecialInfo : MonoBehaviour
 
             (card.special.kingsCommand ? "<b>" + "King's Command: " + "</b>" + "Summons a random 1-countdown unit each turn" + "\n" : "") +
             (card.special.combatMaster ? "<b>" + "Combat Master: " + "</b>" + "Deals double damage to enemies with 4+ Range, 4+ Speed, Armor, Wall or Flying" + "\n" : "") +
-            (card.special.callOfTheUndeadKing ? "<b>" + "Call of the Undead King: " + "</b>" + "Whenever an enemy dies, raise a 2/3 Zombie with Reanimate in its place" + "\n" : "") +
+            (card.special.callOfTheUndeadKing ? "<b>" + "Call of the Undead King: " + "</b>" + "Whenever an enemy unit dies, raise a Zombie with Reanimate in its place" + "\n" : "") +
             (card.special.blackIce ? "<b>" + "Black Ice: " + "</b>" + "Upon taking damage, reduced the attacker's speed to 0" + "\n" : "") +
             (card.special.soulHarvest ? "<b>" + "Soul Harvest: " + "</b>" + "Whenever an enemy dies, gain half its Attack and Health" + "\n" : "") +
             (card.special.multiShot ? "<b>" + "Multishot: " + "</b>" + "Attack all enemy units and heroes inside range" + "\n" : "") +

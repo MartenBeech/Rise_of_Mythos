@@ -103,6 +103,8 @@ public class Hero : MonoBehaviour
                 {
                     heroes[1].destroyHero = true;
                     Game.gameOver = true;
+                    if (Game.level % 5 == 0)
+                        animaText.ShowText(Hero.Heroes[0], "All cards rank up", Hue.cyan);
                 }
             }
         }

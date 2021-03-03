@@ -98,7 +98,5 @@ public class Upgrade : MonoBehaviour
             Deck.deckAllyDefault[i] = cardStat.GetStats(Deck.deckAllyDefault[i].title, Deck.deckAllyDefault[i].alignment, Deck.deckAllyDefault[i].rank + 1);
             Deck.deckAllyDefault[i].upgraded = upgraded;
         }
-        AnimaText animaText = new AnimaText();
-        animaText.ShowText(Hero.Heroes[0], "All cards rank up", Hue.cyan);
     }
 }

@@ -32,7 +32,7 @@ public class Tutorial : MonoBehaviour
         "",
         "",
         "Good job, Commander. Now finish up the enemy hero and finish the tutorial. After this you will be able to craft your own deck.",
-        "You can speed up the game if the animations are too slow for your taste."
+        "You can speed up the game with the top right button, in case the animations are too slow for your taste."
     };
     private static int arrayPoint = 0;
 
@@ -50,6 +50,7 @@ public class Tutorial : MonoBehaviour
         switch (level)
         {
             case -2:
+                UI.SpeedUp.GetComponentInChildren<Image>().enabled = false;
                 deck.AddCard(Card.Title.Fencer, Card.Alignment.Ally, 0, 1);
                 card = Deck.deckAllyDefault[0];
                 card.attack[card.rank] = card.attackDefault[card.rank] = 5;
@@ -161,6 +162,8 @@ public class Tutorial : MonoBehaviour
                         ShowText(text3[arrayPoint]);
                     arrayPoint++;
                 }
+                if (arrayPoint == text3.Length)
+                    UI.SpeedUp.GetComponentInChildren<Image>().enabled = true;
                 break;
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    GameObject SpeedUp;
+    public static GameObject SpeedUp;
     public static float TIMER = 2f;
 
     private void Start()

@@ -39,10 +39,10 @@ public class Recruit : MonoBehaviour
         Cards[2] = cardStat.GetStats(Card.Title.Null, Card.Alignment.Ally, Game.rank);
 
         int rarityChosen = GetRarityToRecruit();
+        List<Card> cards = card.GetCardsByRarity(rarityChosen);
 
         for (int i = 0; i < SIZE; i++)
         {
-            List<Card> cards = card.GetCardsByRarity(rarityChosen);
             do
             {
                 rndCard = cards[rng.Range(0, cards.Count)];

@@ -90,9 +90,9 @@ public class Deck : MonoBehaviour
         }
 
         Decks.GetComponentInChildren<Text>().text =
-            "<color=green>" + "Hand: " + "</color>" + handAlly + "\n" +
-            "<color=green>" + "Deck: " + "</color>" + deckAlly.Count + "\n\n" +
-            "<color=red>" + "Hand: " + "</color>" + handEnemy + "\n" +
-            "<color=red>" + "Deck: " + "</color>" + deckEnemy.Count;
+            "<color=green>" + "Hand: " + handAlly + "</color>" + "\n" +
+            "<color=green>" + "Deck: " + deckAlly.Count + "</color>" + "\n\n" +
+            "<color=red>" + "Hand: " + handEnemy + "</color>" + "\n" +
+            "<color=red>" + "Deck: " + deckEnemy.Count + "</color>";
     }
 }
