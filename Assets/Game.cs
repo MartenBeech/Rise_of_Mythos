@@ -12,7 +12,7 @@ public class Game : MonoBehaviour
         WinBattle();
     }
 
-    public static int level = 0;    //-3
+    public static int level = -3;    //-3
     public static int rank = (level / 5) - 1;
 
     public void NewBattle()

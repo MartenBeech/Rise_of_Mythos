@@ -60,6 +60,7 @@
     <Compile Include="Assets\EnemyDeck.cs" />
     <Compile Include="Assets\AnimaText.cs" />
     <Compile Include="Assets\UI.cs" />
+    <Compile Include="Assets\Upgrade.cs" />
     <Compile Include="Assets\Hand.cs" />
     <Compile Include="Assets\Rng.cs" />
     <Compile Include="Assets\UnitAction.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\EnemyTurn.cs" />
     <Compile Include="Assets\Hue.cs" />
     <Compile Include="Assets\UnitMove.cs" />
+    <Compile Include="Assets\CardCopy.cs" />
     <Compile Include="Assets\AnimaInfo.cs" />
     <Compile Include="Assets\Tile.cs" />
     <Compile Include="Assets\Bf.cs" />
@@ -84,8 +86,7 @@
     <Compile Include="Assets\AnimaCard.cs" />
     <Compile Include="Assets\Hero.cs" />
     <Compile Include="Assets\EnemyHero.cs" />
-    <Compile Include="Assets\CardCopy.cs" />
-    <Compile Include="Assets\Upgrade.cs" />
+    <Compile Include="Assets\AnimaHeroInfo.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

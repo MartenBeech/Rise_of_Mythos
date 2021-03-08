@@ -8,8 +8,8 @@ public class Tutorial : MonoBehaviour
 {
     public static GameObject Textbox;
 
-    private string[] text1 = new string[] { 
-        "Welcome to the game, Commander!\nThe bottom of the screen shows your hand. You have 2 cards in your hand; a Fencer and a Priestess.",
+    private string[] text0 = new string[] { 
+        "Welcome to the game, Commander!\nThe bottom of the screen shows your hand. You are holding 2 cards; a Fencer and a Priestess.",
         "The hourglasses over your cards show their countdown. The countdown is reduced by 1 each turn, and cards can be played when they have a countdown of 0.",
         "Your opponent just played a Lizard. Lucky for you it has reduced speed and range. The default range and speed value for all units is 2.",
         "Play your Fencer in the same row as the Lizard to defend your Hero. She will be able to move up to 2 tiles, and then attack 2 tiles in front of her.",
@@ -17,14 +17,14 @@ public class Tutorial : MonoBehaviour
         "",
         "Phew, that was close! Now your units are unthreatened to attack the enemy hero."
         };
-    private string[] text2 = new string[] { 
+    private string[] text1 = new string[] { 
         "The bottom left shows each player's deck and hand count. You draw 1 card each turn.",
         "Oh boy, your opponent just summoned 2 Elven Longbow Archers. They have 7 range and can attack from long distances.",
         "Units with 4+ range choose not to move when they have a target in range. Sadly for you, your hero is that target.",
         "You can now play your Lancers. They have 4 speed and <b>Charge</b> which allows them to deal more damage by gaining a runup. Play 2 Lancers in the far left column.",
         "That should deal with them. Now charge for the enemy hero!"
     };
-    private string[] text3 = new string[] { 
+    private string[] text2 = new string[] { 
         "This game is very fun and addictive. Remember to take a few breaks once in a while. But not now!",
         "Looks like your opponent is trying to rush you down with his own cavalry. At least his doesn't have <b>Charge</b>.",
         "The Knight has the <b>Heroic</b> ability, causing his attacks to get stronger and stronger. You need to stop him quickly.",
@@ -138,6 +138,15 @@ public class Tutorial : MonoBehaviour
         switch (level)
         {
             case -2:
+                if (arrayPoint < text0.Length)
+                {
+                    if (text0[arrayPoint] != "")
+                        ShowText(text0[arrayPoint]);
+                    arrayPoint++;
+                }
+                break;
+
+            case -1:
                 if (arrayPoint < text1.Length)
                 {
                     if (text1[arrayPoint] != "")
@@ -146,23 +155,14 @@ public class Tutorial : MonoBehaviour
                 }
                 break;
 
-            case -1:
+            case 0:
                 if (arrayPoint < text2.Length)
                 {
                     if (text2[arrayPoint] != "")
                         ShowText(text2[arrayPoint]);
                     arrayPoint++;
                 }
-                break;
-
-            case 0:
-                if (arrayPoint < text3.Length)
-                {
-                    if (text3[arrayPoint] != "")
-                        ShowText(text3[arrayPoint]);
-                    arrayPoint++;
-                }
-                if (arrayPoint == text3.Length)
+                if (arrayPoint == text2.Length)
                     UI.SpeedUp.GetComponentInChildren<Image>().enabled = true;
                 break;
         }

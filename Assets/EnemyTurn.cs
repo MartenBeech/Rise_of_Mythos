@@ -30,7 +30,7 @@ public class EnemyTurn : MonoBehaviour
                     if (SummonCard(i, GetPreferredColumn(Hand.Cards[i])))
                     {
                         cardRunThrough = i + 1;
-                        counter = UI.TIMER * 1.02f;
+                        counter = UI.TIMER * 1.04f;
                         return;
                     }
                 }
@@ -44,48 +44,32 @@ public class EnemyTurn : MonoBehaviour
     {
         List<int> summonTiles = new List<int>();
         Rng rng = new Rng();
+        int iMin, iMax;
         switch(preferredColumn)
         {
             case Bf.Column.Back:
-                for (int i = Bf.SIZE - 2; i < Bf.SIZE; i++)
-                {
-                    if (!Bf.occupied[i])
-                        summonTiles.Add(i);
-                }
-                if (summonTiles.Count > 0)
-                {
-                    SummonCard(handSpace, summonTiles[rng.Range(0, summonTiles.Count)]);
-                    return true;
-                }
-                return SummonCard(handSpace, Bf.Column.Random);
+                iMin = Bf.SIZE - 2;
+                iMax = Bf.SIZE;
+                break;
 
             case Bf.Column.Middle:
-                for (int i = Bf.SIZE - 4; i < Bf.SIZE - 2; i++)
-                {
-                    if (!Bf.occupied[i])
-                        summonTiles.Add(i);
-                }
-                if (summonTiles.Count > 0)
-                {
-                    SummonCard(handSpace, summonTiles[rng.Range(0, summonTiles.Count)]);
-                    return true;
-                }
-                return SummonCard(handSpace, Bf.Column.Random);
+                iMin = Bf.SIZE - 4;
+                iMax = Bf.SIZE - 2;
+                break;
 
             case Bf.Column.Front:
-                for (int i = Bf.SIZE - 6; i < Bf.SIZE - 4; i++)
-                {
-                    if (!Bf.occupied[i])
-                        summonTiles.Add(i);
-                }
-                if (summonTiles.Count > 0)
-                {
-                    SummonCard(handSpace, summonTiles[rng.Range(0, summonTiles.Count)]);
-                    return true;
-                }
-                return SummonCard(handSpace, Bf.Column.Random);
+                iMin = Bf.SIZE - 6;
+                iMax = Bf.SIZE - 4;
+                break;
+
+            case Bf.Column.Wall:
+                iMin = Bf.SIZE - 10;
+                iMax = Bf.SIZE - 6;
+                break;
 
             case Bf.Column.Random:
+                iMin = Bf.SIZE - 6;
+                iMax = Bf.SIZE;
                 for (int i = Bf.SIZE - 6; i < Bf.SIZE; i++)
                 {
                     if (!Bf.occupied[i])
@@ -101,6 +85,18 @@ public class EnemyTurn : MonoBehaviour
             default:
                 return SummonCard(handSpace, Bf.Column.Random);
         }
+
+        for (int i = iMin; i < iMax; i++)
+        {
+            if (!Bf.occupied[i])
+                summonTiles.Add(i);
+        }
+        if (summonTiles.Count > 0)
+        {
+            SummonCard(handSpace, summonTiles[rng.Range(0, summonTiles.Count)]);
+            return true;
+        }
+        return SummonCard(handSpace, Bf.Column.Random);
     }
 
     public void SummonCard(int from, int to)
@@ -111,6 +107,8 @@ public class EnemyTurn : MonoBehaviour
 
     public Bf.Column GetPreferredColumn(Card card)
     {
+        if (card.special.wall)
+            return Bf.Column.Wall;
         if (card.range >= 4)
             return Bf.Column.Back;
         if (card.speed >= 4)

@@ -2718,8 +2718,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -810, y: 200.00046}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: -835, y: 200.00046}
+  m_SizeDelta: {x: 450, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282639230
 MonoBehaviour:
@@ -5420,8 +5420,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 810, y: 200.00046}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: 835, y: 200.00046}
+  m_SizeDelta: {x: 450, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638986445
 MonoBehaviour:
@@ -10024,7 +10024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
 --- !u!114 &1024765974
 MonoBehaviour:
@@ -10048,11 +10048,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 90
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 6
-    m_MaxSize: 75
+    m_MinSize: 0
+    m_MaxSize: 90
     m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -12324,11 +12324,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 90
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 6
-    m_MaxSize: 75
+    m_MinSize: 0
+    m_MaxSize: 90
     m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -13586,7 +13586,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 50
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -17708,6 +17708,7 @@ GameObject:
   - component: {fileID: 2100638732}
   - component: {fileID: 2100638733}
   - component: {fileID: 2100638734}
+  - component: {fileID: 2100638735}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -17779,6 +17780,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddc8be076db97014380a43b5414137c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2100638735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100638729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e3aa4003a7b644e8cf9e54032b464c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2102270407

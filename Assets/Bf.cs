@@ -14,7 +14,7 @@ public class Bf : MonoBehaviour
 
     public enum Column
     {
-        Back, Middle, Front, Random
+        Back, Middle, Front, Random, Wall
     }
     private void Start()
     {
@@ -45,6 +45,7 @@ public class Bf : MonoBehaviour
             Cards[i] = null;
         }
         Bfs[i].GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("UI/EmptyCard");
+        Bfs[i].GetComponentInChildren<Image>().color = Hue.white;
     }
 
     public void MarkPlayable()
@@ -70,6 +71,7 @@ public class Bf : MonoBehaviour
         else
         {
             int tiles = 3;
+
             if (Hand.Cards[Hand.selected].special.wall)
                 tiles = 5;
 

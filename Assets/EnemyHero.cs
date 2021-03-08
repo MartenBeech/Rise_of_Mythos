@@ -103,4 +103,22 @@ public class EnemyHero : MonoBehaviour
 
         return heroList[rnd];
     }
+
+    public string GetHeroInfo()
+    {
+        string text = Game.enemy + "\n\n";
+
+        if (Game.enemy == Hero.Adar)
+            text += "Legendary units have -1 cd";
+        else if (Game.enemy == Hero.Ivan)
+            text += "Units with 4+ speed gain Charge +1";
+        else if (Game.enemy == Hero.Khalida)
+            text += "Mages gain Thunderstorm +1";
+        else if (Game.enemy == Hero.Ludmilla)
+            text += "Units with either Soulbound or Reanimate gain both";
+        else if (Game.enemy == Hero.Menan)
+            text += "Units with Life Steal gain Life Absorb";
+
+        return text;
+    }
 }

@@ -16,14 +16,14 @@ public class UnitAction : MonoBehaviour
         {
             counter -= Time.deltaTime;
 
-            if (counter <= UI.TIMER * 2.04f && readyToMove)
+            if (counter <= UI.TIMER * 2.08f && readyToMove)
             {
                 readyToMove = false;
                 UnitMove unitMove = new UnitMove();
                 unitMove.Move(units[0]);
             }
 
-            if (counter <= UI.TIMER * 1.02f && readyToAttack)
+            if (counter <= UI.TIMER * 1.04f && readyToAttack)
             {
                 readyToAttack = false;
                 
@@ -91,7 +91,7 @@ public class UnitAction : MonoBehaviour
                 if (units[0].special.stunned)
                 {
                     units[0].special.stunned = false;
-                    counter = UI.TIMER * 0.02f;
+                    counter = UI.TIMER * 0.04f;
                 }
                 else
                 {
@@ -101,7 +101,7 @@ public class UnitAction : MonoBehaviour
                     units[0].attackedThisTurn = false;
                     readyToMove = true;
                     readyToAttack = true;
-                    counter = UI.TIMER * 2.04f;
+                    counter = UI.TIMER * 2.08f;
                 }
             }
 

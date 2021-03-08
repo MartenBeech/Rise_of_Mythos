@@ -25,7 +25,7 @@ public class SpecialInfo : MonoBehaviour
             rangeDiff + 
             speedDiff +
 
-            (card.special.flying ? "<b>" + "Flying: " + "</b>" + "Can fly over non-flying enemies" + "\n" : "") +
+            (card.special.flying ? "<b>" + "Flying: " + "</b>" + "Flies over non-flying enemies" + "\n" : "") +
             (card.special.vigilance ? "<b>" + "Vigilance: " + "</b>" + "Can attack adjacent enemies without moving first. Attacks backwards in preference" + "\n" : "") +
             (card.special.penetrate ? "<b>" + "Penetrate: " + "</b>" + "Damage dealt cannot be reduced" + "\n" : "") +
             (card.special.armor[card.rank] > 0 ? "<b>" + "Armor " + card.special.armor[card.rank] + ": " + "</b>" + "Take reduced physical damage" + "\n" : "") +
@@ -114,7 +114,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.blackIce ? "<b>" + "Black Ice: " + "</b>" + "Upon taking damage, reduced the attacker's speed to 0" + "\n" : "") +
             (card.special.soulHarvest ? "<b>" + "Soul Harvest: " + "</b>" + "Whenever an enemy dies, gain half its Attack and Health" + "\n" : "") +
             (card.special.multiShot ? "<b>" + "Multishot: " + "</b>" + "Attack all enemy units and heroes inside range" + "\n" : "") +
-            (card.special.reinforcement ? "<b>" + "Reinforcement: " + "</b>" + "On summon, also summon 2 copies of this unit on the same column" + "\n" : "") +
+            (card.special.reinforcement ? "<b>" + "Reinforcement: " + "</b>" + "When played, summon a copy of this unit on the same column" + "\n" : "") +
             (card.special.disdain[card.rank] > 0 ? "<b>" + "Disdain " + card.special.disdain[card.rank] + ": " + "</b>" + "Damagine units with " + card.special.disdain[card.rank] + " or less countdown instantly kills them" + "\n" : "") +
             (card.special.crushDefenses ? "<b>" + "Crush Defenses: " + "</b>" + "Deal double damage to units with Armor or Resistance" + "\n" : "") +
             (card.special.cheif ? "<b>" + "Cheif: " + "</b>" + "On summon, gain +1/+3 for each other allied unit" + "\n" : "") +

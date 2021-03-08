@@ -12,10 +12,12 @@ public class AnimaCard : MonoBehaviour
     public static GameObject endSet;
     public static Card cardSet;
     public static bool newlySummoned = false;
+    public static bool triggerSummon = false;
     private GameObject startPos;
     private GameObject endPos;
     private Card card;
     private bool _newlySummoned;
+    private bool _triggerSummon;
 
     private float counter = UI.TIMER * 1f;
 
@@ -25,6 +27,7 @@ public class AnimaCard : MonoBehaviour
         endPos = endSet;
         card = cardSet;
         _newlySummoned = newlySummoned;
+        _triggerSummon = triggerSummon;
     }
     void Update()
     {
@@ -43,8 +46,12 @@ public class AnimaCard : MonoBehaviour
                 card.DisplayCard(endPos, card);
                 if (_newlySummoned)
                 {
-                    SpecialTrigger specialTrigger = new SpecialTrigger();
-                    specialTrigger.OnSummon(card);
+                    card.occupied = true;
+                    if (_triggerSummon)
+                    {
+                        SpecialTrigger specialTrigger = new SpecialTrigger();
+                        specialTrigger.OnSummon(card);
+                    }
                 }
                 Destroy(gameObject);
             }
@@ -54,6 +61,7 @@ public class AnimaCard : MonoBehaviour
     public void MoveDeckHand(Card _card, int _to)
     {
         newlySummoned = false;
+        triggerSummon = false;
         MoveCard(_card, Deck.Decks, Hand.Hands[_to]);
         Hand.occupied[_to] = true;
         Hand.Cards[_to] = _card;
@@ -63,6 +71,7 @@ public class AnimaCard : MonoBehaviour
     public void MoveDeckBf(Card _card, int _to)
     {
         newlySummoned = false;
+        triggerSummon = false;
         MoveCard(_card, Deck.Decks, Bf.Bfs[_to]);
         Bf.occupied[_to] = true;
         Bf.Cards[_to] = _card;
@@ -72,6 +81,7 @@ public class AnimaCard : MonoBehaviour
     public void MoveBfHand(Card _card, int _from, int _to)
     {
         newlySummoned = false;
+        triggerSummon = false;
         MoveCard(_card, Bf.Bfs[_from], Hand.Hands[_to]);
         Hand.occupied[_to] = true;
         Hand.Cards[_to] = _card;
@@ -83,6 +93,7 @@ public class AnimaCard : MonoBehaviour
     public void MoveHandBf(Card _card, int _from, int _to)
     {
         newlySummoned = true;
+        triggerSummon = true;
         MoveCard(_card, Hand.Hands[_from], Bf.Bfs[_to]);
         Bf.occupied[_to] = true;
         Bf.Cards[_to] = _card;
@@ -94,6 +105,7 @@ public class AnimaCard : MonoBehaviour
     public void MoveBfBf(Card _card, int _from, int _to, bool summoned = false)
     {
         newlySummoned = summoned;
+        triggerSummon = false;
         MoveCard(_card, Bf.Bfs[_from], Bf.Bfs[_to]);
         Bf.occupied[_to] = true;
         Bf.Cards[_to] = _card;
@@ -108,6 +120,7 @@ public class AnimaCard : MonoBehaviour
     public void MoveEnemyBf(Card _card, int _from, int _to)
     {
         newlySummoned = true;
+        triggerSummon = true;
         MoveCard(_card, Hero.Heroes[1], Bf.Bfs[_to]);
         Bf.occupied[_to] = true;
         Bf.Cards[_to] = _card;

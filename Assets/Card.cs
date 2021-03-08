@@ -65,6 +65,7 @@ public class Card : MonoBehaviour
     public int rarity = -1;
     public int rank = -1;
     public bool upgraded = false;
+    public bool occupied = false;
     public string nameTag = "";
 
     public int bonusAttackNextTurn = 0;
@@ -139,7 +140,7 @@ public class Card : MonoBehaviour
     public void DisplayNull(GameObject gameObject)
     {
         gameObject.GetComponentInChildren<Text>().text = null;
-        gameObject.GetComponentInChildren<Image>().sprite = null;
+        gameObject.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("UI/EmptyCard");
         gameObject.GetComponentInChildren<Image>().color = Hue.white;
     }
 
