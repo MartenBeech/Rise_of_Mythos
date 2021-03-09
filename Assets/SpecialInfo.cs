@@ -16,8 +16,14 @@ public class SpecialInfo : MonoBehaviour
             speedDiff = "<b>" + card.speed + " Speed" + "</b>" + "\n";
 
 
-        string text =
-            "<b>" + card.nameTag + "</b>" + " (" + (card.rank + 1) + ")" + "\n" +
+        string text = "<b>" + card.nameTag + "</b>" + " ";
+
+        for (int i = 0; i < card.rank + 1; i++)
+        {
+            text += "*";
+        }
+
+        text += "\n" +
             "<b>" + "Attack: " + "</b>" + card.attack[card.rank] + " " + card.damageType + "\n" +
             "<b>" + "Health: " + "</b>" + card.health[card.rank] + "/" + card.healthMax[card.rank] + "\n" +
             "<b>" + "CD: " + "</b>" + card.cdDefault + "\n\n" +

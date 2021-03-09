@@ -221,4 +221,17 @@ public class UnitSpecial : MonoBehaviour
             Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
         }
     }
+
+    public void IncreaseFlying(Card dealer, Card target)
+    {
+        if (dealer.occupied && target.occupied)
+        {
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], "Flying", Hue.cyan);
+
+            target.special.flying = true;
+
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+        }
+    }
 }

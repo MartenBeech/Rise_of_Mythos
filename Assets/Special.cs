@@ -50,6 +50,7 @@ public class Special : MonoBehaviour
     public bool penetrateAura = false;
     public int[] poisonAura = new int[6] {0, 0, 0, 0, 0, 0};
     public int[] armorAura = new int[6] {0, 0, 0, 0, 0, 0};
+    public bool flyingAura = false;
 
     public bool pierce = false;
     public bool whirlwind = false;
@@ -1781,6 +1782,36 @@ public class Special : MonoBehaviour
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
                 unitSpecial.Heal(dealer, dealer, damage * 2);
+            }
+        }
+    }
+
+    public void CheckFlyingAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.flyingAura)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseFlying(dealer, allies[i]);
+            }
+        }
+    }
+
+    public void CheckFlyingAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.flyingAura)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseFlying(allies[i], dealer);
             }
         }
     }

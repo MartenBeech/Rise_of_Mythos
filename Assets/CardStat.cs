@@ -62,7 +62,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.CentaurRider:
                 card.attack = new int[6] { 1, 1, 1, 2, 2, 3 };
-                card.health = new int[6] { 3, 5, 7, 7, 9, 11 };
+                card.health = new int[6] { 4, 5, 7, 7, 9, 11 };
                 card.cd = 1;
                 card.range = 2;
                 card.speed = 4;
@@ -1612,7 +1612,6 @@ public class CardStat : MonoBehaviour
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
                 card.special.pierce = true;
-                card.special.penetrate = true;
                 card.special.charge = new int[6] { 1, 1, 1, 1, 1, 1 };
                 break;
 
@@ -1701,6 +1700,7 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
                 card.special.flying = true;
                 card.special.attackAura = new int[6] { 1, 1, 1, 1, 1, 2 };
+                card.special.flyingAura = true;
                 break;
 
             case Card.Title.PontiffFaol:

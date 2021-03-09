@@ -106,7 +106,9 @@ public class EnemyHero : MonoBehaviour
 
     public string GetHeroInfo()
     {
-        string text = Game.enemy + "\n\n";
+        string text = "<size=50>" + Game.enemy + "</size>" + "\n\n";
+
+        text += "Speciality: ";
 
         if (Game.enemy == Hero.Adar)
             text += "Legendary units have -1 cd";
@@ -118,6 +120,8 @@ public class EnemyHero : MonoBehaviour
             text += "Units with either Soulbound or Reanimate gain both";
         else if (Game.enemy == Hero.Menan)
             text += "Units with Life Steal gain Life Absorb";
+        else
+            text += "None";
 
         return text;
     }

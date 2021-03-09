@@ -113,6 +113,26 @@ public class SpecialTrigger : MonoBehaviour
         if (basicAttack)
         {
             special.CheckDispel(dealer, target);
+
+            special.CheckLifeSteal(dealer, damage);
+            special.CheckLifeAbsorb(dealer, damage);
+            special.CheckHeroic(dealer);
+            special.CheckWeaken(dealer, target);
+            special.CheckFrostBolt(dealer, target);
+            special.CheckBlackIce(dealer, target);
+            special.CheckPoison(dealer, target);
+            special.CheckVengefulCurse(dealer, target);
+            special.CheckVengefulCursed(dealer);
+            special.CheckSpellCurse(dealer, target);
+            special.CheckMaim(dealer, target);
+            special.CheckStun(dealer, target);
+            special.CheckPermaStun(dealer, target);
+            special.CheckCharm(dealer, target);
+            special.CheckInfluence(dealer);
+
+            special.CheckFear(dealer, target, damage);
+            special.CheckDisdain(dealer, target);
+            special.CheckKrush(dealer, target);
         }
 
         if (_damage > 0)
@@ -120,29 +140,6 @@ public class SpecialTrigger : MonoBehaviour
             special.CheckSpellFeed(dealer, target, damageType);
             special.CheckBattleSpirit(dealer, target, damageType);
             special.CheckRage(target);
-
-            if (basicAttack)
-            {
-                special.CheckLifeSteal(dealer, damage);
-                special.CheckLifeAbsorb(dealer, damage);
-                special.CheckHeroic(dealer);
-                special.CheckWeaken(dealer, target);
-                special.CheckFrostBolt(dealer, target);
-                special.CheckBlackIce(dealer, target);
-                special.CheckPoison(dealer, target);
-                special.CheckVengefulCurse(dealer, target);
-                special.CheckVengefulCursed(dealer);
-                special.CheckSpellCurse(dealer, target);
-                special.CheckMaim(dealer, target);
-                special.CheckStun(dealer, target);
-                special.CheckPermaStun(dealer, target);
-                special.CheckCharm(dealer, target);
-                special.CheckInfluence(dealer);
-
-                special.CheckFear(dealer, target, damage);
-                special.CheckDisdain(dealer, target);
-                special.CheckKrush(dealer, target);
-            }
         }
 
         return damage;
