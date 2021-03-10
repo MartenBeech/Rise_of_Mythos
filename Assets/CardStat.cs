@@ -714,15 +714,15 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.ElvenThunderMage:
-                card.attack = new int[6] { 0, 1, 1, 2, 2, 2 };
-                card.health = new int[6] { 4, 4, 4, 4, 6, 8 };
+                card.attack = new int[6] { 1, 1, 1, 2, 2, 2 };
+                card.health = new int[6] { 4, 4, 4, 6, 6, 8 };
                 card.cd = 3;
                 card.range = 4;
                 card.speed = 2;
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
                 card.special.stun = true;
-                card.special.lightningBolt = new int[6] { 1, 2, 3, 3, 3, 4 };
+                card.special.lightningBolt = new int[6] { 1, 2, 2, 3, 3, 4 };
                 break;
 
             case Card.Title.FelesAssassin:
@@ -1691,15 +1691,14 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.OpheliaWestWind:
-                card.attack = new int[6] { 2, 2, 2, 2, 2, 2 };
-                card.health = new int[6] { 2, 4, 6, 8, 10, 10 };
+                card.attack = new int[6] { 2, 2, 2, 3, 3, 4 };
+                card.health = new int[6] { 6, 8, 10, 10, 12, 13 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
                 card.special.flying = true;
-                card.special.attackAura = new int[6] { 1, 1, 1, 1, 1, 2 };
                 card.special.flyingAura = true;
                 break;
 
@@ -1815,7 +1814,7 @@ public class CardStat : MonoBehaviour
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
                 card.special.hitAndRun = true;
-                card.special.speedAura = new int[6] { 1, 1, 1, 1, 1, 2 };
+                card.special.attackAura = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.DragonHunterVincent:

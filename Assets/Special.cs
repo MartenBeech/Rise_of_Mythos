@@ -487,16 +487,15 @@ public class Special : MonoBehaviour
 
     public Card CheckMartyrdom(Card target)
     {
-        if (target.special.martyrdom)
-        {
-            Tile tile = new Tile();
-            List<Card> allies = tile.GetNearbyAllies(target);
-            if (allies.Count > 0)
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetNearbyAllies(target);
+
+            for (int i = 0; i < allies.Count; i++)
             {
-                Rng rng = new Rng();
-                return allies[rng.Range(0, allies.Count)];
+                if (allies[i].special.martyrdom)
+                    return allies[i];
             }
-        }
+            
         return target;
     }
 
@@ -1513,8 +1512,11 @@ public class Special : MonoBehaviour
             {
                 if (Bf.occupied[tiles[i]])
                 {
-                    UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, Bf.Cards[tiles[i]], dealer.attack[dealer.rank], dealer.damageType, true);
+                    if (Bf.Cards[tiles[i]].alignment != dealer.alignment)
+                    {
+                        UnitAttack unitAttack = new UnitAttack();
+                        unitAttack.DealDamage(dealer, Bf.Cards[tiles[i]], dealer.attack[dealer.rank], dealer.damageType, true);
+                    }
                 }
             }
         }

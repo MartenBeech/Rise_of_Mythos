@@ -74,6 +74,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.penetrateAura ? "<b>" + "Penetrate Aura: " + "</b>" + "Allied units get Penetrate" + "\n" : "") +
             (card.special.poisonAura[card.rank] > 0 ? "<b>" + "Poison Aura " + card.special.poisonAura[card.rank] + ": " + "</b>" + "Allied units get Poison" + "\n" : "") +
             (card.special.armorAura[card.rank] > 0 ? "<b>" + "Armor Aura " + card.special.armorAura[card.rank] + ": " + "</b>" + "Allied units get Armor" + "\n" : "") +
+            (card.special.flyingAura ? "<b>" + "Flying Aura: " + "</b>" + "Allied units get Flying" + "\n" : "") +
 
             (card.special.pierce ? "<b>" + "Pierce: " + "</b>" + "Also deals damage to the enemy behind the target" + "\n" : "") +
             (card.special.whirlwind ? "<b>" + "Whirlwind: " + "</b>" + "Attack all adjacent enemies" + "\n" : "") +
