@@ -8,7 +8,7 @@ public class AnimaHeroInfo : MonoBehaviour
 {
     public static GameObject prefab;
     public static GameObject parent;
-    public void DisplayHero()
+    public void DisplayHeroInfo()
     {
         prefab = Resources.Load<GameObject>("Assets/HeroInfo");
         parent = GameObject.Find("Animation");
@@ -25,10 +25,5 @@ public class AnimaHeroInfo : MonoBehaviour
     public void DisplayNull()
     {
         Destroy(GameObject.Find("HeroInfo(Clone)"));
-    }
-
-    public void DisplayHeroInfo()
-    {
-        DisplayHero();
     }
 }

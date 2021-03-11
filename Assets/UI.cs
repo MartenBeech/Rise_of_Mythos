@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class UI : MonoBehaviour
 {
     public static GameObject SpeedUp;
+    public static GameObject StartOver;
+    public static GameObject EndTurn;
     public static float TIMER = 2f;
 
     private void Start()
     {
         SpeedUp = GameObject.Find("SpeedUp");
+        StartOver = GameObject.Find("StartOver");
+        EndTurn = GameObject.Find("EndTurn");
         SpeedUpGame();
     }
 

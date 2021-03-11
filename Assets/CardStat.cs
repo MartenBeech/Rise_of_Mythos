@@ -653,7 +653,7 @@ public class CardStat : MonoBehaviour
                 card.rarity = 2;
                 card.damageType = Card.DamageType.Magical;
                 card.special.ember = true;
-                card.special.herosBane = new int[6] { 1, 1, 2, 2, 2, 3 };
+                card.special.herosBane = new int[6] { 2, 2, 2, 2, 2, 3 };
                 break;
 
             case Card.Title.ElvenFrostArchmage:
@@ -2059,12 +2059,12 @@ public class CardStat : MonoBehaviour
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Magical;
                 card.special.wall = true;
-                card.special.martyrdom = true;
+                card.special.resistance = new int[6] { 1, 1, 1, 1, 1, 0};
                 break;
 
             case Card.Title.BoneWall:
                 card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
-                card.health = new int[6] { 5, 10, 15, 20, 30, 0 };
+                card.health = new int[6] { 10, 15, 20, 25, 35, 0 };
                 card.cd = 4;
                 card.range = 0;
                 card.speed = 0;
@@ -2075,7 +2075,7 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.SentryTower:
-                card.attack = new int[6] { 2, 3, 4, 5, 6, 9 };
+                card.attack = new int[6] { 5, 6, 7, 8, 11, 0 };
                 card.health = new int[6] { 10, 15, 20, 25, 30, 0 };
                 card.cd = 4;
                 card.range = 4;
@@ -2087,7 +2087,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.WarTotem:
                 card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
-                card.health = new int[6] { 20, 25, 30, 35, 50, 0 };
+                card.health = new int[6] { 30, 35, 40, 45, 60, 0 };
                 card.cd = 4;
                 card.range = 0;
                 card.speed = 0;
@@ -2096,7 +2096,6 @@ public class CardStat : MonoBehaviour
                 card.special.wall = true;
                 card.special.inspiration = new int[6] { 1, 1, 1, 1, 3, 0 };
                 card.special.distraction = true;
-                card.special.conjure = true;
                 break;
 
             case Card.Title.FlyerWall:
@@ -2109,7 +2108,7 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Magical;
                 card.special.wall = true;
                 card.special.flying = true;
-                card.special.immolate = new int[6] { 5, 6, 7, 8, 9, 0 };
+                card.special.immolate = new int[6] { 4, 5, 6, 7, 8, 0 };
                 card.special.regeneration = new int[6] { 0, 0, 0, 0, 3, 0 };
                 break;
 

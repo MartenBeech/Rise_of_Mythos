@@ -29,6 +29,8 @@ public class Game : MonoBehaviour
         hero.DisplayHero(Card.Alignment.Ally);
         hero.DisplayHero(Card.Alignment.Enemy);
 
+        UI.EndTurn.GetComponentInChildren<Button>().enabled = true;
+
         Hand hand = new Hand();
         for (int i = 0; i < Hand.SIZE * 2; i++)
         {
@@ -59,6 +61,7 @@ public class Game : MonoBehaviour
             UI ui = new UI();
             while (UI.TIMER != 1f)
                 ui.SpeedUpGame();
+            UI.StartOver.GetComponentInChildren<Image>().enabled = true;
         }
 
         CardCopy cardCopy = new CardCopy();
@@ -137,5 +140,11 @@ public class Game : MonoBehaviour
     {
         enemy = GetRandomEnemy();
         NewBattle();
+    }
+
+    public void WinBoss()
+    {
+        AnimaVictory animaVictory = new AnimaVictory();
+        animaVictory.DisplayVictory();
     }
 }

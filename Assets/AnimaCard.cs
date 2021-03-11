@@ -70,7 +70,7 @@ public class AnimaCard : MonoBehaviour
 
     public void MoveDeckBf(Card _card, int _to)
     {
-        newlySummoned = false;
+        newlySummoned = true;
         triggerSummon = false;
         MoveCard(_card, Deck.Decks, Bf.Bfs[_to]);
         Bf.occupied[_to] = true;

@@ -42,10 +42,13 @@ public class Turn : MonoBehaviour
             EnemyTurn.cardRunThrough = Hand.SIZE;
             enemyTurn.PlayHand();
         }
+        else
+            UI.EndTurn.GetComponentInChildren<Button>().enabled = true;
     }
 
     public void EndTurnClicked()
     {
+        UI.EndTurn.GetComponentInChildren<Button>().enabled = false;
         if (Game.level <= 0)
         {
             Tutorial tutorial = new Tutorial();

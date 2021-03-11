@@ -42,7 +42,10 @@ public class Hero : MonoBehaviour
                 heroes[1].destroyHero = false;
                 Heroes[1].transform.localScale = new Vector3(0.5f, 0.5f, 1);
                 Game game = new Game();
-                game.WinBattle();
+                if (Game.level % 5 != 0)
+                    game.WinBattle();
+                else
+                    game.WinBoss();
             }
         }
     }
@@ -157,18 +160,9 @@ public class Hero : MonoBehaviour
     public int GetAllyHealth(int level)
     {
         if (level <= 0)
-            return 30;
-        
-        else if (level <= 5)
             return 20;
-        else if (level <= 10)
-            return 25;
-        else if (level <= 15)
-            return 30;
-        else if (level <= 20)
-            return 35;
         else
-            return 40;
+            return 20 + level;
         
     }
 }

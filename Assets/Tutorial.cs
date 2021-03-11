@@ -26,7 +26,7 @@ public class Tutorial : MonoBehaviour
     };
     private string[] text2 = new string[] { 
         "This game is very fun and addictive. Remember to take a few breaks once in a while. But not now!",
-        "Looks like your opponent is trying to rush you down with his own cavalry. At least his doesn't have <b>Charge</b>.",
+        "Looks like your opponent is trying to rush you down with his own cavalry. He's a fast one",
         "The Knight has the <b>Heroic</b> ability, causing his attacks to get stronger and stronger. You need to stop him quickly.",
         "Your Squire has the <b>Vigilance</b> ability which allows him to attack adjacent tiles. Play him behind the Knight.",
         "",
@@ -51,6 +51,7 @@ public class Tutorial : MonoBehaviour
         {
             case -2:
                 UI.SpeedUp.GetComponentInChildren<Image>().enabled = false;
+                UI.StartOver.GetComponentInChildren<Image>().enabled = false;
                 deck.AddCard(Card.Title.Fencer, Card.Alignment.Ally, 0, 1);
                 card = Deck.deckAllyDefault[0];
                 card.attack[card.rank] = card.attackDefault[card.rank] = 5;
@@ -125,7 +126,7 @@ public class Tutorial : MonoBehaviour
             case 0:
                 deck.AddCard(Card.Title.Knight, Card.Alignment.Enemy, 0, 1);
                 card = Deck.deckEnemyDefault[0];
-                card.attack[card.rank] = card.attackDefault[card.rank] = 3;
+                card.attack[card.rank] = card.attackDefault[card.rank] = 1;
                 card.health[card.rank] = card.healthDefault[card.rank] = card.healthMax[card.rank] = card.healthMaxDefault[card.rank] = 15;
                 card.cd = card.cdDefault = 1;
                 Deck.deckEnemyDefault[0] = card;
