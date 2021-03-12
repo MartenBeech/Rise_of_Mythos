@@ -14,7 +14,7 @@ public class AnimaVictory : MonoBehaviour
         parent = GameObject.Find("Animation");
 
         GameObject position = GameObject.Find("CanvasBattle");
-        Vector3 newPos = new Vector3(position.transform.position.x + 0f, position.transform.position.y + 0f, position.transform.position.z);
+        Vector3 newPos = new Vector3(position.transform.position.x + 1f, position.transform.position.y, position.transform.position.z);
 
         prefab = Instantiate(prefab, newPos, new Quaternion(0, 0, 0, 0), parent.transform);
     }
@@ -28,5 +28,6 @@ public class AnimaVictory : MonoBehaviour
     {
         Game game = new Game();
         game.WinBattle();
+        DisplayNull();
     }
 }

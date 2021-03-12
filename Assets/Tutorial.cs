@@ -51,7 +51,10 @@ public class Tutorial : MonoBehaviour
         {
             case -2:
                 UI.SpeedUp.GetComponentInChildren<Image>().enabled = false;
+                UI.SpeedUp.GetComponentInChildren<Button>().enabled = false;
                 UI.StartOver.GetComponentInChildren<Image>().enabled = false;
+                UI.StartOver.GetComponentInChildren<Text>().enabled = false;
+                UI.StartOver.GetComponentInChildren<Button>().enabled = false;
                 deck.AddCard(Card.Title.Fencer, Card.Alignment.Ally, 0, 1);
                 card = Deck.deckAllyDefault[0];
                 card.attack[card.rank] = card.attackDefault[card.rank] = 5;
@@ -164,7 +167,11 @@ public class Tutorial : MonoBehaviour
                     arrayPoint++;
                 }
                 if (arrayPoint == text2.Length)
+                {
                     UI.SpeedUp.GetComponentInChildren<Image>().enabled = true;
+                    UI.SpeedUp.GetComponentInChildren<Button>().enabled = true;
+                }
+                    
                 break;
         }
     }

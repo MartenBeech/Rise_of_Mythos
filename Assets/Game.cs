@@ -62,6 +62,8 @@ public class Game : MonoBehaviour
             while (UI.TIMER != 1f)
                 ui.SpeedUpGame();
             UI.StartOver.GetComponentInChildren<Image>().enabled = true;
+            UI.StartOver.GetComponentInChildren<Button>().enabled = true;
+            UI.StartOver.GetComponentInChildren<Text>().enabled = true;
         }
 
         CardCopy cardCopy = new CardCopy();

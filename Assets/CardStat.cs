@@ -2059,12 +2059,12 @@ public class CardStat : MonoBehaviour
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Magical;
                 card.special.wall = true;
-                card.special.resistance = new int[6] { 1, 1, 1, 1, 1, 0};
+                card.special.resistance = new int[6] { 1, 1, 1, 1, 3, 0};
                 break;
 
             case Card.Title.BoneWall:
                 card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
-                card.health = new int[6] { 10, 15, 20, 25, 35, 0 };
+                card.health = new int[6] { 10, 15, 20, 25, 50, 0 };
                 card.cd = 4;
                 card.range = 0;
                 card.speed = 0;
@@ -2076,7 +2076,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.SentryTower:
                 card.attack = new int[6] { 5, 6, 7, 8, 11, 0 };
-                card.health = new int[6] { 10, 15, 20, 25, 30, 0 };
+                card.health = new int[6] { 10, 15, 20, 25, 35, 0 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 0;
@@ -2087,7 +2087,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.WarTotem:
                 card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
-                card.health = new int[6] { 30, 35, 40, 45, 60, 0 };
+                card.health = new int[6] { 30, 35, 40, 45, 65, 0 };
                 card.cd = 4;
                 card.range = 0;
                 card.speed = 0;

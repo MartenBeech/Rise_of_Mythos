@@ -42,10 +42,10 @@ public class Hero : MonoBehaviour
                 heroes[1].destroyHero = false;
                 Heroes[1].transform.localScale = new Vector3(0.5f, 0.5f, 1);
                 Game game = new Game();
-                if (Game.level % 5 != 0)
-                    game.WinBattle();
-                else
+                if (Game.level % 5 == 0 && Game.level > 0)
                     game.WinBoss();
+                else
+                    game.WinBattle();
             }
         }
     }
@@ -106,8 +106,6 @@ public class Hero : MonoBehaviour
                 {
                     heroes[1].destroyHero = true;
                     Game.gameOver = true;
-                    if (Game.level % 5 == 0)
-                        animaText.ShowText(Hero.Heroes[0], "All cards rank up", Hue.cyan);
                 }
             }
         }
