@@ -222,6 +222,19 @@ public class UnitSpecial : MonoBehaviour
         }
     }
 
+    public void IncreaseResistance(Card dealer, Card target, int amount)
+    {
+        if (dealer.occupied && target.occupied)
+        {
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Resistance", Hue.cyan);
+
+            target.special.resistance[target.rank] += amount;
+
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+        }
+    }
+
     public void IncreaseFlying(Card dealer, Card target)
     {
         if (dealer.occupied && target.occupied)

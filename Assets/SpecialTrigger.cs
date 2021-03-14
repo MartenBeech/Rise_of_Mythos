@@ -30,6 +30,10 @@ public class SpecialTrigger : MonoBehaviour
         special.CheckPoisonAuraSummon(card);
         special.CheckArmorAuraBattlecry(card);
         special.CheckArmorAuraSummon(card);
+        special.CheckResistanceAuraBattlecry(card);
+        special.CheckResistanceAuraSummon(card);
+        special.CheckFlyingAuraSummon(card);
+        special.CheckFlyingAuraBattlecry(card);
 
         special.CheckReinforcement(card);
         special.CheckConjure(card);
@@ -129,6 +133,7 @@ public class SpecialTrigger : MonoBehaviour
             special.CheckPermaStun(dealer, target);
             special.CheckCharm(dealer, target);
             special.CheckInfluence(dealer);
+            special.CheckBleedingAttack(dealer, target);
 
             special.CheckFear(dealer, target, damage);
             special.CheckDisdain(dealer, target);

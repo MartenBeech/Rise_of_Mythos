@@ -113,11 +113,11 @@ public class EnemyHero : MonoBehaviour
         if (Game.enemy == Hero.Adar)
             text += "Legendary units have -1 cd";
         else if (Game.enemy == Hero.Ivan)
-            text += "Units with 4+ speed gain Charge +1";
+            text += "Units with 4+ speed gain Charge " + (Game.level < 25 ? "+1" : "+2");
         else if (Game.enemy == Hero.Khalida)
-            text += "Mages gain Thunderstorm +1";
+            text += "Mages gain Ember and " + (Game.level < 25 ? "Lightning Bolt +1" : "Thunderstorm +1");
         else if (Game.enemy == Hero.Ludmilla)
-            text += "Units with either Soulbound or Reanimate gain both";
+            text += "Units gain Soulbound and Reanimate";
         else if (Game.enemy == Hero.Menan)
             text += "Units with Life Steal gain Life Absorb";
         else

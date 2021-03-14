@@ -44,22 +44,18 @@ public class SpecialInfo : MonoBehaviour
             (card.special.weaken[card.rank] > 0 ? "<b>" + "Weaken " + card.special.weaken[card.rank] + ": " + "</b>" + "Attacks reduce the target's attack value" + "\n" : "") +
             (card.special.shadowBolt[card.rank] > 0 ? "<b>" + "Shadow Bolt " + card.special.shadowBolt[card.rank] + ": " + "</b>" + "Attacks randomly deal between 0-" + card.special.shadowBolt[card.rank] + "00% damage" + "\n" : "") +
             (card.special.poison[card.rank] > 0 ? "<b>" + "Poison " + card.special.poison[card.rank] + ": " + "</b>" + "Attacks causes the target to take magical damage each turn" + "\n" : "") +
-            (card.special.poisoned[card.rank] > 0 ? "<b>" + "Poisoned " + card.special.poisoned[card.rank] + ": " + "</b>" + "Take magical damage each turn" + "\n" : "") +
             (card.special.immolate[card.rank] > 0 ? "<b>" + "Immolate " + card.special.immolate[card.rank] + ": " + "</b>" + "Take magical damage each turn" + "\n" : "") +
             (card.special.reapingCurse[card.rank] > 0 ? "<b>" + "Reaping Curse " + card.special.reapingCurse[card.rank] + ": " + "</b>" + "Upon dying, deal damage to the enemy hero" + "\n" : "") +
             (card.special.soulEater[card.rank] > 0 ? "<b>" + "Soul Eater " + card.special.soulEater[card.rank] + ": " + "</b>" + "Gain +" + card.special.soulEater[card.rank] + "/+" + card.special.soulEater[card.rank] + " whenever this attacks the enemy hero" + "\n" : "") +
             (card.special.spellCurse[card.rank] > 0 ? "<b>" + "Spell Curse " + card.special.spellCurse[card.rank] + ": " + "</b>" + "Attacks curse the enemy to take increased magical damage" + "\n" : "") +
-            (card.special.spellCursed[card.rank] > 0 ? "<b>" + "Spell Cursed " + card.special.spellCursed[card.rank] + ": " + "</b>" + "Take increased magical damage" + "\n" : "") +
             (card.special.spellFeed[card.rank] > 0 ? "<b>" + "Spell Feed " + card.special.spellFeed[card.rank] + ": " + "</b>" + "Gain +" + card.special.spellFeed[card.rank] + "/+" + card.special.spellFeed[card.rank] + " whenever this takes magical damage" + "\n" : "") +
             (card.special.inspiration[card.rank] > 0 ? "<b>" + "Inspiration " + card.special.inspiration[card.rank] + ": " + "</b>" + "Reduce the countdown of the highest countdown card in your hand" + "\n" : "") +
             (card.special.herosBane[card.rank] > 0 ? "<b>" + "Hero's Bane " + card.special.herosBane[card.rank] + ": " + "</b>" + "Deal damage to the enemy hero each turn" + "\n" : "") +
-            (card.special.embered[card.rank] > 0 ? "<b>" + "Embered " + card.special.embered[card.rank] + ": " + "</b>" + "Take magical damage next turn" + "\n" : "") +
             (card.special.lightningBolt[card.rank] > 0 ? "<b>" + "Lightning Bolt " + card.special.lightningBolt[card.rank] + ": " + "</b>" + "Deal damage to a random enemy unit each turn" + "\n" : "") +
             (card.special.rage[card.rank] > 0 ? "<b>" + "Rage " + card.special.rage[card.rank] + ": " + "</b>" + "Gain attack whenever this takes damage" + "\n" : "") +
             (card.special.carnivore[card.rank] > 0 ? "<b>" + "Carnivore " + card.special.carnivore[card.rank] + ": " + "</b>" + "Gain health whenever this kills a unit" + "\n" : "") +
             (card.special.bloodPrice[card.rank] > 0 ? "<b>" + "Blood Price " + card.special.bloodPrice[card.rank] + ": " + "</b>" + "Deal damage to its own hero each turn" + "\n" : "") +
             (card.special.maim[card.rank] > 0 ? "<b>" + "Maim " + card.special.maim[card.rank] + ": " + "</b>" + "Attacks causes the enemy to take increased physical damage" + "\n" : "") +
-            (card.special.maimed[card.rank] > 0 ? "<b>" + "Maimed " + card.special.maimed[card.rank] + ": " + "</b>" + "Take increased physical damage" + "\n" : "") +
             (card.special.battleSpirit[card.rank] > 0 ? "<b>" + "Battle Spirit " + card.special.battleSpirit[card.rank] + ": " + "</b>" + "Gain +" + card.special.battleSpirit[card.rank] + "/+" + card.special.battleSpirit[card.rank] + " whenever this takes physical damage" + "\n" : "") +
             (card.special.knockback[card.rank] > 0 ? "<b>" + "Knockback " + card.special.knockback[card.rank] + ": " + "</b>" + "Damaged targets will be knocked back " + card.special.knockback[card.rank] + " tiles" + "\n" : "") +
 
@@ -82,7 +78,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.firstStrike ? "<b>" + "First Strike: " + "</b>" + "Retaliate before being attacked inside its range" + "\n" : "") +
             (card.special.dispel ? "<b>" + "Dispel: " + "</b>" + "Attacking an enemy first reduces their attack and health to their normal values" + "\n" : "") +
             (card.special.faith ? "<b>" + "Faith: " + "</b>" + "Healing a unit grants this unit +1/+1" + "\n" : "") +
-            (card.special.martyrdom ? "<b>" + "Martyrdom: " + "</b>" + "Redirect all damage taken by nearby allies towards this unit" + "\n" : "") +
+            (card.special.martyrdom ? "<b>" + "Martyrdom: " + "</b>" + "Redirect attacks against nearby allies towards this unit" + "\n" : "") +
             (card.special.heavyWeapon ? "<b>" + "Heavy Weapon: " + "</b>" + "Cannot attack after moving" + "\n" : "") +
             (card.special.dragonSlayer ? "<b>" + "Dragon Slayer: " + "</b>" + "Deal double damage to units with 5+ countdown" + "\n" : "") +
             (card.special.reanimate ? "<b>" + "Reanimate: " + "</b>" + "Resummon this unit the first time it dies" + "\n" : "") +
@@ -94,15 +90,13 @@ public class SpecialInfo : MonoBehaviour
             (card.special.skeletal ? "<b>" + "Skeletal: " + "</b>" + "Upon dying, turn into a Bone Heap which reanimates this unit next turn" + "\n" : "") +
             (card.special.boneHeap ? "<b>" + "Bone Heap: " + "</b>" + "Reanimate the collapsed body at the end of your turn" + "\n" : "") +
             (card.special.vengefulCurse ? "<b>" + "Vengeful Curse: " + "</b>" + "Attacking curses the target's next attack to also damage itself" + "\n" : "") +
-            (card.special.vengefulCursed ? "<b>" + "Vengeful Cursed: " + "</b>" + "This unit's next attack also damages itself" + "\n" : "") +
             (card.special.panicStrike ? "<b>" + "Panic Strike: " + "</b>" + "Attacking the enemy hero causes a random enemy card to gain +1 CD" + "\n" : "") +
-            (card.special.sniper ? "<b>" + "Sniper: " + "</b>" + "Always attack the lowest health enemy in range" + "\n" : "") +
+            (card.special.sniper ? "<b>" + "Sniper: " + "</b>" + "Attack the lowest health enemy in range" + "\n" : "") +
             (card.special.ember ? "<b>" + "Ember: " + "</b>" + "Attacks deal magical damage next turn instead of immediately" + "\n" : "") +
             (card.special.nimble ? "<b>" + "Nimble: " + "</b>" + "Attack, Health, Range and Speed cannot be reduced" + "\n" : "") +
             (card.special.conjure ? "<b>" + "Conjure: " + "</b>" + "The next card you summon draws you a card" + "\n" : "") +
             (card.special.donor ? "<b>" + "Donor: " + "</b>" + "Draw a card when this unit fully dies" + "\n" : "") +
             (card.special.stun ? "<b>" + "Stun: " + "</b>" + "This unit's first attack stuns the target, skipping its next turn" + "\n" : "") +
-            (card.special.stunned ? "<b>" + "Stunned: " + "</b>" + "This unit's next turn is skipped" + "\n" : "") +
             (card.special.permaStun ? "<b>" + "Perma Stun: " + "</b>" + "This unit's attacks stuns the target, skipping its next turn" + "\n" : "") +
             (card.special.distraction ? "<b>" + "Distraction: " + "</b>" + "Increase the countdown of a random enemy card each turn" + "\n" : "") +
             (card.special.spear ? "<b>" + "Spear: " + "</b>" + "Deal double damage to units with 4+ Speed" + "\n" : "") +
@@ -110,7 +104,6 @@ public class SpecialInfo : MonoBehaviour
             (card.special.cleave ? "<b>" + "Cleave: " + "</b>" + "Damage all enemies on the same column as the target" + "\n" : "") +
             (card.special.charm ? "<b>" + "Charm: " + "</b>" + "Take control over the first unit attacked with 3 or less cd" + "\n" : "") +
             (card.special.bleedingAttack ? "<b>" + "Bleeding Attack: " + "</b>" + "Attacks make the target unable to be healed" + "\n" : "") +
-            (card.special.bleeding ? "<b>" + "Bleeding: " + "</b>" + "This unit cannot be healed" + "\n" : "") +
             (card.special.influence ? "<b>" + "Influence: " + "</b>" + "Upon attacking, give a card in your hand +1/+1" + "\n" : "") +
             (card.special.hitAndRun ? "<b>" + "Hit and Run: " + "</b>" + "After attacking, move backwards" + "\n" : "") +
             (card.special.headbutt ? "<b>" + "Headbutt: " + "</b>" + "After attacking, push the target back 1 tile and move with it" + "\n" : "") +
@@ -128,6 +121,14 @@ public class SpecialInfo : MonoBehaviour
             (card.special.krush ? "<b>" + "Krush: " + "</b>" + "Destroy the first unit attacked" + "\n" : "") +
             (card.special.thunderStorm[card.rank] > 0 ? "<b>" + "Thunderstorm " + card.special.thunderStorm[card.rank] + ": " + "</b>" + "Deal damage to all enemy units each turn" + "\n" : "") +
             (card.special.lifeAbsorb ? "<b>" + "Life Absorb: " + "</b>" + "Restore this unit's health equal to double the damage dealt" + "\n" : "") +
+
+            (card.special.poisoned[card.rank] > 0 ? "<b>" + "<color=red>" + "Poisoned " + card.special.poisoned[card.rank] + ": " + "</color>" + "</b>" + "Take magical damage each turn" + "\n" : "") +
+            (card.special.spellCursed[card.rank] > 0 ? "<b>" + "<color=red>" + "Spell Cursed " + card.special.spellCursed[card.rank] + ": " + "</color>" + "</b>" + "Take increased magical damage" + "\n" : "") +
+            (card.special.embered[card.rank] > 0 ? "<b>" + "<color=red>" + "Embered " + card.special.embered[card.rank] + ": " + "</color>" + "</b>" + "Take magical damage next turn" + "\n" : "") +
+            (card.special.maimed[card.rank] > 0 ? "<b>" + "<color=red>" + "Maimed " + card.special.maimed[card.rank] + ": " + "</color>" + "</b>" + "Take increased physical damage" + "\n" : "") +
+            (card.special.vengefulCursed ? "<b>" + "<color=red>" + "Vengeful Cursed: " + "</color>" + "</b>" + "This unit's next attack also damages itself" + "\n" : "") +
+            (card.special.stunned ? "<b>" + "<color=red>" + "Stunned: " + "</color>" + "</b>" + "This unit's next turn is skipped" + "\n" : "") +
+            (card.special.bleeding ? "<b>" + "<color=red>" + "Bleeding: " + "</color>" + "</b>" + "This unit cannot be healed" + "\n" : "") +
 
             "";
 

@@ -50,6 +50,7 @@ public class Special : MonoBehaviour
     public bool penetrateAura = false;
     public int[] poisonAura = new int[6] {0, 0, 0, 0, 0, 0};
     public int[] armorAura = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] resistanceAura = new int[6] {0, 0, 0, 0, 0, 0};
     public bool flyingAura = false;
 
     public bool pierce = false;
@@ -564,14 +565,18 @@ public class Special : MonoBehaviour
     {
         if (dealer.special.knockback[dealer.rank] > 0)
         {
-            Tile tile = new Tile();
-            int tileNew = tile.GetTileInFront(target, dealer.special.knockback[dealer.rank], true);
+            if (target.health[target.rank] > 0)
+            {
+                Tile tile = new Tile();
+                int tileNew = tile.GetTileInFront(target, dealer.special.knockback[dealer.rank], true);
             
 
-            if (tileNew != target.tile)
-            {
-                AnimaCard animaCard = new AnimaCard();
-                animaCard.MoveBfBf(target, target.tile, tileNew);
+                if (tileNew != target.tile)
+                {
+                    AnimaCard animaCard = new AnimaCard();
+                    animaCard.MoveBfBf(target, target.tile, tileNew);
+                }
+
             }
         }
     }
@@ -1105,12 +1110,15 @@ public class Special : MonoBehaviour
                                 highestCDTiles.Add(occupied[i].tile);
                         }
 
-                        Rng rng = new Rng();
-                        int rnd = rng.Range(0, highestCDTiles.Count);
-                        Hand.Cards[highestCDTiles[rnd]].cd -= 1;
-                        if (highestCDTiles[rnd] < Hand.SIZE)
+                        if (highestCDTiles.Count > 0)
                         {
-                            dealer.DisplayCard(Hand.Hands[highestCDTiles[rnd]], Hand.Cards[highestCDTiles[rnd]]);
+                            Rng rng = new Rng();
+                            int rnd = rng.Range(0, highestCDTiles.Count);
+                            Hand.Cards[highestCDTiles[rnd]].cd -= 1;
+                            if (highestCDTiles[rnd] < Hand.SIZE)
+                            {
+                                dealer.DisplayCard(Hand.Hands[highestCDTiles[rnd]], Hand.Cards[highestCDTiles[rnd]]);
+                            }
                         }
                     }
                 }
@@ -1670,6 +1678,36 @@ public class Special : MonoBehaviour
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
                 unitSpecial.IncreaseArmor(allies[i], dealer, allies[i].special.armorAura[allies[i].rank]);
+            }
+        }
+    }
+
+    public void CheckResistanceAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.resistanceAura[dealer.rank] > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseResistance(dealer, allies[i], dealer.special.resistanceAura[dealer.rank]);
+            }
+        }
+    }
+
+    public void CheckResistanceAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.resistanceAura[allies[i].rank] > 0)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseResistance(allies[i], dealer, allies[i].special.resistanceAura[allies[i].rank]);
             }
         }
     }

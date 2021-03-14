@@ -109,10 +109,10 @@ public class EnemyTurn : MonoBehaviour
     {
         if (card.special.wall)
             return Bf.Column.Wall;
-        if (card.range >= 4)
-            return Bf.Column.Back;
         if (card.speed >= 4)
             return Bf.Column.Front;
+        if (card.range >= 4)
+            return Bf.Column.Back;
         if (card.speed <= 1)
             return Bf.Column.Front;
 

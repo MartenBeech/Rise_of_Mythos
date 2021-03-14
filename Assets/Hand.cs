@@ -45,11 +45,12 @@ public class Hand : MonoBehaviour
         int handSpace = GetHandSpace(alignment);
         if (handSpace != -1)
         {
+            AnimaCard animaCard = new AnimaCard();
             if (handSpace < SIZE)
-            {
-                AnimaCard animaCard = new AnimaCard();
                 animaCard.MoveBfHand(card, i, handSpace);
-            }
+            else
+                animaCard.MoveBfEnemy(card, i);
+
             Cards[handSpace] = card;
             occupied[handSpace] = true;
 

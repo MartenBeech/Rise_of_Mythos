@@ -65,8 +65,9 @@ public class Hero : MonoBehaviour
             special.CheckHeroic(dealer);
             special.CheckInfluence(dealer);
             special.CheckSoulEater(dealer);
-            
-            
+            special.CheckVengefulCursed(dealer);
+
+
         }
 
         for (int i = 0; i < dealer.special.multistrike[dealer.rank] + 1; i++)

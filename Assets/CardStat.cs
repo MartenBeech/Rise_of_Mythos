@@ -1676,8 +1676,8 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.OfeigurTheUndying:
-                card.attack = new int[6] { 1, 1, 2, 2, 3, 4 };
-                card.health = new int[6] { 8, 10, 10, 10, 10, 11 };
+                card.attack = new int[6] { 1, 2, 2, 3, 4, 5 };
+                card.health = new int[6] { 8, 9, 11, 12, 14, 16 };
                 card.cd = 6;
                 card.range = 2;
                 card.speed = 2;
@@ -1685,14 +1685,12 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
                 card.special.reanimate = true;
                 card.special.martyrdom = true;
-                card.special.vigilance = true;
                 card.special.ambush = true;
-                card.special.regeneration = new int[6] { 2, 2, 2, 3, 3, 3 };
                 break;
 
             case Card.Title.OpheliaWestWind:
-                card.attack = new int[6] { 2, 2, 2, 3, 3, 4 };
-                card.health = new int[6] { 6, 8, 10, 10, 12, 13 };
+                card.attack = new int[6] { 2, 2, 2, 3, 3, 3 };
+                card.health = new int[6] { 6, 8, 10, 10, 12, 12 };
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 4;
@@ -1700,6 +1698,8 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
                 card.special.flying = true;
                 card.special.flyingAura = true;
+                card.special.resistance = new int[6] { 1, 1, 2, 2, 3, 4 };
+                card.special.resistanceAura = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.PontiffFaol:
@@ -2060,11 +2060,12 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Magical;
                 card.special.wall = true;
                 card.special.resistance = new int[6] { 1, 1, 1, 1, 3, 0};
+                card.special.speedAura = new int[6] { 2, 2, 2, 2, 2, 0};
                 break;
 
             case Card.Title.BoneWall:
                 card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
-                card.health = new int[6] { 10, 15, 20, 25, 50, 0 };
+                card.health = new int[6] { 15, 20, 25, 30, 50, 0 };
                 card.cd = 4;
                 card.range = 0;
                 card.speed = 0;
@@ -2076,7 +2077,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.SentryTower:
                 card.attack = new int[6] { 5, 6, 7, 8, 11, 0 };
-                card.health = new int[6] { 10, 15, 20, 25, 35, 0 };
+                card.health = new int[6] { 10, 10, 10, 10, 15, 0 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 0;

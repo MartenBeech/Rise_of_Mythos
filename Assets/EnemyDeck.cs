@@ -23,6 +23,9 @@ public class EnemyDeck : MonoBehaviour
 
         int level = Game.level;
 
+        bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.OpheliaWestWind, Card.Alignment.Ally, Game.rank), 8);
+
+
         switch (hero)
         {
             case EnemyHero.Hero.Ajit:
@@ -199,8 +202,11 @@ public class EnemyDeck : MonoBehaviour
 
                 for (int i = 0; i < Deck.deckEnemyDefault.Count; i++)
                 {
-                    Deck.deckEnemyDefault[i].special.thunderStorm[Deck.deckEnemyDefault[i].rank]++;
-                    if (level >= 25)
+                    Deck.deckEnemyDefault[i].special.ember = true;
+
+                    if (level < 25)
+                        Deck.deckEnemyDefault[i].special.lightningBolt[Deck.deckEnemyDefault[i].rank]++;
+                    else
                         Deck.deckEnemyDefault[i].special.thunderStorm[Deck.deckEnemyDefault[i].rank]++;
 
                 }
@@ -264,7 +270,6 @@ public class EnemyDeck : MonoBehaviour
                 bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.SentryTower, Card.Alignment.Ally, Game.rank), 8);
                 bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.SentryTower, Card.Alignment.Ally, Game.rank), 9);
                 break;
-
         }
     }
 }
