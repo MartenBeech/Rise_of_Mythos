@@ -8,34 +8,34 @@ public class Card : MonoBehaviour
 {
     public enum Title
     {
-        Bat, CentaurArcher, CentaurRider, Crossbowman, DarkRider, DreadScout, ElvenArcher, ElvenFireApprentice, ElvenFrostApprentice, ElvenGuard,
+        Angel, Bat, CentaurArcher, CentaurRider, Crossbowman, DarkRider, DreadScout, ElvenArcher, ElvenFireApprentice, ElvenFrostApprentice, ElvenGuard,
         ElvenHunter, ElvenSamurai, ElvenThunderApprentice, ElvenWitch, FelesMessenger, FelesTracker, Fencer, FoulSkeleton, Ghost, Guard,
-        HellHound, Horseman, HuntingDog, Lancer, Lizard, Mercenary, PegasusRider, PegasusScout, Priest, Priestess,
-        RepeatingCrossbow, Squire, ThunderLizard, Vampire, VampireApprentice, VenomousBat, VileSkeleton, WerewolfHowler, WerewolfIronclaw, Wraith,
+        HellHound, Horseman, HuntingDog, Lancer, Lizard, Mercenary, Ogre, OgreHercules, OgreWarrior, PegasusRider, PegasusScout, Priest, Priestess,
+        RepeatingCrossbow, Squire, TenguAssassin, TenguSamurai, ThunderLizard, Vampire, VampireApprentice, VenomousBat, VileSkeleton, WerewolfHowler, WerewolfIronclaw, Wraith,
         ZombieGuard, ZombieSwordsman,
 
-        ArmouredLizard, BattlePriestess, BlackRider, BlessedElvenSamurai, BloodthirstyBat, CentaurGuerrilla, CentaurHunter, Cerberus, ChillingGhost, DreadKnight,
+        AngelProtector, ArmouredLizard, BattlePriestess, BlackRider, BlessedElvenSamurai, BloodthirstyBat, CentaurGuerrilla, CentaurHunter, Cerberus, ChillingGhost, ColossalOgreHercules, DreadKnight,
         DreadWraith, ElvenFireMage, ElvenFrostArchmage, ElvenLongbowArcher, ElvenPraetorian, ElvenPriestess, ElvenSniper, ElvenThunderMage, FelesAssassin, FelesScout,
-        GrandFencer, HeavyCrossbowman, HeavyRepeatingCrossbow, HighPriestess, Hound, Knight, LanceKnight, MercenaryVeteran, Paladin, PegasusGuard,
-        PegasusLegionnaire, RottenSkeleton, SeniorThunderLizard, Sentinel, SepticBat, UnholySkeleton, VampireMage, VampireNoble, WerewolfProwler, WerewolfSteelclaw,
+        GrandFencer, HeavyCrossbowman, HeavyRepeatingCrossbow, HighPriestess, Hound, Knight, LanceKnight, MercenaryVeteran, OgreBerserker, Paladin, PegasusGuard,
+        PegasusLegionnaire, RottenSkeleton, SeniorOgre, SeniorThunderLizard, Sentinel, SepticBat, TenguAssaulter, TenguWarrior, UnholySkeleton, VampireMage, VampireNoble, WerewolfProwler, WerewolfSteelclaw,
         ZombieLegionnaire, ZombieSentinel,
 
-        AegisLizard, BattleAbbess, Captain, CentaurGuerrillaLeader, CentaurMarksman, ChampionKnight, CrossbowCaptain, DoomRider, DreadChampion, DreadPhantom,
+        AegisLizard, AngelLightbinder, BattleAbbess, Captain, CentaurGuerrillaLeader, CentaurMarksman, ChampionKnight, CrossbowCaptain, DoomRider, DreadChampion, DreadPhantom,
         ElvenFireArchmage, ElvenFrostSorcerer, ElvenHighPriestess, ElvenLegionnaire, ElvenMarksman, ElvenRebel, ElvenSharpShooter, ElvenThunderArchmage, FelesAssassinMaster, FelesSwordsman,
-        FencingMaster, FieryCerberus, FieryHound, HellishSkeleton, HolyMaster, IcyGaleGhost, LanceChampion, MercenaryCaptain, PegasusChampion, PegasusRaidLeader,
-        PlaguedSkeleton, RepeatingCrossbowCaptain, SawtoothThunderLizard, ScarletBat, SpitefulBat, Templar, VampireArchmage, VampireLord, WerewolfDeathclaw, WerewolfFleshripper,
+        FencingMaster, FieryCerberus, FieryHound, HellishSkeleton, HolyMaster, IcyGaleGhost, LanceChampion, MercenaryCaptain, OgreBloodrager, OgreHerculesRingleader, OgreRingleader, PegasusChampion, PegasusRaidLeader,
+        PlaguedSkeleton, RepeatingCrossbowCaptain, SawtoothThunderLizard, ScarletBat, SpitefulBat, Templar, TenguBloodseeker, TenguShadowWarrior, VampireArchmage, VampireLord, WerewolfDeathclaw, WerewolfFleshripper,
         ZombieCaptain, ZombieChampion,
 
-        CainTheTraitor, CerberusHegemon, ChiefIronhide, CrusaderLucanus, DariusDarkhand, DemonHunterAzrael, DesperateSoul, EacannTheCharger, FenrisTheButcher, FirstRangerTalenor,
-        KathrynEmberwind, LuciusSwift, MifzunaTheWind, OfeigurTheUndying, OpheliaWestWind, PontiffFaol, PrinceSerka, TanwenWildfire, VelynTheUnscarred, VirulentBatKing,
+        CainTheTraitor, CerberusHegemon, ChiefHrafn, ChiefIronhide, ChiefSharptooth, CrusaderLucanus, DariusDarkhand, DemonHunterAzrael, DesperateSoul, EacannTheCharger, FenrisTheButcher, FirstRangerTalenor,
+        GuardianAngel, KathrynEmberwind, LuciusSwift, MifzunaTheWind, OfeigurTheUndying, OpheliaWestWind, PontiffFaol, PrinceSerka, TanwenWildfire, VelynTheUnscarred, VirulentBatKing,
         WindDancerElke,
 
-        AryaTheHonorable, BigShuck, ChieftainLionroar, DragonHunterVincent, EmperorAugustus, EmrysTheUnyielding, ExecutionerGrimbone, Gringheist, JasmineTheDervish, KingVelAssar, 
-        LordFleder, MaiaShadowblade, PrincessSarya, RyliTheWhiteWitch, SilvaTheAlmighty, SorannTheUnforgiving, StormLizardKing, TarielThePhalanx, UndeadKingBael, VarkusTheBlight,
+        AryaTheHonorable, BigShuck, BossRagnar, ChieftainLionroar, DragonHunterVincent, EmperorAugustus, EmrysTheUnyielding, ExecutionerGrimbone, Gringheist, JasmineTheDervish, KingVelAssar, 
+        Krusha, LordFleder, MaiaShadowblade, PrincessSarya, RyliTheWhiteWitch, Seraph, SilvaTheAlmighty, SkyReaverVara, SorannTheUnforgiving, StormLizardKing, TarielThePhalanx, UndeadKingBael, VarkusTheBlight,
         Whitemane,
 
         Null, BoneHeap, RaisedDead,
-        ArcaneCrystalTower, BoneWall, SentryTower, WarTotem, FlyerWall
+        ArcaneCrystalTower, BoneWall, SentryTower, WarTotem, FireSkyTower
     }
     public Title title;
 

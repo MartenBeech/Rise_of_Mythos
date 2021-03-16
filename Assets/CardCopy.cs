@@ -42,6 +42,7 @@ public class CardCopy : MonoBehaviour
 
         copy.special.wall = card.special.wall;
         copy.special.flying = card.special.flying;
+        copy.special.levitate = card.special.levitate;
         copy.special.vigilance = card.special.vigilance;
         copy.special.penetrate = card.special.penetrate;
 
@@ -75,9 +76,10 @@ public class CardCopy : MonoBehaviour
             copy.special.maimed[i] = card.special.maimed[i];
             copy.special.battleSpirit[i] = card.special.battleSpirit[i];
             copy.special.knockback[i] = card.special.knockback[i];
+            copy.special.prayer[i] = card.special.prayer[i];
+            copy.special.healingHand[i] = card.special.healingHand[i];
+            copy.special.backstab[i] = card.special.backstab[i];
         }
-
-        
 
         for (int i = 0; i < 6; i++)
         {
@@ -90,10 +92,14 @@ public class CardCopy : MonoBehaviour
             copy.special.herosBaneAura[i] = card.special.herosBaneAura[i];
             copy.special.poisonAura[i] = card.special.poisonAura[i];
             copy.special.armorAura[i] = card.special.armorAura[i];
+            copy.special.resistanceAura[i] = card.special.resistanceAura[i];
+            copy.special.prayerAura[i] = card.special.prayerAura[i];
+            copy.special.rageAura[i] = card.special.rageAura[i];
         }
 
             copy.special.blizzardAura = card.special.blizzardAura;
             copy.special.penetrateAura = card.special.penetrateAura;
+            copy.special.flyingAura = card.special.flyingAura;
 
 
         copy.special.pierce = card.special.pierce;
@@ -128,12 +134,13 @@ public class CardCopy : MonoBehaviour
         copy.special.spear = card.special.spear;
         copy.special.ambush = card.special.ambush;
         copy.special.cleave = card.special.cleave;
-        copy.special.charm = card.special.charm;
+        copy.special.convert = card.special.convert;
         copy.special.hitAndRun = card.special.hitAndRun;
         copy.special.bleedingAttack = card.special.bleedingAttack;
         copy.special.bleeding = card.special.bleeding;
         copy.special.influence = card.special.influence;
         copy.special.headbutt = card.special.headbutt;
+        copy.special.stoneskin = card.special.stoneskin;
 
         copy.special.kingsCommand = card.special.kingsCommand;
         copy.special.combatMaster = card.special.combatMaster;
@@ -146,10 +153,13 @@ public class CardCopy : MonoBehaviour
         copy.special.cheif = card.special.cheif;
         copy.special.krush = card.special.krush;
         copy.special.lifeAbsorb = card.special.lifeAbsorb;
+        copy.special.vengeance = card.special.vengeance;
+        copy.special.retribution = card.special.retribution;
         for (int i = 0; i < 6; i++)
         {
             copy.special.disdain[i] = card.special.disdain[i];
             copy.special.thunderStorm[i] = card.special.thunderStorm[i];
+            copy.special.convert[i] = card.special.convert[i];
         }
 
         return copy;

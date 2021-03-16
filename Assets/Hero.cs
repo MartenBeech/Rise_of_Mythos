@@ -61,6 +61,7 @@ public class Hero : MonoBehaviour
         if (damage > 0)
         {
             special.CheckLifeSteal(dealer, damage);
+            special.CheckRetribution(dealer, damage);
             special.CheckLifeAbsorb(dealer, damage);
             special.CheckHeroic(dealer);
             special.CheckInfluence(dealer);
@@ -108,6 +109,33 @@ public class Hero : MonoBehaviour
                     heroes[1].destroyHero = true;
                     Game.gameOver = true;
                 }
+            }
+        }
+    }
+
+    public void Heal(Card dealer, Card.Alignment alignment, int amount)
+    {
+        if (heroes[0].health > 0 && heroes[1].health > 0)
+        {
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
+
+            if (alignment == Card.Alignment.Ally)
+            {
+                heroes[0].health += amount;
+                if (heroes[0].health > heroes[1].healthDefault)
+                    heroes[0].health = heroes[1].healthDefault;
+                DisplayHero(Card.Alignment.Ally);
+                AnimaText animaText = new AnimaText();
+                animaText.ShowText(Heroes[0], amount.ToString(), Hue.green);
+            }
+            else
+            {
+                heroes[1].health += amount;
+                if (heroes[1].health > heroes[1].healthDefault)
+                    heroes[1].health = heroes[1].healthDefault;
+                DisplayHero(Card.Alignment.Enemy);
+                AnimaText animaText = new AnimaText();
+                animaText.ShowText(Heroes[1], amount.ToString(), Hue.green);
             }
         }
     }

@@ -6,38 +6,43 @@ using UnityEngine.UI;
 public class SpecialTrigger : MonoBehaviour
 {
     Special special = new Special();
-    public void OnSummon(Card card)
+    public void OnSummon(Card dealer)
     {
-        special.CheckLifeAuraBattlecry(card);
-        special.CheckLifeAuraSummon(card);
-        special.CheckRegenerationAuraBattlecry(card);
-        special.CheckRegenerationAuraSummon(card);
-        special.CheckRangeAuraBattlecry(card);
-        special.CheckRangeAuraSummon(card);
-        special.CheckSpeedAuraBattlecry(card);
-        special.CheckSpeedAuraSummon(card);
-        special.CheckWitheringAuraBattlecry(card);
-        special.CheckWitheringAuraSummon(card);
-        special.CheckBlizzardAuraBattlecry(card);
-        special.CheckBlizzardAuraSummon(card);
-        special.CheckAttackAuraBattlecry(card);
-        special.CheckAttackAuraSummon(card);
-        special.CheckHerosBaneAuraBattlecry(card);
-        special.CheckHerosBaneAuraSummon(card);
-        special.CheckPenetrateAuraBattlecry(card);
-        special.CheckPenetrateAuraSummon(card);
-        special.CheckPoisonAuraBattlecry(card);
-        special.CheckPoisonAuraSummon(card);
-        special.CheckArmorAuraBattlecry(card);
-        special.CheckArmorAuraSummon(card);
-        special.CheckResistanceAuraBattlecry(card);
-        special.CheckResistanceAuraSummon(card);
-        special.CheckFlyingAuraSummon(card);
-        special.CheckFlyingAuraBattlecry(card);
+        special.CheckLifeAuraBattlecry(dealer);
+        special.CheckLifeAuraSummon(dealer);
+        special.CheckRegenerationAuraBattlecry(dealer);
+        special.CheckRegenerationAuraSummon(dealer);
+        special.CheckRangeAuraBattlecry(dealer);
+        special.CheckRangeAuraSummon(dealer);
+        special.CheckSpeedAuraBattlecry(dealer);
+        special.CheckSpeedAuraSummon(dealer);
+        special.CheckWitheringAuraBattlecry(dealer);
+        special.CheckWitheringAuraSummon(dealer);
+        special.CheckBlizzardAuraBattlecry(dealer);
+        special.CheckBlizzardAuraSummon(dealer);
+        special.CheckAttackAuraBattlecry(dealer);
+        special.CheckAttackAuraSummon(dealer);
+        special.CheckHerosBaneAuraBattlecry(dealer);
+        special.CheckHerosBaneAuraSummon(dealer);
+        special.CheckPenetrateAuraBattlecry(dealer);
+        special.CheckPenetrateAuraSummon(dealer);
+        special.CheckPoisonAuraBattlecry(dealer);
+        special.CheckPoisonAuraSummon(dealer);
+        special.CheckArmorAuraBattlecry(dealer);
+        special.CheckArmorAuraSummon(dealer);
+        special.CheckResistanceAuraBattlecry(dealer);
+        special.CheckResistanceAuraSummon(dealer);
+        special.CheckFlyingAuraSummon(dealer);
+        special.CheckFlyingAuraBattlecry(dealer);
+        special.CheckPrayerAuraSummon(dealer);
+        special.CheckPrayerAuraBattlecry(dealer);
+        special.CheckRageAuraSummon(dealer);
+        special.CheckRageAuraBattlecry(dealer);
 
-        special.CheckReinforcement(card);
-        special.CheckConjure(card);
-        special.CheckCheif(card);
+        special.CheckReinforcement(dealer);
+        special.CheckConjure(dealer);
+        special.CheckCheif(dealer);
+        special.CheckHealingHand(dealer);
     }
 
     public void OnDeath(Card target)
@@ -69,13 +74,13 @@ public class SpecialTrigger : MonoBehaviour
     public bool OnTurnEnd(Card dealer)
     {
         bool externalAttackAnimation = false;
+        if (special.CheckBoneHeap(dealer))
+            externalAttackAnimation = true;
         if (special.CheckCure(dealer))
             externalAttackAnimation = true;
         if (special.CheckRegeneration(dealer))
             externalAttackAnimation = true;
         if (special.CheckKingsCommand(dealer))
-            externalAttackAnimation = true;
-        if (special.CheckBoneHeap(dealer))
             externalAttackAnimation = true;
         if (special.CheckDamageTakenEachTurn(dealer))
             externalAttackAnimation = true;
@@ -87,6 +92,8 @@ public class SpecialTrigger : MonoBehaviour
             externalAttackAnimation = true;
         if (special.CheckThunderstorm(dealer))
             externalAttackAnimation = true;
+        if (special.CheckPrayer(dealer))
+            externalAttackAnimation = true;
 
         special.CheckInspiration(dealer);
         special.CheckDistraction(dealer);
@@ -97,6 +104,10 @@ public class SpecialTrigger : MonoBehaviour
     public int OnDamageDealt(Card dealer, Card target, int _damage, Card.DamageType damageType, bool basicAttack = true)
     {
         int damage = _damage;
+        if (basicAttack)
+        {
+            damage = special.CheckVengeance(dealer, target, damage);
+        }
         damage = special.CheckMaimed(dealer, target, damage, damageType);
         damage = special.CheckArmor(dealer, target, damage, damageType);
         damage = special.CheckSpellCursed(dealer, target, damage, damageType);
@@ -113,12 +124,14 @@ public class SpecialTrigger : MonoBehaviour
             damage = special.CheckEmber(dealer, target, damage);
         }
         damage = special.CheckIncorporeal(dealer, target, damage, damageType);
+        damage = special.CheckStoneskin(dealer, target, damage);
 
         if (basicAttack)
         {
             special.CheckDispel(dealer, target);
 
             special.CheckLifeSteal(dealer, damage);
+            special.CheckRetribution(dealer, damage);
             special.CheckLifeAbsorb(dealer, damage);
             special.CheckHeroic(dealer);
             special.CheckWeaken(dealer, target);
@@ -131,10 +144,10 @@ public class SpecialTrigger : MonoBehaviour
             special.CheckMaim(dealer, target);
             special.CheckStun(dealer, target);
             special.CheckPermaStun(dealer, target);
-            special.CheckCharm(dealer, target);
             special.CheckInfluence(dealer);
             special.CheckBleedingAttack(dealer, target);
 
+            special.CheckConvert(dealer, target);
             special.CheckFear(dealer, target, damage);
             special.CheckDisdain(dealer, target);
             special.CheckKrush(dealer, target);

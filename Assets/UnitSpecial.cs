@@ -247,4 +247,30 @@ public class UnitSpecial : MonoBehaviour
             Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
         }
     }
+
+    public void IncreasePrayer(Card dealer, Card target, int amount)
+    {
+        if (dealer.occupied && target.occupied)
+        {
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Prayer", Hue.cyan);
+
+            target.special.prayer[target.rank] += amount;
+
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+        }
+    }
+
+    public void IncreaseRage(Card dealer, Card target, int amount)
+    {
+        if (dealer.occupied && target.occupied)
+        {
+            AnimaText animaText = new AnimaText();
+            animaText.ShowText(Bf.Bfs[target.tile], "+" + amount + " Rage", Hue.cyan);
+
+            target.special.rage[target.rank] += amount;
+
+            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.cyan;
+        }
+    }
 }

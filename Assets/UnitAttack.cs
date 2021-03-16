@@ -13,7 +13,9 @@ public class UnitAttack : MonoBehaviour
         Special special = new Special();
         if (special.CheckWhirlwind(dealer))
             externalAttackAnimation = true;
-        else if (special.CheckVililanceAttack(dealer))
+        else if (special.CheckBackstabAttack(dealer))
+            externalAttackAnimation = true;
+        else if (special.CheckVigilanceAttack(dealer))
             externalAttackAnimation = true;
         else if (special.CheckMultiShot(dealer))
             externalAttackAnimation = true;

@@ -7,6 +7,7 @@ public class Special : MonoBehaviour
 {
     public bool wall = false;
     public bool flying = false;
+    public bool levitate = false;
     public bool vigilance = false;
     public bool penetrate = false;
 
@@ -38,6 +39,9 @@ public class Special : MonoBehaviour
     public int[] maimed = new int[6] {0, 0, 0, 0, 0, 0};
     public int[] battleSpirit = new int[6] {0, 0, 0, 0, 0, 0};
     public int[] knockback = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] prayer = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] healingHand = new int[6] {0, 0, 0, 0, 0, 0};
+    public int[] backstab = new int[6] { 0, 0, 0, 0, 0, 0 };
 
     public int[] lifeAura = new int[6] {0, 0, 0, 0, 0, 0};
     public int[] regenerationAura = new int[6] {0, 0, 0, 0, 0, 0};
@@ -52,6 +56,8 @@ public class Special : MonoBehaviour
     public int[] armorAura = new int[6] {0, 0, 0, 0, 0, 0};
     public int[] resistanceAura = new int[6] {0, 0, 0, 0, 0, 0};
     public bool flyingAura = false;
+    public int[] prayerAura = new int[6] { 0, 0, 0, 0, 0, 0 };
+    public int[] rageAura = new int[6] { 0, 0, 0, 0, 0, 0 };
 
     public bool pierce = false;
     public bool whirlwind = false;
@@ -85,12 +91,12 @@ public class Special : MonoBehaviour
     public bool spear = false;
     public bool ambush = false;
     public bool cleave = false;
-    public bool charm = false;
     public bool hitAndRun = false;
     public bool bleedingAttack = false;
     public bool bleeding = false;
     public bool influence = false;
     public bool headbutt = false;
+    public bool stoneskin = false;
 
     public bool kingsCommand = false;
     public bool combatMaster = false;
@@ -105,6 +111,9 @@ public class Special : MonoBehaviour
     public bool krush = false;
     public int[] thunderStorm = new int[6] {0, 0, 0, 0, 0, 0};
     public bool lifeAbsorb = false;
+    public bool vengeance = false;
+    public bool retribution = false;
+    public int[] convert = new int[6] { 0, 0, 0, 0, 0, 0 };
 
 
     public int CheckArmor(Card dealer, Card target, int damage, Card.DamageType damageType)
@@ -137,7 +146,7 @@ public class Special : MonoBehaviour
         return damage;
     }
 
-    public bool CheckVililanceMove(Card dealer)
+    public bool CheckVigilanceMove(Card dealer)
     {
         if (dealer.special.vigilance)
         {
@@ -150,7 +159,7 @@ public class Special : MonoBehaviour
         return false;
     }
 
-    public bool CheckVililanceAttack(Card dealer)
+    public bool CheckVigilanceAttack(Card dealer)
     {
         if (dealer.special.vigilance)
         {
@@ -1560,21 +1569,6 @@ public class Special : MonoBehaviour
         }
     }
 
-    public void CheckCharm(Card dealer, Card target)
-    {
-        if (dealer.special.charm)
-        {
-            if (target.cd <= 3)
-            {
-                if (target.alignment == Card.Alignment.Ally)
-                    target.alignment = Card.Alignment.Enemy;
-                else
-                    target.alignment = Card.Alignment.Ally;
-                dealer.special.charm = false;
-            }
-        }
-    }
-
     public void CheckKrush(Card dealer, Card target)
     {
         if (dealer.special.krush)
@@ -1852,6 +1846,169 @@ public class Special : MonoBehaviour
             {
                 UnitSpecial unitSpecial = new UnitSpecial();
                 unitSpecial.IncreaseFlying(allies[i], dealer);
+            }
+        }
+    }
+
+    public bool CheckPrayer(Card dealer)
+    {
+        if (dealer.special.prayer[dealer.rank] > 0)
+        {
+            Hero hero = new Hero();
+            hero.Heal(dealer, dealer.alignment, dealer.special.prayer[dealer.rank]);
+            return true;
+        }
+        return false;
+    }
+
+    public void CheckHealingHand(Card dealer)
+    {
+        if (dealer.special.healingHand[dealer.rank] > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.Heal(dealer, allies[i], dealer.special.healingHand[dealer.rank]);
+            }
+        }
+    }
+
+    public void CheckPrayerAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.prayerAura[dealer.rank] > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreasePrayer(dealer, allies[i], dealer.special.prayerAura[dealer.rank]);
+            }
+        }
+    }
+
+    public void CheckPrayerAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.prayerAura[allies[i].rank] > 0)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreasePrayer(allies[i], dealer, allies[i].special.prayerAura[allies[i].rank]);
+            }
+        }
+    }
+
+    public int CheckVengeance(Card dealer, Card target, int damage)
+    {
+        if (dealer.special.vengeance)
+        {
+            damage = target.attack[target.rank];
+        }
+        return damage;
+    }
+
+    public void CheckRetribution(Card dealer, int damage)
+    {
+        if (dealer.special.retribution)
+        {
+            Hero hero = new Hero();
+            hero.Heal(dealer, dealer.alignment, damage);
+        }
+    }
+
+    public void CheckConvert(Card dealer, Card target)
+    {
+        if (dealer.special.convert[dealer.rank] > 0)
+        {
+            if (target.cd <= dealer.special.convert[dealer.rank])
+            {
+                if (target.alignment == Card.Alignment.Ally)
+                    target.alignment = Card.Alignment.Enemy;
+                else
+                    target.alignment = Card.Alignment.Ally;
+                dealer.special.convert[dealer.rank] = 0;
+            }
+        }
+    }
+
+    public bool CheckBackstabMove(Card dealer)
+    {
+        if (dealer.special.backstab[dealer.rank] > 0)
+        {
+            Tile tile = new Tile();
+            if (tile.GetEnemiesInFront(dealer, dealer.tile, 1, true).Count > 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool CheckBackstabAttack(Card dealer)
+    {
+        if (dealer.special.backstab[dealer.rank] > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> enemies = tile.GetEnemiesInFront(dealer, dealer.tile, 1, true);
+            if (enemies.Count > 0)
+            {
+                for (int i = 0; i < dealer.special.multistrike[dealer.rank] + 1; i++)
+                {
+                    UnitAttack unitAttack = new UnitAttack();
+                    unitAttack.DealDamage(dealer, enemies[0], dealer.attack[dealer.rank] * dealer.special.backstab[dealer.rank], dealer.damageType, true);
+                    Special special = new Special();
+                    special.CheckCleave(dealer, enemies[0]);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int CheckStoneskin(Card dealer, Card target, int damage)
+    {
+        if (target.special.stoneskin)
+        {
+            if (damage > 3 && !dealer.special.penetrate)
+                damage = 3;
+        }
+        return damage;
+    }
+
+    public void CheckRageAuraBattlecry(Card dealer)
+    {
+        if (dealer.special.rageAura[dealer.rank] > 0)
+        {
+            Tile tile = new Tile();
+            List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+            for (int i = 0; i < allies.Count; i++)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseRage(dealer, allies[i], dealer.special.rageAura[dealer.rank]);
+            }
+        }
+    }
+
+    public void CheckRageAuraSummon(Card dealer)
+    {
+        Tile tile = new Tile();
+        List<Card> allies = tile.GetAllOtherAllies(dealer);
+
+        for (int i = 0; i < allies.Count; i++)
+        {
+            if (allies[i].special.rageAura[allies[i].rank] > 0)
+            {
+                UnitSpecial unitSpecial = new UnitSpecial();
+                unitSpecial.IncreaseRage(allies[i], dealer, allies[i].special.rageAura[allies[i].rank]);
             }
         }
     }

@@ -91,10 +91,13 @@ public class Recruit : MonoBehaviour
                 rarityChances = new int[] { 0, 25, 40, 35, 0 };
                 break;
             case 10:
+            case 15:
+            case 20:
+            case 25:
                 rarityChances = new int[] { 0, 0, 0, 0, 100 };
                 break;
             default:
-                rarityChances = new int[] { 24, 24, 24, 16, 12 };
+                rarityChances = new int[] { 0, 40, 30, 30, 0 };
                 break;
         }
 

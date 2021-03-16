@@ -32,7 +32,8 @@ public class SpecialInfo : MonoBehaviour
             speedDiff +
 
             (card.special.flying ? "<b>" + "Flying: " + "</b>" + "Flies over non-flying enemies" + "\n" : "") +
-            (card.special.vigilance ? "<b>" + "Vigilance: " + "</b>" + "Can attack adjacent enemies without moving first. Attacks backwards in preference" + "\n" : "") +
+            (card.special.levitate ? "<b>" + "Levitate: " + "</b>" + "Flying units cannot fly over this unit" + "\n" : "") +
+            (card.special.vigilance ? "<b>" + "Vigilance: " + "</b>" + "Can stand still and attack adjacent enemies. Attacks backwards in preference" + "\n" : "") +
             (card.special.penetrate ? "<b>" + "Penetrate: " + "</b>" + "Damage dealt cannot be reduced" + "\n" : "") +
             (card.special.armor[card.rank] > 0 ? "<b>" + "Armor " + card.special.armor[card.rank] + ": " + "</b>" + "Take reduced physical damage" + "\n" : "") +
             (card.special.resistance[card.rank] > 0 ? "<b>" + "Resistance " + card.special.resistance[card.rank] + ": " + "</b>" + "Take reduced magical damage" + "\n" : "") +
@@ -58,6 +59,9 @@ public class SpecialInfo : MonoBehaviour
             (card.special.maim[card.rank] > 0 ? "<b>" + "Maim " + card.special.maim[card.rank] + ": " + "</b>" + "Attacks causes the enemy to take increased physical damage" + "\n" : "") +
             (card.special.battleSpirit[card.rank] > 0 ? "<b>" + "Battle Spirit " + card.special.battleSpirit[card.rank] + ": " + "</b>" + "Gain +" + card.special.battleSpirit[card.rank] + "/+" + card.special.battleSpirit[card.rank] + " whenever this takes physical damage" + "\n" : "") +
             (card.special.knockback[card.rank] > 0 ? "<b>" + "Knockback " + card.special.knockback[card.rank] + ": " + "</b>" + "Damaged targets will be knocked back " + card.special.knockback[card.rank] + " tiles" + "\n" : "") +
+            (card.special.prayer[card.rank] > 0 ? "<b>" + "Prayer " + card.special.prayer[card.rank] + ": " + "</b>" + "Heal your hero each turn" + "\n" : "") +
+            (card.special.healingHand[card.rank] > 0 ? "<b>" + "Healing Hand " + card.special.healingHand[card.rank] + ": " + "</b>" + "When summoned, heal all your other units" + "\n" : "") +
+            (card.special.backstab[card.rank] > 0 ? "<b>" + "Backstab " + card.special.backstab[card.rank] + ": " + "</b>" + "Can stand still and attack units behind this unit for " + card.special.backstab[card.rank] + " times damage." + "\n" : "") +
 
             (card.special.lifeAura[card.rank] > 0 ? "<b>" + "Life Aura " + card.special.lifeAura[card.rank] + ": " + "</b>" + "Allied units get bonus health" + "\n" : "") +
             (card.special.regenerationAura[card.rank] > 0 ? "<b>" + "Regeneration Aura " + card.special.regenerationAura[card.rank] + ": " + "</b>" + "Allied units get Regeneration" + "\n" : "") +
@@ -70,7 +74,10 @@ public class SpecialInfo : MonoBehaviour
             (card.special.penetrateAura ? "<b>" + "Penetrate Aura: " + "</b>" + "Allied units get Penetrate" + "\n" : "") +
             (card.special.poisonAura[card.rank] > 0 ? "<b>" + "Poison Aura " + card.special.poisonAura[card.rank] + ": " + "</b>" + "Allied units get Poison" + "\n" : "") +
             (card.special.armorAura[card.rank] > 0 ? "<b>" + "Armor Aura " + card.special.armorAura[card.rank] + ": " + "</b>" + "Allied units get Armor" + "\n" : "") +
+            (card.special.resistanceAura[card.rank] > 0 ? "<b>" + "Resistance Aura " + card.special.resistanceAura[card.rank] + ": " + "</b>" + "Allied units get Resistance" + "\n" : "") +
             (card.special.flyingAura ? "<b>" + "Flying Aura: " + "</b>" + "Allied units get Flying" + "\n" : "") +
+            (card.special.prayerAura[card.rank] > 0 ? "<b>" + "Prayer Aura " + card.special.prayerAura[card.rank] + ": " + "</b>" + "Allied units get Prayer" + "\n" : "") +
+            (card.special.rageAura[card.rank] > 0 ? "<b>" + "Rage Aura " + card.special.rageAura[card.rank] + ": " + "</b>" + "Allied units get Rage" + "\n" : "") +
 
             (card.special.pierce ? "<b>" + "Pierce: " + "</b>" + "Also deals damage to the enemy behind the target" + "\n" : "") +
             (card.special.whirlwind ? "<b>" + "Whirlwind: " + "</b>" + "Attack all adjacent enemies" + "\n" : "") +
@@ -102,11 +109,11 @@ public class SpecialInfo : MonoBehaviour
             (card.special.spear ? "<b>" + "Spear: " + "</b>" + "Deal double damage to units with 4+ Speed" + "\n" : "") +
             (card.special.ambush ? "<b>" + "Ambush: " + "</b>" + "This unit's first attack deals double damage" + "\n" : "") +
             (card.special.cleave ? "<b>" + "Cleave: " + "</b>" + "Damage all enemies on the same column as the target" + "\n" : "") +
-            (card.special.charm ? "<b>" + "Charm: " + "</b>" + "Take control over the first unit attacked with 3 or less cd" + "\n" : "") +
             (card.special.bleedingAttack ? "<b>" + "Bleeding Attack: " + "</b>" + "Attacks make the target unable to be healed" + "\n" : "") +
             (card.special.influence ? "<b>" + "Influence: " + "</b>" + "Upon attacking, give a card in your hand +1/+1" + "\n" : "") +
             (card.special.hitAndRun ? "<b>" + "Hit and Run: " + "</b>" + "After attacking, move backwards" + "\n" : "") +
             (card.special.headbutt ? "<b>" + "Headbutt: " + "</b>" + "After attacking, push the target back 1 tile and move with it" + "\n" : "") +
+            (card.special.stoneskin ? "<b>" + "Stoneskin: " + "</b>" + "Any damage received is reduced to 3" + "\n" : "") +
 
             (card.special.kingsCommand ? "<b>" + "King's Command: " + "</b>" + "Summons a random 1-countdown unit each turn" + "\n" : "") +
             (card.special.combatMaster ? "<b>" + "Combat Master: " + "</b>" + "Deals double damage to enemies with 4+ Range, 4+ Speed, Armor, Wall or Flying" + "\n" : "") +
@@ -115,12 +122,15 @@ public class SpecialInfo : MonoBehaviour
             (card.special.soulHarvest ? "<b>" + "Soul Harvest: " + "</b>" + "Whenever an enemy dies, gain half its Attack and Health" + "\n" : "") +
             (card.special.multiShot ? "<b>" + "Multishot: " + "</b>" + "Attack all enemy units and heroes inside range" + "\n" : "") +
             (card.special.reinforcement ? "<b>" + "Reinforcement: " + "</b>" + "When played, summon a copy of this unit on the same column" + "\n" : "") +
-            (card.special.disdain[card.rank] > 0 ? "<b>" + "Disdain " + card.special.disdain[card.rank] + ": " + "</b>" + "Damagine units with " + card.special.disdain[card.rank] + " or less countdown instantly kills them" + "\n" : "") +
+            (card.special.disdain[card.rank] > 0 ? "<b>" + "Disdain " + card.special.disdain[card.rank] + ": " + "</b>" + "Attacking units with " + card.special.disdain[card.rank] + " or less countdown instantly kills them" + "\n" : "") +
             (card.special.crushDefenses ? "<b>" + "Crush Defenses: " + "</b>" + "Deal double damage to units with Armor or Resistance" + "\n" : "") +
             (card.special.cheif ? "<b>" + "Cheif: " + "</b>" + "On summon, gain +1/+3 for each other allied unit" + "\n" : "") +
             (card.special.krush ? "<b>" + "Krush: " + "</b>" + "Destroy the first unit attacked" + "\n" : "") +
             (card.special.thunderStorm[card.rank] > 0 ? "<b>" + "Thunderstorm " + card.special.thunderStorm[card.rank] + ": " + "</b>" + "Deal damage to all enemy units each turn" + "\n" : "") +
             (card.special.lifeAbsorb ? "<b>" + "Life Absorb: " + "</b>" + "Restore this unit's health equal to double the damage dealt" + "\n" : "") +
+            (card.special.convert[card.rank] > 0 ? "<b>" + "Convert " + card.special.convert[card.rank] + ": " + "</b>" + "Take control over the first enemy attacked with " + card.special.convert[card.rank] + " or less countdown" + "\n" : "") +
+            (card.special.retribution ? "<b>" + "Retribution: " + "</b>" + "Restore your hero's health equal to damage dealt" + "\n" : "") +
+            (card.special.vengeance ? "<b>" + "Vengeance: " + "</b>" + "Deal bonus damage equal to the target's attack value" + "\n" : "") +
 
             (card.special.poisoned[card.rank] > 0 ? "<b>" + "<color=red>" + "Poisoned " + card.special.poisoned[card.rank] + ": " + "</color>" + "</b>" + "Take magical damage each turn" + "\n" : "") +
             (card.special.spellCursed[card.rank] > 0 ? "<b>" + "<color=red>" + "Spell Cursed " + card.special.spellCursed[card.rank] + ": " + "</color>" + "</b>" + "Take increased magical damage" + "\n" : "") +

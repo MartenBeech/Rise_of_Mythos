@@ -37,6 +37,22 @@ public class CardStat : MonoBehaviour
 
         switch (title)
         {
+            case Card.Title.Angel:
+                card.attack = new int[6] { 1, 1, 2, 2, 2, 3};
+                card.health = new int[6] { 4, 6, 6, 8, 11, 12};
+                card.cd = 2;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 1;
+                card.damageType = Card.DamageType.Magical;
+                card.special.levitate = true;
+                card.special.nimble = true;
+                card.special.prayer = new int[6] { 1, 1, 1, 2, 2, 3};
+                card.special.healingHand = new int[6] { 1, 1, 2, 2, 2, 3};
+
+
+                break;
+
             case Card.Title.Bat:
                 card.attack = new int[6] { 1, 1, 2, 2, 2, 3 };
                 card.health = new int[6] { 4, 6, 6, 8, 10, 12 };
@@ -330,6 +346,42 @@ public class CardStat : MonoBehaviour
                 card.special.influence = true;
                 break;
 
+            case Card.Title.Ogre:
+                card.attack = new int[6] { 1, 1, 2, 2, 3, 3};
+                card.health = new int[6] { 6, 8, 9, 9, 11, 13};
+                card.cd = 2;
+                card.range = 1;
+                card.speed = 1;
+                card.rarity = 1;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.regeneration = new int[6] { 2, 2, 2, 3, 3, 4};
+                break;
+
+            case Card.Title.OgreHercules:
+                card.attack = new int[6] {1, 1, 1, 2, 2, 3};
+                card.health = new int[6] {5, 7, 9, 9, 11, 13 };
+                card.cd = 1;
+                card.range = 1;
+                card.speed = 1;
+                card.rarity = 1;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.stun = true;
+                break;
+
+            case Card.Title.OgreWarrior:
+                card.attack = new int[6] { 1, 1, 1, 2, 2, 2};
+                card.health = new int[6] { 6, 8, 11, 12, 14, 14};
+                card.cd = 3;
+                card.range = 1;
+                card.speed = 1;
+                card.rarity = 1;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.rage = new int[6] { 1, 1, 1, 1, 1, 2};
+                break;
+
             case Card.Title.PegasusRider:
                 card.attack = new int[6] { 2, 2, 3, 3, 4, 5 };
                 card.health = new int[6] { 3, 5, 5, 7, 7, 9 };
@@ -393,6 +445,30 @@ public class CardStat : MonoBehaviour
                 card.rarity = 1;
                 card.damageType = Card.DamageType.Physical;
                 card.special.vigilance = true;
+                break;
+
+            case Card.Title.TenguAssassin:
+                card.attack = new int[6] { 1, 2, 2, 3, 3, 4};
+                card.health = new int[6] { 3, 3, 4, 4, 6, 8};
+                card.cd = 1;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 1;
+                card.damageType = Card.DamageType.Physical;
+                card.special.flying = true;
+                card.special.backstab = new int[6] { 2, 2, 2, 2, 2, 2};
+                break;
+
+            case Card.Title.TenguSamurai:
+                card.attack = new int[6] { 1, 1, 1, 2, 2, 3};
+                card.health = new int[6] { 6, 8, 10, 10, 12, 14};
+                card.cd = 1;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 1;
+                card.damageType = Card.DamageType.Physical;
+                card.special.flying = true;
+                card.special.bleedingAttack = true;
                 break;
 
             case Card.Title.ThunderLizard:
@@ -511,6 +587,20 @@ public class CardStat : MonoBehaviour
                 card.special.vigilance = true;
                 break;
 
+            case Card.Title.AngelProtector:
+                card.attack = new int[6] { 2, 2, 3, 3, 4, 4};
+                card.health = new int[6] { 5, 6, 6, 8, 9, 11};
+                card.cd = 4;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 2;
+                card.damageType = Card.DamageType.Magical;
+                card.special.levitate = true;
+                card.special.nimble = true;
+                card.special.prayer = new int[6] { 2, 2, 3, 3, 3, 4};
+                card.special.healingHand = new int[6] { 2, 2, 2, 3, 3, 4};
+                break;
+
             case Card.Title.ArmouredLizard:
                 card.attack = new int[6] { 1, 1, 1, 2, 2, 2 };
                 card.health = new int[6] { 5, 6, 7, 8, 11, 13 };
@@ -617,6 +707,18 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Magical;
                 card.special.soulbound = true;
                 card.special.frostBolt = true;
+                break;
+
+            case Card.Title.ColossalOgreHercules:
+                card.attack = new int[6] { 1, 1, 1, 2, 2, 3 };
+                card.health = new int[6] { 9, 12, 15, 16, 19, 21 };
+                card.cd = 3;
+                card.range = 1;
+                card.speed = 1;
+                card.rarity = 2;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.stun = true;
                 break;
 
             case Card.Title.DreadKnight:
@@ -836,6 +938,18 @@ public class CardStat : MonoBehaviour
                 card.special.influence = true;
                 break;
 
+            case Card.Title.OgreBerserker:
+                card.attack = new int[6] { 1, 1, 2, 2, 3, 3};
+                card.health = new int[6] { 7, 9, 9, 11, 12, 12};
+                card.cd = 4;
+                card.range = 1;
+                card.speed = 1;
+                card.rarity = 2;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.rage = new int[6] { 2, 2, 2, 2, 2, 3};
+                break;
+
             case Card.Title.Paladin:
                 card.attack = new int[6] { 1, 1, 1, 2, 2, 3 };
                 card.health = new int[6] { 3, 5, 7, 7, 9, 10 };
@@ -884,6 +998,17 @@ public class CardStat : MonoBehaviour
                 card.special.poison = new int[6] { 1, 1, 1, 2, 2, 3 };
                 break;
 
+            case Card.Title.SeniorOgre:
+                card.attack = new int[6] { 1, 2, 3, 4, 5, 6 };
+                card.health = new int[6] { 8, 9, 10, 10, 12, 13 };
+                card.cd = 3;
+                card.range = 1;
+                card.speed = 1;
+                card.rarity = 2;
+                card.damageType = Card.DamageType.Physical;
+                card.special.regeneration = new int[6] { 2, 2, 2, 3, 3, 4};
+                break;
+
             case Card.Title.SeniorThunderLizard:
                 card.attack = new int[6] { 1, 1, 2, 2, 3, 3 };
                 card.health = new int[6] { 7, 10, 12, 14, 15, 18 };
@@ -917,6 +1042,30 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
                 card.special.flying = true;
                 card.special.poison = new int[6] { 2, 2, 2, 2, 2, 3 };
+                break;
+
+            case Card.Title.TenguAssaulter:
+                card.attack = new int[6] { 2, 2, 3, 3, 4, 5};
+                card.health = new int[6] { 5, 7, 7, 9, 10, 12};
+                card.cd = 3;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 2;
+                card.damageType = Card.DamageType.Physical;
+                card.special.flying = true;
+                card.special.backstab = new int[6] { 2, 2, 2, 2, 2, 2};
+                break;
+
+            case Card.Title.TenguWarrior:
+                card.attack = new int[6] { 1, 1, 1, 2, 2, 2};
+                card.health = new int[6] { 4, 5, 7, 7, 9, 9};
+                card.cd = 2;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 2;
+                card.damageType = Card.DamageType.Physical;
+                card.special.flying = true;
+                card.special.heroic = new int[6] { 1, 1, 1, 1, 1, 2};
                 break;
 
             case Card.Title.UnholySkeleton:
@@ -1015,6 +1164,20 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
                 card.special.armor = new int[6] { 2, 3, 3, 4, 4, 5 };
                 card.special.knockback = new int[6] { 10, 10, 10, 10, 10, 10 };
+                break;
+
+            case Card.Title.AngelLightbinder:
+                card.attack = new int[6] { 2, 2, 3, 3, 4, 4};
+                card.health = new int[6] { 8, 10, 10, 10, 11, 13};
+                card.cd = 6;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 3;
+                card.damageType = Card.DamageType.Magical;
+                card.special.levitate = true;
+                card.special.nimble = true;
+                card.special.prayer = new int[6] { 3, 3, 3, 4, 4, 5};
+                card.special.healingHand = new int[6] { 3, 3, 4, 5, 5, 6};
                 break;
 
             case Card.Title.BattleAbbess:
@@ -1338,6 +1501,42 @@ public class CardStat : MonoBehaviour
                 card.special.influence = true;
                 break;
 
+            case Card.Title.OgreBloodrager:
+                card.attack = new int[6] { 2, 2, 3, 3, 4, 5};
+                card.health = new int[6] { 10, 12, 12, 14, 14, 16};
+                card.cd = 6;
+                card.range = 1;
+                card.speed = 1;
+                card.rarity = 3;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.rage = new int[6] { 1, 1, 2, 2, 3, 3};
+                break;
+
+            case Card.Title.OgreHerculesRingleader:
+                card.attack = new int[6] { 1, 2, 3, 4, 5, 6};
+                card.health = new int[6] { 9, 10, 11, 12, 13, 15};
+                card.cd = 4;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 3;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.stun = true;
+                break;
+
+            case Card.Title.OgreRingleader:
+                card.attack = new int[6] { 2, 2, 2, 2, 2, 2};
+                card.health = new int[6] { 10, 12, 12, 14, 14, 15};
+                card.cd = 5;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 3;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.regeneration = new int[6] { 2, 2, 3, 3, 4, 5};
+                break;
+
             case Card.Title.PegasusChampion:
                 card.attack = new int[6] { 2, 2, 2, 3, 3, 4 };
                 card.health = new int[6] { 6, 7, 7, 7, 7, 7 };
@@ -1435,6 +1634,31 @@ public class CardStat : MonoBehaviour
                 card.special.vigilance = true;
                 card.special.armor = new int[6] { 1, 1, 1, 1, 1, 2 };
                 card.special.cure = new int[6] { 1, 1, 1, 2, 2, 2 };
+                break;
+
+            case Card.Title.TenguBloodseeker:
+                card.attack = new int[6] { 2, 2, 3, 3, 4, 5};
+                card.health = new int[6] { 9, 11, 11, 13, 13, 14};
+                card.cd = 4;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 3;
+                card.damageType = Card.DamageType.Physical;
+                card.special.flying = true;
+                card.special.backstab = new int[6] { 2, 2, 2, 2, 2, 2};
+                card.special.bleedingAttack = true;
+                break;
+
+            case Card.Title.TenguShadowWarrior:
+                card.attack = new int[6] { 1, 1, 2, 2, 2, 2};
+                card.health = new int[6] { 8, 10, 10, 12, 14, 14};
+                card.cd = 5;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 3;
+                card.damageType = Card.DamageType.Physical;
+                card.special.heroic = new int[6] { 1, 1, 1, 1, 1, 2};
+                card.special.counterattack = true;
                 break;
 
             case Card.Title.VampireArchmage:
@@ -1538,6 +1762,18 @@ public class CardStat : MonoBehaviour
                 card.special.rage = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
+            case Card.Title.ChiefHrafn:
+                card.attack = new int[6] { 1, 1, 2, 2, 3, 3};
+                card.health = new int[6] { 6, 7, 7, 9, 9, 9};
+                card.cd = 3;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 4;
+                card.damageType = Card.DamageType.Physical;
+                card.special.flying = true;
+                card.special.speedAura = new int[6] { 1, 1, 1, 1, 1, 2};
+                break;
+
             case Card.Title.ChiefIronhide:
                 card.attack = new int[6] { 0, 0, 0, 1, 1, 1 };
                 card.health = new int[6] { 9, 12, 15, 15, 18, 18 };
@@ -1548,6 +1784,19 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Physical;
                 card.special.armor = new int[6] { 3, 3, 3, 4, 4, 5 };
                 card.special.armorAura = new int[6] { 1, 1, 1, 1, 1, 2 };
+                break;
+
+            case Card.Title.ChiefSharptooth:
+                card.attack = new int[6] { 1, 1, 1, 1, 1, 1};
+                card.health = new int[6] { 9, 11, 13, 15, 17, 17};
+                card.cd = 6;
+                card.range = 1;
+                card.speed = 1;
+                card.rarity = 4;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.rageAura = new int[6] { 1, 1, 1, 1, 1, 2 };
+                card.special.rage = new int[6] { 1, 1, 1, 1, 1, 2 };
                 break;
 
             case Card.Title.CrusaderLucanus:
@@ -1636,6 +1885,21 @@ public class CardStat : MonoBehaviour
                 card.rarity = 4;
                 card.damageType = Card.DamageType.Physical;
                 card.special.rangeAura = new int[6] { 1, 1, 1, 1, 1, 2 };
+                break;
+
+            case Card.Title.GuardianAngel:
+                card.attack = new int[6] { 2, 2, 3, 3, 4, 4};
+                card.health = new int[6] { 8, 9, 9, 11, 12, 12};
+                card.cd = 4;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 4;
+                card.damageType = Card.DamageType.Physical;
+                card.special.levitate = true;
+                card.special.nimble = true;
+                card.special.prayer = new int[6] { 2, 2, 3, 3, 3, 4};
+                card.special.prayerAura = new int[6] { 2, 2, 2, 2, 2, 3};
+                card.special.healingHand = new int[6] { 2, 3, 3, 4, 4, 5};
                 break;
 
             case Card.Title.KathrynEmberwind:
@@ -1805,6 +2069,20 @@ public class CardStat : MonoBehaviour
                 card.special.multistrike = new int[6] { 2, 2, 2, 3, 4, 5 };
                 break;
 
+            case Card.Title.BossRagnar:
+                card.attack = new int[6] { 1, 1, 1, 1, 1, 1};
+                card.health = new int[6] { 10, 13, 16, 19, 22, 22};
+                card.cd = 8;
+                card.range = 1;
+                card.speed = 1;
+                card.rarity = 5;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.regeneration = new int[6] { 1, 1, 2, 2, 3, 3};
+                card.special.heroic = new int[6] { 1, 1, 1, 1, 1, 2};
+                card.special.rage = new int[6] { 1, 1, 1, 1, 1, 2};
+                break;
+
             case Card.Title.ChieftainLionroar:
                 card.attack = new int[6] { 1, 1, 1, 2, 2, 2 };
                 card.health = new int[6] { 3, 5, 7, 7, 9, 9 };
@@ -1905,6 +2183,18 @@ public class CardStat : MonoBehaviour
                 card.special.multiShot = true;
                 break;
 
+            case Card.Title.Krusha:
+                card.attack = new int[6] { 10, 12, 14, 16, 18, 20};
+                card.health = new int[6] { 5, 6, 7, 8, 9, 10};
+                card.cd = 7;
+                card.range = 1;
+                card.speed = 1;
+                card.rarity = 5;
+                card.damageType = Card.DamageType.Physical;
+                card.special.stoneskin = true;
+                card.special.krush = true;
+                break;
+
             case Card.Title.LordFleder:
                 card.attack = new int[6] { 0, 0, 1, 1, 1, 1 };
                 card.health = new int[6] { 7, 9, 9, 11, 13, 13 };
@@ -1955,6 +2245,21 @@ public class CardStat : MonoBehaviour
                 card.special.frostBolt = true;
                 break;
 
+            case Card.Title.Seraph:
+                card.attack = new int[6] { 0, 0, 0, 0, 0, 0};
+                card.health = new int[6] { 10, 10, 15, 15, 20, 20};
+                card.cd = 9;
+                card.range = 2;
+                card.speed = 2;
+                card.rarity = 5;
+                card.damageType = Card.DamageType.Physical;
+                card.special.levitate = true;
+                card.special.nimble = true;
+                card.special.vengeance = true;
+                card.special.retribution = true;
+                card.special.convert = new int[6] { 1, 2, 2, 3, 3, 4};
+                break;
+
             case Card.Title.SilvaTheAlmighty:
                 card.attack = new int[6] { 1, 1, 2, 2, 3, 3 };
                 card.health = new int[6] { 7, 10, 10, 13, 13, 13 };
@@ -1970,6 +2275,19 @@ public class CardStat : MonoBehaviour
                 card.special.herosBane = new int[6] { 1, 1, 1, 1, 1, 2 };
                 card.special.frostBolt = true;
                 card.special.conjure = true;
+                break;
+
+            case Card.Title.SkyReaverVara:
+                card.attack = new int[6] { 2, 2, 3, 3, 3, 4};
+                card.health = new int[6] { 8, 10, 10, 12, 14, 14};
+                card.cd = 4;
+                card.range = 2;
+                card.speed = 3;
+                card.rarity = 5;
+                card.damageType = Card.DamageType.Physical;
+                card.special.flying = true;
+                card.special.backstab = new int[6] { 3, 3, 3, 3, 3, 4};
+                card.special.hitAndRun = true;
                 break;
 
             case Card.Title.SorannTheUnforgiving:
@@ -2052,15 +2370,15 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.ArcaneCrystalTower:
                 card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
-                card.health = new int[6] { 15, 25, 35, 45, 60, 0 };
+                card.health = new int[6] { 10, 12, 14, 16, 20, 0 };
                 card.cd = 4;
                 card.range = 0;
                 card.speed = 0;
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Magical;
                 card.special.wall = true;
-                card.special.resistance = new int[6] { 1, 1, 1, 1, 3, 0};
-                card.special.speedAura = new int[6] { 2, 2, 2, 2, 2, 0};
+                card.special.incorporeal = true;
+                card.special.martyrdom = true;
                 break;
 
             case Card.Title.BoneWall:
@@ -2099,7 +2417,7 @@ public class CardStat : MonoBehaviour
                 card.special.distraction = true;
                 break;
 
-            case Card.Title.FlyerWall:
+            case Card.Title.FireSkyTower:
                 card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
                 card.health = new int[6] { 50, 60, 70, 80, 99, 0 };
                 card.cd = 4;
@@ -2108,7 +2426,7 @@ public class CardStat : MonoBehaviour
                 card.rarity = 0;
                 card.damageType = Card.DamageType.Magical;
                 card.special.wall = true;
-                card.special.flying = true;
+                card.special.levitate = true;
                 card.special.immolate = new int[6] { 4, 5, 6, 7, 8, 0 };
                 card.special.regeneration = new int[6] { 0, 0, 0, 0, 3, 0 };
                 break;

@@ -11,7 +11,8 @@ public class UnitMove : MonoBehaviour
         int tileCheck = dealer.tile;
 
         Special special = new Special();
-        if (special.CheckVililanceMove(dealer)) { }
+        if (special.CheckBackstabMove(dealer)) { }
+        else if (special.CheckVigilanceMove(dealer)) { }
         else
         {
             for (int i = 0; i < dealer.speed; i++)
@@ -58,7 +59,7 @@ public class UnitMove : MonoBehaviour
                     Card target = Bf.Cards[tileCheck];
                     if (target.alignment != dealer.alignment)
                     {
-                        if (!dealer.special.flying || target.special.flying)
+                        if (!dealer.special.flying || target.special.flying || target.special.levitate)
                         {
                             break;
                         }
