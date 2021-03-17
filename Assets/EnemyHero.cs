@@ -25,14 +25,14 @@ public class EnemyHero : MonoBehaviour
     public static Hero[] heroes = 
     {
         Hero.Ajit, Hero.Anastasya, Hero.Andras, Hero.Danan, Hero.Fahada, 
-        Hero.Imani, Hero.Jengo, Hero.Kente, Hero.Konrad, Hero.Lasir, 
+        Hero.Imani, Hero.Jengo, Hero.Khalida, Hero.Konrad, Hero.Lasir, 
         Hero.Malathua, Hero.Malwen, Hero.Masfar, Hero.Mateusz, Hero.Nolwenn, 
         Hero.Seamus, Hero.Tanis, Hero.Vayaron, Hero.Wysloth, Hero.Zenda
     };
 
     public static Hero[] bosses =
     {
-        Hero.Adar, Hero.Ivan, Hero.Khalida, Hero.Ludmilla, Hero.Menan
+        Hero.Adar, Hero.Ivan, Hero.Kente, Hero.Ludmilla, Hero.Menan
     };
 
     public Hero GetRandomNovice()

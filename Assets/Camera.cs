@@ -26,7 +26,7 @@ public class Camera : MonoBehaviour
 
     public void Recruit()
     {
-        Cam.transform.position = new Vector3(CanvasRecruit.transform.position.x, CanvasRecruit.transform.position.y, -10);
+        Cam.transform.position = new Vector3(CanvasRecruit.transform.position.x + 0.8f, CanvasRecruit.transform.position.y, -10);
     }
 
     public void Upgrade()

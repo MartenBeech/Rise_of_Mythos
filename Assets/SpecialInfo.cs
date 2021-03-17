@@ -61,7 +61,7 @@ public class SpecialInfo : MonoBehaviour
             (card.special.knockback[card.rank] > 0 ? "<b>" + "Knockback " + card.special.knockback[card.rank] + ": " + "</b>" + "Damaged targets will be knocked back " + card.special.knockback[card.rank] + " tiles" + "\n" : "") +
             (card.special.prayer[card.rank] > 0 ? "<b>" + "Prayer " + card.special.prayer[card.rank] + ": " + "</b>" + "Heal your hero each turn" + "\n" : "") +
             (card.special.healingHand[card.rank] > 0 ? "<b>" + "Healing Hand " + card.special.healingHand[card.rank] + ": " + "</b>" + "When summoned, heal all your other units" + "\n" : "") +
-            (card.special.backstab[card.rank] > 0 ? "<b>" + "Backstab " + card.special.backstab[card.rank] + ": " + "</b>" + "Can stand still and attack units behind this unit for " + card.special.backstab[card.rank] + " times damage." + "\n" : "") +
+            (card.special.backstab[card.rank] > 0 ? "<b>" + "Backstab " + card.special.backstab[card.rank] + ": " + "</b>" + "Can stand still and attack enemies behind this unit for " + card.special.backstab[card.rank] + " times damage." + "\n" : "") +
 
             (card.special.lifeAura[card.rank] > 0 ? "<b>" + "Life Aura " + card.special.lifeAura[card.rank] + ": " + "</b>" + "Allied units get bonus health" + "\n" : "") +
             (card.special.regenerationAura[card.rank] > 0 ? "<b>" + "Regeneration Aura " + card.special.regenerationAura[card.rank] + ": " + "</b>" + "Allied units get Regeneration" + "\n" : "") +

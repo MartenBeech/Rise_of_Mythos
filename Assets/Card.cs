@@ -35,7 +35,7 @@ public class Card : MonoBehaviour
         Whitemane,
 
         Null, BoneHeap, RaisedDead,
-        ArcaneCrystalTower, BoneWall, SentryTower, WarTotem, FireSkyTower
+        ArcaneCrystalTower, BoneWall, SentryTower, WarTotem, FlyerWall
     }
     public Title title;
 

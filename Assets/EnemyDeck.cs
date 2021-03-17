@@ -114,7 +114,7 @@ public class EnemyDeck : MonoBehaviour
                 deck.AddCard(Card.Title.ExecutionerGrimbone, Card.Alignment.Enemy, (level < 25 ? Game.rank : 5), 1);
                 deck.AddCard(Card.Title.Gringheist, Card.Alignment.Enemy, (level < 25 ? Game.rank : 5), 1);
                 deck.AddCard(Card.Title.JasmineTheDervish, Card.Alignment.Enemy, (level < 25 ? Game.rank : 5), 1);
-                deck.AddCard(Card.Title.KathrynEmberwind, Card.Alignment.Enemy, (level < 25 ? Game.rank : 5), 1);
+                deck.AddCard(Card.Title.SilvaTheAlmighty, Card.Alignment.Enemy, (level < 25 ? Game.rank : 5), 1);
                 deck.AddCard(Card.Title.KingVelAssar, Card.Alignment.Enemy, (level < 25 ? Game.rank : 5), 1);
                 deck.AddCard(Card.Title.Krusha, Card.Alignment.Enemy, (level < 25 ? Game.rank : 5), 1);
                 deck.AddCard(Card.Title.LordFleder, Card.Alignment.Enemy, (level < 25 ? Game.rank : 5), 1);
@@ -175,8 +175,8 @@ public class EnemyDeck : MonoBehaviour
                     if (level >= 25)
                         Deck.deckEnemyDefault[i].special.charge[Deck.deckEnemyDefault[i].rank]++;
                 }
-                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.FireSkyTower, Card.Alignment.Ally, Game.rank), 8);
-                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.FireSkyTower, Card.Alignment.Ally, Game.rank), 9);
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.FlyerWall, Card.Alignment.Ally, Game.rank), 8);
+                bf.AddCardFromNowhere(cardStat.GetStats(Card.Title.FlyerWall, Card.Alignment.Ally, Game.rank), 9);
                 break;
 
             case EnemyHero.Hero.Kente:

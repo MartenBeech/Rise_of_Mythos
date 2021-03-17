@@ -1123,11 +1123,15 @@ public class Special : MonoBehaviour
                         {
                             Rng rng = new Rng();
                             int rnd = rng.Range(0, highestCDTiles.Count);
-                            Hand.Cards[highestCDTiles[rnd]].cd -= 1;
-                            if (highestCDTiles[rnd] < Hand.SIZE)
+                            if (Hand.occupied[highestCDTiles[rnd]])
                             {
-                                dealer.DisplayCard(Hand.Hands[highestCDTiles[rnd]], Hand.Cards[highestCDTiles[rnd]]);
+                                Hand.Cards[highestCDTiles[rnd]].cd -= 1;
+                                if (highestCDTiles[rnd] < Hand.SIZE)
+                                {
+                                    dealer.DisplayCard(Hand.Hands[highestCDTiles[rnd]], Hand.Cards[highestCDTiles[rnd]]);
+                                }
                             }
+                            
                         }
                     }
                 }

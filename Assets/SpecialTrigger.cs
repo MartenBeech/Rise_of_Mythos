@@ -107,13 +107,6 @@ public class SpecialTrigger : MonoBehaviour
         if (basicAttack)
         {
             damage = special.CheckVengeance(dealer, target, damage);
-        }
-        damage = special.CheckMaimed(dealer, target, damage, damageType);
-        damage = special.CheckArmor(dealer, target, damage, damageType);
-        damage = special.CheckSpellCursed(dealer, target, damage, damageType);
-        damage = special.CheckResistance(dealer, target, damage, damageType);
-        if (basicAttack)
-        {
             damage = special.CheckShadowBolt(dealer, damage);
             damage = special.CheckCombatMaster(dealer, target, damage);
             damage = special.CheckDragonSlayer(dealer, target, damage);
@@ -123,6 +116,11 @@ public class SpecialTrigger : MonoBehaviour
 
             damage = special.CheckEmber(dealer, target, damage);
         }
+        damage = special.CheckMaimed(dealer, target, damage, damageType);
+        damage = special.CheckArmor(dealer, target, damage, damageType);
+        damage = special.CheckSpellCursed(dealer, target, damage, damageType);
+        damage = special.CheckResistance(dealer, target, damage, damageType);
+        
         damage = special.CheckIncorporeal(dealer, target, damage, damageType);
         damage = special.CheckStoneskin(dealer, target, damage);
 
