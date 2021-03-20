@@ -2120,13 +2120,14 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.EmrysTheUnyielding:
-                card.attack = new int[6] { 3, 3, 4, 4, 5, 6 };
+                card.attack = new int[6] { 2, 2, 3, 3, 4, 4 };
                 card.health = new int[6] { 12, 15, 16, 19, 21, 24 };
                 card.cd = 7;
                 card.range = 2;
                 card.speed = 4;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
+                card.special.charge = new int[6] { 1, 1, 1, 1, 1, 2};
                 card.special.penetrate = true;
                 card.special.combatMaster = true;
                 break;
@@ -2258,6 +2259,7 @@ public class CardStat : MonoBehaviour
                 card.special.vengeance = true;
                 card.special.retribution = true;
                 card.special.convert = new int[6] { 1, 2, 2, 3, 3, 4};
+                card.special.penetrate = true;
                 break;
 
             case Card.Title.SilvaTheAlmighty:
@@ -2282,7 +2284,7 @@ public class CardStat : MonoBehaviour
                 card.health = new int[6] { 8, 10, 10, 12, 14, 14};
                 card.cd = 4;
                 card.range = 2;
-                card.speed = 3;
+                card.speed = 2;
                 card.rarity = 5;
                 card.damageType = Card.DamageType.Physical;
                 card.special.flying = true;
@@ -2370,7 +2372,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.ArcaneCrystalTower:
                 card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
-                card.health = new int[6] { 10, 12, 14, 16, 20, 0 };
+                card.health = new int[6] { 10, 12, 14, 16, 0, 0 };
                 card.cd = 4;
                 card.range = 0;
                 card.speed = 0;
@@ -2383,7 +2385,7 @@ public class CardStat : MonoBehaviour
 
             case Card.Title.BoneWall:
                 card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
-                card.health = new int[6] { 15, 20, 25, 30, 50, 0 };
+                card.health = new int[6] { 20, 25, 30, 35, 0, 0 };
                 card.cd = 4;
                 card.range = 0;
                 card.speed = 0;
@@ -2394,8 +2396,8 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.SentryTower:
-                card.attack = new int[6] { 5, 6, 7, 8, 10, 0 };
-                card.health = new int[6] { 5, 6, 7, 8, 10, 0 };
+                card.attack = new int[6] { 5, 6, 7, 8, 0, 0 };
+                card.health = new int[6] { 5, 6, 7, 8, 0, 0 };
                 card.cd = 4;
                 card.range = 4;
                 card.speed = 0;
@@ -2404,22 +2406,9 @@ public class CardStat : MonoBehaviour
                 card.special.wall = true;
                 break;
 
-            case Card.Title.WarTotem:
-                card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
-                card.health = new int[6] { 20, 25, 30, 35, 45, 0 };
-                card.cd = 4;
-                card.range = 0;
-                card.speed = 0;
-                card.rarity = 0;
-                card.damageType = Card.DamageType.Physical;
-                card.special.wall = true;
-                card.special.inspiration = new int[6] { 1, 1, 1, 1, 3, 0 };
-                card.special.lifeAura = new int[6] { 1, 1, 2, 2, 3, 0};
-                break;
-
             case Card.Title.FlyerWall:
                 card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
-                card.health = new int[6] { 40, 50, 60, 70, 99, 0 };
+                card.health = new int[6] { 40, 50, 60, 70, 0, 0 };
                 card.cd = 4;
                 card.range = 0;
                 card.speed = 0;
@@ -2427,7 +2416,20 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Magical;
                 card.special.wall = true;
                 card.special.levitate = true;
-                card.special.immolate = new int[6] { 5, 6, 7, 8, 10, 0 };
+                card.special.immolate = new int[6] { 5, 6, 7, 8, 0, 0 };
+                break;
+
+            case Card.Title.WarTotem:
+                card.attack = new int[6] { 0, 0, 0, 0, 0, 0 };
+                card.health = new int[6] { 0, 0, 0, 0, 30, 0 };
+                card.cd = 4;
+                card.range = 0;
+                card.speed = 0;
+                card.rarity = 0;
+                card.damageType = Card.DamageType.Physical;
+                card.special.wall = true;
+                card.special.attackAura = new int[6] { 1, 1, 1, 1, 1, 0 };
+                card.special.lifeAura = new int[6] { 1, 1, 2, 2, 3, 0 };
                 break;
 
 

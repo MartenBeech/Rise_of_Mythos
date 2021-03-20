@@ -7,10 +7,6 @@ public class Game : MonoBehaviour
 {
     public static bool gameOver = false;
     public static EnemyHero.Hero enemy;
-    private void Start()
-    {
-        WinBattle();
-    }
 
     public static int level = 0;    //-3
     public static int rank = (level / 5) - 1;
@@ -19,6 +15,11 @@ public class Game : MonoBehaviour
     {
         Camera camera = new Camera();
         camera.Battle();
+
+        for (int i = 0; i < 10; i++)
+        {
+            Destroy(GameObject.Find("Card(Clone)"));
+        }
 
         Hero hero = new Hero();
         Hero.heroes[1].healthDefault = hero.GetEnemyHealth(level);
@@ -97,6 +98,8 @@ public class Game : MonoBehaviour
         EnemyHero enemyHero = new EnemyHero();
         if (level <= 0)
             enemy = enemyHero.GetRandomNovice();
+        else if (level == 25)
+            enemy = enemyHero.GetRandomFinalBoss();
         else if (level % 5 != 0)
             enemy = enemyHero.GetRandomHero();
         else
@@ -120,6 +123,11 @@ public class Game : MonoBehaviour
         {
             Recruit recruit = new Recruit();
             recruit.NewCards(10);
+        }
+        else if (level == 5)
+        {
+            Recruit recruit = new Recruit();
+            recruit.NewCards(3);
         }
         else if (level > 1)
         {

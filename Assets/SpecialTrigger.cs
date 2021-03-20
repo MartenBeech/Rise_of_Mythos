@@ -104,8 +104,11 @@ public class SpecialTrigger : MonoBehaviour
     public int OnDamageDealt(Card dealer, Card target, int _damage, Card.DamageType damageType, bool basicAttack = true)
     {
         int damage = _damage;
+
         if (basicAttack)
         {
+            damage += dealer.bonusAttackNextTurn;
+
             damage = special.CheckVengeance(dealer, target, damage);
             damage = special.CheckShadowBolt(dealer, damage);
             damage = special.CheckCombatMaster(dealer, target, damage);
@@ -113,16 +116,25 @@ public class SpecialTrigger : MonoBehaviour
             damage = special.CheckSpear(dealer, target, damage);
             damage = special.CheckAmbush(dealer, damage);
             damage = special.CheckCrushDefenses(dealer, target, damage);
+        }
 
+        damage = special.CheckMaimed(dealer, target, damage, damageType);
+        damage = special.CheckSpellCursed(dealer, target, damage, damageType);
+
+        if (basicAttack)
+        {
             damage = special.CheckEmber(dealer, target, damage);
         }
-        damage = special.CheckMaimed(dealer, target, damage, damageType);
-        damage = special.CheckArmor(dealer, target, damage, damageType);
-        damage = special.CheckSpellCursed(dealer, target, damage, damageType);
-        damage = special.CheckResistance(dealer, target, damage, damageType);
+            
+        if (damage > 0)
+        {
+            damage = special.CheckArmor(dealer, target, damage, damageType);
+            damage = special.CheckResistance(dealer, target, damage, damageType);
+
+            damage = special.CheckIncorporeal(dealer, target, damage, damageType);
+            damage = special.CheckStoneskin(dealer, target, damage);
+        }
         
-        damage = special.CheckIncorporeal(dealer, target, damage, damageType);
-        damage = special.CheckStoneskin(dealer, target, damage);
 
         if (basicAttack)
         {
@@ -151,7 +163,7 @@ public class SpecialTrigger : MonoBehaviour
             special.CheckKrush(dealer, target);
         }
 
-        if (_damage > 0)
+        if (damage > 0)
         {
             special.CheckSpellFeed(dealer, target, damageType);
             special.CheckBattleSpirit(dealer, target, damageType);

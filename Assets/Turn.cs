@@ -43,12 +43,17 @@ public class Turn : MonoBehaviour
             enemyTurn.PlayHand();
         }
         else
+        {
             UI.EndTurn.GetComponentInChildren<Button>().enabled = true;
+            UI.StartOver.GetComponentInChildren<Button>().enabled = true;
+        }
+            
     }
 
     public void EndTurnClicked()
     {
         UI.EndTurn.GetComponentInChildren<Button>().enabled = false;
+        UI.StartOver.GetComponentInChildren<Button>().enabled = false;
         if (Game.level <= 0)
         {
             Tutorial tutorial = new Tutorial();

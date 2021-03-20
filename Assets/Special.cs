@@ -607,19 +607,22 @@ public class Special : MonoBehaviour
 
     public void CheckCallOfTheUndeadKing(Card target)
     {
-        Tile tile = new Tile();
-        List<Card> enemies = tile.GetAllEnemies(target);
-
-        for (int i = 0; i < enemies.Count; i++)
+        if (target.title != Card.Title.RaisedDead)
         {
-            if (enemies[i].special.callOfTheUndeadKing)
+            Tile tile = new Tile();
+            List<Card> enemies = tile.GetAllEnemies(target);
+
+            for (int i = 0; i < enemies.Count; i++)
             {
-                CardStat cardStat = new CardStat();
-                Card.Alignment alignment = (target.alignment == Card.Alignment.Ally ? Card.Alignment.Enemy : Card.Alignment.Ally);
-                Card card = cardStat.GetStats(Card.Title.RaisedDead, alignment, enemies[i].rank);
-                AnimaCard animaCard = new AnimaCard();
-                animaCard.MoveBfBf(card, enemies[i].tile, target.tile, true);
-                break;
+                if (enemies[i].special.callOfTheUndeadKing)
+                {
+                    CardStat cardStat = new CardStat();
+                    Card.Alignment alignment = (target.alignment == Card.Alignment.Ally ? Card.Alignment.Enemy : Card.Alignment.Ally);
+                    Card card = cardStat.GetStats(Card.Title.RaisedDead, alignment, enemies[i].rank);
+                    AnimaCard animaCard = new AnimaCard();
+                    animaCard.MoveBfBf(card, enemies[i].tile, target.tile, true);
+                    break;
+                }
             }
         }
     }

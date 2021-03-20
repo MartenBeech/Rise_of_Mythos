@@ -32,7 +32,12 @@ public class EnemyHero : MonoBehaviour
 
     public static Hero[] bosses =
     {
-        Hero.Adar, Hero.Ivan, Hero.Kente, Hero.Ludmilla, Hero.Menan
+         Hero.Ivan, Hero.Kente, Hero.Ludmilla, Hero.Menan
+    };
+
+    public static Hero[] finalBosses =
+    {
+        Hero.Adar
     };
 
     public Hero GetRandomNovice()
@@ -97,6 +102,29 @@ public class EnemyHero : MonoBehaviour
             if (bosses[i] == heroList[rnd])
             {
                 bosses[i] = Hero.Null;
+                break;
+            }
+        }
+
+        return heroList[rnd];
+    }
+
+    public Hero GetRandomFinalBoss()
+    {
+        List<Hero> heroList = new List<Hero>();
+        for (int i = 0; i < finalBosses.Length; i++)
+        {
+            if (finalBosses[i] != Hero.Null)
+                heroList.Add(finalBosses[i]);
+        }
+        Rng rng = new Rng();
+        int rnd = rng.Range(0, heroList.Count);
+
+        for (int i = 0; i < finalBosses.Length; i++)
+        {
+            if (finalBosses[i] == heroList[rnd])
+            {
+                finalBosses[i] = Hero.Null;
                 break;
             }
         }

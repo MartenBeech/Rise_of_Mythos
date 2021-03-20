@@ -9,6 +9,7 @@ public class Camera : MonoBehaviour
     public static GameObject CanvasBattle;
     public static GameObject CanvasRecruit;
     public static GameObject CanvasUpgrade;
+    public static GameObject CanvasMenu;
 
     private void Start()
     {
@@ -16,7 +17,8 @@ public class Camera : MonoBehaviour
         CanvasBattle = GameObject.Find("CanvasBattle");
         CanvasRecruit = GameObject.Find("CanvasRecruit");
         CanvasUpgrade = GameObject.Find("CanvasUpgrade");
-        Battle();
+        CanvasMenu = GameObject.Find("CanvasMenu");
+        Menu();
     }
 
     public void Battle()
@@ -32,5 +34,10 @@ public class Camera : MonoBehaviour
     public void Upgrade()
     {
         Cam.transform.position = new Vector3(CanvasUpgrade.transform.position.x + 0.8f, CanvasUpgrade.transform.position.y, -10);
+    }
+
+    public void Menu()
+    {
+        Cam.transform.position = new Vector3(CanvasMenu.transform.position.x + 0.8f, CanvasMenu.transform.position.y, -10);
     }
 }

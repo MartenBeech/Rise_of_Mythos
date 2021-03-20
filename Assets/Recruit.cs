@@ -60,45 +60,49 @@ public class Recruit : MonoBehaviour
     public int GetRarityToRecruit()
     {
         int[] rarityChances;
-
-        switch (Game.level)
+        if (Menu.legendaryMode)
+            rarityChances = new int[] { 0, 0, 0, 0, 100 };
+        else
         {
-            case 1:
-                rarityChances = new int[] { 100, 0, 0, 0, 0 };
-                break;
-            case 2:
-                rarityChances = new int[] { 0, 100, 0, 0, 0 };
-                break;
-            case 3:
-                rarityChances = new int[] { 0, 80, 20, 0, 0 };
-                break;
-            case 4:
-                rarityChances = new int[] { 0, 60, 40, 0, 0 };
-                break;
-            case 5:
-                rarityChances = new int[] { 0, 0, 0, 100, 0 };
-                break;
-            case 6:
-                rarityChances = new int[] { 0, 45, 45, 10, 0 };
-                break;
-            case 7:
-                rarityChances = new int[] { 0, 40, 40, 20, 0 };
-                break;
-            case 8:
-                rarityChances = new int[] { 0, 35, 35, 30, 0 };
-                break;
-            case 9:
-                rarityChances = new int[] { 0, 25, 40, 35, 0 };
-                break;
-            case 10:
-            case 15:
-            case 20:
-            case 25:
-                rarityChances = new int[] { 0, 0, 0, 0, 100 };
-                break;
-            default:
-                rarityChances = new int[] { 0, 40, 30, 30, 0 };
-                break;
+            switch (Game.level)
+            {
+                case 1:
+                    rarityChances = new int[] { 100, 0, 0, 0, 0 };
+                    break;
+                case 2:
+                    rarityChances = new int[] { 0, 100, 0, 0, 0 };
+                    break;
+                case 3:
+                    rarityChances = new int[] { 0, 100, 0, 0, 0 };
+                    break;
+                case 4:
+                    rarityChances = new int[] { 0, 100, 0, 0, 0 };
+                    break;
+                case 5:
+                    rarityChances = new int[] { 0, 0, 100, 0, 0 };
+                    break;
+                case 6:
+                    rarityChances = new int[] { 0, 0, 0, 100, 0 };
+                    break;
+                case 7:
+                    rarityChances = new int[] { 0, 50, 50, 0, 0 };
+                    break;
+                case 8:
+                    rarityChances = new int[] { 0, 50, 50, 0, 0 };
+                    break;
+                case 9:
+                    rarityChances = new int[] { 0, 0, 0, 100, 0 };
+                    break;
+                case 10:
+                case 15:
+                case 20:
+                case 25:
+                    rarityChances = new int[] { 0, 0, 0, 0, 100 };
+                    break;
+                default:
+                    rarityChances = new int[] { 0, 35, 35, 30, 0 };
+                    break;
+            }
         }
 
         Rng rng = new Rng();

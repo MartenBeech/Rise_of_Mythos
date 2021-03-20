@@ -80,6 +80,10 @@ public class UnitAttack : MonoBehaviour
                 }
             }
         }
+
+        if (externalAttackAnimation)
+            dealer.attackedThisTurn = true;
+
         SpecialTrigger trigger = new SpecialTrigger();
         if (trigger.OnTurnEnd(dealer))
         {
@@ -126,8 +130,6 @@ public class UnitAttack : MonoBehaviour
 
     public void DealDamage(Card dealer, Card target, int damage, Card.DamageType damageType, bool basicAttack = true)
     {
-        damage += dealer.bonusAttackNextTurn;
-
         SpecialTrigger trigger = new SpecialTrigger();
         damage = trigger.OnDamageDealt(dealer, target, damage, damageType, basicAttack);
 
