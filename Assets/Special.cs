@@ -169,10 +169,17 @@ public class Special : MonoBehaviour
             {
                 for (int i = 0; i < dealer.special.multistrike[dealer.rank] + 1; i++)
                 {
-                    UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, enemies[0], dealer.attack[dealer.rank], dealer.damageType, true);
                     Special special = new Special();
-                    special.CheckCleave(dealer, enemies[0]);
+                    special.CheckFirstStrike(dealer, enemies[0]);
+                    if (Bf.occupied[dealer.tile])
+                    {
+                        UnitAttack unitAttack = new UnitAttack();
+                        if (unitAttack.DealDamage(dealer, enemies[0], dealer.attack[dealer.rank], dealer.damageType, true))
+                            special.CheckCounterattack(dealer, enemies[0]);
+                        special.CheckCleave(dealer, enemies[0]);
+                        
+                            
+                    }
                 }
                 return true;
             }
@@ -373,8 +380,14 @@ public class Special : MonoBehaviour
                 {
                     for (int j = 0; j < dealer.special.multistrike[dealer.rank] + 1; j++)
                     {
-                        UnitAttack unitAttack = new UnitAttack();
-                        unitAttack.DealDamage(dealer, enemies[i], dealer.attack[dealer.rank], dealer.damageType, true);
+                        Special Special = new Special();
+                        Special.CheckFirstStrike(dealer, enemies[i]);
+                        if (Bf.occupied[dealer.tile])
+                        {
+                            UnitAttack unitAttack = new UnitAttack();
+                            if (unitAttack.DealDamage(dealer, enemies[i], dealer.attack[dealer.rank], dealer.damageType, true))
+                                Special.CheckCounterattack(dealer, enemies[i]);
+                        }
                     }
                 }
 
@@ -399,18 +412,22 @@ public class Special : MonoBehaviour
         if (target.special.counterattack)
         {
             Tile tile = new Tile();
-            if (tile.GetDistanceBetweenUnits(dealer, target) <= target.range)
+            List<Card> cardsInFront = tile.GetEnemiesInFront(target, target.tile, target.range);
+            for (int i = 0; i < cardsInFront.Count; i++)
             {
-                for (int i = 0; i < target.special.multistrike[target.rank] + 1; i++)
+                if (cardsInFront[i].tile == dealer.tile)
                 {
-                    if (CheckWhirlwind(target)) 
-                    { }
-                    else
+                    for (int j = 0; j < target.special.multistrike[target.rank] + 1; j++)
                     {
-                        UnitAttack unitAttack = new UnitAttack();
-                        unitAttack.DealDamage(target, dealer, target.attack[target.rank], target.damageType, true);
-                        CheckPierce(target, dealer);
-                        CheckCleave(target, dealer);
+                        if (CheckWhirlwind(target))
+                        { }
+                        else
+                        {
+                            UnitAttack unitAttack = new UnitAttack();
+                            unitAttack.DealDamage(target, dealer, target.attack[target.rank], target.damageType, true);
+                            CheckPierce(target, dealer);
+                            CheckCleave(target, dealer);
+                        }
                     }
                 }
             }
@@ -422,18 +439,22 @@ public class Special : MonoBehaviour
         if (target.special.firstStrike)
         {
             Tile tile = new Tile();
-            if (tile.GetDistanceBetweenUnits(dealer, target) <= target.range)
+            List<Card> cardsInFront = tile.GetEnemiesInFront(target, target.tile, target.range);
+            for (int i = 0; i < cardsInFront.Count; i++)
             {
-                for (int i = 0; i < target.special.multistrike[target.rank] + 1; i++)
+                if (cardsInFront[i].tile == dealer.tile)
                 {
-                    if (CheckWhirlwind(target))
-                    { }
-                    else
+                    for (int j = 0; j < target.special.multistrike[target.rank] + 1; j++)
                     {
-                        UnitAttack unitAttack = new UnitAttack();
-                        unitAttack.DealDamage(target, dealer, target.attack[target.rank], target.damageType, true);
-                        CheckPierce(target, dealer);
-                        CheckCleave(target, dealer);
+                        if (CheckWhirlwind(target))
+                        { }
+                        else
+                        {
+                            UnitAttack unitAttack = new UnitAttack();
+                            unitAttack.DealDamage(target, dealer, target.attack[target.rank], target.damageType, true);
+                            CheckPierce(target, dealer);
+                            CheckCleave(target, dealer);
+                        }
                     }
                 }
             }
@@ -985,8 +1006,14 @@ public class Special : MonoBehaviour
                         lowestHealthTile = enemies[i].tile;
                     }
                 }
-                UnitAttack unitAttack = new UnitAttack();
-                unitAttack.DealDamage(dealer, Bf.Cards[lowestHealthTile], dealer.attack[dealer.rank], dealer.damageType);
+                Special Special = new Special();
+                Special.CheckFirstStrike(dealer, Bf.Cards[lowestHealthTile]);
+                if (Bf.occupied[dealer.tile])
+                {
+                    UnitAttack unitAttack = new UnitAttack();
+                    if (unitAttack.DealDamage(dealer, Bf.Cards[lowestHealthTile], dealer.attack[dealer.rank], dealer.damageType))
+                        Special.CheckCounterattack(dealer, Bf.Cards[lowestHealthTile]);
+                }
                 return true;
             }
         }
@@ -1063,8 +1090,14 @@ public class Special : MonoBehaviour
             {
                 for (int i = 0; i < enemies.Count; i++)
                 {
-                    UnitAttack unitAttack = new UnitAttack();
-                    unitAttack.DealDamage(dealer, enemies[i], dealer.attack[dealer.rank], dealer.damageType);
+                    Special Special = new Special();
+                    Special.CheckFirstStrike(dealer, enemies[i]);
+                    if (Bf.occupied[dealer.tile])
+                    {
+                        UnitAttack unitAttack = new UnitAttack();
+                        if (unitAttack.DealDamage(dealer, enemies[i], dealer.attack[dealer.rank], dealer.damageType))
+                            Special.CheckCounterattack(dealer, enemies[i]);
+                    }
                 }
                 if (tile.GetDistanceToEnemyHero(dealer, dealer.tile) <= dealer.range)
                 {

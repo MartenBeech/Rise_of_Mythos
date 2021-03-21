@@ -128,8 +128,9 @@ public class UnitAttack : MonoBehaviour
         return false;
     }
 
-    public void DealDamage(Card dealer, Card target, int damage, Card.DamageType damageType, bool basicAttack = true)
+    public bool DealDamage(Card dealer, Card target, int damage, Card.DamageType damageType, bool basicAttack = true)
     {
+        bool targetAlive = true;
         SpecialTrigger trigger = new SpecialTrigger();
         damage = trigger.OnDamageDealt(dealer, target, damage, damageType, basicAttack);
 
@@ -151,6 +152,7 @@ public class UnitAttack : MonoBehaviour
 
             trigger.OnDeath(target);
             trigger.OnKill(dealer);
+            targetAlive = false;
         }
         else
         {
@@ -160,5 +162,7 @@ public class UnitAttack : MonoBehaviour
 
         if (Bf.occupied[dealer.tile])
             Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.red;
+
+        return targetAlive;
     }
 }

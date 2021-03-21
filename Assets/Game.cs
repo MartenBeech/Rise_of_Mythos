@@ -57,16 +57,6 @@ public class Game : MonoBehaviour
             enemyDeck.SetEnemyDeckDefault(enemy);
         }
 
-        if (level == 1)
-        {
-            UI ui = new UI();
-            while (UI.TIMER != 1f)
-                ui.SpeedUpGame();
-            UI.StartOver.GetComponentInChildren<Image>().enabled = true;
-            UI.StartOver.GetComponentInChildren<Button>().enabled = true;
-            UI.StartOver.GetComponentInChildren<Text>().enabled = true;
-        }
-
         CardCopy cardCopy = new CardCopy();
         Deck.deckAlly.Clear();
         for (int i = 0; i < Deck.deckAllyDefault.Count; i++)
@@ -121,6 +111,14 @@ public class Game : MonoBehaviour
         }
         if (level == 1)
         {
+            UI ui = new UI();
+            while (UI.TIMER != 1f)
+                ui.SpeedUpGame();
+            UI.StartOver.GetComponentInChildren<Image>().enabled = true;
+            UI.StartOver.GetComponentInChildren<Button>().enabled = true;
+            UI.StartOver.GetComponentInChildren<Text>().enabled = true;
+            Deck.deckAllyDefault.Clear();
+
             Recruit recruit = new Recruit();
             recruit.NewCards(10);
         }
@@ -156,5 +154,11 @@ public class Game : MonoBehaviour
     {
         AnimaVictory animaVictory = new AnimaVictory();
         animaVictory.DisplayVictory();
+    }
+
+    public void WinGame()
+    {
+        AnimaVictory animaVictory = new AnimaVictory();
+        animaVictory.DisplayWinGame();
     }
 }

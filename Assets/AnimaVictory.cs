@@ -13,6 +13,21 @@ public class AnimaVictory : MonoBehaviour
         prefab = Resources.Load<GameObject>("Assets/Victory");
         parent = GameObject.Find("Animation");
 
+        prefab.GetComponentInChildren<Text>().text = "All your units have been upgraded";
+
+        GameObject position = GameObject.Find("CanvasBattle");
+        Vector3 newPos = new Vector3(position.transform.position.x + 1f, position.transform.position.y, position.transform.position.z);
+
+        prefab = Instantiate(prefab, newPos, new Quaternion(0, 0, 0, 0), parent.transform);
+    }
+
+    public void DisplayWinGame()
+    {
+        prefab = Resources.Load<GameObject>("Assets/Victory");
+        parent = GameObject.Find("Animation");
+
+        prefab.GetComponentInChildren<Text>().text = "You defeated the final enemy! GG";
+
         GameObject position = GameObject.Find("CanvasBattle");
         Vector3 newPos = new Vector3(position.transform.position.x + 1f, position.transform.position.y, position.transform.position.z);
 

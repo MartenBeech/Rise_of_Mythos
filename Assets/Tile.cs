@@ -25,7 +25,7 @@ public class Tile : MonoBehaviour
             }
         }
         
-        if (center < Bf.SIZE - 3)
+        if (center < Bf.SIZE - 2)
         {
             tiles.Add(center + 2);
 

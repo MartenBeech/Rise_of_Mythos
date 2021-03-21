@@ -42,7 +42,9 @@ public class Hero : MonoBehaviour
                 heroes[1].destroyHero = false;
                 Heroes[1].transform.localScale = new Vector3(0.5f, 0.5f, 1);
                 Game game = new Game();
-                if (Game.level % 5 == 0 && Game.level > 0)
+                if (Game.level == 25)
+                    game.WinGame();
+                else if (Game.level % 5 == 0 && Game.level > 0)
                     game.WinBoss();
                 else
                     game.WinBattle();
@@ -122,8 +124,8 @@ public class Hero : MonoBehaviour
             if (alignment == Card.Alignment.Ally)
             {
                 heroes[0].health += amount;
-                if (heroes[0].health > heroes[1].healthDefault)
-                    heroes[0].health = heroes[1].healthDefault;
+                if (heroes[0].health > heroes[0].healthDefault)
+                    heroes[0].health = heroes[0].healthDefault;
                 DisplayHero(Card.Alignment.Ally);
                 AnimaText animaText = new AnimaText();
                 animaText.ShowText(Heroes[0], amount.ToString(), Hue.green);
