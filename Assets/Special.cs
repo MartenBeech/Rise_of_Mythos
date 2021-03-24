@@ -1895,8 +1895,7 @@ public class Special : MonoBehaviour
         if (dealer.special.prayer[dealer.rank] > 0)
         {
             Hero hero = new Hero();
-            hero.Heal(dealer, dealer.alignment, dealer.special.prayer[dealer.rank]);
-            return true;
+            return hero.Heal(dealer, dealer.alignment, dealer.special.prayer[dealer.rank]);
         }
         return false;
     }

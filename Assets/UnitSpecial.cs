@@ -9,28 +9,31 @@ public class UnitSpecial : MonoBehaviour
     {
         if (dealer.occupied && target.occupied)
         {
-            if (target.special.bleeding)
-                amount = 0;
-
-            AnimaText animaText = new AnimaText();
-            animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.green);
-
-            if (amount > 0)
+            if (target.health[target.rank] < target.healthMax[target.rank])
             {
-                Special special = new Special();
-                special.CheckFaith(dealer);
+                if (target.special.bleeding)
+                    amount = 0;
 
-                target.health[target.rank] += amount;
-                if (target.health[target.rank] > target.healthMax[target.rank])
+                AnimaText animaText = new AnimaText();
+                animaText.ShowText(Bf.Bfs[target.tile], amount.ToString(), Hue.green);
+
+                if (amount > 0)
                 {
-                    target.health[target.rank] = target.healthMax[target.rank];
+                    Special special = new Special();
+                    special.CheckFaith(dealer);
+
+                    target.health[target.rank] += amount;
+                    if (target.health[target.rank] > target.healthMax[target.rank])
+                    {
+                        target.health[target.rank] = target.healthMax[target.rank];
+                    }
                 }
+
+                target.DisplayCard(Bf.Bfs[target.tile], target);
+                target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
+
+                Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
             }
-
-            target.DisplayCard(Bf.Bfs[target.tile], target);
-            target.DisplayCard(Bf.Bfs[dealer.tile], dealer);
-
-            Bf.Bfs[dealer.tile].GetComponentInChildren<Image>().color = Hue.green;
         }
     }
 

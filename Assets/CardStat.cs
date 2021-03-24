@@ -597,8 +597,8 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Magical;
                 card.special.levitate = true;
                 card.special.nimble = true;
-                card.special.prayer = new int[6] { 2, 2, 3, 3, 3, 4};
-                card.special.healingHand = new int[6] { 2, 2, 2, 3, 3, 4};
+                card.special.prayer = new int[6] { 1, 1, 2, 2, 2, 3};
+                card.special.healingHand = new int[6] { 3, 3, 3, 4, 4, 5};
                 break;
 
             case Card.Title.ArmouredLizard:
@@ -1177,8 +1177,8 @@ public class CardStat : MonoBehaviour
                 card.damageType = Card.DamageType.Magical;
                 card.special.levitate = true;
                 card.special.nimble = true;
-                card.special.prayer = new int[6] { 3, 3, 3, 4, 4, 5};
-                card.special.healingHand = new int[6] { 3, 3, 4, 5, 5, 6};
+                card.special.prayer = new int[6] { 2, 2, 2, 3, 3, 4};
+                card.special.healingHand = new int[6] { 4, 4, 5, 6, 6, 7};
                 break;
 
             case Card.Title.BattleAbbess:
@@ -1889,8 +1889,8 @@ public class CardStat : MonoBehaviour
                 break;
 
             case Card.Title.GuardianAngel:
-                card.attack = new int[6] { 2, 2, 3, 3, 4, 4};
-                card.health = new int[6] { 8, 9, 9, 11, 12, 12};
+                card.attack = new int[6] { 2, 2, 2, 3, 4, 4};
+                card.health = new int[6] { 8, 10, 11, 11, 12, 12};
                 card.cd = 4;
                 card.range = 2;
                 card.speed = 2;
@@ -1899,8 +1899,8 @@ public class CardStat : MonoBehaviour
                 card.special.levitate = true;
                 card.special.nimble = true;
                 card.special.prayer = new int[6] { 2, 2, 3, 3, 3, 4};
-                card.special.prayerAura = new int[6] { 2, 2, 2, 2, 2, 3};
-                card.special.healingHand = new int[6] { 2, 3, 3, 4, 4, 5};
+                card.special.prayerAura = new int[6] { 1, 1, 1, 1, 1, 2};
+                card.special.healingHand = new int[6] { 99, 99, 99, 99, 99, 99};
                 break;
 
             case Card.Title.KathrynEmberwind:
